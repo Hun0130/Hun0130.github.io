@@ -6,7 +6,7 @@
   <!-- 모바일 환경 대응을 위한 메타 태그 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    /* 모든 요소에 box-sizing 적용 (모바일 대응 시 편의) */
+    /* 모든 요소에 box-sizing 적용 */
     * {
       box-sizing: border-box;
     }
@@ -23,12 +23,12 @@
       transition: background-color 0.3s, color 0.3s;
     }
 
-    /* 라이트 모드: 연한 회색 배경(#f5f5f5) + 짙은 텍스트(#333) */
+    /* 라이트 모드 */
     body.light-mode {
       background-color: #f5f5f5;
       color: #333;
     }
-    /* 다크 모드: 짙은 회색(#333) + 밝은 텍스트(#f0f0f0) */
+    /* 다크 모드 */
     body.dark-mode {
       background-color: #333;
       color: #f0f0f0;
@@ -71,11 +71,11 @@
     .top-buttons button {
       cursor: pointer;
       padding: 0.3rem 0.6rem;
-      border: none;        
-      border-radius: 5px;  
-      background: none;    
+      border: none;
+      border-radius: 5px;
+      background: none;
       font-size: 1rem;
-      color: inherit;      
+      color: inherit;
     }
     .top-buttons button:hover {
       background: rgba(0, 0, 0, 0.1);
@@ -114,12 +114,12 @@
      *******************************************************/
     .home-header {
       display: flex;
-      flex-wrap: wrap; /* 화면이 작아지면 자동 줄바꿈 */
+      flex-wrap: wrap; /* 화면이 작아도 동일 레이아웃 (줄바꿈만) */
       gap: 1rem;
       align-items: center;
       justify-content: center;
     }
-    
+
     /* 왼쪽 열(프로필 사진) */
     .profile-left {
       flex: 0 0 auto;
@@ -127,7 +127,7 @@
       justify-content: center;
       align-items: center;
     }
-    
+
     /* 오른쪽 열(이름, 직함 등) */
     .profile-right {
       flex: 1;
@@ -135,7 +135,7 @@
       flex-direction: column;
       justify-content: center;
     }
-    
+
     /* 프로필 사진 */
     .profile-pic {
       width: 150px;
@@ -144,19 +144,26 @@
       border: none;
     }
 
+    /* 이름 (emphasis 클래스로 강조 유지) */
     .profile-right h1 {
-      font-size: 2rem; 
+      font-size: 2rem;
       font-weight: bold;
       margin: 0.5rem 0;
     }
+
+    /* 직함(subtitle) */
     .subtitle {
       font-size: 1.2rem;
       margin-bottom: 1rem;
     }
+
+    /* 연구 관심 분야 (일반 텍스트 색상) */
     .research-interest {
       margin-top: 1rem;
       line-height: 1.6;
     }
+
+    /* 디자인 문구 */
     .design-element {
       margin-top: 2rem;
       text-align: center;
@@ -174,20 +181,7 @@
       padding: 1rem;
     }
 
-    /*******************************************************
-     * 미디어 쿼리 (화면 너비 작을 때)
-     *******************************************************/
-    @media (max-width: 600px) {
-      .content {
-        padding: 1rem; 
-      }
-      .profile-pic {
-        width: 120px; 
-      }
-      .profile-right h1 {
-        font-size: 1.6rem; 
-      }
-    }
+    /* (모바일 전용 @media 제거) */
   </style>
 </head>
 
@@ -217,6 +211,7 @@
           <h1 class="emphasis" id="homeTitle"></h1>
           <div class="subtitle" id="homeSubtitle"></div>
           <p id="homeSubInfo"></p>
+          <!-- Research Interests: 일반 텍스트 색으로 표기 -->
           <div class="research-interest" id="homeResearch"></div>
         </div>
       </div>
@@ -286,13 +281,14 @@
           <a href="https://csi.dgist.ac.kr" target="_blank">CSI Lab</a>,
           EECS,
           <a href="https://www.dgist.ac.kr" target="_blank">DGIST</a>`,
+        /* 일반 색상 Research Interests */
         homeResearch: `Research Interests:
-          <span class="emphasis">Cyber-Physical AI</span>,
-          <span class="emphasis">ROS 2</span>,
-          <span class="emphasis">DDS</span>,
-          <span class="emphasis">Reinforcement Learning</span>,
-          <span class="emphasis">Machine Learning</span>,
-          <span class="emphasis">Mobile Robots</span>`,
+          Cyber-Physical AI,
+          ROS 2,
+          DDS,
+          Reinforcement Learning,
+          Machine Learning,
+          Mobile Robots`,
         homeDesignElement: `AI (Good things happen probabilistically)<br />→ Integration ←<br />CPS (Bad things never happen)`,
         aboutContent: "This is the About section. You can share your introduction, background, and interests here.",
         projectsContent: "This is the Projects section. You can showcase your ongoing projects or portfolio here.",
@@ -308,13 +304,14 @@
         homeSubInfo: `CSI 연구실,
           EECS,
           <a href="https://www.dgist.ac.kr" target="_blank">DGIST</a> 박사과정`,
+        /* 일반 색상 Research Interests */
         homeResearch: `연구 관심 분야:
-          <span class="emphasis">사이버-물리 인공지능</span>,
-          <span class="emphasis">로봇 운영체제 2</span>,
-          <span class="emphasis">데이터 분산 시스템</span>,
-          <span class="emphasis">강화학습</span>,
-          <span class="emphasis">기계학습</span>,
-          <span class="emphasis">모바일 로봇</span>`,
+          사이버-물리 인공지능,
+          로봇 운영체제 2,
+          데이터 분산 시스템,
+          강화학습,
+          기계학습,
+          모바일 로봇`,
         homeDesignElement: `AI (Good things happen probabilistically)<br />→ Integration ←<br />CPS (Bad things never happen)`,
         aboutContent: "이곳은 About 섹션입니다. 자기소개나 이력, 관심 분야 등을 쓸 수 있어요.",
         projectsContent: "이곳은 Projects 섹션입니다. 진행 중인 프로젝트나 포트폴리오를 정리해둘 수 있어요.",
