@@ -3,7 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <title>Sanghoon Lee</title>
+  <!-- 모바일 환경 대응을 위한 메타 태그 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
+    /* 모든 요소에 box-sizing 적용 (모바일 대응 시 편의) */
+    * {
+      box-sizing: border-box;
+    }
+
     /* 기본 레이아웃 및 애니메이션 */
     body {
       margin: 0;
@@ -11,26 +18,35 @@
       transition: background-color 0.3s, color 0.3s;
     }
 
-    /* 라이트 모드: 연한 회색 배경 + 짙은 텍스트 */
+    /* 라이트 모드: 연한 회색 배경(#f5f5f5) + 짙은 텍스트(#333) */
     body.light-mode {
       background-color: #f5f5f5;
       color: #333;
     }
-    /* 다크 모드: 짙은 회색 배경 + 밝은 텍스트 */
+    /* 다크 모드: 짙은 회색 배경(#333) + 밝은 텍스트(#f0f0f0) */
     body.dark-mode {
       background-color: #333;
       color: #f0f0f0;
     }
 
-    /* 링크 스타일 (밑줄/파란색 제거, 라이트-다크 모드 별 색상) */
+    /* 강조(Emphasis) 색상 지정 */
+    /* body 클래스에 따라 .emphasis 클래스의 색상이 달라짐 */
+    body.light-mode .emphasis {
+      color: #2C3E50; /* 네이비 톤 */
+    }
+    body.dark-mode .emphasis {
+      color: #8FA8BD; /* 밝은 회청색 */
+    }
+
+    /* 링크 색상 지정 (밑줄/파란색 제거) */
     a {
       text-decoration: none;
     }
     body.light-mode a {
-      color: #666; /* 라이트 모드에서 링크 색상 */
+      color: #5B9BD5; /* 실버 블루 */
     }
     body.dark-mode a {
-      color: #ccc; /* 다크 모드에서 링크 색상 */
+      color: #B9D2EE; /* 연한 실버 블루 */
     }
 
     /*******************************************************
@@ -41,7 +57,6 @@
       align-items: center;
       justify-content: space-between;
       padding: 0.5rem 1rem;
-      box-sizing: border-box;
       border-bottom: 1px solid #ccc;
     }
     /* 좌측 상단 버튼 영역 */
@@ -56,7 +71,7 @@
       border-radius: 5px;     /* 모서리를 살짝 둥글게 */
       background: none;       /* 배경 제거 */
       font-size: 1rem;
-      color: inherit;         /* 부모 모드에 따라 색상 상속 */
+      color: inherit;         /* 부모(모드)에 따라 색상 상속 */
     }
     .top-buttons button:hover {
       /* 살짝 투명 배경을 넣어 마우스오버 표시 */
@@ -78,7 +93,6 @@
     /*******************************************************
      * 본문 영역
      *******************************************************/
-    /* 내용 영역: 헤더 아래쪽에 위치 */
     .content {
       padding: 2rem;
     }
@@ -97,19 +111,19 @@
      *******************************************************/
     .home-header {
       display: flex;
-      flex-wrap: wrap; /* 작은 화면에서 레이아웃이 깨지지 않도록 */
+      flex-wrap: wrap; /* 작은 화면(모바일)에서도 레이아웃이 깨지지 않도록 */
     }
 
-    /* 왼쪽 열: 프로필 사진 (사진 크기만큼만 공간을 차지) */
+    /* 왼쪽 열: 프로필 사진 (사진 크기만큼만 공간 차지) */
     .profile-wrapper {
-      flex: 0 0 auto;     /* 사진 크기만큼만 너비를 차지 */
+      flex: 0 0 auto;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 1rem;
     }
     .profile-pic {
-      width: 200px;       /* 사진 너비 고정 */
+      width: 200px;  /* 사진 너비 고정 */
       height: auto;
       border-radius: 4px;
       border: none;
@@ -156,6 +170,21 @@
       font-size: 0.8rem;
       opacity: 0.6;
       padding: 1rem;
+    }
+
+    /*******************************************************
+     * 미디어 쿼리 (모바일 대응)
+     *******************************************************/
+    @media (max-width: 600px) {
+      .content {
+        padding: 1rem; /* 모바일에서 여백을 조금 줄임 */
+      }
+      .profile-pic {
+        width: 150px; /* 화면이 작을 때 사진 너비 축소 */
+      }
+      .profile-info h1 {
+        font-size: 1.6rem; /* 폰트 크기 약간 줄이기 */
+      }
     }
   </style>
 </head>
@@ -225,7 +254,8 @@
 
   <!-- 하단 푸터 -->
   <footer>
-    Copyright. Sanghoon Lee (DGIST) all rights reserved.
+    Copyright. Sanghoon Lee (DGIST) all rights
+    reserved.
   </footer>
 
   <script>
@@ -260,7 +290,6 @@
     // 각 언어별 텍스트 객체
     const texts = {
       en: {
-        menuTitle: "Menu",
         navHome: "Home",
         navAbout: "About",
         navProjects: "Projects",
@@ -284,7 +313,6 @@
         contactContent: "You can provide your contact details or social media links here."
       },
       ko: {
-        menuTitle: "메뉴",
         navHome: "홈",
         navAbout: "소개",
         navProjects: "프로젝트",
@@ -309,11 +337,9 @@
 
     // 언어 토글 함수
     function toggleLanguage() {
-      // 현재 언어 상태를 바꿔주기
       currentLang = (currentLang === 'en') ? 'ko' : 'en';
       setLanguageTexts(currentLang);
 
-      // langToggleBtn 버튼 텍스트도 전환 (KOR ↔ ENG)
       const langToggleBtn = document.getElementById('langToggleBtn');
       langToggleBtn.textContent = (currentLang === 'en') ? 'KOR' : 'ENG';
     }
@@ -341,13 +367,11 @@
      * 4. 탭(섹션) 전환 함수
      **********************************************************/
     function showSection(sectionId) {
-      // 모든 섹션 숨김
       const sections = document.querySelectorAll('.section');
       sections.forEach(section => {
         section.classList.remove('active');
       });
 
-      // 클릭된 섹션만 보이도록
       const targetSection = document.getElementById(sectionId);
       if (targetSection) {
         targetSection.classList.add('active');
