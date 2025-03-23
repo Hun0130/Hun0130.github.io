@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Sanghoon Lee</title>
-  <!-- 모바일 환경 대응을 위한 메타 태그 -->
+  <!-- 모바일 환경 대응 메타 태그 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     /* 모든 요소에 box-sizing 적용 (모바일 대응 시 편의) */
@@ -11,25 +11,24 @@
       box-sizing: border-box;
     }
 
-    /* 기본 레이아웃 및 애니메이션 */
+    /* 기본 레이아웃 */
     body {
       margin: 0;
       font-family: sans-serif;
       transition: background-color 0.3s, color 0.3s;
     }
-
-    /* 라이트 모드: 연한 회색 배경(#f5f5f5) + 짙은 텍스트(#333) */
+    /* 라이트 모드 */
     body.light-mode {
       background-color: #f5f5f5;
       color: #333;
     }
-    /* 다크 모드: 짙은 회색 배경(#333) + 밝은 텍스트(#f0f0f0) */
+    /* 다크 모드 */
     body.dark-mode {
       background-color: #333;
       color: #f0f0f0;
     }
 
-    /* 강조(Emphasis) 색상 지정 */
+    /* 강조 색상 */
     body.light-mode .emphasis {
       color: #2C3E50; /* 네이비 톤 */
     }
@@ -37,20 +36,18 @@
       color: #8FA8BD; /* 밝은 회청색 */
     }
 
-    /* 링크 색상 지정 (밑줄/파란색 제거) */
+    /* 링크 색상 */
     a {
       text-decoration: none;
     }
     body.light-mode a {
-      color: #5B9BD5; /* 실버 블루 */
+      color: #5B9BD5;
     }
     body.dark-mode a {
-      color: #B9D2EE; /* 연한 실버 블루 */
+      color: #B9D2EE;
     }
 
-    /*******************************************************
-     * 상단 영역: 헤더 및 메뉴
-     *******************************************************/
+    /* 헤더 */
     header {
       display: flex;
       align-items: center;
@@ -58,7 +55,6 @@
       padding: 0.5rem 1rem;
       border-bottom: 1px solid #ccc;
     }
-    /* 좌측 상단 버튼 영역 */
     .top-buttons {
       display: flex;
       gap: 0.5rem;
@@ -66,17 +62,15 @@
     .top-buttons button {
       cursor: pointer;
       padding: 0.3rem 0.6rem;
-      border: none;        
-      border-radius: 5px;  
-      background: none;    
+      border: none;
+      border-radius: 5px;
+      background: none;
       font-size: 1rem;
-      color: inherit;      
+      color: inherit;
     }
     .top-buttons button:hover {
       background: rgba(0, 0, 0, 0.1);
     }
-
-    /* 메뉴(nav) - 가로 배치 */
     nav {
       display: flex;
       gap: 1rem;
@@ -88,14 +82,22 @@
       text-decoration: none;
     }
 
-    /*******************************************************
-     * 본문 영역
-     *******************************************************/
+    /******************************************************
+     * 본문 영역: max-height 적용하여 세로 길이 제한
+     ******************************************************/
     .content {
-      padding: 2rem;
+      /* 페이지가 너무 길지 않도록 최대 높이를 제한 */
+      max-height: 70vh;
+      /* 내용이 넘치면 스크롤 생김 */
+      overflow-y: auto;
+      
+      /* 중앙 정렬 & 너무 넓지 않도록 제한 */
+      max-width: 600px;
+      margin: 2rem auto; /* 상하 2rem, 좌우 자동 정렬 */
+      padding: 0 1rem;   /* 좌우 약간의 패딩 */
     }
 
-    /* 모든 섹션은 기본적으로 숨김 처리 */
+    /* 모든 섹션은 기본적으로 숨김 */
     .section {
       display: none;
     }
@@ -104,62 +106,45 @@
       display: block;
     }
 
-    /*******************************************************
-     * 홈 섹션 (모바일/PC 동일 단일 열 레이아웃)
-     *******************************************************/
-    /* 홈 섹션 상단 영역을 2열로 배치 */
+    /* 홈 섹션 */
     .home-header {
       display: flex;
-      flex-wrap: wrap; /* 화면이 작아지면 자동으로 줄바꿈 */
-      gap: 1rem;       /* 열 사이 여백 */
-      align-items: center; /* 수직 가운데 정렬 */
-      justify-content: center; /* 큰 화면에서 가운데 정렬 */
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
     }
-    
-    /* 왼쪽 열(프로필 사진) */
     .profile-left {
-      flex: 0 0 auto;       /* 내용물 크기만큼만 공간 사용 */
+      flex: 0 0 auto;
       display: flex;
       justify-content: center;
       align-items: center;
     }
-    
-    /* 오른쪽 열(이름, 직함, 소개 등) */
     .profile-right {
-      flex: 1;             /* 나머지 공간 채움 */
+      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-    
-    /* 프로필 사진 크기 */
     .profile-pic {
-      width: 150px;   /* 원하는 크기로 조정 */
+      width: 150px;
       height: auto;
       border-radius: 4px;
       border: none;
     }
-    
-    /* 이름 */
     .profile-right h1 {
-      font-size: 2rem; 
+      font-size: 2rem;
       font-weight: bold;
       margin: 0.5rem 0;
     }
-    
-    /* 직함(subtitle) */
     .subtitle {
       font-size: 1.2rem;
       margin-bottom: 1rem;
     }
-    
-    /* 연구 관심 분야 (키워드 강조) */
     .research-interest {
       margin-top: 1rem;
       line-height: 1.6;
     }
-
-    /* 디자인 문구 가운데 정렬 */
     .design-element {
       margin-top: 2rem;
       text-align: center;
@@ -167,9 +152,7 @@
       line-height: 1.5;
     }
 
-    /*******************************************************
-     * 푸터
-     *******************************************************/
+    /* 푸터 */
     footer {
       text-align: center;
       font-size: 0.8rem;
@@ -177,33 +160,24 @@
       padding: 1rem;
     }
 
-    /*******************************************************
-     * 미디어 쿼리 (모바일/소형 화면 대응)
-     *******************************************************/
+    /* 미디어 쿼리 (화면 너비 작을 때) */
     @media (max-width: 600px) {
-      .content {
-        padding: 1rem; 
-      }
       .profile-pic {
-        width: 120px; /* 화면이 작을 때 사진 너비 축소 */
+        width: 120px;
       }
-      .profile-info h1 {
-        font-size: 1.6rem; 
+      .profile-right h1 {
+        font-size: 1.6rem;
       }
     }
   </style>
 </head>
 
 <body class="light-mode">
-  <!-- 상단 헤더 -->
   <header>
-    <!-- 왼쪽 버튼들 (한/영, 모드 토글) -->
     <div class="top-buttons">
       <button id="langToggleBtn" onclick="toggleLanguage()">KOR</button>
       <button onclick="toggleMode()">☀</button>
     </div>
-
-    <!-- 오른쪽 메뉴 -->
     <nav>
       <a href="#home" id="navHome" onclick="showSection('home'); return false;">Home</a>
       <a href="#about" id="navAbout" onclick="showSection('about'); return false;">About</a>
@@ -212,45 +186,39 @@
     </nav>
   </header>
 
-  <!-- 실제 콘텐츠 영역 -->
+  <!-- 실제 콘텐츠 영역 (세로 길이 제한) -->
   <div class="content">
-  <!-- 홈 섹션 -->
-  <div class="section" id="home">
-    <div class="home-header">
-      <!-- 왼쪽 열: 프로필 사진 -->
-      <div class="profile-left">
-        <img src="Profile.png" alt="Lee Sanghoon's Profile" class="profile-pic" />
+    <!-- 홈 섹션 -->
+    <div class="section" id="home">
+      <div class="home-header">
+        <!-- 왼쪽 열: 프로필 사진 -->
+        <div class="profile-left">
+          <img src="Profile.png" alt="Lee Sanghoon's Profile" class="profile-pic" />
+        </div>
+        
+        <!-- 오른쪽 열: 이름, 직함, 소개 -->
+        <div class="profile-right">
+          <h1 class="emphasis" id="homeTitle"></h1>
+          <div class="subtitle" id="homeSubtitle"></div>
+          <p id="homeSubInfo"></p>
+          <div class="research-interest" id="homeResearch"></div>
+        </div>
       </div>
-  
-      <!-- 오른쪽 열: 이름, 직함, 소개 -->
-      <div class="profile-right">
-        <!-- 이름 (가장 큰 글자, 강조 색) -->
-        <h1 class="emphasis" id="homeTitle"></h1>
-        <!-- 직함 (조금 작은 글씨) -->
-        <div class="subtitle" id="homeSubtitle"></div>
-        <!-- Ph.D. Candidate in CSI Lab, EECS, DGIST -->
-        <p id="homeSubInfo"></p>
-        <!-- 연구 관심 분야(키워드 강조) -->
-        <div class="research-interest" id="homeResearch"></div>
-      </div>
+      <div class="design-element" id="homeDesignElement"></div>
     </div>
-  
-    <!-- 디자인 요소 (가운데 정렬) -->
-    <div class="design-element" id="homeDesignElement"></div>
-  </div>
 
     <!-- 어바웃 섹션 -->
     <div class="section" id="about">
       <h2>About</h2>
       <p id="aboutContent">This is the About section. You can share your introduction, background, and interests here.</p>
     </div>
-
+    
     <!-- 프로젝트 섹션 -->
     <div class="section" id="projects">
       <h2>Projects</h2>
       <p id="projectsContent">This is the Projects section. You can showcase your ongoing projects or portfolio here.</p>
     </div>
-
+    
     <!-- 연락처 섹션 -->
     <div class="section" id="contact">
       <h2>Contact</h2>
@@ -258,19 +226,17 @@
     </div>
   </div>
 
-  <!-- 하단 푸터 -->
   <footer>
-    Copyright. Sanghoon Lee (DGIST) all
-    rights reserved.
+    Copyright. Sanghoon
+    Lee (DGIST) all rights reserved.
   </footer>
 
   <script>
     /**********************************************************
-     * 1. 페이지 로드 시 홈 섹션만 보이도록 (초기화)
+     * 1. 페이지 로드 시 홈 섹션만 보이도록
      **********************************************************/
     window.addEventListener('DOMContentLoaded', () => {
       showSection('home');
-      // 초기 한/영 텍스트 (영어 기본)
       setLanguageTexts('en');
     });
 
@@ -289,27 +255,21 @@
     }
 
     /**********************************************************
-     * 3. 한/영 전환 기능
+     * 3. 한/영 전환
      **********************************************************/
-    let currentLang = 'en'; // 현재 언어
-
-    // 텍스트 객체
+    let currentLang = 'en';
     const texts = {
       en: {
         navHome: "Home",
         navAbout: "About",
         navProjects: "Projects",
         navContact: "Contact",
-        /* Lee Sanghoon (가장 큰 글자, 강조) -> homeTitle */
         homeTitle: "Lee Sanghoon",
-        /* Cyber-Physical AI Researcher (두 번째 줄, 작은 글씨) -> homeSubtitle */
         homeSubtitle: "Cyber-Physical AI Researcher",
-        /* Ph.D. Candidate in CSI Lab, EECS, DGIST (한 줄로) -> homeSubInfo */
-        homeSubInfo: `Ph.D. Candidate in
-          <a href="https://csi.dgist.ac.kr" target="_blank">CSI Lab</a>,
-          EECS,
+        homeSubInfo: `Ph.D. Candidate in 
+          <a href="https://csi.dgist.ac.kr" target="_blank">CSI Lab</a>, 
+          EECS, 
           <a href="https://www.dgist.ac.kr" target="_blank">DGIST</a>`,
-        /* Research Interests: 키워드를 강조색으로 */
         homeResearch: `Research Interests:
           <span class="emphasis">Cyber-Physical AI</span>,
           <span class="emphasis">Physical AI</span>,
@@ -318,7 +278,6 @@
           <span class="emphasis">Reinforcement Learning</span>,
           <span class="emphasis">Machine Learning</span>,
           <span class="emphasis">Mobile Robots</span>`,
-        /* 디자인 문구 (가운데) */
         homeDesignElement: `AI (Good things happen probabilistically)<br />→ Integration ←<br />CPS (Bad things never happen)`,
         aboutContent: "This is the About section. You can share your introduction, background, and interests here.",
         projectsContent: "This is the Projects section. You can showcase your ongoing projects or portfolio here.",
@@ -331,8 +290,8 @@
         navContact: "연락처",
         homeTitle: "이상훈",
         homeSubtitle: "사이버-물리 AI 연구자",
-        homeSubInfo: `CSI 연구실,
-          EECS,
+        homeSubInfo: `CSI 연구실, 
+          EECS, 
           <a href="https://www.dgist.ac.kr" target="_blank">DGIST</a> 박사과정`,
         homeResearch: `연구 관심 분야:
           <span class="emphasis">사이버-물리 인공지능</span>,
@@ -349,7 +308,6 @@
       }
     };
 
-    // 언어 토글 함수
     function toggleLanguage() {
       currentLang = (currentLang === 'en') ? 'ko' : 'en';
       setLanguageTexts(currentLang);
@@ -358,7 +316,6 @@
       langToggleBtn.textContent = (currentLang === 'en') ? 'KOR' : 'ENG';
     }
 
-    // 실제 텍스트 교체
     function setLanguageTexts(lang) {
       document.getElementById('navHome').textContent           = texts[lang].navHome;
       document.getElementById('navAbout').textContent          = texts[lang].navAbout;
