@@ -4,79 +4,82 @@
   <meta charset="UTF-8" />
   <title>Sanghoon Lee</title>
   <style>
-    /* 기본 레이아웃 스타일 */
+    /* 기본 레이아웃 및 애니메이션 */
     body {
       margin: 0;
       font-family: sans-serif;
       transition: background-color 0.3s, color 0.3s;
     }
-    /* 라이트 모드 */
+
+    /* 라이트 모드: 연한 회색 배경 + 짙은 텍스트 */
     body.light-mode {
-      background-color: #fff;  /* 흰색 배경 */
-      color: #000;            /* 검은색 텍스트 */
+      background-color: #f5f5f5;
+      color: #333;
     }
-    /* 다크 모드 */
+    /* 다크 모드: 짙은 회색 배경 + 밝은 텍스트 */
     body.dark-mode {
-      background-color: #000;  /* 검은색 배경 */
-      color: #fff;            /* 흰색 텍스트 */
+      background-color: #333;
+      color: #f0f0f0;
     }
 
     /* 링크 스타일 (밑줄/파란색 제거, 라이트-다크 모드 별 색상) */
     a {
-      text-decoration: none; 
-    }
-    body.light-mode a {
-      color: #444; /* 진한 회색 */
-    }
-    body.dark-mode a {
-      color: #ccc; /* 옅은 회색 */
-    }
-
-    /* 왼쪽 사이드바 */
-    #sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 200px;
-      height: 100vh;
-      padding: 1rem;
-      box-sizing: border-box;
-      border-right: 1px solid #444;
-    }
-    #sidebar h2 {
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-    }
-    #sidebar nav a {
-      display: block;
-      margin: 0.5rem 0;
-      cursor: pointer;
-    }
-    #sidebar nav a:hover {
       text-decoration: none;
     }
+    body.light-mode a {
+      color: #666; /* 라이트 모드에서 링크 색상 */
+    }
+    body.dark-mode a {
+      color: #ccc; /* 다크 모드에서 링크 색상 */
+    }
 
-    /* 사이드바 내 상단 버튼 영역 스타일 */
+    /*******************************************************
+     * 상단 영역: 헤더 및 메뉴
+     *******************************************************/
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      box-sizing: border-box;
+      border-bottom: 1px solid #ccc;
+    }
+    /* 좌측 상단 버튼 영역 */
     .top-buttons {
       display: flex;
-      flex-direction: row;
       gap: 0.5rem;
     }
     .top-buttons button {
       cursor: pointer;
       padding: 0.3rem 0.6rem;
-      border: 1px solid #444;
-      background: none;
+      border: none;           /* 테두리 제거 */
+      border-radius: 5px;     /* 모서리를 살짝 둥글게 */
+      background: none;       /* 배경 제거 */
       font-size: 1rem;
-      color: inherit; /* 부모의 모드에 따라 글자색 상속 */
+      color: inherit;         /* 부모 모드에 따라 색상 상속 */
     }
     .top-buttons button:hover {
-      background: rgba(255,255,255,0.1);
+      /* 살짝 투명 배경을 넣어 마우스오버 표시 */
+      background: rgba(0, 0, 0, 0.1);
     }
 
-    /* 메인 콘텐츠 영역(사이드바 외부) */
+    /* 메뉴(nav) - 가로 배치 */
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+    nav a {
+      cursor: pointer;
+    }
+    nav a:hover {
+      text-decoration: none;
+    }
+
+    /*******************************************************
+     * 본문 영역
+     *******************************************************/
+    /* 내용 영역: 헤더 아래쪽에 위치 */
     .content {
-      margin-left: 200px; /* 사이드바 폭만큼 오른쪽으로 밀기 */
       padding: 2rem;
     }
 
@@ -84,12 +87,14 @@
     .section {
       display: none;
     }
-    /* 선택된 섹션만 보이도록 할 때 block 처리 */
+    /* 선택된 섹션만 보이도록 할 때 */
     .section.active {
       display: block;
     }
 
-    /* 홈 섹션 레이아웃 (2열) */
+    /*******************************************************
+     * 홈 섹션
+     *******************************************************/
     .home-header {
       display: flex;
       flex-wrap: wrap; /* 작은 화면에서 레이아웃이 깨지지 않도록 */
@@ -97,30 +102,32 @@
 
     /* 왼쪽 열: 프로필 사진 (사진 크기만큼만 공간을 차지) */
     .profile-wrapper {
-      flex: 0 0 auto;          /* 왼쪽 열이 사진 크기만큼만 차지하도록 고정 */
+      flex: 0 0 auto;     /* 사진 크기만큼만 너비를 차지 */
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 1rem;
     }
     .profile-pic {
-      width: 200px;   /* 사진 너비 */
+      width: 200px;       /* 사진 너비 고정 */
       height: auto;
-      border-radius: 4px; /* 혹은 원형으로 하려면 50%로 조정 */
-      border: none;       /* 모서리를 투명화, 배경과 어우러지도록 함 */
+      border-radius: 4px;
+      border: none;
     }
 
     /* 오른쪽 열: 이름, 직위 등 */
     .profile-info {
-      flex: 1;               /* 나머지 공간을 모두 차지 */
+      flex: 1;
       padding: 1rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-    .profile-info h2 {
+    /* 이름을 가장 크게 표시 (h1) */
+    .profile-info h1 {
       margin: 0.5rem 0;
-      font-size: 1.5rem;
+      font-size: 2rem; /* 크게 표시 */
+      font-weight: bold;
     }
     .profile-info p {
       margin: 0.5rem 0;
@@ -135,13 +142,15 @@
       line-height: 1.5;
     }
 
-    /* Research Interests 영역 */
+    /* 연구 관심 분야 */
     .research-interest {
       margin-top: 1rem;
       line-height: 1.4;
     }
 
-    /* 푸터 스타일 */
+    /*******************************************************
+     * 푸터
+     *******************************************************/
     footer {
       text-align: center;
       font-size: 0.8rem;
@@ -150,10 +159,11 @@
     }
   </style>
 </head>
-<body class="dark-mode">
-  <!-- 좌측 사이드바 -->
-  <aside id="sidebar">
-    <!-- 상단 버튼 영역 -->
+
+<body class="light-mode">
+  <!-- 상단 헤더 -->
+  <header>
+    <!-- 왼쪽에 토글 버튼들 -->
     <div class="top-buttons">
       <!-- 한/영 전환 버튼 -->
       <button id="langToggleBtn" onclick="toggleLanguage()">KOR</button>
@@ -161,14 +171,14 @@
       <button onclick="toggleMode()">☀</button>
     </div>
 
-    <h2 id="menuTitle">Menu</h2>
+    <!-- 오른쪽에 메뉴 -->
     <nav>
       <a href="#home" id="navHome" onclick="showSection('home'); return false;">Home</a>
       <a href="#about" id="navAbout" onclick="showSection('about'); return false;">About</a>
       <a href="#projects" id="navProjects" onclick="showSection('projects'); return false;">Projects</a>
       <a href="#contact" id="navContact" onclick="showSection('contact'); return false;">Contact</a>
     </nav>
-  </aside>
+  </header>
 
   <!-- 실제 콘텐츠 영역 -->
   <div class="content">
@@ -179,16 +189,17 @@
         <div class="profile-wrapper">
           <img src="Profile.png" alt="Lee Sanghoon's Profile" class="profile-pic" />
         </div>
-    
+
         <!-- 오른쪽 열: 이름/직함/간단 소개 + 연구 관심 분야 -->
         <div class="profile-info">
-          <h2 id="homeTitle"></h2>
+          <!-- 이름을 h1으로 표시 -->
+          <h1 id="homeTitle"></h1>
           <p id="homeSubInfo"></p>
           <!-- Research Interests (profile-info 내부) -->
           <div class="research-interest" id="homeResearch"></div>
         </div>
       </div>
-    
+
       <!-- 디자인 요소 (가운데 정렬) -->
       <div class="design-element" id="homeDesignElement"></div>
     </div>
@@ -223,7 +234,7 @@
      **********************************************************/
     window.addEventListener('DOMContentLoaded', () => {
       showSection('home');
-      // 초기 한/영 텍스트도 설정(영어가 기본)
+      // 초기 한/영 텍스트도 설정 (영어가 기본)
       setLanguageTexts('en');
     });
 
@@ -232,12 +243,12 @@
      **********************************************************/
     function toggleMode() {
       const bodyElement = document.body;
-      if (bodyElement.classList.contains('dark-mode')) {
-        bodyElement.classList.remove('dark-mode');
-        bodyElement.classList.add('light-mode');
-      } else {
+      if (bodyElement.classList.contains('light-mode')) {
         bodyElement.classList.remove('light-mode');
         bodyElement.classList.add('dark-mode');
+      } else {
+        bodyElement.classList.remove('dark-mode');
+        bodyElement.classList.add('light-mode');
       }
     }
 
@@ -298,7 +309,7 @@
 
     // 언어 토글 함수
     function toggleLanguage() {
-      // 현재 언어를 기준으로 다음 언어로 토글
+      // 현재 언어 상태를 바꿔주기
       currentLang = (currentLang === 'en') ? 'ko' : 'en';
       setLanguageTexts(currentLang);
 
@@ -309,7 +320,6 @@
 
     // 실제 텍스트 교체 함수
     function setLanguageTexts(lang) {
-      document.getElementById('menuTitle').textContent         = texts[lang].menuTitle;
       document.getElementById('navHome').textContent           = texts[lang].navHome;
       document.getElementById('navAbout').textContent          = texts[lang].navAbout;
       document.getElementById('navProjects').textContent       = texts[lang].navProjects;
@@ -331,13 +341,13 @@
      * 4. 탭(섹션) 전환 함수
      **********************************************************/
     function showSection(sectionId) {
-      // 모든 섹션을 숨기고
+      // 모든 섹션 숨김
       const sections = document.querySelectorAll('.section');
       sections.forEach(section => {
         section.classList.remove('active');
       });
 
-      // 클릭된 섹션만 보이도록 활성화
+      // 클릭된 섹션만 보이도록
       const targetSection = document.getElementById(sectionId);
       if (targetSection) {
         targetSection.classList.add('active');
