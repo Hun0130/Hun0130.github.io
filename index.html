@@ -1,11 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <title>Hun0130's Page</title>
+  <style>
+    /* 기본 레이아웃 스타일 */
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    /* 다크 모드 스타일 */
+    body.dark-mode {
+      background-color: #000; /* 검은색 배경 */
+      color: #fff;           /* 흰색 텍스트 */
+    }
+    /* 라이트 모드 스타일 */
+    body.light-mode {
+      background-color: #fff; 
+      color: #000;           
+    }
+
+    /* 왼쪽 사이드바 */
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 100vh; 
+      padding: 1rem;
+      box-sizing: border-box;
+      border-right: 1px solid #444;
+    }
+
+    #sidebar h2 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+
+    #sidebar nav a {
+      display: block;
+      margin: 0.5rem 0;
+      text-decoration: none;
+      color: inherit; /* 모드에 따라 바뀔 수 있도록 */
+    }
+
+    #sidebar nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* 메인 콘텐츠 영역 */
+    #main {
+      margin-left: 200px; /* 사이드바 폭만큼 오른쪽으로 밀기 */
+      padding: 2rem;
+    }
+
+    /* 테마 토글 버튼 */
+    .toggle-btn {
+      margin-bottom: 2rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+  </style>
 </head>
-<body>
-  <h1>Welcome to Hun0130's GitHub Page!</h1>
-  <p>This is a simple homepage deployed via GitHub Pages.</p>
+<body class="dark-mode"> 
+  <!-- 좌측 사이드바 -->
+  <aside id="sidebar">
+    <h2>Menu</h2>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </aside>
+
+  <!-- 메인 화면 영역 -->
+  <section id="main">
+    <!-- 테마 토글 버튼 -->
+    <button class="toggle-btn" onclick="toggleMode()">Toggle Light/Dark</button>
+    
+    <h1>Welcome to Hun0130's GitHub Page!</h1>
+    <p>This is a simple homepage deployed via GitHub Pages.</p>
+
+    <!-- 각 섹션 (앵커 이동용) -->
+    <h2 id="home">Home</h2>
+    <p>메인 홈 내용이 들어갈 수 있습니다.</p>
+
+    <h2 id="about">About</h2>
+    <p>여기는 About 섹션입니다. 자기소개나 이력, 관심 분야 등을 쓸 수 있어요.</p>
+
+    <h2 id="projects">Projects</h2>
+    <p>여기는 Projects 섹션입니다. 진행 중인 프로젝트나 포트폴리오를 정리해둘 수 있어요.</p>
+
+    <h2 id="contact">Contact</h2>
+    <p>연락처나 이메일, SNS 링크 등을 넣을 수 있습니다.</p>
+  </section>
+
+  <script>
+    function toggleMode() {
+      // body 엘리먼트를 가져와서
+      const bodyElement = document.body;
+      // 현재가 다크 모드이면 라이트 모드로, 라이트 모드이면 다크 모드로 변경
+      if (bodyElement.classList.contains('dark-mode')) {
+        bodyElement.classList.remove('dark-mode');
+        bodyElement.classList.add('light-mode');
+      } else {
+        bodyElement.classList.remove('light-mode');
+        bodyElement.classList.add('dark-mode');
+      }
+    }
+  </script>
 </body>
 </html>
