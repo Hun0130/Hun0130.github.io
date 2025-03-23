@@ -94,23 +94,25 @@
       display: flex;
       flex-wrap: wrap; /* 작은 화면에서 레이아웃이 깨지지 않도록 */
     }
-    /* 왼쪽 열: 프로필 사진을 적절히 축소 */
+
+    /* 왼쪽 열: 프로필 사진 (사진 크기만큼만 공간을 차지) */
     .profile-wrapper {
-      flex: 1; 
+      flex: 0 0 auto;          /* 왼쪽 열이 사진 크기만큼만 차지하도록 고정 */
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 1rem;
     }
     .profile-pic {
-      max-width: 200px; /* 사진 크기 제한 */
+      width: 200px;   /* 사진 너비 */
       height: auto;
       border-radius: 4px; /* 혹은 원형으로 하려면 50%로 조정 */
       border: none;       /* 모서리를 투명화, 배경과 어우러지도록 함 */
     }
+
     /* 오른쪽 열: 이름, 직위 등 */
     .profile-info {
-      flex: 1;
+      flex: 1;               /* 나머지 공간을 모두 차지 */
       padding: 1rem;
       display: flex;
       flex-direction: column;
@@ -173,20 +175,22 @@
     <!-- 홈 섹션 -->
     <div class="section" id="home">
       <div class="home-header">
-        <!-- 왼쪽 열: 프로필 사진 (원하는 이미지 경로로 교체) -->
+        <!-- 왼쪽 열: 프로필 사진 -->
         <div class="profile-wrapper">
           <img src="Profile.png" alt="Lee Sanghoon's Profile" class="profile-pic" />
         </div>
-        <!-- 오른쪽 열: 이름/직함/간단 소개 -->
+    
+        <!-- 오른쪽 열: 이름/직함/간단 소개 + 연구 관심 분야 -->
         <div class="profile-info">
           <h2 id="homeTitle"></h2>
           <p id="homeSubInfo"></p>
+          <!-- Research Interests (profile-info 내부) -->
+          <div class="research-interest" id="homeResearch"></div>
         </div>
       </div>
+    
       <!-- 디자인 요소 (가운데 정렬) -->
       <div class="design-element" id="homeDesignElement"></div>
-      <!-- Research Interests -->
-      <div class="research-interest" id="homeResearch"></div>
     </div>
 
     <!-- 어바웃 섹션 -->
@@ -257,13 +261,13 @@
           <a href="https://www.dgist.ac.kr" target="_blank">DGIST</a>`,
         homeDesignElement: `AI (Good things happen probabilistically)<br />→ Integration ←<br />CPS (Bad things never happen)`,
         homeResearch: `Research Interests:
-          <br /> - Cyber-Physical AI (사이버-물리 인공지능)
-          <br /> - Physical AI (물리 AI)
-          <br /> - ROS 2 (로봇 운영체제 2)
-          <br /> - Robotic Network (로봇 네트워크)
-          <br /> - Reinforcement Learning (강화학습)
-          <br /> - Machine Learning (기계학습)
-          <br /> - Mobile Robots (모바일 로봇)`,
+          <br /> - Cyber-Physical AI
+          <br /> - Physical AI
+          <br /> - ROS 2
+          <br /> - Robotic Network
+          <br /> - Reinforcement Learning
+          <br /> - Machine Learning
+          <br /> - Mobile Robots`,
         aboutContent: "This is the About section. You can share your introduction, background, and interests here.",
         projectsContent: "This is the Projects section. You can showcase your ongoing projects or portfolio here.",
         contactContent: "You can provide your contact details or social media links here."
@@ -279,13 +283,13 @@
           <a href="https://csi.dgist.ac.kr" target="_blank">CSI 연구실</a> 박사과정`,
         homeDesignElement: `AI (Good things happen probabilistically)<br />→ Integration ←<br />CPS (Bad things never happen)`,
         homeResearch: `연구 관심 분야:
-          <br /> - Cyber-Physical AI (사이버-물리 인공지능)
-          <br /> - Physical AI (물리 AI)
-          <br /> - ROS 2 (로봇 운영체제 2)
-          <br /> - Robotic Network (로봇 네트워크)
-          <br /> - Reinforcement Learning (강화학습)
-          <br /> - Machine Learning (기계학습)
-          <br /> - Mobile Robots (모바일 로봇)`,
+          <br /> - 사이버-물리 인공지능
+          <br /> - 물리 AI
+          <br /> - 로봇 운영체제 2
+          <br /> - 로봇 네트워크
+          <br /> - 강화학습
+          <br /> - 기계학습
+          <br /> - 모바일 로봇`,
         aboutContent: "이곳은 About 섹션입니다. 자기소개나 이력, 관심 분야 등을 쓸 수 있어요.",
         projectsContent: "이곳은 Projects 섹션입니다. 진행 중인 프로젝트나 포트폴리오를 정리해둘 수 있어요.",
         contactContent: "연락처나 이메일, SNS 링크 등을 넣을 수 있습니다."
