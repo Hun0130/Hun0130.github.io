@@ -12,13 +12,13 @@
     }
     /* 다크 모드 스타일 */
     body.dark-mode {
-      background-color: #000; /* 검은색 배경 */
-      color: #fff;           /* 흰색 텍스트 */
+      background-color: #000;  /* 검은색 배경 */
+      color: #fff;            /* 흰색 텍스트 */
     }
     /* 라이트 모드 스타일 */
     body.light-mode {
-      background-color: #fff;
-      color: #000;
+      background-color: #fff;  /* 흰색 배경 */
+      color: #000;            /* 검은색 텍스트 */
     }
 
     /* 왼쪽 사이드바 */
@@ -40,7 +40,8 @@
       display: block;
       margin: 0.5rem 0;
       text-decoration: none;
-      color: inherit; /* 모드에 따라 바뀔 수 있도록 */
+      color: inherit; /* 라이트/다크 모드에 따라 색상 자동 변경 */
+      cursor: pointer;
     }
     #sidebar nav a:hover {
       text-decoration: underline;
@@ -64,9 +65,19 @@
       border: 1px solid #444;
       background: none;
       font-size: 1rem;
+      color: inherit;    /* 부모 요소(모드)에 따라 글자색상 상속 */
     }
     .top-buttons button:hover {
       background: rgba(255,255,255,0.1);
+    }
+
+    /* 모든 섹션은 기본적으로 숨김 처리 */
+    .section {
+      display: none;
+    }
+    /* 선택된 섹션만 보이도록 할 때 block 처리 */
+    .section.active {
+      display: block;
     }
   </style>
 </head>
@@ -77,42 +88,62 @@
     <div class="top-buttons">
       <!-- 한/영 전환 버튼 -->
       <button id="langToggleBtn" onclick="toggleLanguage()">KOR</button>
-      <!-- 라이트/다크 모드 전환 버튼 (해 모양) -->
+      <!-- 라이트/다크 모드 전환 버튼 (해 아이콘) -->
       <button onclick="toggleMode()">☀</button>
     </div>
 
     <h2 id="menuTitle">Menu</h2>
     <nav>
-      <a href="#home" id="navHome">Home</a>
-      <a href="#about" id="navAbout">About</a>
-      <a href="#projects" id="navProjects">Projects</a>
-      <a href="#contact" id="navContact">Contact</a>
+      <!-- 각 메뉴를 클릭하면 showSection 함수가 호출되도록 처리 -->
+      <a href="#home" id="navHome" onclick="showSection('home'); return false;">Home</a>
+      <a href="#about" id="navAbout" onclick="showSection('about'); return false;">About</a>
+      <a href="#projects" id="navProjects" onclick="showSection('projects'); return false;">Projects</a>
+      <a href="#contact" id="navContact" onclick="showSection('contact'); return false;">Contact</a>
     </nav>
   </aside>
 
   <!-- 메인 화면 영역 -->
   <section id="main">
-    <!-- 기존 Toggle Light/Dark 버튼은 제거했음 -->
-
     <h1 id="mainTitle">Welcome to Hun0130's GitHub Page!</h1>
     <p id="mainDesc">This is a simple homepage deployed via GitHub Pages.</p>
 
-    <!-- 각 섹션 (앵커 이동용) -->
-    <h2 id="home">Home</h2>
-    <p id="homeContent">Main home content goes here.</p>
+    <!-- 홈 섹션 -->
+    <div class="section" id="home">
+      <h2>Home</h2>
+      <p id="homeContent">Main home content goes here.</p>
+    </div>
 
-    <h2 id="about">About</h2>
-    <p id="aboutContent">This is the About section. You can share your introduction, background, and interests here.</p>
+    <!-- 어바웃 섹션 -->
+    <div class="section" id="about">
+      <h2>About</h2>
+      <p id="aboutContent">This is the About section. You can share your introduction, background, and interests here.</p>
+    </div>
 
-    <h2 id="projects">Projects</h2>
-    <p id="projectsContent">This is the Projects section. You can showcase your ongoing projects or portfolio here.</p>
+    <!-- 프로젝트 섹션 -->
+    <div class="section" id="projects">
+      <h2>Projects</h2>
+      <p id="projectsContent">This is the Projects section. You can showcase your ongoing projects or portfolio here.</p>
+    </div>
 
-    <h2 id="contact">Contact</h2>
-    <p id="contactContent">You can provide your contact details or social media links here.</p>
+    <!-- 연락처 섹션 -->
+    <div class="section" id="contact">
+      <h2>Contact</h2>
+      <p id="contactContent">You can provide your contact details or social media links here.</p>
+    </div>
   </section>
 
   <script>
-    // 1. 라이트/다크 모드 토글
+    /**********************************************************
+     * 1. 페이지 로드 시 홈 섹션만 보이도록 초기화
+     **********************************************************/
+    window.addEventListener('DOMContentLoaded', () => {
+      // 기본 섹션을 'home'으로 설정
+      showSection('home');
+    });
+
+    /**********************************************************
+     * 2. 라이트/다크 모드 토글
+     **********************************************************/
     function toggleMode() {
       const bodyElement = document.body;
       if (bodyElement.classList.contains('dark-mode')) {
@@ -124,12 +155,12 @@
       }
     }
 
-    // 2. 한/영 전환 기능
-    //    기본은 영어, 'KOR' 버튼 클릭 시 한국어로 전환
-    //    다시 클릭 시 영어로 전환 (토글 방식)
+    /**********************************************************
+     * 3. 한/영 전환 기능
+     **********************************************************/
     let currentLang = 'en'; // 현재 언어 상태
 
-    // 각 언어별 텍스트를 객체 형태로 저장
+    // 각 언어별 텍스트 객체
     const texts = {
       en: {
         menuTitle: "Menu",
@@ -139,13 +170,9 @@
         navContact: "Contact",
         mainTitle: "Welcome to Hun0130's GitHub Page!",
         mainDesc: "This is a simple homepage deployed via GitHub Pages.",
-        home: "Home",
         homeContent: "Main home content goes here.",
-        about: "About",
         aboutContent: "This is the About section. You can share your introduction, background, and interests here.",
-        projects: "Projects",
         projectsContent: "This is the Projects section. You can showcase your ongoing projects or portfolio here.",
-        contact: "Contact",
         contactContent: "You can provide your contact details or social media links here."
       },
       ko: {
@@ -156,41 +183,50 @@
         navContact: "연락처",
         mainTitle: "Hun0130의 GitHub 페이지에 오신 것을 환영합니다!",
         mainDesc: "이것은 GitHub Pages로 배포된 간단한 홈페이지입니다.",
-        home: "홈",
         homeContent: "메인 홈 내용이 들어갈 수 있습니다.",
-        about: "소개",
         aboutContent: "이곳은 About 섹션입니다. 자기소개나 이력, 관심 분야 등을 쓸 수 있어요.",
-        projects: "프로젝트",
         projectsContent: "이곳은 Projects 섹션입니다. 진행 중인 프로젝트나 포트폴리오를 정리해둘 수 있어요.",
-        contact: "연락처",
         contactContent: "연락처나 이메일, SNS 링크 등을 넣을 수 있습니다."
       }
     };
 
     function toggleLanguage() {
-      // 다음 언어로 토글
+      // 현재 언어를 기준으로 다음 언어로 토글
       currentLang = (currentLang === 'en') ? 'ko' : 'en';
 
-      // langToggleBtn 버튼 텍스트도 바꾸기 (영어->한국어 / 한국어->영어)
+      // langToggleBtn 버튼 텍스트도 전환 (KOR ↔ ENG)
       const langToggleBtn = document.getElementById('langToggleBtn');
       langToggleBtn.textContent = (currentLang === 'en') ? 'KOR' : 'ENG';
 
-      // 각 요소의 텍스트를 변경
-      document.getElementById('menuTitle').textContent        = texts[currentLang].menuTitle;
-      document.getElementById('navHome').textContent          = texts[currentLang].navHome;
-      document.getElementById('navAbout').textContent         = texts[currentLang].navAbout;
-      document.getElementById('navProjects').textContent      = texts[currentLang].navProjects;
-      document.getElementById('navContact').textContent       = texts[currentLang].navContact;
-      document.getElementById('mainTitle').textContent        = texts[currentLang].mainTitle;
-      document.getElementById('mainDesc').textContent         = texts[currentLang].mainDesc;
-      document.getElementById('home').textContent             = texts[currentLang].home;
-      document.getElementById('homeContent').textContent      = texts[currentLang].homeContent;
-      document.getElementById('about').textContent            = texts[currentLang].about;
-      document.getElementById('aboutContent').textContent     = texts[currentLang].aboutContent;
-      document.getElementById('projects').textContent         = texts[currentLang].projects;
-      document.getElementById('projectsContent').textContent  = texts[currentLang].projectsContent;
-      document.getElementById('contact').textContent          = texts[currentLang].contact;
-      document.getElementById('contactContent').textContent   = texts[currentLang].contactContent;
+      // 각 요소의 텍스트 변경
+      document.getElementById('menuTitle').textContent   = texts[currentLang].menuTitle;
+      document.getElementById('navHome').textContent     = texts[currentLang].navHome;
+      document.getElementById('navAbout').textContent    = texts[currentLang].navAbout;
+      document.getElementById('navProjects').textContent = texts[currentLang].navProjects;
+      document.getElementById('navContact').textContent  = texts[currentLang].navContact;
+      document.getElementById('mainTitle').textContent   = texts[currentLang].mainTitle;
+      document.getElementById('mainDesc').textContent    = texts[currentLang].mainDesc;
+      document.getElementById('homeContent').textContent     = texts[currentLang].homeContent;
+      document.getElementById('aboutContent').textContent    = texts[currentLang].aboutContent;
+      document.getElementById('projectsContent').textContent = texts[currentLang].projectsContent;
+      document.getElementById('contactContent').textContent  = texts[currentLang].contactContent;
+    }
+
+    /**********************************************************
+     * 4. 탭(섹션) 전환 함수
+     **********************************************************/
+    function showSection(sectionId) {
+      // 모든 섹션을 숨기고
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+
+      // 클릭된 섹션만 보이도록 활성화
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) {
+        targetSection.classList.add('active');
+      }
     }
   </script>
 </body>
