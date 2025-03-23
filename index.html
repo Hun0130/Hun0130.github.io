@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Hun0130's Page</title>
@@ -17,8 +17,8 @@
     }
     /* 라이트 모드 스타일 */
     body.light-mode {
-      background-color: #fff; 
-      color: #000;           
+      background-color: #fff;
+      color: #000;
     }
 
     /* 왼쪽 사이드바 */
@@ -27,24 +27,21 @@
       top: 0;
       left: 0;
       width: 200px;
-      height: 100vh; 
+      height: 100vh;
       padding: 1rem;
       box-sizing: border-box;
       border-right: 1px solid #444;
     }
-
     #sidebar h2 {
-      margin-top: 0;
+      margin-top: 1rem; /* 버튼 영역 추가로 약간 여백 조정 */
       margin-bottom: 1rem;
     }
-
     #sidebar nav a {
       display: block;
       margin: 0.5rem 0;
       text-decoration: none;
       color: inherit; /* 모드에 따라 바뀔 수 있도록 */
     }
-
     #sidebar nav a:hover {
       text-decoration: underline;
     }
@@ -55,55 +52,69 @@
       padding: 2rem;
     }
 
-    /* 테마 토글 버튼 */
-    .toggle-btn {
-      margin-bottom: 2rem;
-      padding: 0.5rem 1rem;
-      border: none;
+    /* 사이드바 내 상단 버튼 영역 스타일 */
+    .top-buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+    }
+    .top-buttons button {
       cursor: pointer;
+      padding: 0.3rem 0.6rem;
+      border: 1px solid #444;
+      background: none;
       font-size: 1rem;
+    }
+    .top-buttons button:hover {
+      background: rgba(255,255,255,0.1);
     }
   </style>
 </head>
-<body class="dark-mode"> 
+<body class="dark-mode">
   <!-- 좌측 사이드바 -->
   <aside id="sidebar">
-    <h2>Menu</h2>
+    <!-- 상단 버튼 영역 -->
+    <div class="top-buttons">
+      <!-- 한/영 전환 버튼 -->
+      <button id="langToggleBtn" onclick="toggleLanguage()">KOR</button>
+      <!-- 라이트/다크 모드 전환 버튼 (해 모양) -->
+      <button onclick="toggleMode()">☀</button>
+    </div>
+
+    <h2 id="menuTitle">Menu</h2>
     <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+      <a href="#home" id="navHome">Home</a>
+      <a href="#about" id="navAbout">About</a>
+      <a href="#projects" id="navProjects">Projects</a>
+      <a href="#contact" id="navContact">Contact</a>
     </nav>
   </aside>
 
   <!-- 메인 화면 영역 -->
   <section id="main">
-    <!-- 테마 토글 버튼 -->
-    <button class="toggle-btn" onclick="toggleMode()">Toggle Light/Dark</button>
-    
-    <h1>Welcome to Hun0130's GitHub Page!</h1>
-    <p>This is a simple homepage deployed via GitHub Pages.</p>
+    <!-- 기존 Toggle Light/Dark 버튼은 제거했음 -->
+
+    <h1 id="mainTitle">Welcome to Hun0130's GitHub Page!</h1>
+    <p id="mainDesc">This is a simple homepage deployed via GitHub Pages.</p>
 
     <!-- 각 섹션 (앵커 이동용) -->
     <h2 id="home">Home</h2>
-    <p>메인 홈 내용이 들어갈 수 있습니다.</p>
+    <p id="homeContent">Main home content goes here.</p>
 
     <h2 id="about">About</h2>
-    <p>여기는 About 섹션입니다. 자기소개나 이력, 관심 분야 등을 쓸 수 있어요.</p>
+    <p id="aboutContent">This is the About section. You can share your introduction, background, and interests here.</p>
 
     <h2 id="projects">Projects</h2>
-    <p>여기는 Projects 섹션입니다. 진행 중인 프로젝트나 포트폴리오를 정리해둘 수 있어요.</p>
+    <p id="projectsContent">This is the Projects section. You can showcase your ongoing projects or portfolio here.</p>
 
     <h2 id="contact">Contact</h2>
-    <p>연락처나 이메일, SNS 링크 등을 넣을 수 있습니다.</p>
+    <p id="contactContent">You can provide your contact details or social media links here.</p>
   </section>
 
   <script>
+    // 1. 라이트/다크 모드 토글
     function toggleMode() {
-      // body 엘리먼트를 가져와서
       const bodyElement = document.body;
-      // 현재가 다크 모드이면 라이트 모드로, 라이트 모드이면 다크 모드로 변경
       if (bodyElement.classList.contains('dark-mode')) {
         bodyElement.classList.remove('dark-mode');
         bodyElement.classList.add('light-mode');
@@ -111,6 +122,75 @@
         bodyElement.classList.remove('light-mode');
         bodyElement.classList.add('dark-mode');
       }
+    }
+
+    // 2. 한/영 전환 기능
+    //    기본은 영어, 'KOR' 버튼 클릭 시 한국어로 전환
+    //    다시 클릭 시 영어로 전환 (토글 방식)
+    let currentLang = 'en'; // 현재 언어 상태
+
+    // 각 언어별 텍스트를 객체 형태로 저장
+    const texts = {
+      en: {
+        menuTitle: "Menu",
+        navHome: "Home",
+        navAbout: "About",
+        navProjects: "Projects",
+        navContact: "Contact",
+        mainTitle: "Welcome to Hun0130's GitHub Page!",
+        mainDesc: "This is a simple homepage deployed via GitHub Pages.",
+        home: "Home",
+        homeContent: "Main home content goes here.",
+        about: "About",
+        aboutContent: "This is the About section. You can share your introduction, background, and interests here.",
+        projects: "Projects",
+        projectsContent: "This is the Projects section. You can showcase your ongoing projects or portfolio here.",
+        contact: "Contact",
+        contactContent: "You can provide your contact details or social media links here."
+      },
+      ko: {
+        menuTitle: "메뉴",
+        navHome: "홈",
+        navAbout: "소개",
+        navProjects: "프로젝트",
+        navContact: "연락처",
+        mainTitle: "Hun0130의 GitHub 페이지에 오신 것을 환영합니다!",
+        mainDesc: "이것은 GitHub Pages로 배포된 간단한 홈페이지입니다.",
+        home: "홈",
+        homeContent: "메인 홈 내용이 들어갈 수 있습니다.",
+        about: "소개",
+        aboutContent: "이곳은 About 섹션입니다. 자기소개나 이력, 관심 분야 등을 쓸 수 있어요.",
+        projects: "프로젝트",
+        projectsContent: "이곳은 Projects 섹션입니다. 진행 중인 프로젝트나 포트폴리오를 정리해둘 수 있어요.",
+        contact: "연락처",
+        contactContent: "연락처나 이메일, SNS 링크 등을 넣을 수 있습니다."
+      }
+    };
+
+    function toggleLanguage() {
+      // 다음 언어로 토글
+      currentLang = (currentLang === 'en') ? 'ko' : 'en';
+
+      // langToggleBtn 버튼 텍스트도 바꾸기 (영어->한국어 / 한국어->영어)
+      const langToggleBtn = document.getElementById('langToggleBtn');
+      langToggleBtn.textContent = (currentLang === 'en') ? 'KOR' : 'ENG';
+
+      // 각 요소의 텍스트를 변경
+      document.getElementById('menuTitle').textContent        = texts[currentLang].menuTitle;
+      document.getElementById('navHome').textContent          = texts[currentLang].navHome;
+      document.getElementById('navAbout').textContent         = texts[currentLang].navAbout;
+      document.getElementById('navProjects').textContent      = texts[currentLang].navProjects;
+      document.getElementById('navContact').textContent       = texts[currentLang].navContact;
+      document.getElementById('mainTitle').textContent        = texts[currentLang].mainTitle;
+      document.getElementById('mainDesc').textContent         = texts[currentLang].mainDesc;
+      document.getElementById('home').textContent             = texts[currentLang].home;
+      document.getElementById('homeContent').textContent      = texts[currentLang].homeContent;
+      document.getElementById('about').textContent            = texts[currentLang].about;
+      document.getElementById('aboutContent').textContent     = texts[currentLang].aboutContent;
+      document.getElementById('projects').textContent         = texts[currentLang].projects;
+      document.getElementById('projectsContent').textContent  = texts[currentLang].projectsContent;
+      document.getElementById('contact').textContent          = texts[currentLang].contact;
+      document.getElementById('contactContent').textContent   = texts[currentLang].contactContent;
     }
   </script>
 </body>
