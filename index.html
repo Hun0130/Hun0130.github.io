@@ -53,7 +53,7 @@
       cursor: pointer;
     }
     #sidebar nav a:hover {
-      text-decoration: none; /* 밑줄 없음 */
+      text-decoration: none;
     }
 
     /* 사이드바 내 상단 버튼 영역 스타일 */
@@ -94,23 +94,23 @@
       display: flex;
       flex-wrap: wrap; /* 작은 화면에서 레이아웃이 깨지지 않도록 */
     }
-    /* 왼쪽 열: 프로필 사진을 크게 */
+    /* 왼쪽 열: 프로필 사진을 적절히 축소 */
     .profile-wrapper {
-      flex: 1; /* 동일 폭 분배 */
+      flex: 1; 
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 1rem;
     }
     .profile-pic {
-      max-width: 100%;
+      max-width: 200px; /* 사진 크기 제한 */
       height: auto;
-      border-radius: 4px; /* 필요하면 모서리 살짝 둥글게 */
-      border: 1px solid #444; 
+      border-radius: 4px; /* 혹은 원형으로 하려면 50%로 조정 */
+      border: none;       /* 모서리를 투명화, 배경과 어우러지도록 함 */
     }
     /* 오른쪽 열: 이름, 직위 등 */
     .profile-info {
-      flex: 1; /* 동일 폭 분배 */
+      flex: 1;
       padding: 1rem;
       display: flex;
       flex-direction: column;
@@ -131,6 +131,20 @@
       text-align: center;
       font-weight: bold;
       line-height: 1.5;
+    }
+
+    /* Research Interests 영역 */
+    .research-interest {
+      margin-top: 1rem;
+      line-height: 1.4;
+    }
+
+    /* 푸터 스타일 */
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      opacity: 0.6;
+      padding: 1rem;
     }
   </style>
 </head>
@@ -171,6 +185,8 @@
       </div>
       <!-- 디자인 요소 (가운데 정렬) -->
       <div class="design-element" id="homeDesignElement"></div>
+      <!-- Research Interests -->
+      <div class="research-interest" id="homeResearch"></div>
     </div>
 
     <!-- 어바웃 섹션 -->
@@ -191,6 +207,11 @@
       <p id="contactContent">You can provide your contact details or social media links here.</p>
     </div>
   </div>
+
+  <!-- 하단 푸터 -->
+  <footer>
+    Copyright. Sanghoon Lee (DGIST) all rights reserved.
+  </footer>
 
   <script>
     /**********************************************************
@@ -235,6 +256,14 @@
           Department of Electrical Engineering and Computer Science,
           <a href="https://www.dgist.ac.kr" target="_blank">DGIST</a>`,
         homeDesignElement: `AI (Good things happen probabilistically)<br />→ Integration ←<br />CPS (Bad things never happen)`,
+        homeResearch: `Research Interests:
+          <br /> - Cyber-Physical AI (사이버-물리 인공지능)
+          <br /> - Physical AI (물리 AI)
+          <br /> - ROS 2 (로봇 운영체제 2)
+          <br /> - Robotic Network (로봇 네트워크)
+          <br /> - Reinforcement Learning (강화학습)
+          <br /> - Machine Learning (기계학습)
+          <br /> - Mobile Robots (모바일 로봇)`,
         aboutContent: "This is the About section. You can share your introduction, background, and interests here.",
         projectsContent: "This is the Projects section. You can showcase your ongoing projects or portfolio here.",
         contactContent: "You can provide your contact details or social media links here."
@@ -249,6 +278,14 @@
         homeSubInfo: `DGIST 전기전자컴퓨터공학부 
           <a href="https://csi.dgist.ac.kr" target="_blank">CSI 연구실</a> 박사과정`,
         homeDesignElement: `AI (Good things happen probabilistically)<br />→ Integration ←<br />CPS (Bad things never happen)`,
+        homeResearch: `연구 관심 분야:
+          <br /> - Cyber-Physical AI (사이버-물리 인공지능)
+          <br /> - Physical AI (물리 AI)
+          <br /> - ROS 2 (로봇 운영체제 2)
+          <br /> - Robotic Network (로봇 네트워크)
+          <br /> - Reinforcement Learning (강화학습)
+          <br /> - Machine Learning (기계학습)
+          <br /> - Mobile Robots (모바일 로봇)`,
         aboutContent: "이곳은 About 섹션입니다. 자기소개나 이력, 관심 분야 등을 쓸 수 있어요.",
         projectsContent: "이곳은 Projects 섹션입니다. 진행 중인 프로젝트나 포트폴리오를 정리해둘 수 있어요.",
         contactContent: "연락처나 이메일, SNS 링크 등을 넣을 수 있습니다."
@@ -278,6 +315,7 @@
       document.getElementById('homeTitle').textContent         = texts[lang].homeTitle;
       document.getElementById('homeSubInfo').innerHTML         = texts[lang].homeSubInfo;
       document.getElementById('homeDesignElement').innerHTML   = texts[lang].homeDesignElement;
+      document.getElementById('homeResearch').innerHTML        = texts[lang].homeResearch;
 
       // 다른 섹션
       document.getElementById('aboutContent').textContent      = texts[lang].aboutContent;
