@@ -31,7 +31,7 @@
 
     /* 라이트 모드: 옅은 회색 배경 / 짙은 텍스트 */
     body.light-mode {
-      background-color: #f2f2f2;
+      background-color: #f2f2f2;  /* 완전 흰색이 아닌 옅은 회색 */
       color: #333;
     }
 
@@ -45,11 +45,12 @@
     body.light-mode .emphasis {
       color: #2C3E50;
     }
+    /* 다크 모드 강조 색상: 파란색 계열 */
     body.dark-mode .emphasis {
-      color: #4682B4; /* 좀 더 진한 파란색 */
+      color: #4682B4; 
     }
 
-    /* 링크 */
+    /* 링크 색상 지정 (밑줄/파란색 제거) */
     a {
       text-decoration: none;
     }
@@ -100,6 +101,8 @@
     .content {
       padding: 2rem;
     }
+
+    /* 섹션들은 기본적으로 숨김 처리, 활성화된 것만 보임 */
     .section {
       display: none;
     }
@@ -112,23 +115,29 @@
      *******************************************************/
     .home-header {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: wrap; 
       gap: 1rem;
       align-items: center;
       justify-content: center;
     }
+
+    /* 왼쪽 열(프로필 사진) */
     .profile-left {
       flex: 0 0 auto;
       display: flex;
       justify-content: center;
       align-items: center;
     }
+
+    /* 오른쪽 열(이름, 직함, 정보) */
     .profile-right {
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
+
+    /* 프로필 사진 */
     .profile-pic {
       width: 150px;
       height: auto;
@@ -136,6 +145,7 @@
       border: none;
     }
 
+    /* 이름 + 직함을 한 줄에 */
     .name-line {
       display: inline-flex;
       align-items: baseline;
@@ -151,14 +161,24 @@
       margin: 0;
     }
 
+    /* 연락처 아이콘 묶음 */
+    .contact-icons {
+      display: flex;  
+      align-items: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .contact-icons a:hover {
+      text-decoration: underline;
+    }
+
+    /* 연구 관심 분야 (일반 텍스트 색상) */
     .research-interest {
       margin-top: 1rem;
       line-height: 1.6;
     }
 
-    /*******************************************************
-     * 강조 디자인 문구 (AI–ROS–CPS)
-     *******************************************************/
+    /* 디자인 요소 (AI-ROS-CPS) */
     .design-element {
       margin-top: 2rem;
       text-align: center;
@@ -194,14 +214,6 @@
       margin: 0 0.8rem;
     }
 
-    /* 연락처 아이콘 묶음 */
-    .contact-icons {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin: 1rem 0;
-    }
-
     /*******************************************************
      * 푸터
      *******************************************************/
@@ -212,47 +224,10 @@
       padding: 1rem;
     }
 
-    /*******************************************************
-     * 처음 접속 시 보여줄 오버레이 (introSplash)
-     *******************************************************/
-    #introSplash {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: rgba(0,0,0,0.8);
-      color: #fff;
-      text-align: center;
-      font-size: 1.2rem;
-      z-index: 9999;
-      opacity: 1;
-      transition: opacity 1s ease;
-    }
-    #introSplash.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-    #introSplash .splash-content {
-      margin: 2rem;
-      max-width: 600px;
-      line-height: 1.5;
-    }
   </style>
 </head>
 
 <body class="light-mode">
-  <!-- 처음 접속 시 잠시 보여줄 오버레이 -->
-  <div id="introSplash">
-    <div class="splash-content">
-      <!-- 간단한 안내 or 문구 -->
-      <p style="margin:0;">
-        <strong>Welcome to the page!</strong><br />
-        This splash will fade out shortly.
-      </p>
-    </div>
-  </div>
-
   <header>
     <div class="top-buttons">
       <button id="langToggleBtn" onclick="toggleLanguage()">KOR</button>
@@ -270,6 +245,7 @@
   <div class="content">
     <!-- 홈 섹션 -->
     <div class="section" id="home">
+      <!-- 프로필 -->
       <div class="home-header">
         <div class="profile-left">
           <img src="Profile.png" alt="Lee Sanghoon's Profile" class="profile-pic" />
@@ -284,7 +260,7 @@
         </div>
       </div>
 
-      <!-- 사진 아래쪽에 이모티콘/링크 -->
+      <!-- 연락처/링크 이모티콘 -->
       <div class="contact-icons" id="homeContacts">
         <span>📧 leesh2913@dgist.ac.kr</span>
         <a href="https://scholar.google.co.kr/citations?user=W2iqqvAAAAAJ&hl=ko" target="_blank">🎓 Google Scholar</a>
@@ -295,7 +271,7 @@
       <!-- 연구 관심 분야 -->
       <div class="research-interest" id="homeResearch"></div>
 
-      <!-- 디자인 요소 (AI-ROS-CPS) -->
+      <!-- 디자인 요소: AI / ROS / CPS (크게 + 괄호 안 작게 + 아이콘) -->
       <div class="design-element" id="homeDesignElement">
         <div class="design-block">
           <img src="AI_light.png" alt="AI Icon" class="icon" />
@@ -332,7 +308,7 @@
       <p id="projectsContent"></p>
     </div>
 
-    <!-- 연락처 섹션 -->
+    <!-- Contact 섹션 -->
     <div class="section" id="contact">
       <h2>Contact</h2>
       <p id="contactContent"></p>
@@ -345,21 +321,11 @@
 
   <script>
     /**********************************************************
-     * 1. 페이지 로드 시 홈 섹션만 보이도록 & 스플래시 처리
+     * 1. 페이지 로드 시 홈 섹션만 보이도록 (초기화)
      **********************************************************/
     window.addEventListener('DOMContentLoaded', () => {
       showSection('home');
       setLanguageTexts('en');
-
-      // 3초 후에 스플래시 오버레이 페이드아웃
-      setTimeout(() => {
-        const splash = document.getElementById('introSplash');
-        splash.classList.add('hidden');
-        // 완전히 제거하려면, 트랜지션 끝난 뒤 DOM 제거
-        setTimeout(() => {
-          splash.remove();
-        }, 1000);
-      }, 3000);
     });
 
     /**********************************************************
@@ -445,6 +411,21 @@
       }
     }
 
+    /**********************************************************
+     * 4. 탭(섹션) 전환
+     **********************************************************/
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) {
+        targetSection.classList.add('active');
+      }
+    }
+
     // 텍스트 교체
     function setLanguageTexts(lang) {
       document.getElementById('navHome').textContent           = texts[lang].navHome;
@@ -461,21 +442,6 @@
       document.getElementById('aboutContent').textContent      = texts[lang].aboutContent;
       document.getElementById('projectsContent').textContent   = texts[lang].projectsContent;
       document.getElementById('contactContent').textContent    = texts[lang].contactContent;
-    }
-
-    /**********************************************************
-     * 4. 탭(섹션) 전환
-     **********************************************************/
-    function showSection(sectionId) {
-      const sections = document.querySelectorAll('.section');
-      sections.forEach(section => {
-        section.classList.remove('active');
-      });
-
-      const targetSection = document.getElementById(sectionId);
-      if (targetSection) {
-        targetSection.classList.add('active');
-      }
     }
   </script>
 </body>
