@@ -19,33 +19,37 @@
   <!-- ... 나머지 CSS, 폰트 링크 등 -->
   </head>
 
-  <!-- Noto Sans (영어), Noto Sans KR (한국어) : Bold(700) 버전 -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="Mark.png" />
-  <link rel="shortcut icon" type="image/png" href="Mark.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="Mark.png" />
+<!-- 구글 폰트 (Noto Sans, Noto Sans KR) : 400, 700 버전 같이 로드 -->
+<link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
+  rel="stylesheet"/>
+<link rel="icon" type="image/png" href="Mark.png" />
+<link rel="shortcut icon" type="image/png" href="Mark.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="Mark.png" />
 
-  <style>
-    /* 모든 요소에 box-sizing 적용 */
-    * {
-      box-sizing: border-box;
-    }
+<style>
+  /* 모든 요소에 box-sizing 적용 */
+  * {
+    box-sizing: border-box;
+  }
 
-    /* 전역 폰트 크기: 기존 대비 1.4배 */
-    html {
-      font-size: 140%;
-      -webkit-text-size-adjust: 100%;
-      -moz-text-size-adjust: 100%;
-      text-size-adjust: 100%;
-    }
+  /* 전역 폰트 크기: 기존 대비 1.4배 */
+  html {
+    font-size: 140%;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
 
-    /* 기본 레이아웃 및 애니메이션 */
-    body {
-      margin: 0;
-      font-family: 'Noto Sans', sans-serif;
-      font-weight: 700;
-      transition: background-color 0.3s, color 0.3s;
-    }
+  /* 기본 레이아웃 및 애니메이션 */
+  body {
+    margin: 0;
+    font-family: 'Noto Sans', sans-serif;
+    /* 기본 폰트 두께를 normal(또는 400)로 지정 */
+    font-weight: 400;
+    transition: background-color 0.3s, color 0.3s;
+  }
+</style>
 
     /* 라이트 모드 */
     body.light-mode {
@@ -433,30 +437,30 @@
 <h3>[Submitted]</h3>
 
     [16] <span class="emphasis">Sanghoon Lee</span>, Hyung-Seok Park, Jiyeong Chae, and Kyung-Joon Park, 
-    "Probabilistic Latency Analysis of the Data Distribution Service in ROS 2,"
+    Probabilistic Latency Analysis of the Data Distribution Service in ROS 2,
     <i>IEEE Transactions on Industrial Informatics</i>, Under Review.
   	<br>
     [15] Sangjun Kim, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
-    “DIDoS: Disturbance-Induced Denial-of-Service Attack in Cyber-Physical Systems,” 
+    DIDoS: Disturbance-Induced Denial-of-Service Attack in Cyber-Physical Systems, 
     <i>IEEE Transactions on Dependable and Secure Computing</i>, Under Review.
 	<br>
     [14] Jiyeong Chae, Hyunkyo Seo, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
-    “Time-Aware Costmap for Smoother and Less Disruptive AMR Navigation,” 
+    Time-Aware Costmap for Smoother and Less Disruptive AMR Navigation,
     <i>IEEE International Conference on Automation Science and Engineering (CASE25)</i>, Under Review.
 	<br>
     [13] <span class="emphasis">Sanghoon Lee</span>, Jiyeong Chae, and Kyung-Joon Park, 
-    “Integrating ROS 2 and Physical AI: Architecture and Challenges,” 
+    Integrating ROS 2 and Physical AI: Architecture and Challenges,
     <i>The 16th International Conference on Ubiquitous and Future Networks (ICUFN25)</i>, Under Review.
   	<br>
     [12] Jiyeong Chae, Hyunkyo Seo, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
-    “PINMAP: A Cost-efficient Algorithm for Glass Detection and Mapping Using Low-cost 2D LiDAR,” 
+    PINMAP: A Cost-efficient Algorithm for Glass Detection and Mapping Using Low-cost 2D LiDAR,
     <i>IEEE Transactions on Instrumentation and Measurement</i>, In Revision.
 	<br>
 
 <h3>[Published]</h3>
 
     [11] Hyung-Seok Park, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
-    “An Analytical Latency Model of the Data Distribution Service in ROS 2,” 
+    An Analytical Latency Model of the Data Distribution Service in ROS 2, 
     <i>IEEE International Conference on Computer Communications (INFOCM25)</i>, May. 2025.
   	<br>
 
@@ -526,7 +530,7 @@
     	<br>
 
     [1] Sangjun Kim, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
-    “Resilient Controller Reconfiguration under Network Delay Attack in Cyber-Physical Systems,” 
+    Resilient Controller Reconfiguration under Network Delay Attack in Cyber-Physical Systems, 
     <i>2022 International Conference on Electronics, Information, and Communication (ICEIC)</i>, 2022.
     	<br>
 
@@ -605,33 +609,33 @@
 	
 	<h3>[제출]</h3>
 	[16] <span class="emphasis">이상훈</span>, 박형석, 채지영, 박경준, 
-	“Probabilistic Latency Analysis of the Data Distribution Service in ROS 2,” 
+	Probabilistic Latency Analysis of the Data Distribution Service in ROS 2,
 	<i>IEEE Transactions on Industrial Informatics</i>, Under Review.
 	<br>
 	[15] 김상준, <span class="emphasis">이상훈</span>, 박경준, 
-	“DIDoS: Disturbance-Induced Denial-of-Service Attack in Cyber-Physical Systems,” 
+	DIDoS: Disturbance-Induced Denial-of-Service Attack in Cyber-Physical Systems,
 	<i>IEEE Transactions on Dependable and Secure Computing</i>, Under Review.
 	<br>
 	[14] 채지영, 서현교, <span class="emphasis">이상훈</span>, 박경준, 
-	“Time-Aware Costmap for Smoother and Less Disruptive AMR Navigation,” 
+	Time-Aware Costmap for Smoother and Less Disruptive AMR Navigation,
 	<i>IEEE International Conference on Automation Science and Engineering (CASE25)</i>, Under Review.
 	<br>
 	[13] <span class="emphasis">이상훈</span>, 채지영, 박경준, 
-	“Integrating ROS 2 and Physical AI: Architecture and Challenges,” 
+	Integrating ROS 2 and Physical AI: Architecture and Challenges,
 	<i>The 16th International Conference on Ubiquitous and Future Networks (ICUFN25)</i>, Under Review.
 	<br>
 	[12] 채지영, 서현교, <span class="emphasis">이상훈</span>, 박경준, 
-	“PINMAP: A Cost-efficient Algorithm for Glass Detection and Mapping Using Low-cost 2D LiDAR,” 
+	PINMAP: A Cost-efficient Algorithm for Glass Detection and Mapping Using Low-cost 2D LiDAR,
 	<i>IEEE Transactions on Instrumentation and Measurement</i>, In Revision.
 	
 	<h3>[출판]</h3>
 	[11] 박형석, <span class="emphasis">이상훈</span>, 박경준, 
-	“An Analytical Latency Model of the Data Distribution Service in ROS 2,” 
+	An Analytical Latency Model of the Data Distribution Service in ROS 2,
 	<i>IEEE International Conference on Computer Communications (INFOCM25)</i>, May. 2025.
 	<br>
 	[10] <span class="emphasis">이상훈</span>, 채지영, 박경준, 
 	<a href="https://dl.acm.org/doi/10.1145/3721437">
-	  Cyber-Physical Artificial Intelligence: Systematic Research Domain for Integrating Artificial Intelligence and Cyber-Physical Systems
+	Cyber-Physical Artificial Intelligence: Systematic Research Domain for Integrating Artificial Intelligence and Cyber-Physical Systems
 	</a>, 
 	<i>ACM Transactions on Cyber-Physical Systems</i>, Feb. 2025.
 	<br>
@@ -686,7 +690,7 @@
 	<i>IEEE Access</i>, Oct. 2022.
 	<br>
 	[1] 김상준, <span class="emphasis">이상훈</span>, 박경준, 
-	“Resilient Controller Reconfiguration under Network Delay Attack in Cyber-Physical Systems,” 
+	Resilient Controller Reconfiguration under Network Delay Attack in Cyber-Physical Systems,
 	<i>2022 International Conference on Electronics, Information, and Communication (ICEIC22)</i>, 2022.
 	
 	<p>*표기는 동등하게 기여한 제1저자를 의미</p>
