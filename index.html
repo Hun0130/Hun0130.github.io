@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <title>Sanghoon Lee</title>
-  <!-- 모바일 환경 대응을 위한 메타 태그 -->
+  <!-- 모바일 환경 대응 메타 태그 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Noto Sans (영어), Noto Sans KR (한국어) : Bold(700) 버전 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
+
   <style>
     /* 모든 요소에 box-sizing 적용 */
     * {
@@ -19,7 +23,9 @@
     /* 기본 레이아웃 및 애니메이션 */
     body {
       margin: 0;
-      font-family: sans-serif;
+      /* 초기에는 영어 폰트 (Noto Sans) 사용 */
+      font-family: 'Noto Sans', sans-serif;
+      font-weight: 700; /* Noto Sans/Noto Sans KR를 굵게 사용 */
       transition: background-color 0.3s, color 0.3s;
     }
 
@@ -157,6 +163,16 @@
       margin-bottom: 1rem;
     }
 
+    /* 연락처 아이콘 묶음 (메일, 구글스칼라, 깃허브, 링크드인) */
+    .contact-icons {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    .contact-icons a:hover {
+      text-decoration: underline;
+    }
+
     /* 연구 관심 분야 (일반 텍스트 색상) */
     .research-interest {
       margin-top: 1rem;
@@ -211,6 +227,15 @@
           <h1 class="emphasis" id="homeTitle"></h1>
           <div class="subtitle" id="homeSubtitle"></div>
           <p id="homeSubInfo"></p>
+
+          <!-- 이모티콘 + 링크 -->
+          <div class="contact-icons" id="homeContacts">
+            <p>📧 example@dgist.ac.kr</p>
+            <p><a href="https://scholar.google.com/" target="_blank">🎓 Google Scholar</a></p>
+            <p><a href="https://github.com/username" target="_blank">🐙 GitHub</a></p>
+            <p><a href="https://linkedin.com/in/username" target="_blank">🔗 LinkedIn</a></p>
+          </div>
+
           <!-- Research Interests: 일반 텍스트 색으로 표기 -->
           <div class="research-interest" id="homeResearch"></div>
         </div>
@@ -244,7 +269,7 @@
 
   <script>
     /**********************************************************
-     * 1. 페이지 로드 시 홈 섹션만 보이도록
+     * 1. 페이지 로드 시 홈 섹션만 보이도록 (초기화)
      **********************************************************/
     window.addEventListener('DOMContentLoaded', () => {
       showSection('home');
@@ -266,7 +291,7 @@
     }
 
     /**********************************************************
-     * 3. 한/영 전환
+     * 3. 한/영 전환 + 폰트 변경
      **********************************************************/
     let currentLang = 'en';
     const texts = {
@@ -281,7 +306,6 @@
           <a href="https://csi.dgist.ac.kr" target="_blank">CSI Lab</a>,
           EECS,
           <a href="https://www.dgist.ac.kr" target="_blank">DGIST</a>`,
-        /* 일반 색상 Research Interests */
         homeResearch: `Research Interests:
           Cyber-Physical AI,
           ROS 2,
@@ -304,7 +328,6 @@
         homeSubInfo: `CSI 연구실,
           EECS,
           <a href="https://www.dgist.ac.kr" target="_blank">DGIST</a> 박사과정`,
-        /* 일반 색상 Research Interests */
         homeResearch: `연구 관심 분야:
           사이버-물리 인공지능,
           로봇 운영체제 2,
@@ -320,13 +343,23 @@
     };
 
     function toggleLanguage() {
+      // 현재 언어 상태 스위치
       currentLang = (currentLang === 'en') ? 'ko' : 'en';
       setLanguageTexts(currentLang);
 
+      // 버튼 텍스트 전환
       const langToggleBtn = document.getElementById('langToggleBtn');
       langToggleBtn.textContent = (currentLang === 'en') ? 'KOR' : 'ENG';
+
+      // 폰트 변경: 영어 -> Noto Sans, 한국어 -> Noto Sans KR
+      if (currentLang === 'ko') {
+        document.body.style.fontFamily = "'Noto Sans KR', sans-serif";
+      } else {
+        document.body.style.fontFamily = "'Noto Sans', sans-serif";
+      }
     }
 
+    // 텍스트 교체
     function setLanguageTexts(lang) {
       document.getElementById('navHome').textContent           = texts[lang].navHome;
       document.getElementById('navAbout').textContent          = texts[lang].navAbout;
