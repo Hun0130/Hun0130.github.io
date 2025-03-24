@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Sanghoon Lee</title>
-  <!-- 모바일 환경 대응 메타 태그 -->
+  <!-- 모바일 환경 대응 메타 태그 (삭제 가능) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Noto Sans (영어), Noto Sans KR (한국어) : Bold(700) 버전 -->
@@ -110,10 +110,10 @@
      *******************************************************/
     .home-header {
       display: flex;
-      flex-wrap: wrap; 
-      gap: 1rem;
+      /* mobile mode 제거: no wrap */
       align-items: center;
       justify-content: center;
+      gap: 1rem;
     }
     .profile-left {
       flex: 0 0 auto;
@@ -148,7 +148,7 @@
       margin: 0;
     }
     .contact-icons {
-      display: flex;  
+      display: flex;
       align-items: center;
       gap: 1rem;
       margin: 1rem 0;
@@ -161,45 +161,43 @@
       line-height: 1.6;
     }
 
+    /*******************************************************
+     * AI / ROS / CPS 디자인
+     *******************************************************/
     .design-element {
-      display: flex;                 /* 한 줄에 배치 */
-      align-items: center;           /* 수직 정렬 가운데 */
-      justify-content: center;       /* 가로 중앙 정렬 */
-      gap: 1rem;                     /* 요소 간 간격 */
+      display: flex;  
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
       margin-top: 2rem;
       text-align: center;
       font-weight: bold;
       line-height: 1.5;
     }
-    
-    /* AI, CPS 블록 (글자 + 괄호안 문구) */
+    /* AI, CPS: 세로 배치 (큰글자 + 괄호) */
     .design-block.ai-cps-block {
       display: flex;
-      flex-direction: column;       /* 세로로 배치 */
+      flex-direction: column;
       align-items: center;
     }
-    
     /* 큰 텍스트 (AI, CPS) */
     .big-text {
       font-size: 1.4rem; 
     }
-    
     /* 괄호 안 문구 */
     .small-text {
       font-size: 0.8rem; 
-      opacity: 0.7;     /* 흐릿하게 */
-      margin-top: 0.2rem; /* 살짝 간격 */
+      opacity: 0.7;
+      margin-top: 0.2rem;
     }
-    
     /* 양방향 화살표 */
     .arrow {
       font-size: 1.5rem;
       margin: 0 0.5rem;
     }
-    
-    /* ROS 아이콘 크기를 글자와 비슷하게 */
+    /* ROS 아이콘 크기 => 글자 크기 1.4rem과 동일 높이 */
     .ros-icon {
-      height: 1.4rem;   /* AI/CPS 텍스트와 비슷한 높이 */
+      height: 1.4rem;
       width: auto;
       vertical-align: middle;
     }
@@ -264,22 +262,23 @@
           <span class="big-text emphasis">AI</span>
           <div class="small-text">(Good things happen probabilistically)</div>
         </div>
-      
-        <!-- 화살표 (양방향) -->
+
+        <!-- 화살표 -->
         <span class="arrow">⟷</span>
-      
+
         <!-- ROS (이미지) -->
         <img id="ROSIcon" src="ROS2_light.png" alt="ROS Icon" class="ros-icon" />
-      
-        <!-- 화살표 (양방향) -->
+
+        <!-- 화살표 -->
         <span class="arrow">⟷</span>
-      
+
         <!-- CPS -->
         <div class="design-block ai-cps-block">
           <span class="big-text emphasis">CPS</span>
           <div class="small-text">(Bad things never happen)</div>
         </div>
       </div>
+    </div>
 
     <!-- About 섹션 -->
     <div class="section" id="about">
@@ -306,12 +305,12 @@
 
   <script>
     /**********************************************************
-     * 1. 페이지 로드 시 홈 섹션만 보이도록 & 초기 아이콘 세팅
+     * 1. 페이지 로드 시 홈 섹션만 보이도록
      **********************************************************/
     window.addEventListener('DOMContentLoaded', () => {
       showSection('home');
       setLanguageTexts('en');
-      updateIconsForTheme(); // 라이트/다크 모드에 맞는 아이콘 적용
+      updateIconsForTheme(); // 초기 아이콘 (light)
     });
 
     /**********************************************************
@@ -326,23 +325,16 @@
         bodyElement.classList.remove('dark-mode');
         bodyElement.classList.add('light-mode');
       }
-      // 다크 모드 바뀔 때 아이콘 교체
+      // 아이콘 교체
       updateIconsForTheme();
     }
 
-    // 아이콘 교체 함수
+    // 아이콘 교체 함수 (ROS만 아이콘, AI/CPS는 텍스트)
     function updateIconsForTheme() {
       const isDark = document.body.classList.contains('dark-mode');
-      const AIIcon = document.getElementById('AIIcon');
-      const ROSIcon = document.getElementById('ROSIcon');
-      const CPSIcon = document.getElementById('CPSIcon');
-
-      if (!AIIcon || !ROSIcon || !CPSIcon) return; 
-      // (만약 homeDesignElement 아직 안 들어왔으면 null)
-
-      AIIcon.src  = isDark ? 'AI_dark.png'  : 'AI_light.png';
-      ROSIcon.src = isDark ? 'ROS2_dark.png': 'ROS2_light.png';
-      CPSIcon.src = isDark ? 'CPS_dark.png' : 'CPS_light.png';
+      const rosIcon = document.getElementById('ROSIcon');
+      if (!rosIcon) return;
+      rosIcon.src = isDark ? 'ROS2_dark.png' : 'ROS2_light.png';
     }
 
     /**********************************************************
@@ -368,29 +360,6 @@
           Reinforcement Learning,
           Machine Learning,
           Mobile Robots`,
-        /* 여기서 homeDesignElement 전체를 HTML 형태로 작성 */
-        homeDesignElement: `
-<div class="design-block">
-  <img id="AIIcon" src="AI_light.png" alt="AI Icon" class="icon" />
-  <span class="big-text emphasis">AI</span>
-  <span class="small-text">(Good things happen probabilistically)</span>
-</div>
-
-<span class="arrow">⟷</span>
-
-<div class="design-block">
-  <img id="ROSIcon" src="ROS2_light.png" alt="ROS Icon" class="icon" />
-  <span class="big-text emphasis">ROS</span>
-</div>
-
-<span class="arrow">⟷</span>
-
-<div class="design-block">
-  <img id="CPSIcon" src="CPS_light.png" alt="CPS Icon" class="icon" />
-  <span class="big-text emphasis">CPS</span>
-  <span class="small-text">(Bad things never happen)</span>
-</div>
-`,
         aboutContent: "This is the About section. You can share your introduction, background, and interests here.",
         projectsContent: "This is the Projects section. You can showcase your ongoing projects or portfolio here.",
         contactContent: "You can provide your contact details or social media links here."
@@ -412,29 +381,6 @@
           강화학습,
           기계학습,
           모바일 로봇`,
-        /* 한글 버전 homeDesignElement */
-        homeDesignElement: `
-<div class="design-block">
-  <img id="AIIcon" src="AI_light.png" alt="AI Icon" class="icon" />
-  <span class="big-text emphasis">AI</span>
-  <span class="small-text">(좋은 일은 확률적으로 일어난다)</span>
-</div>
-
-<span class="arrow">⟷</span>
-
-<div class="design-block">
-  <img id="ROSIcon" src="ROS2_light.png" alt="ROS Icon" class="icon" />
-  <span class="big-text emphasis">ROS</span>
-</div>
-
-<span class="arrow">⟷</span>
-
-<div class="design-block">
-  <img id="CPSIcon" src="CPS_light.png" alt="CPS Icon" class="icon" />
-  <span class="big-text emphasis">CPS</span>
-  <span class="small-text">(나쁜 일은 절대 일어나지 않는다)</span>
-</div>
-`,
         aboutContent: "이곳은 About 섹션입니다. 자기소개나 이력, 관심 분야 등을 쓸 수 있어요.",
         projectsContent: "이곳은 Projects 섹션입니다. 진행 중인 프로젝트나 포트폴리오를 정리해둘 수 있어요.",
         contactContent: "연락처나 이메일, SNS 링크 등을 넣을 수 있습니다."
@@ -454,9 +400,6 @@
       } else {
         document.body.style.fontFamily = "'Noto Sans', sans-serif";
       }
-
-      // 아이콘도 업데이트 (라이트/다크 모드용)
-      updateIconsForTheme();
     }
 
     /**********************************************************
@@ -472,15 +415,10 @@
       document.getElementById('homeSubtitle').textContent      = texts[lang].homeSubtitle;
       document.getElementById('homeSubInfo').innerHTML         = texts[lang].homeSubInfo;
       document.getElementById('homeResearch').innerHTML        = texts[lang].homeResearch;
-      /* homeDesignElement를 그대로 HTML 삽입 */
-      document.getElementById('homeDesignElement').innerHTML   = texts[lang].homeDesignElement;
 
       document.getElementById('aboutContent').textContent      = texts[lang].aboutContent;
       document.getElementById('projectsContent').textContent   = texts[lang].projectsContent;
       document.getElementById('contactContent').textContent    = texts[lang].contactContent;
-
-      // homeDesignElement가 다시 그려졌으므로, 아이콘을 모드에 맞춰 교체
-      updateIconsForTheme();
     }
 
     /**********************************************************
