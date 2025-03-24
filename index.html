@@ -167,13 +167,13 @@
       font-size: 1.2rem;
       margin: 0;
     }
-    .contact-icons {
+    .Project-icons {
       display: flex;
       align-items: center;
       gap: 1rem;
       margin: 1rem 0;
     }
-    .contact-icons a:hover {
+    .Project-icons a:hover {
       text-decoration: underline;
     }
     .research-interest {
@@ -244,7 +244,7 @@
       <a href="#home" id="navHome" onclick="showSection('home'); return false;">Home</a>
       <a href="#about" id="navAbout" onclick="showSection('about'); return false;">About</a>
       <a href="#Achievements" id="navAchievements" onclick="showSection('achievements'); return false;">Achievements</a>
-      <a href="#contact" id="navContact" onclick="showSection('contact'); return false;">Contact</a>
+      <a href="#Project" id="navProject" onclick="showSection('Project'); return false;">Project</a>
     </nav>
   </header>
 
@@ -265,7 +265,7 @@
         </div>
       </div>
 
-      <div class="contact-icons" id="homeContacts">
+      <div class="Project-icons" id="homeProjects">
         <span>📧 leesh2913@dgist.ac.kr</span>
         <a href="https://scholar.google.co.kr/citations?user=W2iqqvAAAAAJ&hl=ko" target="_blank">🎓 Google Scholar</a>
         <a href="https://github.com/hun0130" target="_blank">🐙 GitHub</a>
@@ -310,10 +310,10 @@
       <p id="achievementsContent"></p>
     </div>
 
-    <!-- Contact 섹션 -->
-    <div class="section" id="contact">
-      <h2>Contact</h2>
-      <p id="contactContent"></p>
+    <!-- Project 섹션 -->
+    <div class="section" id="Project">
+      <h2>Project</h2>
+      <p id="ProjectContent"></p>
     </div>
   </div>
 
@@ -364,7 +364,7 @@
         navHome: "Home",
         navAbout: "About",
         navAchievements: "Achievements",
-        navContact: "Contact",
+        navProject: "Project",
         homeTitle: "Sanghoon Lee",
         homeSubtitle: "Cyber-Physical AI Researcher",
         homeSubInfo: `Ph.D. Candidate in
@@ -426,13 +426,13 @@
         </ul>
         `,
         achievementsContent: "This is the Achievements section. You can showcase your ongoing achievements or portfolio here.",
-        contactContent: "You can provide your contact details or social media links here."
+        ProjectContent: "You can provide your Project details or social media links here."
       },
       ko: {
         navHome: "홈",
         navAbout: "소개",
         navAchievements: "성과",
-        navContact: "프로젝트",
+        navProject: "프로젝트",
         homeTitle: "이상훈",
         homeSubtitle: "사이버-물리 AI 연구자",
         homeSubInfo: `CSI 연구실,
@@ -494,7 +494,7 @@
         </ul>
         `,
         achievementsContent: "이곳은 Achievements 섹션입니다. 진행 중인 프로젝트나 포트폴리오를 정리해둘 수 있어요.",
-        contactContent: "연락처나 이메일, SNS 링크 등을 넣을 수 있습니다."
+        ProjectContent: "연락처나 이메일, SNS 링크 등을 넣을 수 있습니다."
       }
     };
 
@@ -520,7 +520,7 @@
       document.getElementById('navHome').textContent           = texts[lang].navHome;
       document.getElementById('navAbout').textContent          = texts[lang].navAbout;
       document.getElementById('navAchievements').textContent       = texts[lang].navAchievements;
-      document.getElementById('navContact').textContent        = texts[lang].navContact;
+      document.getElementById('navProject').textContent        = texts[lang].navProject;
 
       document.getElementById('homeTitle').textContent         = texts[lang].homeTitle;
       document.getElementById('homeSubtitle').textContent      = texts[lang].homeSubtitle;
@@ -529,7 +529,7 @@
 
       document.getElementById('aboutContent').innerHTML      = texts[lang].aboutContent;
       document.getElementById('achievementsContent').textContent   = texts[lang].achievementsContent;
-      document.getElementById('contactContent').textContent    = texts[lang].contactContent;
+      document.getElementById('ProjectContent').textContent    = texts[lang].ProjectContent;
     }
 
     /**********************************************************
