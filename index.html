@@ -150,27 +150,22 @@
       border: none;
     }
 
-    /* 이름 (emphasis 클래스로 강조 유지) */
-    .profile-right h1 {
-      font-size: 2rem;
-      font-weight: bold;
+    /* 이름 + 직함을 한 줄에 */
+    .name-line {
+      display: inline-flex; /* 같은 줄에 표시 */
+      align-items: baseline;
+      gap: 0.5rem; /* 이름과 직함 사이 간격 */
       margin: 0.5rem 0;
     }
-
+    /* 이름 (emphasis 클래스로 강조) */
+    .name-line h1 {
+      font-size: 2rem;
+      margin: 0;
+    }
     /* 직함(subtitle) */
-    .subtitle {
+    .name-line .subtitle {
       font-size: 1.2rem;
-      margin-bottom: 1rem;
-    }
-
-    /* 연락처 아이콘 묶음 (메일, 구글스칼라, 깃허브, 링크드인) */
-    .contact-icons {
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      line-height: 1.6;
-    }
-    .contact-icons a:hover {
-      text-decoration: underline;
+      margin: 0; /* 줄바꿈 없이 같은 줄에 */
     }
 
     /* 연구 관심 분야 (일반 텍스트 색상) */
@@ -187,6 +182,17 @@
       line-height: 1.5;
     }
 
+    /* 연락처 아이콘 묶음 (메일, 구글스칼라, 깃허브, 링크드인) */
+    .contact-icons {
+      display: flex;      /* 한 줄로 배치 */
+      align-items: center;
+      gap: 1rem;          /* 요소 간 간격 */
+      margin: 1rem 0;     /* 위아래 간격 */
+    }
+    .contact-icons a:hover {
+      text-decoration: underline;
+    }
+
     /*******************************************************
      * 푸터
      *******************************************************/
@@ -196,8 +202,6 @@
       opacity: 0.6;
       padding: 1rem;
     }
-
-    /* (모바일 전용 @media 제거) */
   </style>
 </head>
 
@@ -219,36 +223,34 @@
   <div class="content">
     <!-- 홈 섹션 -->
     <div class="section" id="home">
+      <!-- 사진과 함께 (이름, 직함, PhD 정보) 오른쪽에 표시 -->
       <div class="home-header">
         <div class="profile-left">
           <img src="Profile.png" alt="Lee Sanghoon's Profile" class="profile-pic" />
         </div>
         <div class="profile-right">
-          <h1 class="emphasis" id="homeTitle"></h1>
-          <div class="subtitle" id="homeSubtitle"></div>
-          <p id="homeSubInfo"></p>
-
-          <!-- HTML -->
-          <div class="contact-icons" id="homeContacts">
-            <span>📧 leesh2913@dgist.ac.kr</span>
-            <a href="https://scholar.google.co.kr/citations?user=W2iqqvAAAAAJ&hl=ko" target="_blank">🎓 Google Scholar</a>
-            <a href="https://github.com/hun0130" target="_blank">🐙 GitHub</a>
-            <a href="https://www.linkedin.com/in/sanghoon-lee-1b5929301" target="_blank">🔗 LinkedIn</a>
+          <!-- 이름 + 직함을 한 줄로 표시 -->
+          <div class="name-line">
+            <h1 class="emphasis" id="homeTitle"></h1>
+            <span class="subtitle" id="homeSubtitle"></span>
           </div>
-          
-          <!-- CSS (예: style 태그 안에) -->
-          <style>
-            .contact-icons {
-              display: flex;      /* 한 줄로 배치 */
-              align-items: center;
-              gap: 1rem;          /* 요소 간 간격 */
-            }
-          </style>
-
-          <!-- Research Interests: 일반 텍스트 색으로 표기 -->
-          <div class="research-interest" id="homeResearch"></div>
+          <!-- Ph.D. Candidate 정보 -->
+          <p id="homeSubInfo"></p>
         </div>
       </div>
+
+      <!-- 사진 아래쪽에 이모티콘/링크 -->
+      <div class="contact-icons" id="homeContacts">
+        <span>📧 leesh2913@dgist.ac.kr</span>
+        <a href="https://scholar.google.co.kr/citations?user=W2iqqvAAAAAJ&hl=ko" target="_blank">🎓 Google Scholar</a>
+        <a href="https://github.com/hun0130" target="_blank">🐙 GitHub</a>
+        <a href="https://www.linkedin.com/in/sanghoon-lee-1b5929301" target="_blank">🔗 LinkedIn</a>
+      </div>
+
+      <!-- 연구 관심 분야 -->
+      <div class="research-interest" id="homeResearch"></div>
+
+      <!-- 디자인 요소 -->
       <div class="design-element" id="homeDesignElement"></div>
     </div>
 
@@ -272,8 +274,7 @@
   </div>
 
   <footer>
-    Copyright.
-    Sanghoon Lee (DGIST) all rights reserved.
+    © Sanghoon Lee (DGIST) all rights reserved.
   </footer>
 
   <script>
