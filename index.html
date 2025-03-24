@@ -62,13 +62,16 @@
       color: #f0f0f0;
     }
 
-    /* 강조(Emphasis) 색상 */
-    body.light-mode .emphasis {
-      color: #2C3E50;
-    }
-    body.dark-mode .emphasis {
-      color: #4682B4; /* 다크 모드 강조색 (파랑 계열) */
-    }
+	/* 강조(Emphasis) 색상 + Bold */
+	body.light-mode .emphasis {
+	  color: #2C3E50;
+	  font-weight: 700; /* 굵은 폰트 설정 */
+	}
+	
+	body.dark-mode .emphasis {
+	  color: #4682B4; /* 다크 모드 강조색 (파랑 계열) */
+	  font-weight: 700;
+	}
 
     /* 링크 색상 */
     a {
