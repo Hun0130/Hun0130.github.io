@@ -23,46 +23,43 @@
     /* 기본 레이아웃 및 애니메이션 */
     body {
       margin: 0;
-      /* 초기에는 영어 폰트 (Noto Sans) 사용 */
       font-family: 'Noto Sans', sans-serif;
-      font-weight: 700; /* Noto Sans/Noto Sans KR를 굵게 사용 */
+      font-weight: 700;
       transition: background-color 0.3s, color 0.3s;
     }
 
-    /* 라이트 모드: 옅은 회색 배경 / 짙은 텍스트 */
+    /* 라이트 모드 */
     body.light-mode {
-      background-color: #f2f2f2;  /* 완전 흰색이 아닌 옅은 회색 */
+      background-color: #f2f2f2;
       color: #333;
     }
-
     /* 다크 모드 */
     body.dark-mode {
       background-color: #333;
       color: #f0f0f0;
     }
 
-    /* 강조(Emphasis) 색상 지정 */
+    /* 강조(Emphasis) 색상 */
     body.light-mode .emphasis {
       color: #2C3E50;
     }
-    /* 다크 모드 강조 색상: 파란색 계열 */
     body.dark-mode .emphasis {
-      color: #4682B4; 
+      color: #4682B4; /* 다크 모드 강조색 (파랑 계열) */
     }
 
-    /* 링크 색상 지정 (밑줄/파란색 제거) */
+    /* 링크 색상 */
     a {
       text-decoration: none;
     }
     body.light-mode a {
-      color: #5B9BD5; /* 실버 블루 */
+      color: #5B9BD5;
     }
     body.dark-mode a {
-      color: #B9D2EE; /* 연한 실버 블루 */
+      color: #B9D2EE;
     }
 
     /*******************************************************
-     * 상단 영역: 헤더 및 메뉴
+     * 상단 헤더 & 메뉴
      *******************************************************/
     header {
       display: flex;
@@ -96,13 +93,11 @@
     }
 
     /*******************************************************
-     * 본문 영역
+     * 본문
      *******************************************************/
     .content {
       padding: 2rem;
     }
-
-    /* 섹션들은 기본적으로 숨김 처리, 활성화된 것만 보임 */
     .section {
       display: none;
     }
@@ -120,32 +115,24 @@
       align-items: center;
       justify-content: center;
     }
-
-    /* 왼쪽 열(프로필 사진) */
     .profile-left {
       flex: 0 0 auto;
       display: flex;
       justify-content: center;
       align-items: center;
     }
-
-    /* 오른쪽 열(이름, 직함, 정보) */
     .profile-right {
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-
-    /* 프로필 사진 */
     .profile-pic {
       width: 150px;
       height: auto;
       border-radius: 4px;
       border: none;
     }
-
-    /* 이름 + 직함을 한 줄에 */
     .name-line {
       display: inline-flex;
       align-items: baseline;
@@ -160,8 +147,6 @@
       font-size: 1.2rem;
       margin: 0;
     }
-
-    /* 연락처 아이콘 묶음 */
     .contact-icons {
       display: flex;  
       align-items: center;
@@ -171,44 +156,37 @@
     .contact-icons a:hover {
       text-decoration: underline;
     }
-
-    /* 연구 관심 분야 (일반 텍스트 색상) */
     .research-interest {
       margin-top: 1rem;
       line-height: 1.6;
     }
 
-    /* 디자인 요소 (AI-ROS-CPS) */
+    /* 디자인 요소 (AI/ROS/CPS) - HTML 형태로 삽입됨 */
     .design-element {
       margin-top: 2rem;
       text-align: center;
       font-weight: bold;
       line-height: 1.5;
     }
-    /* 아이콘 + 텍스트 블록 */
     .design-block {
       display: inline-flex;
       align-items: baseline;
       margin: 0.5rem;
       gap: 0.3rem;
     }
-    /* 큰 텍스트 (AI, ROS, CPS) */
+    .design-block .icon {
+      width: 36px; 
+      height: auto;
+      vertical-align: middle;
+    }
     .design-block .big-text {
       font-size: 1.4rem;
     }
-    /* 괄호 안 문구 */
     .design-block .small-text {
       font-size: 0.7rem;
       opacity: 0.7;
       margin-left: 0.3rem;
     }
-    /* 아이콘 이미지 */
-    .design-block .icon {
-      width: 36px; /* 원하는 크기 */
-      height: auto;
-      vertical-align: middle;
-    }
-    /* 양방향 화살표 */
     .arrow {
       font-size: 1.5rem;
       margin: 0 0.8rem;
@@ -223,7 +201,6 @@
       opacity: 0.6;
       padding: 1rem;
     }
-
   </style>
 </head>
 
@@ -241,17 +218,15 @@
     </nav>
   </header>
 
-  <!-- 본문 영역 -->
+  <!-- 메인 콘텐츠 -->
   <div class="content">
     <!-- 홈 섹션 -->
     <div class="section" id="home">
-      <!-- 프로필 -->
       <div class="home-header">
         <div class="profile-left">
           <img src="Profile.png" alt="Lee Sanghoon's Profile" class="profile-pic" />
         </div>
         <div class="profile-right">
-          <!-- 이름 + 직함 한 줄 -->
           <div class="name-line">
             <h1 class="emphasis" id="homeTitle"></h1>
             <span class="subtitle" id="homeSubtitle"></span>
@@ -260,7 +235,6 @@
         </div>
       </div>
 
-      <!-- 연락처/링크 이모티콘 -->
       <div class="contact-icons" id="homeContacts">
         <span>📧 leesh2913@dgist.ac.kr</span>
         <a href="https://scholar.google.co.kr/citations?user=W2iqqvAAAAAJ&hl=ko" target="_blank">🎓 Google Scholar</a>
@@ -271,29 +245,8 @@
       <!-- 연구 관심 분야 -->
       <div class="research-interest" id="homeResearch"></div>
 
-      <!-- 디자인 요소: AI / ROS / CPS (크게 + 괄호 안 작게 + 아이콘) -->
-      <div class="design-element" id="homeDesignElement">
-        <div class="design-block">
-          <img src="AI_light.png" alt="AI Icon" class="icon" />
-          <span class="big-text emphasis">AI</span>
-          <span class="small-text">(Good things happen probabilistically)</span>
-        </div>
-
-        <span class="arrow">⟷</span>
-
-        <div class="design-block">
-          <img src="ROS2_light.png" alt="ROS Icon" class="icon" />
-          <span class="big-text emphasis">ROS</span>
-        </div>
-
-        <span class="arrow">⟷</span>
-
-        <div class="design-block">
-          <img src="CPS_light.png" alt="CPS Icon" class="icon" />
-          <span class="big-text emphasis">CPS</span>
-          <span class="small-text">(Bad things never happen)</span>
-        </div>
-      </div>
+      <!-- AI–ROS–CPS 디자인 요소 -->
+      <div class="design-element" id="homeDesignElement"></div>
     </div>
 
     <!-- About 섹션 -->
@@ -321,11 +274,12 @@
 
   <script>
     /**********************************************************
-     * 1. 페이지 로드 시 홈 섹션만 보이도록 (초기화)
+     * 1. 페이지 로드 시 홈 섹션만 보이도록 & 초기 아이콘 세팅
      **********************************************************/
     window.addEventListener('DOMContentLoaded', () => {
       showSection('home');
       setLanguageTexts('en');
+      updateIconsForTheme(); // 라이트/다크 모드에 맞는 아이콘 적용
     });
 
     /**********************************************************
@@ -340,6 +294,23 @@
         bodyElement.classList.remove('dark-mode');
         bodyElement.classList.add('light-mode');
       }
+      // 다크 모드 바뀔 때 아이콘 교체
+      updateIconsForTheme();
+    }
+
+    // 아이콘 교체 함수
+    function updateIconsForTheme() {
+      const isDark = document.body.classList.contains('dark-mode');
+      const AIIcon = document.getElementById('AIIcon');
+      const ROSIcon = document.getElementById('ROSIcon');
+      const CPSIcon = document.getElementById('CPSIcon');
+
+      if (!AIIcon || !ROSIcon || !CPSIcon) return; 
+      // (만약 homeDesignElement 아직 안 들어왔으면 null)
+
+      AIIcon.src  = isDark ? 'AI_dark.png'  : 'AI_light.png';
+      ROSIcon.src = isDark ? 'ROS2_dark.png': 'ROS2_light.png';
+      CPSIcon.src = isDark ? 'CPS_dark.png' : 'CPS_light.png';
     }
 
     /**********************************************************
@@ -365,7 +336,29 @@
           Reinforcement Learning,
           Machine Learning,
           Mobile Robots`,
-        homeDesignElement: `AI (Good things happen probabilistically)<br />→ ROS ←<br />CPS (Bad things never happen)`,
+        /* 여기서 homeDesignElement 전체를 HTML 형태로 작성 */
+        homeDesignElement: `
+<div class="design-block">
+  <img id="AIIcon" src="AI_light.png" alt="AI Icon" class="icon" />
+  <span class="big-text emphasis">AI</span>
+  <span class="small-text">(Good things happen probabilistically)</span>
+</div>
+
+<span class="arrow">⟷</span>
+
+<div class="design-block">
+  <img id="ROSIcon" src="ROS2_light.png" alt="ROS Icon" class="icon" />
+  <span class="big-text emphasis">ROS</span>
+</div>
+
+<span class="arrow">⟷</span>
+
+<div class="design-block">
+  <img id="CPSIcon" src="CPS_light.png" alt="CPS Icon" class="icon" />
+  <span class="big-text emphasis">CPS</span>
+  <span class="small-text">(Bad things never happen)</span>
+</div>
+`,
         aboutContent: "This is the About section. You can share your introduction, background, and interests here.",
         projectsContent: "This is the Projects section. You can showcase your ongoing projects or portfolio here.",
         contactContent: "You can provide your contact details or social media links here."
@@ -387,7 +380,29 @@
           강화학습,
           기계학습,
           모바일 로봇`,
-        homeDesignElement: `AI (Good things happen probabilistically)<br />→ ROS ←<br />CPS (Bad things never happen)`,
+        /* 한글 버전 homeDesignElement */
+        homeDesignElement: `
+<div class="design-block">
+  <img id="AIIcon" src="AI_light.png" alt="AI Icon" class="icon" />
+  <span class="big-text emphasis">AI</span>
+  <span class="small-text">(좋은 일은 확률적으로 일어난다)</span>
+</div>
+
+<span class="arrow">⟷</span>
+
+<div class="design-block">
+  <img id="ROSIcon" src="ROS2_light.png" alt="ROS Icon" class="icon" />
+  <span class="big-text emphasis">ROS</span>
+</div>
+
+<span class="arrow">⟷</span>
+
+<div class="design-block">
+  <img id="CPSIcon" src="CPS_light.png" alt="CPS Icon" class="icon" />
+  <span class="big-text emphasis">CPS</span>
+  <span class="small-text">(나쁜 일은 절대 일어나지 않는다)</span>
+</div>
+`,
         aboutContent: "이곳은 About 섹션입니다. 자기소개나 이력, 관심 분야 등을 쓸 수 있어요.",
         projectsContent: "이곳은 Projects 섹션입니다. 진행 중인 프로젝트나 포트폴리오를 정리해둘 수 있어요.",
         contactContent: "연락처나 이메일, SNS 링크 등을 넣을 수 있습니다."
@@ -395,11 +410,9 @@
     };
 
     function toggleLanguage() {
-      // 현재 언어 상태 스위치
       currentLang = (currentLang === 'en') ? 'ko' : 'en';
       setLanguageTexts(currentLang);
 
-      // 버튼 텍스트 전환
       const langToggleBtn = document.getElementById('langToggleBtn');
       langToggleBtn.textContent = (currentLang === 'en') ? 'KOR' : 'ENG';
 
@@ -409,10 +422,37 @@
       } else {
         document.body.style.fontFamily = "'Noto Sans', sans-serif";
       }
+
+      // 아이콘도 업데이트 (라이트/다크 모드용)
+      updateIconsForTheme();
     }
 
     /**********************************************************
-     * 4. 탭(섹션) 전환
+     * 텍스트 교체
+     **********************************************************/
+    function setLanguageTexts(lang) {
+      document.getElementById('navHome').textContent           = texts[lang].navHome;
+      document.getElementById('navAbout').textContent          = texts[lang].navAbout;
+      document.getElementById('navProjects').textContent       = texts[lang].navProjects;
+      document.getElementById('navContact').textContent        = texts[lang].navContact;
+
+      document.getElementById('homeTitle').textContent         = texts[lang].homeTitle;
+      document.getElementById('homeSubtitle').textContent      = texts[lang].homeSubtitle;
+      document.getElementById('homeSubInfo').innerHTML         = texts[lang].homeSubInfo;
+      document.getElementById('homeResearch').innerHTML        = texts[lang].homeResearch;
+      /* homeDesignElement를 그대로 HTML 삽입 */
+      document.getElementById('homeDesignElement').innerHTML   = texts[lang].homeDesignElement;
+
+      document.getElementById('aboutContent').textContent      = texts[lang].aboutContent;
+      document.getElementById('projectsContent').textContent   = texts[lang].projectsContent;
+      document.getElementById('contactContent').textContent    = texts[lang].contactContent;
+
+      // homeDesignElement가 다시 그려졌으므로, 아이콘을 모드에 맞춰 교체
+      updateIconsForTheme();
+    }
+
+    /**********************************************************
+     * 탭(섹션) 전환
      **********************************************************/
     function showSection(sectionId) {
       const sections = document.querySelectorAll('.section');
@@ -424,24 +464,6 @@
       if (targetSection) {
         targetSection.classList.add('active');
       }
-    }
-
-    // 텍스트 교체
-    function setLanguageTexts(lang) {
-      document.getElementById('navHome').textContent           = texts[lang].navHome;
-      document.getElementById('navAbout').textContent          = texts[lang].navAbout;
-      document.getElementById('navProjects').textContent       = texts[lang].navProjects;
-      document.getElementById('navContact').textContent        = texts[lang].navContact;
-
-      document.getElementById('homeTitle').textContent         = texts[lang].homeTitle;
-      document.getElementById('homeSubtitle').textContent      = texts[lang].homeSubtitle;
-      document.getElementById('homeSubInfo').innerHTML         = texts[lang].homeSubInfo;
-      document.getElementById('homeResearch').innerHTML        = texts[lang].homeResearch;
-      document.getElementById('homeDesignElement').innerHTML   = texts[lang].homeDesignElement;
-
-      document.getElementById('aboutContent').textContent      = texts[lang].aboutContent;
-      document.getElementById('projectsContent').textContent   = texts[lang].projectsContent;
-      document.getElementById('contactContent').textContent    = texts[lang].contactContent;
     }
   </script>
 </body>
