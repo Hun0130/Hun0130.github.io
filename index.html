@@ -47,9 +47,13 @@
       transition: background-color 0.3s, color 0.3s;
     }
 
+    strong {
+      color: #d9534f; /* 예: 붉은색 */
+    }
+
     /* 라이트 모드 */
     body.light-mode {
-      background-color: #f2f2f2;
+      background-color: #2C3E50;
       color: #333;
     }
     /* 다크 모드 */
@@ -242,7 +246,7 @@
     <nav>
       <a href="#home" id="navHome" onclick="showSection('home'); return false;">Home</a>
       <a href="#about" id="navAbout" onclick="showSection('about'); return false;">About</a>
-      <a href="#projects" id="navProjects" onclick="showSection('projects'); return false;">Projects</a>
+      <a href="#Achievements" id="navAchievements" onclick="showSection('achievements'); return false;">Achievements</a>
       <a href="#contact" id="navContact" onclick="showSection('contact'); return false;">Contact</a>
     </nav>
   </header>
@@ -303,10 +307,10 @@
     <div class="section" id="about">
       <p id="aboutContent"></p>
 
-    <!-- Projects 섹션 -->
-    <div class="section" id="projects">
-      <h2>Projects</h2>
-      <p id="projectsContent"></p>
+    <!-- Achievements 섹션 -->
+    <div class="section" id="achievements">
+      <h2>Achievements</h2>
+      <p id="achievementsContent"></p>
     </div>
 
     <!-- Contact 섹션 -->
@@ -362,7 +366,7 @@
       en: {
         navHome: "Home",
         navAbout: "About",
-        navProjects: "Projects",
+        navAchievements: "Achievements",
         navContact: "Contact",
         homeTitle: "Sanghoon Lee",
         homeSubtitle: "Cyber-Physical AI Researcher",
@@ -382,20 +386,20 @@
         <ul>
           <li>
             <p>
-              <strong>DGIST (Combined UG-G., Electrical Engineering & Computer Science)</strong> <span style="opacity: 0.7;"> 2022.3 - current </span>
+              DGIST (Combined UG-G., Electrical Engineering & Computer Science) <span style="opacity: 0.7;"> 2022.3 - current </span>
               <br>(GPA  4.3/4.3)
             </p>
           </li>
           <li>
             <p>
-              <strong>University of California, Los Angeles (International Student Programs)</strong> <span style="opacity: 0.7;"> 2019.6 - 2019.9 </span>
+              University of California, Los Angeles (International Student Programs) <span style="opacity: 0.7;"> 2019.6 - 2019.9 </span>
               <br>
               (GPA 4.3/4.3)
             </p>
           </li>
           <li>
             <p>
-              <strong>DGIST (B.S., Computer Science)</strong> <span style="opacity: 0.7;"> 2018.3 - 2022.3 </span>
+              DGIST (B.S., Computer Science) <span style="opacity: 0.7;"> 2018.3 - 2022.3 </span>
               <br>
               (GPA 3.59/4.3)
             </p>
@@ -424,13 +428,13 @@
           </li>
         </ul>
         `,
-        projectsContent: "This is the Projects section. You can showcase your ongoing projects or portfolio here.",
+        achievementsContent: "This is the Achievements section. You can showcase your ongoing achievements or portfolio here.",
         contactContent: "You can provide your contact details or social media links here."
       },
       ko: {
         navHome: "홈",
         navAbout: "소개",
-        navProjects: "프로젝트",
+        navAchievements: "프로젝트",
         navContact: "연락처",
         homeTitle: "이상훈",
         homeSubtitle: "사이버-물리 AI 연구자",
@@ -449,26 +453,27 @@
         <ul>
           <li>
             <p>
-              <strong> DGIST(학위연계과정, 전기전자 컴퓨터공학)</strong>  <span style="opacity: 0.7;"> 2022.3 - 현재  </span>
+              DGIST(학위연계과정, 전기전자 컴퓨터 공학)  <span style="opacity: 0.7;"> 2022.3 - 현재  </span>
               <br>(GPA  4.3/4.3)
             </p>
           </li>
           <li>
             <p>
-              <strong>University of California, Los Angeles (국제 학생 프로그램)</strong> <span style="opacity: 0.7;">  2019.6 - 2019.9 </span>
+              University of California, Los Angeles (국제 학생 프로그램) <span style="opacity: 0.7;">  2019.6 - 2019.9 </span>
               <br>
               (GPA 4.3/4.3)
             </p>
           </li>
           <li>
             <p>
-              <strong>DGIST (학사과정, 컴퓨터 공학)</strong> <span style="opacity: 0.7;"> 2018.3 - 2022.3 </span>
+              DGIST (학사과정, 컴퓨터 공학) <span style="opacity: 0.7;"> 2018.3 - 2022.3 </span>
               <br>
               (GPA 3.59/4.3)
             </p>
           </li>
         </ul>
 
+        <br>
         <h3>🔭 Research Experience </h3>
         <ul>
           <li>
@@ -491,7 +496,7 @@
           </li>
         </ul>
         `,
-        projectsContent: "이곳은 Projects 섹션입니다. 진행 중인 프로젝트나 포트폴리오를 정리해둘 수 있어요.",
+        achievementsContent: "이곳은 Achievements 섹션입니다. 진행 중인 프로젝트나 포트폴리오를 정리해둘 수 있어요.",
         contactContent: "연락처나 이메일, SNS 링크 등을 넣을 수 있습니다."
       }
     };
@@ -517,7 +522,7 @@
     function setLanguageTexts(lang) {
       document.getElementById('navHome').textContent           = texts[lang].navHome;
       document.getElementById('navAbout').textContent          = texts[lang].navAbout;
-      document.getElementById('navProjects').textContent       = texts[lang].navProjects;
+      document.getElementById('navAchievements').textContent       = texts[lang].navAchievements;
       document.getElementById('navContact').textContent        = texts[lang].navContact;
 
       document.getElementById('homeTitle').textContent         = texts[lang].homeTitle;
@@ -526,7 +531,7 @@
       document.getElementById('homeResearch').innerHTML        = texts[lang].homeResearch;
 
       document.getElementById('aboutContent').innerHTML      = texts[lang].aboutContent;
-      document.getElementById('projectsContent').textContent   = texts[lang].projectsContent;
+      document.getElementById('achievementsContent').textContent   = texts[lang].achievementsContent;
       document.getElementById('contactContent').textContent    = texts[lang].contactContent;
     }
 
