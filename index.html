@@ -310,7 +310,7 @@
   <div id="newsSection" style="margin-top: 2rem;">
     <h2>News</h2>
     <ul>
-      <li>2025.03.25 Published new paper on Cyber-Physical AI Research</li>
+      <li>2025.03.25 Appeared news about Cyber-Physical Research</li>
       <li>2025.03.06 Accepted new paper on ACM TCPS</li>
       <li>2025.01.26 Appeared <a href="https://www.newsis.com/view/NISX20250124_0003044986" target="_blank">news</a> about ROS 2 Research</li>
 	    
@@ -349,6 +349,23 @@
       setLanguageTexts('en');
       updateIconsForTheme(); // 초기 아이콘 (light)
     });
+
+	// 방문자 수 로직
+	  const visitCountKey = 'visitorCountLocal';
+	  let visitCount = localStorage.getItem(visitCountKey);
+	  if (!visitCount) {
+	    visitCount = 0;
+	  } else {
+	    visitCount = parseInt(visitCount, 10);
+	  }
+	  visitCount += 1;
+	  localStorage.setItem(visitCountKey, visitCount);
+	
+	  const visitorCountElem = document.getElementById('visitorCount');
+	  if (visitorCountElem) {
+	    visitorCountElem.textContent = visitCount;
+	  }
+	});
 
     /**********************************************************
      * 2. 라이트/다크 모드 토글
