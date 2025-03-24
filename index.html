@@ -161,35 +161,47 @@
       line-height: 1.6;
     }
 
-    /* 디자인 요소 (AI/ROS/CPS) - HTML 형태로 삽입됨 */
     .design-element {
+      display: flex;                 /* 한 줄에 배치 */
+      align-items: center;           /* 수직 정렬 가운데 */
+      justify-content: center;       /* 가로 중앙 정렬 */
+      gap: 1rem;                     /* 요소 간 간격 */
       margin-top: 2rem;
       text-align: center;
       font-weight: bold;
       line-height: 1.5;
     }
-    .design-block {
-      display: inline-flex;
-      align-items: baseline;
-      margin: 0.5rem;
-      gap: 0.3rem;
+    
+    /* AI, CPS 블록 (글자 + 괄호안 문구) */
+    .design-block.ai-cps-block {
+      display: flex;
+      flex-direction: column;       /* 세로로 배치 */
+      align-items: center;
     }
-    .design-block .icon {
-      width: 36px; 
-      height: auto;
-      vertical-align: middle;
+    
+    /* 큰 텍스트 (AI, CPS) */
+    .big-text {
+      font-size: 1.4rem; 
     }
-    .design-block .big-text {
-      font-size: 1.4rem;
+    
+    /* 괄호 안 문구 */
+    .small-text {
+      font-size: 0.8rem; 
+      opacity: 0.7;     /* 흐릿하게 */
+      margin-top: 0.2rem; /* 살짝 간격 */
     }
-    .design-block .small-text {
-      font-size: 0.7rem;
-      opacity: 0.7;
-      margin-left: 0.3rem;
-    }
+    
+    /* 양방향 화살표 */
     .arrow {
       font-size: 1.5rem;
-      margin: 0 0.8rem;
+      margin: 0 0.5rem;
+    }
+    
+    /* ROS 아이콘 크기를 글자와 비슷하게 */
+    .ros-icon {
+      height: 1.4rem;   /* AI/CPS 텍스트와 비슷한 높이 */
+      width: auto;
+      vertical-align: middle;
     }
 
     /*******************************************************
@@ -246,8 +258,28 @@
       <div class="research-interest" id="homeResearch"></div>
 
       <!-- AI–ROS–CPS 디자인 요소 -->
-      <div class="design-element" id="homeDesignElement"></div>
-    </div>
+      <div class="design-element" id="homeDesignElement">
+        <!-- AI -->
+        <div class="design-block ai-cps-block">
+          <span class="big-text emphasis">AI</span>
+          <div class="small-text">(Good things happen probabilistically)</div>
+        </div>
+      
+        <!-- 화살표 (양방향) -->
+        <span class="arrow">⟷</span>
+      
+        <!-- ROS (이미지) -->
+        <img id="ROSIcon" src="ROS2_light.png" alt="ROS Icon" class="ros-icon" />
+      
+        <!-- 화살표 (양방향) -->
+        <span class="arrow">⟷</span>
+      
+        <!-- CPS -->
+        <div class="design-block ai-cps-block">
+          <span class="big-text emphasis">CPS</span>
+          <div class="small-text">(Bad things never happen)</div>
+        </div>
+      </div>
 
     <!-- About 섹션 -->
     <div class="section" id="about">
