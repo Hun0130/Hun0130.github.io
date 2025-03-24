@@ -31,7 +31,7 @@
       box-sizing: border-box;
     }
 
-    /* 전역 폰트 크기: 기존 대비 1.5배 */
+    /* 전역 폰트 크기: 기존 대비 1.4배 */
     html {
       font-size: 140%;
       -webkit-text-size-adjust: 100%;
@@ -43,7 +43,7 @@
     body {
       margin: 0;
       font-family: 'Noto Sans', sans-serif;
-      font-weight: 700;
+      font-weight: 400;
       transition: background-color 0.3s, color 0.3s;
     }
 
@@ -302,37 +302,6 @@
     <!-- About 섹션 -->
     <div class="section" id="about">
       <p id="aboutContent"></p>
-  <h3>🎓 교육</h3>
-<ul>
-  <li>
-    <p>
-      <strong>DGIST (Combined UG-G., Electrical Engineering &amp; Computer Science)</strong> 
-      <br>
-      2022.3 - current
-      <br>
-      <strong>Major GPA</strong> 4.3/4.3
-    </p>
-  </li>
-  <li>
-    <p>
-      <strong>University of California, Los Angeles (International Student Programs)</strong>
-      <br>
-      2019.6 - 2019.9
-      <br>
-      <strong>Major GPA</strong> 4.3/4.3
-    </p>
-  </li>
-  <li>
-    <p>
-      <strong>DGIST (B.S., Computer Science)</strong>
-      <br>
-      2018.3 - 2022.3
-      <br>
-      <strong>Major GPA</strong> 3.99/4.3 (4.24/4.5)
-    </p>
-  </li>
-</ul>
-    </div>
 
     <!-- Projects 섹션 -->
     <div class="section" id="projects">
@@ -408,7 +377,31 @@
           Reinforcement Learning,
           Machine Learning,
           Mobile Robots`,
-        aboutContent: "This is the About section. You can share your introduction, background, and interests here.",
+        aboutContent: aboutHTML: `
+        <h3>🎓 Education</h3>
+        <ul>
+          <li>
+            <p>
+              <strong>DGIST (Combined UG-G., Electrical Engineering & Computer Science)</strong> 2022.3 - current
+              <br>(GPA  4.3/4.3)
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>University of California, Los Angeles (International Student Programs)</strong> 2019.6 - 2019.9
+              <br>
+              (GPA 4.3/4.3)
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>DGIST (B.S., Computer Science)</strong> 2018.3 - 2022.3
+              <br>
+              (GPA 3.59/4.3)
+            </p>
+          </li>
+        </ul>
+        `,
         projectsContent: "This is the Projects section. You can showcase your ongoing projects or portfolio here.",
         contactContent: "You can provide your contact details or social media links here."
       },
@@ -429,7 +422,7 @@
           강화학습,
           기계학습,
           모바일 로봇`,
-        aboutContent: "이곳은 About 섹션입니다. 자기소개나 이력, 관심 분야 등을 쓸 수 있어요.",
+        aboutContent: `여`,
         projectsContent: "이곳은 Projects 섹션입니다. 진행 중인 프로젝트나 포트폴리오를 정리해둘 수 있어요.",
         contactContent: "연락처나 이메일, SNS 링크 등을 넣을 수 있습니다."
       }
