@@ -422,7 +422,31 @@
           강화학습,
           기계학습,
           모바일 로봇`,
-        aboutContent: `여`,
+        aboutContent:`
+        <h3>🎓 교육 </h3>
+        <ul>
+          <li>
+            <p>
+              <strong> DGIST(학위연계과정, 전기전자 컴퓨터공학)</strong> 2022.3 - current
+              <br>(GPA  4.3/4.3)
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>University of California, Los Angeles (국제 학생 프로그램)</strong> 2019.6 - 2019.9
+              <br>
+              (GPA 4.3/4.3)
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>DGIST (학사과정, 컴퓨터 공학)</strong> 2018.3 - 2022.3
+              <br>
+              (GPA 3.59/4.3)
+            </p>
+          </li>
+        </ul>
+        `,
         projectsContent: "이곳은 Projects 섹션입니다. 진행 중인 프로젝트나 포트폴리오를 정리해둘 수 있어요.",
         contactContent: "연락처나 이메일, SNS 링크 등을 넣을 수 있습니다."
       }
@@ -457,7 +481,7 @@
       document.getElementById('homeSubInfo').innerHTML         = texts[lang].homeSubInfo;
       document.getElementById('homeResearch').innerHTML        = texts[lang].homeResearch;
 
-      document.getElementById('aboutContent').textContent      = texts[lang].aboutContent;
+      document.getElementById('aboutContent').innerHTML      = texts[lang].aboutContent;
       document.getElementById('projectsContent').textContent   = texts[lang].projectsContent;
       document.getElementById('contactContent').textContent    = texts[lang].contactContent;
     }
