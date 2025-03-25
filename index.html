@@ -229,17 +229,6 @@
     }
 
     /*******************************************************
-     * News 및 방문자 카운트
-     *******************************************************/
-    /* 방문자 카운트를 예쁘게 중앙 정렬 + 흐리게 표시 */
-    #visitorCountContainer {
-      text-align: center; /* 가운데 정렬 */
-      opacity: 0.6;       /* 흐리게 표시 */
-      font-size: 1rem;    /* 적절한 폰트 크기 */
-      margin-top: 1rem;
-    }
-
-    /*******************************************************
      * 푸터
      *******************************************************/
     footer {
@@ -318,13 +307,6 @@
       <!-- News 섹션 (홈 섹션 안으로 이동) -->
       <div id="newsSection"></div>
 
-      <!-- 방문자 카운트 (디자인용 컨테이너) -->
-      <div id="visitorCountContainer">
-        <span id="visitorCountLabel"></span>
-        <span id="visitorCount"></span>
-      </div>
-    </div>
-
     <!-- About 섹션 -->
     <div class="section" id="about">
       <p id="aboutContent"></p>
@@ -353,22 +335,6 @@
       showSection('home');
       setLanguageTexts('en');
       updateIconsForTheme(); // 초기 아이콘 (light)
-
-      // 방문자 수 로직
-      const visitCountKey = "visitorCountLocal";
-      let visitCount = localStorage.getItem(visitCountKey);
-      if (!visitCount) {
-        visitCount = 0;
-      } else {
-        visitCount = parseInt(visitCount, 10);
-      }
-      visitCount += 1;
-      localStorage.setItem(visitCountKey, visitCount);
-
-      const visitorCountElem = document.getElementById("visitorCount");
-      if (visitorCountElem) {
-        visitorCountElem.textContent = visitCount; // 실제 숫자 표시
-      }
     });
 
     /**********************************************************
@@ -421,11 +387,10 @@
 	newsSection: `
        <h2>News</h2>
 	<ul>
-      <li>2025.03.25 Appeared news about Cyber-Physical Research</li>
-      <li>2025.03.06 Accepted new paper on ACM TCPS</li>
-      <li>2025.01.26 Appeared <a href="https://www.newsis.com/view/NISX20250124_0003044986" target="_blank">news</a> about ROS 2 Research</li>
+      <li>2025.03.25 Appeared <a href="https://www.hankyung.com/article/202503256164h" target="_blank">news</a> about Cyber-Physical AI Research</li>
+      <li>2025.03.06 Accepted new <a href="https://dl.acm.org/doi/abs/10.1145/3721437" target="_blank">paper</a> on ACM TCPS</li>
+      <li>2025.01.26 Appeared <a href="https://www.youtube.com/watch?v=X1iJZajHA4s" target="_blank">news</a> about ROS 2 Research</li>
 	 </ul>`,
-	visitorCountLabel: "Visitor: ",
         aboutContent:`
 	<h1>🙆 I am...</h1>
 	
@@ -692,12 +657,10 @@ Application No. 10-2024-0004960, January 11, 2024.
         newsSection: `
           <h2>최근 소식</h2>
           <ul>
-            <li>2025.03.25 사이버 물리 연구 관련 뉴스 보도</li>
-            <li>2025.03.06 ACM TCPS 논문 채택</li>
-            <li>2025.01.26 <a href="https://www.newsis.com/view/NISX20250124_0003044986" target="_blank">ROS 2 연구</a> 관련 보도</li>
+            <li>2025.03.25 사이버 물리 AI 연구 <a href="https://www.hankyung.com/article/202503256164h" target="_blank">뉴스</a> 보도</li>
+            <li>2025.03.06 ACM TCPS에 <a href="https://dl.acm.org/doi/abs/10.1145/3721437" target="_blank">논문</a> 채택</li>
+            <li>2025.01.26 ROS 2 연구 <a href="https://www.youtube.com/watch?v=X1iJZajHA4s" target="_blank">뉴스</a> 보도</li>
           </ul> `,
-        // 방문자 카운트 라벨
-        visitorCountLabel: "방문자: ",
         aboutContent:`
 	<h1>🙆 나는…</h1>
 	
@@ -955,7 +918,6 @@ Application No. 10-2024-0004960, January 11, 2024.
       document.getElementById('homeResearch').innerHTML        = texts[lang].homeResearch;
 
       document.getElementById("newsSection").innerHTML         = texts[lang].newsSection;
-      document.getElementById("visitorCountLabel").textContent = texts[lang].visitorCountLabel;
 
       document.getElementById('aboutContent').innerHTML      = texts[lang].aboutContent;
       document.getElementById('achievementsContent').innerHTML  = texts[lang].achievementsContent;
