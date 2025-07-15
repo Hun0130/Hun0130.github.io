@@ -16,12 +16,13 @@
   <meta name="twitter:title" content="Sanghoon Lee" />
   <meta name="twitter:description" content="Cyber-Physical AI Researcher" />
   <meta name="twitter:image" content="Mark.png" />
+  <meta name="viewport" content="width=1200, user-scalable=no">
   <!-- ... 나머지 CSS, 폰트 링크 등 -->
   </head>
 
-<!-- 구글 폰트 (Noto Sans, Noto Sans KR) : 400, 700 버전 같이 로드 -->
+<!-- 구글 폰트 (Source Sans Pro) : 400, 700 버전 로드 -->
 <link
-  href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap"
   rel="stylesheet"/>
 <link rel="icon" type="image/png" href="Mark.png" />
 <link rel="shortcut icon" type="image/png" href="Mark.png" />
@@ -43,8 +44,12 @@
 
   /* 기본 레이아웃 및 애니메이션 */
   body {
-    margin: 0;
-    font-family: 'Noto Sans', sans-serif;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 32px;
+    padding-right: 32px;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
     /* 기본 폰트 두께를 normal(또는 400)로 지정 */
     font-weight: 400;
     transition: background-color 0.3s, color 0.3s;
@@ -93,6 +98,10 @@
       justify-content: space-between;
       padding: 0.5rem 1rem;
       border-bottom: 1px solid #ccc;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: inherit;
     }
     .top-buttons {
       display: flex;
@@ -122,13 +131,13 @@
      * 본문
      *******************************************************/
     .content {
-      padding: 2rem;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
     }
+    /* .section, .section.active 관련 display CSS 모두 삭제 */
     .section {
-      display: none;
-    }
-    .section.active {
-      display: block;
+      scroll-margin-top: 70px;
     }
 
     /*******************************************************
@@ -237,20 +246,25 @@
       opacity: 0.6;
       padding: 1rem;
     }
+    h2 {
+      font-size: 1.3rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
   </style>
 </head>
 
-<body class="light-mode">
+<body class="dark-mode">
   <header>
     <div class="top-buttons">
-      <button id="langToggleBtn" onclick="toggleLanguage()">KOR</button>
       <button onclick="toggleMode()">☀</button>
     </div>
     <nav>
-      <a href="#home" id="navHome" onclick="showSection('home'); return false;">Home</a>
-      <a href="#about" id="navAbout" onclick="showSection('about'); return false;">About</a>
-      <a href="#Achievements" id="navAchievements" onclick="showSection('achievements'); return false;">Achievements</a>
-      <a href="#Project" id="navProject" onclick="showSection('Project'); return false;">Project</a>
+      <a href="#home" id="navHome">Home</a>
+      <a href="#about" id="navAbout">About</a>
+      <a href="#achievements" id="navAchievements">Achievements</a>
+      <a href="#project" id="navProject">Activities</a>
     </nav>
   </header>
 
@@ -319,8 +333,8 @@
     </div>
 
     <!-- Project 섹션 -->
-    <div class="section" id="Project">
-      <p id="ProjectContent"></p>
+    <div class="section" id="project">
+      <div id="ProjectContent"></div>
     </div>
   </div>
 
@@ -333,8 +347,8 @@
      * 1. 페이지 로드 시 홈 섹션만 보이도록
      **********************************************************/
     window.addEventListener('DOMContentLoaded', () => {
-      showSection('home');
-      setLanguageTexts('en');
+      document.body.className = 'dark-mode';
+      setLanguageTexts();
       updateIconsForTheme(); // 초기 아이콘 (light)
     });
 
@@ -371,7 +385,7 @@
         navHome: "Home",
         navAbout: "About",
         navAchievements: "Achievements",
-        navProject: "Project",
+        navProject: "Activities",
         homeTitle: "Sanghoon Lee",
         homeSubtitle: "Cyber-Physical AI Researcher",
         homeSubInfo: `Ph.D. Candidate in
@@ -382,579 +396,273 @@
           Cyber-Physical AI,
           ROS 2,
           DDS,
-          Reinforcement Learning,
-          Machine Learning,
+          RL,
+          ML,
           Mobile Robots`,
 	newsSection: `
        <h2>News</h2>
 	<ul>
+      <li>2025.07.01 New paper available in <a href="https://ieeexplore.ieee.org/abstract/document/11044454/?casa_token=JJWL4rvrHb4AAAAA:q290Tt_uyTrWF3kRdTvsXN6CYiYpQnjDtTApde7juGA2rUV0gm1m18x5QmQFztOwRwayYasSmyY" target="_blank">INFOCOM</a></li>
+      <li>2025.05.26 Appeared <a href="https://www.imaeil.com/page/view/2025052610100869764" target="_blank">news</a> about SLAM Research</li>
+      <li>2025.05.07 New paper published in <a href="https://ieeexplore.ieee.org/document/10991965" target="_blank">IEEE TIM</a></li>
       <li>2025.03.25 Appeared <a href="https://www.hankyung.com/article/202503256164h" target="_blank">news</a> about Cyber-Physical AI Research</li>
-      <li>2025.03.06 Accepted new <a href="https://dl.acm.org/doi/abs/10.1145/3721437" target="_blank">paper</a> on ACM TCPS</li>
+      <li>2025.03.06 New paper published in <a href="https://dl.acm.org/doi/abs/10.1145/3721437" target="_blank">ACM TCPS</a></li>
       <li>2025.01.26 Appeared <a href="https://www.youtube.com/watch?v=X1iJZajHA4s" target="_blank">news</a> about ROS 2 Research</li>
 	 </ul>`,
         aboutContent:`
-	<h1>🙆 I am...</h1>
-	
-	<h3>🧑‍💻 An expert in <span class="emphasis">Cyber-Physical AI</span>.</h3>
-	<p>
-	I have successfully integrated a wide range of AI techniques—including machine learning, deep learning, and reinforcement learning—into private data-based CPS (Cyber-Physical Systems), such as manufacturing processes and smart water sensor networks.
-	
-	Leveraging this experience, I was the <span class="emphasis">first in the world</span> to propose the concept of <span class="emphasis">Cyber-Physical AI</span>, and I am now dedicated to realizing <span class="emphasis">Physical AI</span>.
-	</p>
-	
-	<h3>🧑‍🔧 A <span class="emphasis">ROS 2</span> specialist.</h3>
-	<p>
-	ROS is a pivotal platform that tightly integrates CPS and AI. 
-	I proposed, for the <span class="emphasis">first time worldwide</span>, a theoretical analysis of ROS 2's DDS (Data Distribution Service) in wireless environments and am currently developing practical guidelines for ROS 2. 
-	My ultimate goal is to build a next-generation DDS that fulfills all requirements for <span class="emphasis">real-time</span>, <span class="emphasis">reliable</span>, and <span class="emphasis">distributed</span> operation.
-	</p>
-	
-	<h3>🤹 A <span class="emphasis">collaborative leader</span>.</h3>
-	<p>
-	Over the past three years as the head of CSI lab, I have gained diverse leadership experience—from managing multiple research projects to enhancing team skill sets. 
-	I have participated in over <span class="emphasis">12</span> research projects, taking on a primary managerial role in at least four. 
-	Additionally, through internal and external collaborations, I have published more than <span class="emphasis">16</span> international papers, successfully balancing strong teamwork with high-impact outcomes.
-	</p>
- 	<br>
-        <h2>🎓 Education</h2>
+        <!--
+        <h3>🧑‍💻 An expert in <span class="emphasis">Cyber-Physical AI</span>.</h3>
+        <p>
+        I have successfully integrated a wide range of AI techniques—including machine learning, deep learning, and reinforcement learning—into private data-based CPS (Cyber-Physical Systems), such as manufacturing processes and smart water sensor networks.
+        
+        Leveraging this experience, I was the <span class="emphasis">first in the world</span> to propose the concept of <span class="emphasis">Cyber-Physical AI</span>, and I am now dedicated to realizing <span class="emphasis">Physical AI</span>.
+        </p>
+        
+        <h3>🧑‍🔧 A <span class="emphasis">ROS 2</span> specialist.</h3>
+        <p>
+        ROS is a pivotal platform that tightly integrates CPS and AI. 
+        I proposed, for the <span class="emphasis">first time worldwide</span>, a theoretical analysis of ROS 2's DDS (Data Distribution Service) in wireless environments and am currently developing practical guidelines for ROS 2. 
+        My ultimate goal is to build a next-generation DDS that fulfills all requirements for <span class="emphasis">real-time</span>, <span class="emphasis">reliable</span>, and <span class="emphasis">distributed</span> operation.
+        </p>
+        
+        <h3>🤹 A <span class="emphasis">collaborative leader</span>.</h3>
+        <p>
+        Over the past three years as the head of CSI lab, I have gained diverse leadership experience—from managing multiple research projects to enhancing team skill sets. 
+        I have participated in over <span class="emphasis">12</span> research projects, taking on a primary managerial role in at least four. 
+        Additionally, through internal and external collaborations, I have published more than <span class="emphasis">16</span> international papers, successfully balancing strong teamwork with high-impact outcomes.
+        </p>
+        -->
+        <h2>Education</h2>
         <ul>
           <li>
-            <p>
               DGIST (Combined UG-G., Electrical Engineering & Computer Science) <span style="opacity: 0.7;"> 2022.3 - current </span>
-              <br>(GPA  4.3/4.3)
-            </p>
+               (GPA  4.3/4.3)
           </li>
           <li>
-            <p>
               University of California, Los Angeles (International Student Programs) <span style="opacity: 0.7;"> 2019.6 - 2019.9 </span>
-              <br>
-              (GPA 4.3/4.3)
-            </p>
+               (GPA 4.3/4.3)
           </li>
           <li>
-            <p>
               DGIST (B.S., Computer Science) <span style="opacity: 0.7;"> 2018.3 - 2022.3 </span>
-              <br>
-              (GPA 3.59/4.3)
-            </p>
+               (GPA 3.59/4.3)
           </li>
         </ul>
+        
+        <h2>Ongoing Research</h2>
 
-        <br>
-        <h2>👨‍🔬 Research Experience </h2>
-        <ul>
-          <li>
-            <p>
-              Undergraduate research student in 
-              <a href="https://csi.dgist.ac.kr" target="_blank">CSI lab</a>  <span style="opacity: 0.7;"> 2020.9 - 2022.3 </span>
-            </p>
-          </li>
-          <li>
-            <p>
-              2020 DGIST Summer Internship in 
-              <a href="https://csi.dgist.ac.kr" target="_blank">CSI lab</a>  <span style="opacity: 0.7;">2020.8 - 2020.9</span>
-            </p>
-          </li>
-          <li>
-            <p>
-              2020 DGIST Winter Internship in 
-              <a href="https://cas.dgist.ac.kr" target="_blank">CAS lab</a>  <span style="opacity: 0.7;">2020.1 - 2020.2</span>
-            </p>
-          </li>
-        </ul>
-	<br>
- 	<h2>🥼 Peer Reviewer</h2>
-	<ul>
-	  <li>
-	    <p>
-	      <em>ELSEVIER Computers and Operations Research</em> 2025~
-	    </p>
-	  </li>
-	  <li>
-	    <p>
-	      <em>SPRINGER Machine Learning</em> 2024~
-	    </p>
-	  </li>
-	  <li>
-	    <p>
-	      <em>ELSEVIER ICT Express</em> 2024~
-	    </p>
-	  </li>
-	  <li>
-	    <p>
-	      <em>IEEE Transactions on Industrial Cyber-Physical Systems</em> 2024~
-	    </p>
-	  </li>
-	  <li>
-	    <p>
-	      <em>IEEE Access</em> 2023~
-	    </p>
-	  </li>
-	</ul>
-        `,
+[7] Dependency Chain Analysis of ROS 2 DDS QoS Policies: From Life-Cycle Tutorial to Static Verification
+<br>
+[6] How to Send Large Data in ROS 2: Optimizing DDS for Wireless Large-Payload Transfers
+<br>
+[5] From Hype to Reality: A Survey on Physical AI in Industrial Robotics
+<br>
+[4] Scalable Collision-Aware Multi-Agent Path Finding Augmented with Event-Driven Reinforcement Learning
+<br>
+[3] Secure Participant Discovery Protocol: Hierarchical Filtering to Mitigate Spoofing Attacks in DDS Networks
+<br>
+[2] Solving the Pregnant-Father Paradox in Real-Time Data Imputation via Physically Consistent Loss Function
+<br>
+[1] Traffic-Aware Probabilistic Model of DDS Reliability: Retransmission Meets Wi-Fi Dynamics        `,
         achievementsContent: `
-<h2>📕 International Papers</h2>
+<h2>International Papers</h2>
 
-<h3>[Submitted]</h3>
-
-    [17] Jiyeong Chae*, <span class="emphasis"> Sanghoon Lee</span>*, Hyunkyo Seo, and Kyung-Joon Park, 
-    From Issues to Routes: A Cooperative Costmap with Lifelong Learning for Multi-AMR Navigation,
-    <i>Conference on Robot Learning (CoRL25)</i>, Under Review.
-    <br>
-
-    [16] <span class="emphasis">Sanghoon Lee</span>, Hyung-Seok Park, Jiyeong Chae, and Kyung-Joon Park, 
-    Probabilistic Latency Analysis of the Data Distribution Service in ROS 2,
-    <i>IEEE Transactions on Industrial Informatics</i>, Under Review.
-  	<br>
-    [15] Sangjun Kim, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
-    DIDoS: Disturbance-Induced Denial-of-Service Attack in Cyber-Physical Systems, 
-    <i>IEEE Transactions on Dependable and Secure Computing</i>, Under Review.
-	<br>
-    [14] Jiyeong Chae, Hyunkyo Seo, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
-    Time-Aware Costmap for Smoother and Less Disruptive AMR Navigation,
-    <i>IEEE International Conference on Automation Science and Engineering (CASE25)</i>, Under Review.
-	<br>
-    [13] <span class="emphasis">Sanghoon Lee</span>, Jiyeong Chae, and Kyung-Joon Park, 
-    Integrating ROS 2 and Physical AI: Architecture and Challenges,
-    <i>The 16th International Conference on Ubiquitous and Future Networks (ICUFN25)</i>, Under Review.
-  	<br>
-
-<h3>[Published]</h3>
-    [12] Hyung-Seok Park, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
-    An Analytical Latency Model of the Data Distribution Service in ROS 2, 
-    <i>IEEE International Conference on Computer Communications (INFOCOM25)</i>, May. 2025.
-	<br>
-
-
-    [11] Jiyeong Chae, Hyunkyo Seo, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
-    <a href="https://ieeexplore.ieee.org/document/10991965">
-    PINMAP: A Cost-efficient Algorithm for Glass Detection and Mapping Using Low-cost 2D LiDAR,
-    </a>,
-    <i>IEEE Transactions on Instrumentation and Measurement</i>, May. 2025.
-  	<br>
-
-    [10] <span class="emphasis">Sanghoon Lee</span>, Jiyeong Chae, and Kyung-Joon Park, 
-    <a href="https://dl.acm.org/doi/10.1145/3721437">
-      Cyber-Physical Artificial Intelligence: Systematic Research Domain for Integrating Artificial Intelligence and Cyber-Physical Systems
-    </a>, 
-    <i>ACM Transactions on Cyber-Physical Systems</i>, Feb. 2025.
-    	<br>
-
-    [9] Tae-Woo Kim, <span class="emphasis">Sanghoon Lee</span>, Dong-Hyung Lee, and Kyung-Joon Park, 
-    <a href="https://www.mdpi.com/2071-1050/17/4/1747">
-      Priority-Driven Resource Allocation with Reuse for Platooning in 5G Vehicular Networks
-    </a>, 
-    <i>Sustainability</i>, Feb. 2025.
-    	<br>
-
-    [8] Sihoon Moon, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
-    <a href="https://www.sciencedirect.com/science/article/pii/S0278612524002139?dgcid=coauthor">
-      Learning-enabled Flexible Job-Shop Scheduling for Scalable Smart Manufacturing
-    </a>, 
-    <i>Journal of Manufacturing Systems</i>, Sep. 2024.
-    	<br>
-
-    [7] <span class="emphasis">Sanghoon Lee</span>*,
-    Jiyeong Chae*, Sihoon Moon, and Kyung-Joon Park, 
-    <a href="https://ieeexplore.ieee.org/abstract/document/10643479/">
-      False Alarm Prevention through Domain Knowledge-driven Machine Learning: Leakage Detection in Water Distribution Networks
-    </a>, 
-    <i>IEEE Sensors Journal</i>, Aug. 2024.
-    	<br>
-
-    [6] Sihoon Moon, <span class="emphasis">Sanghoon Lee</span>, Wonhong Jeon, and Kyung-Joon Park, 
-    <a href="https://ieeexplore.ieee.org/abstract/document/10285130">
-      Learning-Enabled Network-Control Co-Design for Energy-Efficient Industrial Internet of Things
-    </a>, 
-    <i>IEEE Transactions on Network and Service Management</i>, Apr. 2024.
-    	<br>
-
-    [5] <span class="emphasis">Sanghoon Lee</span>, Jinyoung Kim, Gwangjin Wi, Yuchang Won, Yongsoon Eun, and Kyung-Joon Park, 
-    <a href="https://ieeexplore.ieee.org/document/10210628">
-      Deep Reinforcement Learning-Driven Scheduling in Multijob Serial Lines: A Case Study in Automotive Parts Assembly
-    </a>, 
-    <i>IEEE Transactions on Industrial Informatics</i>, Feb. 2024.
-    	<br>
-
-    [4] Jiyeong Chae*, <span class="emphasis">Sanghoon Lee</span>*,
-    Junhyung Jang, Seohyung Hong, and Kyung-Joon Park, 
-    <a href="https://ieeexplore.ieee.org/abstract/document/10285426">
-      A Survey and Perspective on Industrial Cyber-Physical Systems (ICPS): From ICPS to AI-Augmented ICPS
-    </a>, 
-    <i>IEEE Transactions on Industrial Cyber-Physical Systems</i>, Oct. 2023.
-    	<br>
- 
-    [3] Sihoon Moon, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
-    <a href="https://ieeexplore.ieee.org/document/10312647">
-      Graph-based Reinforcement Learning for Flexible Job Shop Scheduling with Transportation Constraints
-    </a>, 
-    <i>49th Annual Conference of the IEEE Industrial Electronics Society (IECON23)</i>, Oct. 2023.
-    	<br>
-
-    [2] Sangjun Kim, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
-    <a href="https://ieeexplore.ieee.org/abstract/document/9896851">
-      Real-Time Controller Reconfiguration for Delay-Resilient Cyber-Physical Systems
-    </a>, 
-    <i>IEEE Access</i>, Oct. 2022.
-    	<br>
-
-    [1] Sangjun Kim, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
-    Resilient Controller Reconfiguration under Network Delay Attack in Cyber-Physical Systems, 
-    <i>2022 International Conference on Electronics, Information, and Communication (ICEIC)</i>, 2022.
-    	<br>
-
+[17] Jiyeong Chae*, <span class="emphasis">Sanghoon Lee</span>*, Hyunkyo Seo, and Kyung-Joon Park, 
+From Issues to Routes: A Cooperative Costmap with Lifelong Learning for Multi-AMR Navigation, Under Review.
+<br>
+[16] <span class="emphasis">Sanghoon Lee</span>, Hyung-Seok Park, Jiyeong Chae, and Kyung-Joon Park, 
+Probabilistic Latency Analysis of the Data Distribution Service in ROS 2, Under Review.
+<br>
+[15] Sangjun Kim, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
+DIDoS: Disturbance-Induced Denial-of-Service Attack in Cyber-Physical Systems, Under Review.
+<br>
+[14] Jiyeong Chae, Hyunkyo Seo, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
+Time-Aware Costmap for Smoother and Less Disruptive AMR Navigation, Under Review.
+<br>
+[13] <span class="emphasis">Sanghoon Lee</span>, Jiyeong Chae, and Kyung-Joon Park, 
+Integrating ROS 2 and Physical AI: Architecture and Challenges, 
+<i>The 16th International Conference on Ubiquitous and Future Networks (ICUFN25)</i>, July 2025.
+<br>
+[12] Hyung-Seok Park, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
+<a href="https://ieeexplore.ieee.org/abstract/document/11044454/?casa_token=JJWL4rvrHb4AAAAA:q290Tt_uyTrWF3kRdTvsXN6CYiYpQnjDtTApde7juGA2rUV0gm1m18x5QmQFztOwRwayYasSmyY" target="_blank">
+An Analytical Latency Model of the Data Distribution Service in ROS 2
+</a>, 
+<i>IEEE International Conference on Computer Communications (INFOCOM25)</i>, May 2025.
+<br>
+[11] Jiyeong Chae, Hyunkyo Seo, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
+<a href="https://ieeexplore.ieee.org/document/10991965">
+PINMAP: A Cost-efficient Algorithm for Glass Detection and Mapping Using Low-cost 2D LiDAR,
+</a>, 
+<i>IEEE Transactions on Instrumentation and Measurement</i>, May 2025.
+<br>
+[10] <span class="emphasis">Sanghoon Lee</span>, Jiyeong Chae, and Kyung-Joon Park, 
+<a href="https://dl.acm.org/doi/10.1145/3721437">
+Cyber-Physical Artificial Intelligence: Systematic Research Domain for Integrating Artificial Intelligence and Cyber-Physical Systems
+</a>, 
+<i>ACM Transactions on Cyber-Physical Systems</i>, Feb 2025.
+<br>
+[9] Tae-Woo Kim, <span class="emphasis">Sanghoon Lee</span>, Dong-Hyung Lee, and Kyung-Joon Park, 
+<a href="https://www.mdpi.com/2071-1050/17/4/1747">
+Priority-Driven Resource Allocation with Reuse for Platooning in 5G Vehicular Networks
+</a>, 
+<i>Sustainability</i>, Feb 2025.
+<br>
+[8] Sihoon Moon, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
+<a href="https://www.sciencedirect.com/science/article/pii/S0278612524002139?dgcid=coauthor">
+Learning-enabled Flexible Job-Shop Scheduling for Scalable Smart Manufacturing
+</a>, 
+<i>Journal of Manufacturing Systems</i>, Sep 2024.
+<br>
+[7] <span class="emphasis">Sanghoon Lee</span>*, Jiyeong Chae*, Sihoon Moon, and Kyung-Joon Park, 
+<a href="https://ieeexplore.ieee.org/abstract/document/10643479/">
+False Alarm Prevention through Domain Knowledge-driven Machine Learning: Leakage Detection in Water Distribution Networks
+</a>, 
+<i>IEEE Sensors Journal</i>, Aug 2024.
+<br>
+[6] Sihoon Moon, <span class="emphasis">Sanghoon Lee</span>, Wonhong Jeon, and Kyung-Joon Park, 
+<a href="https://ieeexplore.ieee.org/abstract/document/10285130">
+Learning-Enabled Network-Control Co-design for Energy-Efficient Industrial Internet of Things
+</a>, 
+<i>IEEE Transactions on Network and Service Management</i>, Apr 2024.
+<br>
+[5] <span class="emphasis">Sanghoon Lee</span>, Jinyoung Kim, Gwangjin Wi, Yuchang Won, Yongsoon Eun, and Kyung-Joon Park, 
+<a href="https://ieeexplore.ieee.org/document/10210628">
+Deep Reinforcement Learning-driven Scheduling in Multijob Serial Lines: A Case Study in Automotive Parts Assembly
+</a>, 
+<i>IEEE Transactions on Industrial Informatics</i>, Feb 2024.
+<br>
+[4] Jiyeong Chae*, <span class="emphasis">Sanghoon Lee</span>*, Junhyung Jang, Seohyung Hong, and Kyung-Joon Park, 
+<a href="https://ieeexplore.ieee.org/abstract/document/10285426">
+A Survey and Perspective on Industrial Cyber-Physical Systems (ICPS): From ICPS to AI-Augmented ICPS
+</a>, 
+<i>IEEE Transactions on Industrial Cyber-Physical Systems</i>, Oct 2023.
+<br>
+[3] Sihoon Moon, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
+<a href="https://ieeexplore.ieee.org/document/10312647">
+Graph-based Reinforcement Learning for Flexible Job Shop Scheduling with Transportation Constraints
+</a>, 
+<i>49th Annual Conference of the IEEE Industrial Electronics Society (IECON23)</i>, Oct 2023.
+<br>
+[2] Sangjun Kim, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
+<a href="https://ieeexplore.ieee.org/abstract/document/9896851">
+Real-Time Controller Reconfiguration for Delay-Resilient Cyber-Physical Systems
+</a>, 
+<i>IEEE Access</i>, Oct 2022.
+<br>
+[1] Sangjun Kim, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park, 
+Resilient Controller Reconfiguration under Network Delay Attack in Cyber-Physical Systems, 
+<i>2022 International Conference on Electronics, Information, and Communication (ICEIC)</i>, 2022.
+<br>
 
 <p>* Indicates the first author who contributed equally</p>
-<br>
-<h2>📕 Domestic Papers </h2>  
+<h2>Domestic Papers</h2>
 
-    [3] Hyunho Ryu, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park,
-    <a href="https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE11906565&googleIPSandBox=false&mark=0&minRead=5&ipRange=false&b2cLoginYN=false&icstClss=010000&isPDFSizeAllowed=true&accessgl=Y&language=ko_KR&hasTopBanner=true">
-      Channel Modeling Analysis in Satellite-Terrestrial Integrated Network Using SDN Based Routing algorithm
-    </a>, 
-    KICS Summer Conference, June 2024.
+[4] Taehyun Kim, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park,
+<a href="https://csi.dgist.ac.kr/HOME/csi/data/upload/202507021312536864b1c50c6e8.pdf">
+End-to-End Latency Analysis of Reliable Communication in ROS 2 over Wireless Multi-hop Networks
+</a>, 
+<i>KICS Summer Conference</i>, June 2025.
 <br>
-    [2] Haewon Jeon, <span class="emphasis">Sanghoon Lee</span>, Dong-Hyung Lee, Changhee Joo, and Kyung-Joon Park,
-    <a href="https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE11813728&googleIPSandBox=false&mark=0&minRead=5&ipRange=false&b2cLoginYN=false&icstClss=010000&isPDFSizeAllowed=true&accessgl=Y&language=ko_KR&hasTopBanner=true">
-      SDN Based Multipath Routing Algorithm in Satellite-Terrestrial Integrated Network
-    </a>,
-    KAAA Spring Conference, April 2024.
+[3] Hyunho Ryu, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park,
+<a href="https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE11906565&googleIPSandBox=false&mark=0&minRead=5&ipRange=false&b2cLoginYN=false&icstClss=010000&isPDFSizeAllowed=true&accessgl=Y&language=ko_KR&hasTopBanner=true">
+Channel Modeling Analysis in Satellite-Terrestrial Integrated Network Using SDN Based Routing algorithm
+</a>, 
+<i>KICS Summer Conference</i>, June 2024.
 <br>
-    [1] Jiyeong Chae, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park,
-    <a href="https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE11737135&googleIPSandBox=false&mark=0&minRead=5&ipRange=false&b2cLoginYN=false&icstClss=010000&isPDFSizeAllowed=true&accessgl=Y&language=ko_KR&hasTopBanner=true">
-      Sound-based Machine Fault Diagnosis via Active Learning in Industrial Environments with Labeling Constraints
-    </a>, 
-    KICS Winter Conference, January 2024.
-<br><br>
-<h2>📺 Patents</h2>
+[2] Haewon Jeon, <span class="emphasis">Sanghoon Lee</span>, Dong-Hyung Lee, Changhee Joo, and Kyung-Joon Park,
+<a href="https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE11813728&googleIPSandBox=false&mark=0&minRead=5&ipRange=false&b2cLoginYN=false&icstClss=010000&isPDFSizeAllowed=true&accessgl=Y&language=ko_KR&hasTopBanner=true">
+SDN Based Multipath Routing Algorithm in Satellite-Terrestrial Integrated Network
+</a>, 
+<i>KAAA Spring Conference</i>, April 2024.
+<br>
+[1] Jiyeong Chae, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park,
+<a href="https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE11737135&googleIPSandBox=false&mark=0&minRead=5&ipRange=false&b2cLoginYN=false&icstClss=010000&isPDFSizeAllowed=true&accessgl=Y&language=ko_KR&hasTopBanner=true">
+Sound-based Machine Fault Diagnosis via Active Learning in Industrial Environments with Labeling Constraints
+</a>, 
+<i>KICS Winter Conference</i>, Jan 2024.
+<h2>Patents</h2>
 
 [2] Young-gi Hong, Kyung-Joon Park, <span class="emphasis">Sanghoon Lee</span>, Jiyeong Chae, 
 Method and Apparatus for Detecting Leakage in Water Pipeline Networks, 
-Republic of Korea, Application No. 10-2025-0008593, January 21, 2025.
+Republic of Korea, Application No. 10-2025-0008593, Jan 21, 2025.
 <br>
 [1] Kyung-Joon Park, <span class="emphasis">Sanghoon Lee</span>, Jiyeong Chae, 
 Leakage Detection Device and Method, Republic of Korea, 
-Application No. 10-2024-0004960, January 11, 2024.
-<br><br>
-<h2>🏆 Awards</h2>
+Application No. 10-2024-0004960, Jan 11, 2024.
+<h2>Awards</h2>
 [6] <a href="https://n.news.naver.com/article/448/0000467656?sid=101">2024 Aero Future Tech &amp; Business Idea Contest</a>, Excellence Award in the Future Tech Division<br>
-[5] Selected as one of the "<a href="https://www.etnews.com/20231114000010">2023 Top 100 Excellent National R&amp;D Achievements</a>" (Participant Researcher)<br>
+[5] <a href="https://www.etnews.com/20231114000010">Selected as one of the "2023 Top 100 Excellent National R&D Achievements"</a> (Participant Researcher)<br>
 [4] ACM MobiHoc Student Grant<br>
 [3] Dean's List for the Fall 2021 Semester<br>
 [2] Dean's List for the Spring 2021 Semester<br>
 [1] Dean's List for the Spring 2020 Semester
-`,
-        ProjectContent: "Upcoming..."
-      },
-      ko: {
-        navHome: "홈",
-        navAbout: "소개",
-        navAchievements: "성과",
-        navProject: "프로젝트",
-        homeTitle: "이상훈",
-        homeSubtitle: "사이버-물리 AI 연구자",
-        homeSubInfo: `CSI 연구실,
-          EECS,
-          <a href="https://www.dgist.ac.kr" target="_blank">DGIST</a> 박사과정`,
-        homeResearch: `연구 관심 분야:
-          사이버-물리 인공지능,
-          ROS 2,
-          데이터 분산 시스템,
-          강화학습,
-          기계학습,
-          모바일 로봇`,
-        newsSection: `
-          <h2>최근 소식</h2>
-          <ul>
-            <li>2025.03.25 사이버 물리 AI 연구 <a href="https://www.hankyung.com/article/202503256164h" target="_blank">뉴스</a> 보도</li>
-            <li>2025.03.06 ACM TCPS에 <a href="https://dl.acm.org/doi/abs/10.1145/3721437" target="_blank">논문</a> 채택</li>
-            <li>2025.01.26 ROS 2 연구 <a href="https://www.youtube.com/watch?v=X1iJZajHA4s" target="_blank">뉴스</a> 보도</li>
-          </ul> `,
-        aboutContent:`
-	<h1>🙆 나는…</h1>
-	
-	<h3>🧑‍💻 <span class="emphasis">Cyber-Physical AI</span> 분야의 전문가입니다.</h3>
-	<p>
-	머신러닝, 딥러닝, 강화학습 등 전방위적인 AI 기법을 부품 제조 공정, 상수도관 스마트 센서 시스템 등 프라이빗 데이터 기반의 CPS(사이버-물리 시스템)에 성공적으로 통합한 경험을 보유하고 있습니다.
-	이를 토대로 <span class="emphasis">Cyber-Physical AI</span>라는 개념을 <span class="emphasis">세계 최초</span>로 제안하였으며, 현재는 <span class="emphasis">Physical AI</span>를 현실화하는 데 주력하고 있습니다.
-	</p>
-	
-	<h3>🧑‍🔧 <span class="emphasis">ROS 2</span> 전문가입니다.</h3>
-	<p>
-	ROS는 CPS와 AI를 긴밀히 연결해 주는 핵심 플랫폼입니다. 무선 환경에서 ROS 2의 DDS(Data Distribution Service)에 대한 이론적 분석을 <span class="emphasis">세계 최초</span>로 제안하였으며, 현재 ROS 2의 실무 가이드를 연구하고 있습니다. 이를 통해 <span class="emphasis">실시간성</span> , <span class="emphasis">신뢰성</span> , <span class="emphasis">분산성</span>을 모두 충족하는 더 발전된 DDS 구현을 목표로 하고 있습니다.
-	</p>
-	
-	<h3>🤹 <span class="emphasis">협력적 리더</span>입니다.</h3>
-	<p>
-	3년간 연구실 랩장으로 활동하며, 연구과제 관리부터 팀원 역량 향상까지 다양한 리더십 경험을 쌓았습니다. <span class="emphasis">12개</span> 이상의 연구 과제에 참여했으며, 그 중 4개 이상에서는 실무책임자로 프로젝트를 주도했습니다. 또한 내부·외부 공동연구를 통해 지금까지 <span class="emphasis">16편</span> 이상의 국제 논문을 발간하며, 팀워크와 성과 창출 두 마리 토끼를 모두 잡고 있습니다.
-	</p>
- 	<br>
-        <h2>🎓 교육 </h2>
-        <ul>
-          <li>
-            <p>
-              DGIST(학위연계과정, 전기전자 컴퓨터 공학)  <span style="opacity: 0.7;"> 2022.3 - 현재  </span>
-              <br>(GPA  4.3/4.3)
-            </p>
-          </li>
-          <li>
-            <p>
-              University of California, Los Angeles (국제 학생 프로그램) <span style="opacity: 0.7;">  2019.6 - 2019.9 </span>
-              <br>
-              (GPA 4.3/4.3)
-            </p>
-          </li>
-          <li>
-            <p>
-              DGIST (학사과정, 컴퓨터 공학) <span style="opacity: 0.7;"> 2018.3 - 2022.3 </span>
-              <br>
-              (GPA 3.59/4.3)
-            </p>
-          </li>
-        </ul>
-
-        <br>
-        <h2>👨‍🔬 연구 경험 </h2>
-        <ul>
-          <li>
-            <p>
-              학부연구생 
-              <a href="https://csi.dgist.ac.kr" target="_blank">CSI lab</a>  <span style="opacity: 0.7;"> 2020.9 - 2022.3 </span>
-            </p>
-          </li>
-          <li>
-            <p>
-              2020 DGIST 여름 인턴
-              <a href="https://csi.dgist.ac.kr" target="_blank">CSI lab</a>  <span style="opacity: 0.7;">2020.8 - 2020.9</span>
-            </p>
-          </li>
-          <li>
-            <p>
-              2020 DGIST 겨울 인턴
-              <a href="https://cas.dgist.ac.kr" target="_blank">CAS lab</a>  <span style="opacity: 0.7;">2020.1 - 2020.2</span>
-            </p>
-          </li>
-        </ul>
-
- 	<br>
- 	<h2>🥼 피어 리뷰어</h2> 
-	<ul>
-	  <li>
-	    <p>
-	      <em>ELSEVIER Computers and Operations Research</em> 2025~
-	    </p>
-	  </li>
-	  <li>
-	    <p>
-	      <em>SPRINGER Machine Learning</em> 2024~
-	    </p>
-	  </li>
-	  <li>
-	    <p>
-	      <em>ELSEVIER ICT Express</em> 2024~
-	    </p>
-	  </li>
-	  <li>
-	    <p>
-	      <em>IEEE Transactions on Industrial Cyber-Physical Systems</em> 2024~
-	    </p>
-	  </li>
-	  <li>
-	    <p>
-	      <em>IEEE Access</em> 2023~
-	    </p>
-	  </li>
-	</ul>
         `,
-        achievementsContent: `
-	<h2>📕국제논문</h2>
-	
-	<h3>[제출]</h3>
-  [17] 채지영*, <span class="emphasis">이상훈</span>*, 서현교, 박경준, 
-  From Issues to Routes: A Cooperative Costmap with Lifelong Learning for Multi-AMR Navigation,
-  <i>Conference on Robot Learning (CoRL25)</i>, Under Review.
-  <br>
-
-	[16] <span class="emphasis">이상훈</span>, 박형석, 채지영, 박경준, 
-	Probabilistic Latency Analysis of the Data Distribution Service in ROS 2,
-	<i>IEEE Transactions on Industrial Informatics</i>, Under Review.
-	<br>
-	[15] 김상준, <span class="emphasis">이상훈</span>, 박경준, 
-	DIDoS: Disturbance-Induced Denial-of-Service Attack in Cyber-Physical Systems,
-	<i>IEEE Transactions on Dependable and Secure Computing</i>, Under Review.
-	<br>
-	[14] 채지영, 서현교, <span class="emphasis">이상훈</span>, 박경준, 
-	Time-Aware Costmap for Smoother and Less Disruptive AMR Navigation,
-	<i>IEEE International Conference on Automation Science and Engineering (CASE25)</i>, Under Review.
-	<br>
-	[13] <span class="emphasis">이상훈</span>, 채지영, 박경준, 
-	Integrating ROS 2 and Physical AI: Architecture and Challenges,
-	<i>The 16th International Conference on Ubiquitous and Future Networks (ICUFN25)</i>, Under Review.
-	<br>
-	
-	<h3>[출판]</h3>
-	[12] 박형석, <span class="emphasis">이상훈</span>, 박경준, 
-	An Analytical Latency Model of the Data Distribution Service in ROS 2,
-	<i>IEEE International Conference on Computer Communications (INFOCOM25)</i>, May. 2025.
-	<br>
-  [11] 채지영, 서현교, <span class="emphasis">이상훈</span>, 박경준, 
-  <a href="https://ieeexplore.ieee.org/document/10991965">
-	PINMAP: A Cost-efficient Algorithm for Glass Detection and Mapping Using Low-cost 2D LiDAR,
-  </a>,
-	<i>IEEE Transactions on Instrumentation and Measurement</i>, May. 2025.
-	<br>
-	[10] <span class="emphasis">이상훈</span>, 채지영, 박경준, 
-	<a href="https://dl.acm.org/doi/10.1145/3721437">
-	Cyber-Physical Artificial Intelligence: Systematic Research Domain for Integrating Artificial Intelligence and Cyber-Physical Systems
-	</a>, 
-	<i>ACM Transactions on Cyber-Physical Systems</i>, Feb. 2025.
-	<br>
-	[9] 김태우, <span class="emphasis">이상훈</span>, 이동형, 박경준, 
-	<a href="https://www.mdpi.com/2071-1050/17/4/1747">
-	  Priority-Driven Resource Allocation with Reuse for Platooning in 5G Vehicular Networks
-	</a>, 
-	<i>Sustainability</i>, Feb. 2025.
-	<br>
-	[8] 문시훈, <span class="emphasis">이상훈</span>, 박경준, 
-	<a href="https://www.sciencedirect.com/science/article/pii/S0278612524002139?dgcid=coauthor">
-	  Learning-enabled Flexible Job-Shop Scheduling for Scalable Smart Manufacturing
-	</a>, 
-	<i>Journal of Manufacturing Systems</i>, Sep. 2024.
-	<br>
-	[7] <span class="emphasis">이상훈</span>*,
-	채지영*, 문시훈, 박경준, 
-	<a href="https://ieeexplore.ieee.org/abstract/document/10643479/">
-	  False Alarm Prevention through Domain Knowledge-driven Machine Learning: Leakage Detection in Water Distribution Networks
-	</a>, 
-	<i>IEEE Sensors Journal</i>, Aug. 2024.
-	<br>
-	[6] 문시훈, <span class="emphasis">이상훈</span>, 전원홍, 박경준, 
-	<a href="https://ieeexplore.ieee.org/abstract/document/10285130">
-	  Learning-Enabled Network-Control Co-design for Energy-Efficient Industrial Internet of Things
-	</a>, 
-	<i>IEEE Transactions on Network and Service Management</i>, Apr. 2024.
-	<br>
-	[5] <span class="emphasis">이상훈</span>, 김진영, 위광진, 원유창, 은용순, 박경준, 
-	<a href="https://ieeexplore.ieee.org/document/10210628">
-	  Deep Reinforcement Learning-driven Scheduling in Multijob Serial Lines: A Case Study in Automotive Parts Assembly
-	</a>, 
-	<i>IEEE Transactions on Industrial Informatics</i>, Feb. 2024.
-	<br>
-	[4] 채지영*, <span class="emphasis">이상훈</span>*,
-	장준형, 홍서형, 박경준, 
-	<a href="https://ieeexplore.ieee.org/abstract/document/10285426">
-	  A Survey and Perspective on Industrial Cyber-Physical Systems (ICPS): From ICPS to AI-Augmented ICPS
-	</a>, 
-	<i>IEEE Transactions on Industrial Cyber-Physical Systems</i>, Oct. 2023.
-	<br>
-	[3] 문시훈, <span class="emphasis">이상훈</span>, 박경준, 
-	<a href="https://ieeexplore.ieee.org/document/10312647">
-	  Graph-based Reinforcement Learning for Flexible Job Shop Scheduling with Transportation Constraints
-	</a>, 
-	<i>49th Annual Conference of the IEEE Industrial Electronics Society (IECON23)</i>, Oct. 2023.
-	<br>
-	[2] 김상준, <span class="emphasis">이상훈</span>, 박경준, 
-	<a href="https://ieeexplore.ieee.org/abstract/document/9896851">
-	  Real-time controller reconfiguration for delay-resilient cyber-physical systems
-	</a>, 
-	<i>IEEE Access</i>, Oct. 2022.
-	<br>
-	[1] 김상준, <span class="emphasis">이상훈</span>, 박경준, 
-	Resilient Controller Reconfiguration under Network Delay Attack in Cyber-Physical Systems,
-	<i>2022 International Conference on Electronics, Information, and Communication (ICEIC22)</i>, 2022.
-	
-	<p>*표기는 동등하게 기여한 제1저자를 의미</p>
- 	<br>
-	<h2>📕 국내 논문 </h2>  
-	    [3] 류현호, <span class="emphasis">이상훈,</span> 박경준, 
-	    <a href="https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE11906565&googleIPSandBox=false&mark=0&minRead=5&ipRange=false&b2cLoginYN=false&icstClss=010000&isPDFSizeAllowed=true&accessgl=Y&language=ko_KR&hasTopBanner=true">
-	      위성-지상 통합 네트워크를 위한 이종망 채널 모델링 분석 및 SDN을 활용한 라우팅 경로 설계
-	    </a>, 
-	    한국통신학회 하계종합학술발표회, June. 2024.
-		<br>
-	    [2] 전해원, <span class="emphasis">이상훈</span>, 이동형, 주창희, 박경준, 
-	    <a href="https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE11813728&googleIPSandBox=false&mark=0&minRead=5&ipRange=false&b2cLoginYN=false&icstClss=010000&isPDFSizeAllowed=true&accessgl=Y&language=ko_KR&hasTopBanner=true">
-	      위성-지상망 통합 네트워크에서의 SDN 기반 다중 경로 라우팅 알고리즘 설계
-	    </a>,
-	    한국항공우주학회 춘계 학술대회, April. 2024.
-	<br>
-	    [1] 채지영, <span class="emphasis">이상훈,</span> 박경준, 
-	    <a href="https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE11737135&googleIPSandBox=false&mark=0&minRead=5&ipRange=false&b2cLoginYN=false&icstClss=010000&isPDFSizeAllowed=true&accessgl=Y&language=ko_KR&hasTopBanner=true">
-	      라벨링 제약이 있는 산업 환경에서의 Active Learning을 통한 소리 기반 기계 결함 진단
-	    </a>, 
-	    한국통신학회 동계종합학술발표회, Jan. 2024.
-     	<br><br>
-	<h2>📺 특허</h2>
-	[2] 홍영기, 박경준, <span class="emphasis">이상훈</span>, 채지영, 
-	수도관망의 누수를 탐지하는 방법 및 장치, 대한민국, 
-	출원번호 10-2025-0008593, 2025-01-21.
-	<br>
-	[1] 박경준, <span class="emphasis">이상훈</span>, 채지영, 
-	누수 탐지 장치 및 방법, 대한민국, 
-	출원번호 10-2024-0004960, 2024-01-11
-	<br><br>
-	<h2>🏆 수상</h2>
-	[6] <a href="https://n.news.naver.com/article/448/0000467656?sid=101">2024 Aero Future Tech &amp; Business 아이디어 공모전</a>, Future Tech 부문 우수상<br>
-	[5] <a href="https://www.etnews.com/20231114000010">2023년 국가연구개발 우수성과 100선</a> 수상 (참여 연구원)<br>
-	[4] ACM MobiHoc Student Grant<br>
-	[3] Dean's List for the Fall 2021 Semester<br>
-	[2] Dean's List for the Spring 2021 Semester<br>
-	[1] Dean's List for the Spring 2020 Semester
-        `,
-        ProjectContent: "예정..."
+        ProjectContent: `
+<div class="card">
+  <h2>Research Experience </h2>
+  <ul>
+    <li>
+        Undergraduate research student in 
+        <a href="https://csi.dgist.ac.kr" target="_blank">CSI lab</a>  <span style="opacity: 0.7;"> 2020.9 - 2022.3 </span>
+    </li>
+    <li>
+        2020 DGIST Summer Internship in 
+        <a href="https://csi.dgist.ac.kr" target="_blank">CSI lab</a>  <span style="opacity: 0.7;">2020.8 - 2020.9</span>
+    </li>
+    <li>
+        2020 DGIST Winter Internship in 
+        <a href="https://cas.dgist.ac.kr" target="_blank">CAS lab</a>  <span style="opacity: 0.7;">2020.1 - 2020.2</span>
+    </li>
+  </ul>
+</div>
+<div class="card">
+  <h2>Peer Reviewer</h2>
+  <ul>
+    <li>
+        <em>ELSEVIER Computers and Operations Research</em> 2025~
+    </li>
+    <li>
+        <em>SPRINGER Machine Learning</em> 2024~
+    </li>
+    <li>
+        <em>ELSEVIER ICT Express</em> 2024~
+    </li>
+    <li>
+        <em>IEEE Transactions on Industrial Cyber-Physical Systems</em> 2024~
+    </li>
+    <li>
+        <em>IEEE Access</em> 2023~
+    </li>
+  </ul>
+</div>
+`
       }
     };
-
-    function toggleLanguage() {
-      currentLang = (currentLang === 'en') ? 'ko' : 'en';
-      setLanguageTexts(currentLang);
-
-      const langToggleBtn = document.getElementById('langToggleBtn');
-      langToggleBtn.textContent = (currentLang === 'en') ? 'KOR' : 'ENG';
-
-      // 폰트 변경: 영어 -> Noto Sans, 한국어 -> Noto Sans KR
-      if (currentLang === 'ko') {
-        document.body.style.fontFamily = "'Noto Sans KR', sans-serif";
-      } else {
-        document.body.style.fontFamily = "'Noto Sans', sans-serif";
-      }
-    }
 
     /**********************************************************
      * 텍스트 교체
      **********************************************************/
-    function setLanguageTexts(lang) {
-      document.getElementById('navHome').textContent           = texts[lang].navHome;
-      document.getElementById('navAbout').textContent          = texts[lang].navAbout;
-      document.getElementById('navAchievements').textContent       = texts[lang].navAchievements;
-      document.getElementById('navProject').textContent        = texts[lang].navProject;
+    function setLanguageTexts() {
+      document.getElementById('navHome').textContent           = texts.en.navHome;
+      document.getElementById('navAbout').textContent          = texts.en.navAbout;
+      document.getElementById('navAchievements').textContent   = texts.en.navAchievements;
+      document.getElementById('navProject').textContent        = texts.en.navProject;
 
-      document.getElementById('homeTitle').textContent         = texts[lang].homeTitle;
-      document.getElementById('homeSubtitle').textContent      = texts[lang].homeSubtitle;
-      document.getElementById('homeSubInfo').innerHTML         = texts[lang].homeSubInfo;
-      document.getElementById('homeResearch').innerHTML        = texts[lang].homeResearch;
+      document.getElementById('homeTitle').textContent         = texts.en.homeTitle;
+      document.getElementById('homeSubtitle').textContent      = texts.en.homeSubtitle;
+      document.getElementById('homeSubInfo').innerHTML         = texts.en.homeSubInfo;
+      document.getElementById('homeResearch').innerHTML        = texts.en.homeResearch;
 
-      document.getElementById("newsSection").innerHTML         = texts[lang].newsSection;
+      document.getElementById("newsSection").innerHTML        = texts.en.newsSection;
 
-      document.getElementById('aboutContent').innerHTML      = texts[lang].aboutContent;
-      document.getElementById('achievementsContent').innerHTML  = texts[lang].achievementsContent;
-      document.getElementById('ProjectContent').textContent    = texts[lang].ProjectContent;
+      document.getElementById('aboutContent').innerHTML        = texts.en.aboutContent;
+      document.getElementById('achievementsContent').innerHTML = texts.en.achievementsContent;
+      document.getElementById('ProjectContent').innerHTML      = texts.en.ProjectContent;
     }
 
     /**********************************************************
      * 탭(섹션) 전환
      **********************************************************/
-    function showSection(sectionId) {
-      const sections = document.querySelectorAll('.section');
-      sections.forEach(section => {
-        section.classList.remove('active');
-      });
-
-      const targetSection = document.getElementById(sectionId);
-      if (targetSection) {
-        targetSection.classList.add('active');
-      }
-    }
+    // showSection 함수 및 관련 호출 삭제
   </script>
 </body>
 </html>
