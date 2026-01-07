@@ -1355,9 +1355,8 @@ achievementsContent: `
     </div>
   </div>
         `,
-        ProjectContent: `
+ProjectContent: `
   <style>
-    /* 기존 스타일링 시스템 유지 */
     .review-row { 
       display: flex; 
       gap: 1.5rem; 
@@ -1374,28 +1373,30 @@ achievementsContent: `
       font-size: 0.85em; 
       opacity: 0.4; 
     }
-    .review-category {
-      font-size: 0.65em;
-      opacity: 0.5;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
     .review-info { 
       flex: 1; 
       font-size: 0.9em;
-      line-height: 1.6;
+      line-height: 1.8; /* 가독성을 위해 줄간격 소폭 확대 */
       color: inherit;
+    }
+    .pub-group {
+      margin-bottom: 0.5rem;
+    }
+    .pub-group:last-child {
+      margin-bottom: 0;
+    }
+    .publisher {
+      font-size: 0.75em;
+      opacity: 0.4;
+      text-transform: uppercase;
+      margin-right: 0.8rem;
+      letter-spacing: 0.5px;
     }
     .journal-name {
       display: inline;
-      font-style: italic; /* 저널명은 관례에 따라 이탤릭 유지 */
+      font-style: italic;
       opacity: 0.8;
-    }
-    .publisher {
-      font-size: 0.8em;
-      opacity: 0.4;
-      text-transform: uppercase;
-      margin-right: 0.5rem;
+      margin-right: 1rem;
     }
   </style>
 
@@ -1404,14 +1405,37 @@ achievementsContent: `
 
     <div class="review-row">
       <div class="review-left">
-        <div class="review-year">2025 — Present</div>
-
+        <div class="review-year">2026 — Present</div>
       </div>
-      <div class="news-content">
-        <span class="publisher">Elsevier</span> <span class="journal-name">Expert Systems With Applications</span> &nbsp;
-        <span class="publisher">Elsevier</span> <span class="journal-name">Computers and Operations Research</span> <br>
-        <span class="publisher">IEEE</span> <span class="journal-name">Systems Journal</span> &nbsp;
-        <span class="publisher">IEEE</span> <span class="journal-name">Transactions on Network and Service Management (TNSM)</span>
+      <div class="review-info">
+        <div class="pub-group">
+          <span class="publisher">Springer Nature</span>
+          <span class="journal-name">Artificial Intelligence Review</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-row">
+      <div class="review-left">
+        <div class="review-year">2025 — Present</div>
+      </div>
+      <div class="review-info">
+        <div class="pub-group">
+          <span class="publisher">Springer Nature</span>
+          <span class="journal-name">Scientific Reports</span>
+          <span class="journal-name">International Journal of Computational Intelligence Systems</span>
+        </div>
+        <div class="pub-group">
+          <span class="publisher">IEEE</span>
+          <span class="journal-name">Journal of Communications and Networks (JCN)</span>
+          <span class="journal-name">Systems Journal</span>
+          <span class="journal-name">Transactions on Network and Service Management (TNSM)</span>
+        </div>
+        <div class="pub-group">
+          <span class="publisher">Elsevier</span>
+          <span class="journal-name">Expert Systems With Applications</span>
+          <span class="journal-name">Computers and Operations Research</span>
+        </div>
       </div>
     </div>
 
@@ -1419,10 +1443,19 @@ achievementsContent: `
       <div class="review-left">
         <div class="review-year">2024 — Present</div>
       </div>
-      <div class="news-content">
-        <span class="publisher">Springer</span> <span class="journal-name">Machine Learning</span> &nbsp;
-        <span class="publisher">Elsevier</span> <span class="journal-name">ICT Express</span> <br>
-        <span class="publisher">IEEE</span> <span class="journal-name">Transactions on Industrial Cyber-Physical Systems (TICPS)</span>
+      <div class="review-info">
+        <div class="pub-group">
+          <span class="publisher">Springer</span>
+          <span class="journal-name">Machine Learning</span>
+        </div>
+        <div class="pub-group">
+          <span class="publisher">Elsevier</span>
+          <span class="journal-name">ICT Express</span>
+        </div>
+        <div class="pub-group">
+          <span class="publisher">IEEE</span>
+          <span class="journal-name">Transactions on Industrial Cyber-Physical Systems (TICPS)</span>
+        </div>
       </div>
     </div>
 
@@ -1430,8 +1463,11 @@ achievementsContent: `
       <div class="review-left">
         <div class="review-year">2023 — Present</div>
       </div>
-      <div class="news-content">
-        <span class="publisher">IEEE</span> <span class="journal-name">Access</span>
+      <div class="review-info">
+        <div class="pub-group">
+          <span class="publisher">IEEE</span>
+          <span class="journal-name">Access</span>
+        </div>
       </div>
     </div>
   </div>
