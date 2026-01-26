@@ -429,6 +429,7 @@
       const selected = document.getElementById('pubsSelected');
       const more = document.getElementById('pubsMore');
       const btn = document.getElementById('pubsToggleBtn');
+      const statsText = document.getElementById('pubStatsText');
       if (!more || !btn) return;
       const isHidden = more.style.display === 'none' || more.style.display === '';
       if (selected) {
@@ -436,6 +437,9 @@
       }
       more.style.display = isHidden ? 'block' : 'none';
       btn.textContent = isHidden ? 'Selected Paper' : 'Show All';
+      if (statsText) {
+        statsText.style.display = isHidden ? 'none' : 'block';
+      }
     }
 
     /**********************************************************
@@ -535,9 +539,21 @@
     font-size: 1.25em;
     margin-bottom: 1.5rem;
     letter-spacing: 0.5px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #000000;
     display: inline-block;
     padding-right: 40px;
+  }
+  .news-title {
+    font-size: 1.25em;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #000000;
+    display: inline-block;
+    padding-right: 40px;
+  }
+  body.dark-mode .section-title,
+  body.dark-mode .news-title {
+    border-bottom: 1px solid #ffffff;
   }
   .news-item {
     display: flex;
@@ -794,32 +810,27 @@
   </div>
 
   <div class="edu-container" style="margin-top: 2rem;">
-    <h2 class="section-title" style="margin-bottom: 1rem;">Research Experience</h2>
-
-    <div class="edu-row">
-      <div class="edu-year">2022.02 — 2026.02</div>
-      <div class="edu-details">
-        <div class="edu-inst"><a href="https://csi.dgist.ac.kr" target="_blank" style="color: inherit; text-decoration: none;">CSI Lab, DGIST</a></div>
-        <div class="edu-meta"> Graduate Research Assistant</div>
-        </div>
-    </div>
-
-    <div class="edu-row">
-      <div class="edu-year">2020.08 — 2022.03</div>
-      <div class="edu-details">
-        <div class="edu-inst"><a href="https://csi.dgist.ac.kr" target="_blank" style="color: inherit; text-decoration: none;">CSI Lab, DGIST</a></div>
-        <div class="edu-meta"> Research Intern (Summer) & Undergraduate Research Student</div>
+    <h2 class="section-title" style="margin-bottom: 1rem;">Technical Skills</h2>
+    <div style="margin-top: 0.5rem;">
+      <div style="margin-bottom: 0.8rem; display: flex; align-items: baseline;">
+        <div style="font-weight: 600; margin-right: 0.5rem; font-size: 0.95em; flex-shrink: 0;">Systems:</div>
+        <div style="font-size: 0.9em; line-height: 1.6; opacity: 0.85;">C++, Python, Rust, Linux (Kernel/Driver Analysis), Docker, Git</div>
+      </div>
+      <div style="margin-bottom: 0.8rem; display: flex; align-items: baseline;">
+        <div style="font-weight: 600; margin-right: 0.5rem; font-size: 0.95em; flex-shrink: 0;">Middleware:</div>
+        <div style="font-size: 0.9em; line-height: 1.6; opacity: 0.85;">ROS 2, DDS (FastDDS, CycloneDDS, RTI Connext), Zenoh, TCP/IP, UDP</div>
+      </div>
+      <div style="margin-bottom: 0.8rem; display: flex; align-items: baseline;">
+        <div style="font-weight: 600; margin-right: 0.5rem; font-size: 0.95em; flex-shrink: 0;">Intelligence:</div>
+        <div style="font-size: 0.9em; line-height: 1.6; opacity: 0.85;">PyTorch, TensorFlow, Nav2, MoveIt 2, Cartographer, AMCL</div>
+      </div>
+      <div style="margin-bottom: 0; display: flex; align-items: baseline;">
+        <div style="font-weight: 600; margin-right: 0.5rem; font-size: 0.95em; flex-shrink: 0;">Simulation:</div>
+        <div style="font-size: 0.9em; line-height: 1.6; opacity: 0.85;">NVIDIA Isaac Sim, MuJoCo, Gazebo, MATLAB, NS-3, OMNeT++</div>
       </div>
     </div>
+  </div>
 
-    <div class="edu-row">
-      <div class="edu-year">2020.01 — 2020.02</div>
-      <div class="edu-details">
-        <div class="edu-inst"><a href="https://cas.dgist.ac.kr" target="_blank" style="color: inherit; text-decoration: none;">CAS Lab, DGIST</a></div>
-        <div class="edu-meta"> Research Intern (Winter)</div>
-        </div>
-      </div>
-    </div>
   </div>
 `,
 
@@ -907,9 +918,12 @@ achievementsContent: `
 </div>
 
   <div class="pub-container">
-<h2 class="section-title">International Papers</h2>
+<h2 class="section-title" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+  International Papers
+  <button id="pubsToggleBtn" onclick="togglePubs()" style="margin: 0; padding: 0.25rem 0.6rem; border: 1px solid currentColor; border-radius: 6px; background: transparent; color: inherit; font-size: 0.8rem; cursor: pointer; transition: background-color 0.2s, border-color 0.2s, color 0.2s;">Show All</button>
+</h2>
 
-  <button id="pubsToggleBtn" onclick="togglePubs()">Show All</button>
+  <p id="pubStatsText" style="font-size: 0.85em; opacity: 0.6; margin-bottom: 1rem;">Selected Paper in total 25+ international peer-reviewed papers (including 13 first or co-first authored papers)</p>
 
   <div id="pubsSelected">
   <div class="pub-row">
@@ -919,7 +933,7 @@ achievementsContent: `
         <div class="pub-info">
           <a href="#" class="pub-title" target="_blank">Discovery Storm: Scalability Analysis of DDS and Zenoh in Large-Scale Wireless Robotic ...</a>
           <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Jiyeong Chae, and Kyung-Joon Park</div>
-          <div class="pub-venue">Under Review, 2026</div>
+          <div class="pub-venue">Under Review, IEEE INFOCOM 2026 Workshop</div>
         </div>
       </div>
 
@@ -930,7 +944,7 @@ achievementsContent: `
         <div class="pub-info">
           <a href="#" class="pub-title" target="_blank">LIMA: Local Intersection Marshaling Algorithm for Multi-Agent Path Finding in Large-Scale ...</a>
           <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>*, Jisang Yu*, Geon-pyo Kim, and Kyung-Joon Park</div>
-          <div class="pub-venue">Under Review, 2026</div>
+          <div class="pub-venue">Under Review, IEEE Robotics and Automation Letters (RA-L)</div>
         </div>
       </div>
 
@@ -941,40 +955,40 @@ achievementsContent: `
         <div class="pub-info">
           <a href="#" class="pub-title" target="_blank">Exploiting ROS 2's Blind Spot: Cross-Layer Attacks from Discovery to ARP Spoofing</a>
           <div class="pub-authors">Hyunho Ryu*, <span class="emphasis">Sanghoon Lee*</span>, Minchan Kwak, and Kyung-Joon Park</div>
-          <div class="pub-venue">Under Review, 2026</div>
+          <div class="pub-venue">Under Review, IEEE ICRA 2026</div>
         </div>
       </div>
 
   <div class="pub-row">
     <div class="pub-left">
-      <div class="pub-category">ArXiv <br> Preprinted</div>
+      <div class="pub-category">Journal <br> Full Paper</div>
     </div>
     <div class="pub-info">
       <a href="https://arxiv.org/abs/2509.03381" target="_blank" class="pub-title">Dependency Chain Analysis of ROS 2 DDS QoS Policies: From Life-Cycle Tutorial ...</a>
       <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Junha Kang, and Kyung-Joon Park</div>
-      <div class="pub-venue">ArXiv, Preprinted, Sep. 2025</div>
+      <div class="pub-venue">Major Revision, IEEE Internet of Things Journal</div>
     </div>
   </div>
 
   <div class="pub-row">
     <div class="pub-left">
-      <div class="pub-category">ArXiv <br> Preprinted</div>
+      <div class="pub-category">Journal <br> Full Paper</div>
     </div>
     <div class="pub-info">
       <a href="https://arxiv.org/abs/2508.11366" target="_blank" class="pub-title">Optimizing ROS 2 Communication for Wireless Robotic Systems</a>
       <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Taehun Kim, and Kyung-Joon Park</div>
-      <div class="pub-venue">ArXiv, Preprinted, Aug. 2025</div>
+      <div class="pub-venue">Under Review, IEEE Robotics and Automation Letters (RA-L)</div>
     </div>
   </div>
 
   <div class="pub-row">
     <div class="pub-left">
-      <div class="pub-category">ArXiv <br> Preprinted</div>
+      <div class="pub-category">Journal <br> Full Paper</div>
     </div>
     <div class="pub-info">
       <a href="https://arxiv.org/abs/2508.10413" target="_blank" class="pub-title">Probabilistic Latency Analysis of the Data Distribution Service in ROS 2</a>
       <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Hyung-Seok Park, Jiyeong Chae, and Kyung-Joon Park</div>
-      <div class="pub-venue">ArXiv, Preprinted, Aug. 2025</div>
+      <div class="pub-venue">Under Review, IEEE Transactions on Wireless Communications</div>
     </div>
   </div>
 
@@ -1043,7 +1057,7 @@ achievementsContent: `
         <div class="pub-info">
           <a href="#" class="pub-title" target="_blank">Discovery Storm: Scalability Analysis of DDS and Zenoh in Large-Scale Wireless Robotic ...</a>
           <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Jiyeong Chae, and Kyung-Joon Park</div>
-          <div class="pub-venue">Under Review, 2026</div>
+          <div class="pub-venue">Under Review, IEEE INFOCOM 2026 Workshop</div>
         </div>
       </div>
 
@@ -1055,7 +1069,7 @@ achievementsContent: `
         <div class="pub-info">
           <a href="#" class="pub-title" target="_blank">LIMA: Local Intersection Marshaling Algorithm for Multi-Agent Path Finding in Large-Scale ...</a>
           <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>*, Jisang Yu*, Geon-pyo Kim, and Kyung-Joon Park</div>
-          <div class="pub-venue">Under Review, 2026</div>
+          <div class="pub-venue">Under Review, IEEE Robotics and Automation Letters (RA-L)</div>
         </div>
       </div>
 
@@ -1079,7 +1093,7 @@ achievementsContent: `
         <div class="pub-info">
           <a href="#" class="pub-title" target="_blank">Exploiting ROS 2's Blind Spot: Cross-Layer Attacks from Discovery to ARP Spoofing</a>
           <div class="pub-authors">Hyunho Ryu*, <span class="emphasis">Sanghoon Lee*</span>, Minchan Kwak, and Kyung-Joon Park</div>
-          <div class="pub-venue">Under Review, 2026</div>
+          <div class="pub-venue">Under Review, IEEE ICRA 2026</div>
         </div>
       </div>
 
@@ -1091,7 +1105,7 @@ achievementsContent: `
     <div class="pub-info">
       <a href="https://arxiv.org/abs/2509.03381" target="_blank" class="pub-title">Dependency Chain Analysis of ROS 2 DDS QoS Policies: From Life-Cycle Tutorial ...</a>
       <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Junha Kang, and Kyung-Joon Park</div>
-      <div class="pub-venue">ArXiv, Preprinted, Sep. 2025</div>
+      <div class="pub-venue">Major Revision, IEEE Internet of Things Journal</div>
     </div>
   </div>
 
@@ -1103,7 +1117,7 @@ achievementsContent: `
     <div class="pub-info">
       <a href="https://arxiv.org/abs/2508.11366" target="_blank" class="pub-title">Optimizing ROS 2 Communication for Wireless Robotic Systems</a>
       <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Taehun Kim, and Kyung-Joon Park</div>
-      <div class="pub-venue">ArXiv, Preprinted, Aug. 2025</div>
+      <div class="pub-venue">Under Review, IEEE Robotics and Automation Letters (RA-L)</div>
     </div>
   </div>
 
@@ -1115,7 +1129,7 @@ achievementsContent: `
     <div class="pub-info">
       <a href="https://arxiv.org/abs/2508.10413" target="_blank" class="pub-title">Probabilistic Latency Analysis of the Data Distribution Service in ROS 2</a>
       <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Hyung-Seok Park, Jiyeong Chae, and Kyung-Joon Park</div>
-      <div class="pub-venue">ArXiv, Preprinted, Aug. 2025</div>
+      <div class="pub-venue">Under Review, IEEE Transactions on Wireless Communications</div>
     </div>
   </div>
 
@@ -1421,7 +1435,10 @@ achievementsContent: `
       display: flex; 
       gap: 1.5rem; 
       padding: 1rem 0; 
-      border-bottom: 1px solid #f2f2f2; 
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    body.dark-mode .award-row {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     .award-left {
       flex: 0 0 100px; 
@@ -1467,7 +1484,36 @@ achievementsContent: `
     }
   </style>
 
-  <div class="pub-container">
+  <div class="edu-container" style="margin-top: 0;">
+    <h2 class="section-title" style="margin-bottom: 1rem;">Research Experience</h2>
+
+    <div class="edu-row">
+      <div class="edu-year">2022.02 — 2026.02</div>
+      <div class="edu-details">
+        <div class="edu-inst"><a href="https://csi.dgist.ac.kr" target="_blank" style="color: inherit; text-decoration: none;">CSI Lab, DGIST</a></div>
+        <div class="edu-meta"> Graduate Research Assistant</div>
+        </div>
+    </div>
+
+    <div class="edu-row">
+      <div class="edu-year">2020.08 — 2022.03</div>
+      <div class="edu-details">
+        <div class="edu-inst"><a href="https://csi.dgist.ac.kr" target="_blank" style="color: inherit; text-decoration: none;">CSI Lab, DGIST</a></div>
+        <div class="edu-meta"> Research Intern (Summer) & Undergraduate Research Student</div>
+      </div>
+    </div>
+
+    <div class="edu-row">
+      <div class="edu-year">2020.01 — 2020.02</div>
+      <div class="edu-details">
+        <div class="edu-inst"><a href="https://cas.dgist.ac.kr" target="_blank" style="color: inherit; text-decoration: none;">CAS Lab, DGIST</a></div>
+        <div class="edu-meta"> Research Intern (Winter)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pub-container" style="margin-top: 2rem;">
     <h2 class="news-title">Honors & Awards</h2>
 
     <div class="award-row">
@@ -1550,7 +1596,10 @@ ProjectContent: `
       display: flex; 
       gap: 1.5rem; 
       padding: 1.2rem 0; 
-      border-bottom: 1px solid #f2f2f2; 
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    body.dark-mode .review-row {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     .review-left {
       flex: 0 0 100px; 
