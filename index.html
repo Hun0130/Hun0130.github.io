@@ -2,1959 +2,1482 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Sanghoon Lee</title>
-  <!-- 파비콘 -->
+  <title>Sanghoon Lee — Cyber-Physical AI Researcher · DGIST</title>
+  <meta name="description" content="Full-Stack Researcher for Embodied Intelligence. ROS 2 · DDS · Physical AI · CPS. InnoCore Postdoctoral Fellow at DGIST." />
   <link rel="icon" type="image/png" href="Mark.png" />
-  <!-- OG (페이스북, 카톡 등) -->
-  <meta property="og:title" content="Sanghoon Lee" />
-  <meta property="og:description" content="Cyber-Physical AI Researcher" />
+  <link rel="shortcut icon" type="image/png" href="Mark.png" />
+  <meta property="og:title" content="Sanghoon Lee — Cyber-Physical AI Researcher" />
+  <meta property="og:description" content="Cyber-Physical AI · ROS 2 · Physical AI · CPS" />
   <meta property="og:image" content="Mark.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <!-- 트위터 카드 -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Sanghoon Lee" />
-  <meta name="twitter:description" content="Cyber-Physical AI Researcher" />
+  <meta name="twitter:description" content="Cyber-Physical AI Researcher · DGIST" />
   <meta name="twitter:image" content="Mark.png" />
-  <meta name="viewport" content="width=1200, user-scalable=no">
-  <!-- ... 나머지 CSS, 폰트 링크 등 -->
-  </head>
-
-<!-- 구글 폰트 (Source Sans Pro, Roboto Mono) : 400, 700 버전 로드 -->
-<link
-  href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&family=Roboto+Mono:wght@400;500;700&display=swap"
-  rel="stylesheet"/>
-<link rel="icon" type="image/png" href="Mark.png" />
-<link rel="shortcut icon" type="image/png" href="Mark.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="Mark.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Crimson+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <style>
-  /* 모든 요소에 box-sizing 적용 */
-  * {
-    box-sizing: border-box;
-  }
-
-  /* 전역 폰트 크기: 기존 대비 1.6배 */
-  html {
-    font-size: 160%;
-    -webkit-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-  }
-
-  /* 기본 레이아웃 및 애니메이션 */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { font-size: 16px; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding-left: 32px;
-    padding-right: 32px;
-    font-family: 'Source Sans Pro', Arial, sans-serif;
-    /* 기본 폰트 두께를 normal(또는 400)로 지정 */
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 400;
+    line-height: 1.6;
     transition: background-color 0.3s, color 0.3s;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-    /* 라이트 모드 */
-    body.light-mode {
-      background-color: #ffffff;
-      color: #333;
-    }
-    
-    /* 다크 모드 */
-    body.dark-mode {
-      background-color: #333;
-      color: #f0f0f0;
-    }
-
-	/* 강조(Emphasis) 색상 + Bold */
-	body.light-mode .emphasis {
-	  color: #2C3E50;
-	  font-weight: 700; /* 굵은 폰트 설정 */
-	}
-	
-	body.dark-mode .emphasis {
-	  color: #6BB6FF; /* 다크 모드 강조색 (밝은 파랑 계열) */
-	  font-weight: 700;
-	}
-
-    /* 링크 색상 */
-    a {
-      text-decoration: none;
-    }
-    body.light-mode a {
-      color: #1b78cc;
-    }
-    body.dark-mode a {
-      color: #87CEEB; /* 다크 모드 링크 색상 (밝은 하늘색) */
-    }
-
-    /*******************************************************
-     * 상단 헤더 & 메뉴
-     *******************************************************/
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.5rem 1rem;
-      border-bottom: 1px solid #ccc;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: inherit;
-    }
-    .top-buttons {
-      display: flex;
-      gap: 0.5rem;
-    }
-    .top-buttons button {
-      cursor: pointer;
-      padding: 0.3rem 0.6rem;
-      border: none;
-      border-radius: 5px;
-      background: none;
-      font-size: 1rem;
-      color: inherit;
-    }
-    .top-buttons button:hover {
-      background: rgba(0,0,0,0.1);
-    }
-    nav {
-      display: flex;
-      gap: 1rem;
-    }
-    nav a:hover {
-      text-decoration: none;
-    }
-
-    /*******************************************************
-     * 본문
-     *******************************************************/
-    .content {
-      max-width: 1200px;
-      width: 100%;
-      margin: 0 auto;
-    }
-    /* .section, .section.active 관련 display CSS 모두 삭제 */
-    .section {
-      scroll-margin-top: 70px;
-    }
-
-    /*******************************************************
-     * 홈 섹션 (2열 레이아웃)
-     *******************************************************/
-    .home-header {
-      display: flex;
-      /* mobile mode 제거: no wrap */
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-    }
-    .profile-left {
-      flex: 0 0 auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .profile-right {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .profile-pic {
-      width: 150px;
-      height: auto;
-      border-radius: 4px;
-      border: none;
-    }
-    .name-line {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 0.5rem;
-      margin: 0.5rem 0;
-    }
-    .name-line h1 {
-      font-size: 2rem;
-      margin: 0;
-    }
-    .name-line .subtitle {
-      font-size: 1.2rem;
-      margin: 0;
-    }
-    #homeSubInfo {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-    .Project-icons {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 0.5rem 1.5rem;
-    margin: 1rem 0;
+  /* ---------- Theme (Pantone 285C deep blue + 2985C sky blue) ---------- */
+  :root {
+    /* light mode (default) */
+    --accent: #0072CE;            /* Pantone 285 C */
+    --accent-soft: rgba(0, 114, 206, 0.08);
+    --accent-secondary: #59CBE8;  /* Pantone 2985 C */
+    --bg: #FFFFFF;
+    --bg-elevated: #F7F9FC;
+    --text: #0B1220;
+    --text-muted: #4F5B6F;
+    --text-faint: #8B96A8;
+    --border: #E2E8F0;
+    --card-bg: #FFFFFF;
+    --highlight: #0072CE;
   }
-    .Project-icons a:hover {
-      text-decoration: underline;
-    }
-    .research-interest {
-      margin-top: 1rem;
-      line-height: 1.6;
-    }
+  body.dark-mode {
+    --accent: #59CBE8;            /* Pantone 2985 C pops on dark */
+    --accent-soft: rgba(89, 203, 232, 0.12);
+    --accent-secondary: #0072CE;
+    --bg: #0B1220;
+    --bg-elevated: #131C2E;
+    --text: #E2E8F0;
+    --text-muted: #8FA0B7;
+    --text-faint: #586677;
+    --border: #1E2A40;
+    --card-bg: #131C2E;
+    --highlight: #59CBE8;
+  }
+  body { background: var(--bg); color: var(--text); }
 
-    /*******************************************************
-     * AI / ROS / CPS 디자인
-     *******************************************************/
-    .design-element {
-      display: flex;  
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 0;
-      margin-bottom: 1rem;
-      text-align: center;
-      font-weight: bold;
-      line-height: 1.5;
-    }
-    /* AI, CPS: 세로 배치 (큰글자 + 괄호) */
-    .design-block.ai-cps-block {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    /* 큰 텍스트 (AI, CPS) */
-    .big-text {
-      font-size: 1.4rem; 
-    }
-    /* 괄호 안 문구 */
-    .small-text {
-      font-size: 0.8rem; 
-      opacity: 0.5;
-      margin-top: 0.2rem;
-      font-weight: 300;
-    }
-    /* 양방향 화살표 */
-    .arrow {
-      font-size: 1.5rem;
-      margin: 0 0.5rem;
-    }
-    /* ROS 아이콘 크기 => 글자 크기 1.4rem과 동일 높이 */
-    .ros-icon {
-      height: 1.4rem;
-      width: auto;
-      vertical-align: middle;
-    }
+  a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+  a:hover { opacity: 0.7; }
 
-    /*******************************************************
-     * 푸터
-     *******************************************************/
-    footer {
-      text-align: center;
-      font-size: 0.8rem;
-      padding: 1rem;
-    }
-    h2 {
-      font-size: 1.3rem;
-      margin-top: 3rem;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
+  /* ---------- Container ---------- */
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
+  @media (max-width: 720px) { .container { padding: 0 1.25rem; } }
 
-  .keyword {
-    display: inline-block;
-    background: #cbd5e1;
-    color: #1e293b;
-    border-radius: 12px;
-    padding: 2px 10px;
-    margin-right: 4px;
-    font-size: 0.85em;
-    font-family: 'Poppins', 'Inter', Arial, sans-serif;
-    font-weight: 500;
+  /* ---------- Top Nav ---------- */
+  .topnav {
+    position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid var(--border);
+  }
+  body.dark-mode .topnav { background: rgba(11, 18, 32, 0.7); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 0; }
+  .logo {
+    font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 0.95rem;
+    color: var(--text); letter-spacing: 0.05em;
+  }
+  .logo .accent { color: var(--accent); }
+  .nav-links { display: flex; gap: 1.6rem; list-style: none; padding: 0; margin: 0; }
+  .nav-links a {
+    color: var(--text-muted); font-size: 0.88rem; font-weight: 500;
     letter-spacing: 0.01em;
   }
-  body.dark-mode .keyword {
-    background: #3a4a5a;
-    color: #e0e6ed;
+  .nav-links a:hover { color: var(--text); opacity: 1; }
+  .theme-toggle {
+    background: none; border: 1px solid var(--border); color: var(--text);
+    padding: 0.35rem 0.7rem; border-radius: 6px; cursor: pointer; font-size: 0.95rem;
+    transition: all 0.2s;
   }
-  .paper-item {
-    display: block;
-    margin-bottom: 0.0em;
+  .theme-toggle:hover { background: var(--accent-soft); border-color: var(--accent); }
+  @media (max-width: 720px) { .nav-links { display: none; } }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 5rem 0 4rem; }
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 280px; gap: 3rem; align-items: center;
   }
-  .paper-block {
-    margin-bottom: 0.5em; /* 논문 블록 사이 간격 */
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-photo-wrap { order: -1; max-width: 200px; }
   }
-  /* News toggle button */
-  #newsToggleBtn {
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em;
+    margin-bottom: 1.2rem; font-weight: 500;
+  }
+  .hero-name {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 600; letter-spacing: -0.02em; line-height: 1;
+    margin: 0 0 0.6rem; color: var(--text);
+  }
+  .hero-title {
+    font-size: 1.25rem; font-weight: 500; color: var(--text-muted);
+    margin: 0 0 1.5rem; letter-spacing: -0.01em;
+  }
+  .hero-tagline {
+    font-size: 1.05rem; line-height: 1.65; color: var(--text-muted);
+    max-width: 580px; margin: 0 0 1rem;
+  }
+  .hero-tagline em { color: var(--accent); font-style: normal; font-weight: 600; }
+  .hero-tagline-secondary {
+    font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);
+    max-width: 700px; margin: 0;
+  }
+  .hero-photo-wrap {
+    display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  }
+  .hero-photo {
+    width: 100%; max-width: 280px; aspect-ratio: 1/1; object-fit: cover;
+    border-radius: 14px; border: 1px solid var(--border);
+  }
+  .hero-links {
+    display: flex; flex-wrap: wrap; gap: 0.5rem 0.85rem;
+    justify-content: center; max-width: 280px;
+  }
+  .hero-links a {
+    color: var(--text); font-size: 0.85rem; font-weight: 500;
+    border-bottom: 1px solid var(--border); padding-bottom: 2px;
+  }
+  .hero-links a:hover { color: var(--accent); border-color: var(--accent); opacity: 1; }
+
+  /* ---------- Stats ---------- */
+  .stats-bar {
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 2rem 0; background: var(--bg-elevated);
+  }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+  }
+  @media (max-width: 720px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700;
+    color: var(--accent); line-height: 1; letter-spacing: -0.02em;
+  }
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+    color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.12em;
     margin-top: 0.5rem;
-    padding: 0.25rem 0.6rem;
-    border: 1px solid currentColor;
-    border-radius: 6px;
-    background: transparent;
-    color: inherit;
-    font-size: 0.8rem; /* match .small-text */
-    cursor: pointer;
-    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
   }
-  body.light-mode #newsToggleBtn:hover {
-    background: rgba(0,0,0,0.08);
-  }
-  body.dark-mode #newsToggleBtn:hover {
-    background: rgba(255,255,255,0.1);
-  }
-  </style>
-</head>
 
-<body class="dark-mode">
-  <header>
-    <div class="top-buttons">
-      <button onclick="toggleMode()">☀</button>
-    </div>
-    <nav>
-      <a href="#home" id="navHome">Home</a>
-      <a href="#about" id="navAbout">About</a>
-      <a href="#achievements" id="navAchievements">Achievements</a>
-      <a href="#project" id="navProject">Activities</a>
-    </nav>
-  </header>
-
-  <!-- 메인 콘텐츠 -->
-  <div class="content">
-    <!-- 홈 섹션 -->
-    <div class="section" id="home">
-      <div class="home-header">
-        <div class="profile-left">
-          <img src="Profile.png" alt="Sanghoon's Profile" class="profile-pic" />
-        </div>
-        <div class="profile-right">
-          <div class="name-line">
-            <h1 class="emphasis" id="homeTitle"></h1>
-            <span class="subtitle" id="homeSubtitle"></span>
-          </div>
-          <p id="homeSubInfo"></p>
-        </div>
-      </div>
-
-      <div class="Project-icons" id="homeProjects">
-        <a href="" target="_blank"> 📧 leesh2913@dgist.ac.kr</a>
-        <a href="https://scholar.google.co.kr/citations?user=W2iqqvAAAAAJ&hl=ko" target="_blank">🎓 Google Scholar</a>
-        <a href="https://github.com/hun0130" target="_blank">🐙 GitHub</a>
-        <a href="https://www.linkedin.com/in/sanghoon-lee-1b5929301" target="_blank">🔗 LinkedIn</a>
-        <a href="CV_Sanghoon_Lee.pdf" target="_blank" rel="noopener">📝 CV</a>
-      </div>
-
-      <!-- 연구 관심 분야 -->
-      <div class="research-interest" id="homeResearch"></div>
-
-      <!-- News 섹션 (홈 섹션 안으로 이동) -->
-      <div id="newsSection"></div>
-    </div>
-	  
-    <!-- About 섹션 -->
-    <div class="section" id="about">
-      <p id="aboutContent"></p>
-    </div>
-
-    <!-- Achievements 섹션 -->
-    <div class="section" id="achievements">
-      <p id="achievementsContent"></p>
-    </div>
-
-    <!-- Project 섹션 -->
-    <div class="section" id="project">
-      <div id="ProjectContent"></div>
-    </div>
-  </div>
-
-  <footer>
-    © Sanghoon Lee (DGIST) all rights reserved.
-  </footer>
-
-  <script>
-    /**********************************************************
-     * 1. 페이지 로드 시 홈 섹션만 보이도록
-     **********************************************************/
-    window.addEventListener('DOMContentLoaded', () => {
-      document.body.className = 'dark-mode';
-      setLanguageTexts();
-      updateIconsForTheme(); // 초기 아이콘 (light)
-
-      // Home 클릭 시 페이지 최상단으로 스무스 스크롤
-      const homeLink = document.getElementById('navHome');
-      if (homeLink) {
-        homeLink.addEventListener('click', function (e) {
-          e.preventDefault();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-      }
-    });
-
-    /**********************************************************
-     * 2. 라이트/다크 모드 토글
-     **********************************************************/
-    function toggleMode() {
-      const bodyElement = document.body;
-      if (bodyElement.classList.contains('light-mode')) {
-        bodyElement.classList.remove('light-mode');
-        bodyElement.classList.add('dark-mode');
-      } else {
-        bodyElement.classList.remove('dark-mode');
-        bodyElement.classList.add('light-mode');
-      }
-      // 아이콘 교체
-      updateIconsForTheme();
-    }
-
-    // 아이콘 교체 함수 (ROS만 아이콘, AI/CPS는 텍스트)
-    function updateIconsForTheme() {
-      const isDark = document.body.classList.contains('dark-mode');
-      const rosIcon = document.getElementById('ROSIcon');
-      if (!rosIcon) return;
-      rosIcon.src = isDark ? 'ROS2_dark.png' : 'ROS2_light.png';
-    }
-
-    // News 더보기 토글 (상위 5개 이후 news-extra + newsMore 토글)
-    function toggleNews() {
-      const more = document.getElementById('newsMore');
-      const btn = document.getElementById('newsToggleBtn');
-      const extras = document.querySelectorAll('.news-extra');
-      if (!more || !btn) return;
-      const isHidden = more.style.display === 'none' || more.style.display === '';
-      more.style.display = isHidden ? 'block' : 'none';
-      extras.forEach(el => { el.style.display = isHidden ? 'flex' : 'none'; });
-      btn.textContent = isHidden ? 'Show Less' : 'Show More';
-    }
-
-    // Publications 더보기 토글
-    function togglePubs() {
-      const selected = document.getElementById('pubsSelected');
-      const more = document.getElementById('pubsMore');
-      const btn = document.getElementById('pubsToggleBtn');
-      const statsText = document.getElementById('pubStatsText');
-      if (!more || !btn) return;
-      const isHidden = more.style.display === 'none' || more.style.display === '';
-      if (selected) {
-        selected.style.display = isHidden ? 'none' : 'block';
-      }
-      more.style.display = isHidden ? 'block' : 'none';
-      btn.textContent = isHidden ? 'Selected Paper' : 'Show All';
-      if (statsText) {
-        statsText.style.display = isHidden ? 'none' : 'block';
-      }
-    }
-
-    /**********************************************************
-     * 3. 한/영 전환 + 폰트 변경
-     **********************************************************/
-    let currentLang = 'en';
-    const texts = {
-      en: {
-        navHome: "Home",
-        navAbout: "About",
-        navAchievements: "Achievements",
-        navProject: "Activities",
-        homeTitle: "Sanghoon Lee",
-        homeSubtitle: "Full-Stack Researcher for Embodied Intelligence",
-        homeSubInfo: "InnoCore Postdoctoral Research Fellow, DGIST",
-        homeResearch: `
-          <div style="margin-top: 3rem;">
-            <div style="text-align: center; margin-bottom: 1.5rem;">
-              <div class="emphasis" style="font-size: 1.1em; margin-bottom: 0.5rem;">
-                Research Domain: Cyber-Physical Artificial Intelligence (CPAI)
-              </div>
-               <p style="font-size: 0.90em; margin: 0; line-height: 1.6;">
-                Unifying AI, Middleware, and Control to realize Embodied Intelligence under uncertainty and resource constraints.
-               </p>
-            </div>
-
-            <div class="design-element" id="homeDesignElement" style="display: flex; align-items: stretch; justify-content: center; gap: 1rem; margin: 1rem 0;">
-              
-              <div class="design-block ai-cps-block" style="text-align: center; flex: 1; padding: 8px 10px; display: flex; flex-direction: column; justify-content: center;">
-                <div style="font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px; font-weight: normal">[ The Brain ]</div>
-                <span class="big-text emphasis" style="font-size: 1.7em; display: block; font-weight: 800;">AI</span>
-                <div class="small-text" style="font-size: 0.75em;  margin-top: 4px; line-height: 1.2;">Good things happen often</div>
-              </div>
-
-              <div style="display: flex; align-items: center; justify-content: center; font-size: 1.6em;">⟷</div>
-
-              <div class="design-block ai-cps-block" style="text-align: center; flex: 1; padding: 8px 10px; display: flex; flex-direction: column; justify-content: center;">
-                <div style="font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px; font-weight: normal;">[ The Nerve ]</div>
-                <span class="big-text emphasis" style="font-size: 1.7em; display: block; font-weight: 800;">ROS 2</span>
-                <div class="small-text" style="font-size: 0.75em; font-weight: 500; margin-top: 4px; line-height: 1.2;">Everything should be connected</div>
-              </div>
-
-              <div style="display: flex; align-items: center; justify-content: center; font-size: 1.6em;">⟷</div>
-
-              <div class="design-block ai-cps-block" style="text-align: center; flex: 1; padding: 8px 10px; display: flex; flex-direction: column; justify-content: center;">
-                <div style="font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px; font-weight: normal">[ The Body ]</div>
-                <span class="big-text emphasis" style="font-size: 1.7em; display: block; font-weight: 800;">CPS</span>
-                <div class="small-text" style="font-size: 0.75em;  margin-top: 4px; line-height: 1.2;">Bad things never happen</div>
-              </div>
-            </div>
-
-            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-            <div style="display: flex; align-items: flex-end; gap: 1rem; border-bottom: 1px solid #bbbbbb; padding-bottom: 0.5rem;">
-              <div style="flex: 0 0 160px; font-size: 0.9em; font-weight: 100; text-align: center;">
-                Layer
-              </div>
-              <div style="flex: 1; padding-left: 15px; text-align: center; font-size: 0.9em; font-weight: 100;">
-                Research Interests
-              </div>
-            </div>
-
-            <div style="display: flex; align-items: stretch; gap: 1rem;">
-                    <div style="flex: 0 0 170px; font-size: 0.9em; display: flex; align-items: center; justify-content: center;">
-                      <span class="emphasis">AI</span>
-                    </div>
-                    <div style="flex: 1; font-size: 0.9em; padding-left: 15px; border-left: 2px solid #bbbbbb;">
-                      Physical AI, Multi-Robot System, Autonomous Mobile Robots, Deep Reinforcement Learning
-                    </div>
-                  </div>
-
-            <div style="display: flex; align-items: stretch; gap: 1rem;">
-                    <div style="flex: 0 0 170px; font-size: 0.9em; display: flex; align-items: center; justify-content: center;">
-                      <span class="emphasis">ROS 2</span>
-                    </div>
-                    <div style="flex: 1; font-size: 0.9em; padding-left: 15px; border-left: 2px solid #d32f2f;">
-                      DDS & Zenoh, Next-gen Middleware, Cross-layer Optimization, Software-Defined Robotics
-                    </div>
-                  </div>
-
-              <div style="display: flex; align-items: stretch; gap: 1rem;">
-                <div style="flex: 0 0 170px; font-size: 0.9em; display: flex; align-items: center; justify-content: center;">
-                  <span class="emphasis">CPS</span>
-                </div>
-                <div style="flex: 1; font-size: 0.9em; padding-left: 15px; border-left: 2px solid #bbbbbb;">
-                   Wireless Control System, Cyber-Physical Security, Resilient Architectures, Vulnerability Analysis
-                </div>
-              </div>
-            </div>
-          </div>
-        `,
-        newsSection: `
-<style>
-  .news-container {
-    margin-top: 0;
+  /* ---------- Section ---------- */
+  section { padding: 4.5rem 0; }
+  .section-eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em;
+    font-weight: 500; margin-bottom: 0.75rem;
   }
   .section-title {
-    font-size: 1.25em;
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.5px;
-    border-bottom: 1px solid #000000;
-    display: inline-block;
-    padding-right: 40px;
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 600;
+    margin: 0 0 0.5rem; color: var(--text); letter-spacing: -0.015em;
   }
-  .news-title {
-    font-size: 1.25em;
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.5px;
-    border-bottom: 1px solid #000000;
-    display: inline-block;
-    padding-right: 40px;
+  .section-lead {
+    font-size: 1.05rem; color: var(--text-muted); max-width: 720px;
+    margin: 0 0 2.5rem; line-height: 1.7;
   }
-  body.dark-mode .section-title,
-  body.dark-mode .news-title {
-    border-bottom: 1px solid #ffffff;
+  .section-lead strong { color: var(--text); font-weight: 600; }
+  .section-lead em { color: var(--accent); font-style: normal; font-weight: 600; }
+
+  /* ---------- Research Pillars ---------- */
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  @media (max-width: 860px) { .pillars { grid-template-columns: 1fr; } }
+  .pillar {
+    padding: 1.75rem 1.5rem; border: 1px solid var(--border);
+    border-radius: 10px; background: var(--card-bg);
+    transition: all 0.2s;
   }
-  .news-item {
-    display: flex;
-    gap: 1.5rem;
-    padding-bottom: 0.8rem;
-    position: relative;
-    border-left: 1px solid currentColor;
-    margin-left: 10px;
-    padding-left: 20px;
-    opacity: 0.92;
+  .pillar:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .pillar-eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+    color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
   }
-  .news-item::before {
-    content: "";
-    position: absolute;
-    left: -4px;
-    top: 7px;
-    width: 7px;
-    height: 7px;
-    background: currentColor;
-    border-radius: 50%;
-    opacity: 0.6;
+  .pillar h3 {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 2.2rem; font-weight: 700; margin: 0 0 0.3rem;
+    color: var(--accent); letter-spacing: -0.02em;
   }
-  .news-item.highlight::before {
-    background: #d32f2f;
-    opacity: 1;
+  .pillar-motto {
+    font-size: 0.92rem; color: var(--text); font-weight: 500;
+    margin: 0 0 1rem; font-style: italic;
   }
+  .pillar-topics { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* ---------- Featured Papers ---------- */
+  .featured-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  @media (max-width: 860px) { .featured-grid { grid-template-columns: 1fr; } }
+
+  /* ---------- Open Source rows ---------- */
+  .repo-row {
+    display: grid; grid-template-columns: 1fr auto; gap: 1.5rem;
+    padding: 1.1rem 0; border-bottom: 1px solid var(--border);
+    align-items: center;
+  }
+  .repo-row:last-child { border-bottom: none; }
+  .repo-name {
+    font-size: 1.05rem; font-weight: 600; color: var(--text);
+    display: block; border-bottom: none;
+  }
+  .repo-name:hover { color: var(--accent); opacity: 1; }
+  .repo-tags {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+    color: var(--accent); margin-top: 0.3rem; letter-spacing: 0.02em;
+  }
+  .repo-links {
+    display: flex; gap: 1.1rem; flex-wrap: wrap;
+    margin-top: 0.5rem; font-size: 0.85rem;
+  }
+  .repo-links a {
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border); padding-bottom: 1px;
+  }
+  .repo-links a:hover { color: var(--accent); border-color: var(--accent); opacity: 1; }
+  .repo-stats {
+    display: flex; gap: 1rem;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.88rem;
+    color: var(--text-muted); white-space: nowrap;
+  }
+  .repo-stat { display: inline-flex; align-items: center; gap: 0.35rem; }
+  .repo-stat svg { opacity: 0.7; }
+  .repo-stat .repo-stars,
+  .repo-stat .repo-forks { color: var(--text); font-weight: 500; }
+  @media (max-width: 600px) {
+    .repo-row { grid-template-columns: 1fr; }
+    .repo-stats { margin-top: 0.5rem; }
+  }
+  .paper-card {
+    padding: 1.75rem 1.5rem; border: 1px solid var(--border);
+    border-radius: 10px; background: var(--card-bg);
+    display: flex; flex-direction: column; transition: all 0.2s;
+  }
+  .paper-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .paper-card.featured-invited { border-color: var(--accent); background: var(--accent-soft); }
+  .paper-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 0.85rem; font-weight: 500;
+  }
+  .paper-title {
+    font-size: 1.05rem; font-weight: 600; line-height: 1.4;
+    margin: 0 0 0.85rem; color: var(--text);
+  }
+  .paper-title a { color: var(--text); border-bottom: none; }
+  .paper-title a:hover { color: var(--accent); opacity: 1; }
+  .paper-authors {
+    font-size: 0.88rem; color: var(--text-muted); margin: 0 0 0.85rem;
+    line-height: 1.55;
+  }
+  .paper-authors strong { color: var(--text); font-weight: 600; }
+  .paper-highlight {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.76rem; color: var(--accent);
+    margin: 0 0 1rem; padding: 0.5rem 0.75rem;
+    background: var(--accent-soft);
+    border-left: 2px solid var(--accent);
+    letter-spacing: 0.01em; line-height: 1.55;
+  }
+  .paper-highlight strong { color: var(--accent); font-weight: 700; }
+  .paper-links { margin-top: auto; display: flex; gap: 1rem; flex-wrap: wrap; }
+  .paper-links a {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
+    color: var(--accent); padding: 0.3rem 0.55rem; border: 1px solid var(--border);
+    border-radius: 6px; transition: all 0.2s;
+  }
+  .paper-links a:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); opacity: 1; }
+
+  /* ---------- News timeline ---------- */
+  .news-list {
+    border-left: 1px solid var(--border); padding-left: 1.5rem; margin-left: 0.5rem;
+  }
+  .news-row {
+    display: grid; grid-template-columns: 100px 1fr; gap: 1.25rem;
+    padding: 0.55rem 0; position: relative;
+  }
+  .news-row::before {
+    content: ""; position: absolute; left: -1.94rem; top: 0.95rem;
+    width: 7px; height: 7px; border-radius: 50%; background: var(--text-faint);
+  }
+  .news-row.highlight::before { background: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
   .news-date {
-    flex: 0 0 90px;
-    font-size: 0.85em;
-    opacity: 0.65;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
+    color: var(--text-muted); padding-top: 0.1rem;
   }
-  .news-content {
-    flex: 1;
-    font-size: 0.9em;
-    line-height: 1.6;
-    color: inherit;
+  .news-content { font-size: 0.92rem; color: var(--text); }
+  .news-content a { color: var(--accent); border-bottom: 1px solid transparent; }
+  .news-content a:hover { border-color: var(--accent); }
+  .news-row.highlight .news-content { color: var(--text); font-weight: 500; }
+  .news-extra { display: none; }
+  body.news-expanded .news-extra { display: grid; }
+  .news-toggle {
+    margin-top: 1.5rem; margin-left: 2rem; padding: 0.4rem 0.8rem;
+    background: transparent; border: 1px solid var(--border); border-radius: 6px;
+    color: var(--text-muted); cursor: pointer; font-size: 0.78rem;
+    font-family: 'JetBrains Mono', monospace; transition: all 0.2s;
   }
-  .news-content a {
-    color: #d32f2f;
-    text-decoration: none;
-    transition: opacity 0.2s;
+  .news-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ---------- Talk list ---------- */
+  .simple-list { list-style: none; padding: 0; margin: 0; }
+  .simple-list li {
+    display: grid; grid-template-columns: 110px 1fr; gap: 1.25rem;
+    padding: 0.85rem 0; border-bottom: 1px solid var(--border);
   }
-  .news-content a:hover {
-    opacity: 0.7;
-    text-decoration: underline;
+  .simple-list li:last-child { border-bottom: none; }
+  .simple-list .item-date {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--text-muted);
   }
-  .news-extra {
-    display: none;
+  .simple-list .item-content { font-size: 0.95rem; }
+  .simple-list .item-meta { font-size: 0.85rem; color: var(--text-faint); margin-left: 0.5rem; }
+
+  /* ---------- Publications full list ---------- */
+  .pub-year {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em;
+    font-weight: 500; margin: 2.25rem 0 0.85rem; padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
   }
-  #newsToggleBtn {
-    margin: 1rem 0 0 30px;
-    cursor: pointer;
-    border: none;
-    background: transparent;
-    color: #999;
-    font-size: 0.8em;
-    padding: 0;
-    transition: color 0.2s;
+  .pub-row {
+    display: grid; grid-template-columns: 30px 1fr; gap: 0.85rem;
+    padding: 0.85rem 0; border-bottom: 1px solid var(--border);
   }
-  #newsToggleBtn:hover {
-    color: #d32f2f;
+  .pub-row:last-child { border-bottom: none; }
+  .pub-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+    color: var(--text-faint); padding-top: 0.18rem;
   }
+  .pub-body { font-size: 0.92rem; line-height: 1.55; }
+  .pub-title { color: var(--text); font-weight: 500; }
+  .pub-title a { color: var(--text); border-bottom: 1px solid transparent; }
+  .pub-title a:hover { color: var(--accent); border-color: var(--accent); opacity: 1; }
+  .pub-authors { color: var(--text-muted); font-size: 0.86rem; margin-top: 0.2rem; }
+  .pub-authors strong { color: var(--text); font-weight: 600; }
+  .pub-venue {
+    font-size: 0.82rem; color: var(--accent); margin-top: 0.2rem;
+    font-style: italic;
+  }
+  .pub-status {
+    font-size: 0.82rem; color: var(--text-muted);
+    font-style: normal; margin-left: 0.35rem;
+  }
+  .pub-status::before {
+    content: "· "; color: var(--text-faint); margin-right: 0.15rem;
+  }
+  .pub-arxiv {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+    color: var(--accent); margin-left: 0.4rem;
+  }
+
+  /* ---------- About / Timeline ---------- */
+  .about-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem;
+  }
+  @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-block h3 {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 1.35rem; font-weight: 600; margin: 0 0 1.25rem;
+    color: var(--text); letter-spacing: -0.01em;
+  }
+  .timeline-row {
+    display: grid; grid-template-columns: 140px 1fr; gap: 1rem;
+    padding: 0.75rem 0; border-bottom: 1px solid var(--border);
+  }
+  .timeline-row:last-child { border-bottom: none; }
+  .timeline-period {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.74rem;
+    color: var(--text-muted); padding-top: 0.22rem;
+    white-space: nowrap;
+  }
+  .timeline-content { font-size: 0.88rem; min-width: 0; }
+  .timeline-role { color: var(--text); font-weight: 500; letter-spacing: -0.005em; }
+  .timeline-org { color: var(--text-muted); font-size: 0.85rem; margin-top: 0.18rem; }
+
+  /* ---------- Skills ---------- */
+  .skills-grid { display: grid; grid-template-columns: 130px 1fr; gap: 0.5rem 1rem; }
+  .skill-cat {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
+    color: var(--accent); padding-top: 0.2rem;
+  }
+  .skill-list { font-size: 0.92rem; color: var(--text-muted); padding: 0.18rem 0 0.85rem; }
+  .tag {
+    display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+    color: var(--text); background: var(--bg-elevated);
+    padding: 2px 8px; border-radius: 4px; border: 1px solid var(--border);
+    margin: 2px 4px 2px 0;
+  }
+
+  /* ---------- Awards ---------- */
+  .award-row {
+    display: grid; grid-template-columns: 60px 1fr; gap: 1.25rem;
+    padding: 0.85rem 0; border-bottom: 1px solid var(--border);
+  }
+  .award-row:last-child { border-bottom: none; }
+  .award-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
+    color: var(--text-faint); padding-top: 0.18rem;
+    white-space: nowrap;
+  }
+  .award-title { color: var(--text); font-weight: 500; font-size: 0.95rem; }
+  a.award-title { color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 1px; }
+  a.award-title:hover { color: var(--text); border-color: var(--text-muted); opacity: 0.75; }
+  .award-org { font-size: 0.84rem; color: var(--text-muted); margin-top: 0.18rem; }
+  .award-meta { font-size: 0.78rem; color: var(--text-faint); margin-top: 0.18rem; }
+
+  /* ---------- Conferences inline ---------- */
+  .conf-year {
+    display: grid; grid-template-columns: 60px 1fr; gap: 1rem;
+    padding: 1rem 0; border-bottom: 1px solid var(--border);
+  }
+  .conf-year:last-child { border-bottom: none; }
+  .conf-yr {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
+    color: var(--accent); padding-top: 0.18rem;
+  }
+  .conf-list { font-size: 0.9rem; line-height: 1.85; color: var(--text); }
+  .conf-meta { font-size: 0.82rem; color: var(--text-faint); }
+  .conf-sep { color: var(--text-faint); margin: 0 0.5rem; opacity: 0.5; }
+
+  /* ---------- Peer Review ---------- */
+  .review-block { margin-bottom: 1.75rem; }
+  .review-year-head {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
+    color: var(--accent); margin-bottom: 0.5rem; font-weight: 500;
+  }
+  .review-pub {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+    color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.12em;
+    margin-right: 0.6rem;
+  }
+  .review-journal {
+    font-style: italic; color: var(--text); font-size: 0.92rem;
+    margin-right: 0.85rem;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    padding: 3rem 0; border-top: 1px solid var(--border);
+    background: var(--bg-elevated);
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: end;
+  }
+  @media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr; } }
+  .footer-name {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 1.6rem; font-weight: 600; margin: 0 0 0.3rem; color: var(--text);
+  }
+  .footer-affil { font-size: 0.88rem; color: var(--text-muted); }
+  .footer-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .footer-links a { color: var(--text-muted); font-size: 0.85rem; }
+  .footer-copy {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+    color: var(--text-faint); margin-top: 1.5rem; padding-top: 1.5rem;
+    border-top: 1px solid var(--border); text-align: center;
+  }
+
+  /* ---------- Misc ---------- */
+  .show-more-link {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
+    color: var(--accent); cursor: pointer; display: inline-block;
+    margin-top: 0.5rem; border-bottom: 1px solid transparent;
+  }
+  .show-more-link:hover { border-color: var(--accent); }
+  body.pubs-collapsed .pub-extra { display: none; }
 </style>
+</head>
 
-<div class="news-container">
-  <h2 class="section-title">Recent News</h2>
+<body>
 
- <div class="news-item">
-    <div class="news-date">2026.03.23</div>
-    <div class="news-content">Presented an invited seminar at <a href="https://www.dogu.xyz/" target="_blank">DOGU</a></div>
+<!-- ====================== TOP NAV ====================== -->
+<nav class="topnav">
+  <div class="container nav-inner">
+    <a href="#top" class="logo">Sanghoon Lee</a>
+    <ul class="nav-links">
+      <li><a href="#research">Research</a></li>
+      <li><a href="#featured">Featured</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#opensource">Open Source</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" onclick="toggleMode()" aria-label="Toggle theme">☀</button>
   </div>
+</nav>
 
-  <div class="news-item">
-    <div class="news-date">2026.03.09</div>
-    <div class="news-content">Presented an invited seminar at <a href="https://www.keti.re.kr/main/main.php" target="_blank">KETI</a></div>
-  </div>
-
-  <div class="news-item">
-    <div class="news-date">2026.03.04</div>
-    <div class="news-content">Attended <a href="https://www.automationworld.co.kr/" target="_blank">AW 2026</a> in Seoul, South Korea</div>
-  </div>
-
-  <div class="news-item highlight">
-    <div class="news-date">2026.02.10</div>
-    <div class="news-content">Paper accepted to <a href="https://infocom2026.ieee-infocom.org/" target="_blank">INFOCOM NetRobiCS 2026</a></div>
-  </div>
-
-  <div class="news-item">
-    <div class="news-date">2026.01.28</div>
-    <div class="news-content">Presented an invited seminar at <a href="https://holiday-robotics.com/" target="_blank">Holiday Robotics</a></div>
-  </div>
-
-  <div class="news-item highlight">
-    <div class="news-date">2026.01.23</div>
-    <div class="news-content"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7420363100006068224/" target="_blank">CSI Lab Industry Week</a>! Technical exchanges with <a href="https://42dot.ai/" target="_blank">42dot</a>, <a href="https://www.naverlabs.com/" target="_blank">NAVER LABS</a>, and <a href="https://www.robotis.com/" target="_blank">ROBOTIS</a></div>
-  </div>
-
-  <div class="news-item news-extra highlight">
-    <div class="news-date">2026.01.21</div>
-    <div class="news-content">Presented a <a href="https://www.linkedin.com/feed/update/urn:li:activity:7420334599974809601/" target="_blank">session</a> at <a href="https://roscon.ros.org/kr/2026/" target="_blank"> ROSCon KR 2026</a> in Seongnam, South Korea</div>
-  </div>
-
-  <div class="news-item news-extra">
-    <div class="news-date">2025.12.23</div>
-    <div class="news-content">The <a href="https://42dot.ai/" target="_blank">42Dot</a> visited CSI Lab to discuss ROS 2 research and potential collaboration</div> 
-  </div>
-
-  <div class="news-item news-extra">
-    <div class="news-date">2025.12.03</div>
-    <div class="news-content">Online coffee chat with <a href="https://www.riibotics.io/" target="_blank">Riibotics</a></div>
-  </div>
-
-  <div class="news-item news-extra">
-    <div class="news-date">2025.11.26</div>
-    <div class="news-content">Attended <a href="http://iotkorea.or.kr/2026/kor/" target="_blank">AIoT 2025</a> in Seoul, South Korea</div>
-  </div>
-
-  <div class="news-item news-extra highlight">
-    <div class="news-date">2025.11.17</div>
-    <div class="news-content">Successfully defended Ph.D. dissertation !</div>
-  </div>
-
-  <div class="news-item news-extra">
-    <div class="news-date">2025.11.04</div>
-    <div class="news-content">Presented a poster at <a href="https://2025.iccas.org/" target="_blank">ICCAS 2025</a> in Incheon, South Korea </div>
-  </div>
-
-  <div class="news-item news-extra">
-    <div class="news-date">2025.10.27</div>
-    <div class="news-content">Attended <a href="https://roscon.ros.org/2025/" target="_blank">ROSCon 2025</a> in Singapore</div>
-  </div>
-
-  <div class="news-item news-extra">
-    <div class="news-date">2025.09.27</div>
-    <div class="news-content">Attended <a href="https://www.corl.org/" target="_blank">CoRL 2025</a> in Seoul, South Korea</div>
-  </div>
-
-  <div class="news-item news-extra">
-    <div class="news-date">2025.09.22</div>
-    <div class="news-content">Presented a poster at <a href="https://ieeeicnp2025.pages.dev/" target="_blank">IEEE ICNP 2025</a> in Seoul, South Korea</div>
-  </div>
-
-  <div id="newsMore" style="display: none;">
-    <div class="news-item highlight">
-      <div class="news-date">2025.09.08</div>
-      <div class="news-content">Reached 100 citations on <a href="https://scholar.google.co.kr/citations?user=W2iqqvAAAAAJ&hl=ko" target="_blank">Google Scholar</a></div>
+<!-- ====================== HERO ====================== -->
+<header id="top" class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="hero-eyebrow">DGIST · InnoCore Postdoctoral Fellow · 2026</div>
+      <h1 class="hero-name">Sanghoon Lee</h1>
+      <p class="hero-title">Full-Stack Researcher for Embodied Intelligence</p>
+      <p class="hero-tagline">
+        I unify <em>AI</em>, <em>middleware</em>, and <em>control</em> to&nbsp;realize
+        Embodied&nbsp;Intelligence under uncertainty&nbsp;and resource&nbsp;constraints.
+      </p>
+      <p class="hero-tagline-secondary">
+        Research focus on Cyber-Physical&nbsp;AI, ROS&nbsp;2 / DDS / Zenoh, and Physical&nbsp;AI.
+      </p>
     </div>
-    <div class="news-item">
-      <div class="news-date">2025.09.05</div>
-      <div class="news-content">Paper accepted in <a href="https://www.jiii.org/" target="_blank">JIII</a> </div>
-    </div>
-    <div class="news-item">
-      <div class="news-date">2025.08.21</div>
-      <div class="news-content">Discussed collaboration with <a href="https://urobot.kaist.ac.kr/" target="_blank">KAIST URL Lab</a></div>
-    </div>
-    <div class="news-item">
-      <div class="news-date">2025.07.13</div>
-      <div class="news-content">Attended <a href="https://icml.cc/Conferences/2025" target="_blank">ICML 2025 </a> in Vancouver, Canada</div>
-    </div>
-    <div class="news-item">
-      <div class="news-date">2025.07.08</div>
-      <div class="news-content">Presented a workshop paper at <a href="https://icufn.org/" target="_blank">ICUFN 2025</a> in Lisbon, Portugal</div>
-    </div>
-    <div class="news-item">
-      <div class="news-date">2025.07.01</div>
-      <div class="news-content">Paper published in <a href="https://ieeexplore.ieee.org/abstract/document/11044454/?casa_token=JJWL4rvrHb4AAAAA:q290Tt_uyTrWF3kRdTvsXN6CYiYpQnjDtTApde7juGA2rUV0gm1m18x5QmQFztOwRwayYasSmyY" target="_blank">INFOCOM</a> </div>
-    </div>
-    <div class="news-item">
-      <div class="news-date">2025.06.24</div>
-      <div class="news-content">Attended <a href="https://cisc.or.kr/" target="_blank">CISC-S 2025</a> in Kyeungju, South Korea</div>
-    </div>
-    <div class="news-item">
-      <div class="news-date">2025.06.18</div>
-      <div class="news-content">Presented a poster at <a href="https://conf.kics.or.kr/2025s" target="_blank">KICS Summer 2025</a> in Jeju, South Korea</div>
-    </div>
-    <div class="news-item">
-      <div class="news-date">2025.06.13</div>
-      <div class="news-content">Participated in <a href="https://www.aitimes.kr/news/articleView.html?idxno=35230" target="_blank">Joint Workshop on Physical AI</a></div>
-    </div>
-    <div class="news-item">
-      <div class="news-date">2025.05.26</div>
-      <div class="news-content">Featured in the <a href="https://www.imaeil.com/page/view/2025052610100869764" target="_blank">media</a> </div>
-    </div>
-    <div class="news-item">
-      <div class="news-date">2025.05.07</div>
-      <div class="news-content">Paper published in <a href="https://ieeexplore.ieee.org/document/10991965" target="_blank">IEEE TIM</a> </div>
-    </div>
-    <div class="news-item">
-      <div class="news-date">2025.03.25</div>
-      <div class="news-content">Featured in the <a href="https://www.hankyung.com/article/202503256164h" target="_blank">media</a> </div>
-    </div>
-    <div class="news-item">
-      <div class="news-date">2025.03.12</div>
-      <div class="news-content">Attended <a href="https://www.coex.co.kr/exhibitions/2025-%EC%8A%A4%EB%A7%88%ED%8A%B8%EA%B3%B5%EC%9E%A5-%EC%9E%90%EB%8F%99%ED%99%94%EC%82%B0%EC%97%85%EC%A0%84/" target="_blank">AW 2025</a> in Seoul, South Korea</div>
-    </div>
-    <div class="news-item">
-      <div class="news-date">2025.03.06</div>
-      <div class="news-content">Paper published in <a href="https://dl.acm.org/doi/abs/10.1145/3721437" target="_blank">ACM TCPS</a> </div>
-    </div>
-    <div class="news-item">
-      <div class="news-date">2025.01.26</div>
-      <div class="news-content">Featured in the <a href="https://www.youtube.com/watch?v=X1iJZajHA4s" target="_blank">media</a> </div>
+    <div class="hero-photo-wrap">
+      <a href="Profile.png" target="_blank" rel="noopener">
+        <img src="Profile.png" alt="Sanghoon Lee" class="hero-photo" />
+      </a>
+      <div class="hero-links">
+        <a href="mailto:leesh2913@dgist.ac.kr">Email</a>
+        <a href="https://scholar.google.co.kr/citations?user=W2iqqvAAAAAJ&hl=ko" target="_blank">Scholar</a>
+        <a href="https://github.com/hun0130" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/sanghoon-lee-1b5929301" target="_blank">LinkedIn</a>
+        <a href="CV_Sanghoon_Lee.pdf" target="_blank">CV</a>
+      </div>
     </div>
   </div>
+</header>
 
-  <button id="newsToggleBtn" onclick="toggleNews()">Show More</button>
-</div>
-`,
-  aboutContent: `
-  <style>
-    .edu-container {
-      margin-top: 0;
-    }
-    .edu-row {
-      display: flex;
-      padding: 0.75rem 0;
-      max-width: 750px;
-      margin: 0;
-    }
-    .edu-year {
-      flex: 0 0 160px;
-      font-size: 0.85em;
-      opacity: 0.5;
-      letter-spacing: 0.5px;
-    }
-    .edu-details {
-      flex: 1;
-      padding-bottom: 0.4rem;
-      border-bottom: 1px solid #f2f2f2;
-    }
-    .edu-inst {
-      font-size: 1em;
-      margin-bottom: 0.3rem;
-    }
-    .edu-degree {
-      font-size: 0.95em;
-      margin-bottom: 0.2rem;
-    }
-    .edu-row:last-child .edu-details {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-    .edu-meta {
-      font-size: 0.85em;
-      opacity: 0.6;
-      line-height: 1.0;
-    }
-  </style>
-
-<div class="edu-container">
-  <h2 class="section-title" style="margin-bottom: 1rem;">Experience</h2>
-
-  <div class="edu-row">
-    <div class="edu-year">2026.02 — Present</div>
-    <div class="edu-details">
-      <div class="edu-inst">InnoCore Postdoctoral Research Fellow</div>
-      <div class="edu-meta">Research Group for Bio-Embodied Physical AI, DGIST</div>
+<!-- ====================== STATS ====================== -->
+<div class="stats-bar">
+  <div class="container stats-grid">
+    <div class="stat">
+      <div class="stat-num">200+</div>
+      <div class="stat-label">Citations</div>
     </div>
-  </div>
-
-  <div class="edu-row">
-    <div class="edu-year">2022.02 — 2026.02</div>
-    <div class="edu-details">
-      <div class="edu-inst">Graduate Research Assistant</div>
-      <div class="edu-meta">Cyber-Physical Systems Integration (CSI) Lab, DGIST</div>
+    <div class="stat">
+      <div class="stat-num">32+</div>
+      <div class="stat-label">International Papers</div>
     </div>
-  </div>
-
-  <div class="edu-row">
-    <div class="edu-year">2020.08 — 2022.02</div>
-    <div class="edu-details">
-      <div class="edu-inst">Undergraduate Research Student</div>
-      <div class="edu-meta">Cyber-Physical Systems Integration (CSI) Lab, DGIST</div>
+    <div class="stat">
+      <div class="stat-num">18</div>
+      <div class="stat-label">First / Co-First</div>
     </div>
-  </div>
-
-  <div class="edu-row">
-    <div class="edu-year">2020.01 — 2020.02</div>
-    <div class="edu-details">
-      <div class="edu-inst">Research Intern (Winter)</div>
-      <div class="edu-meta"> Computer Architecture and Systems (CAS) Lab, DGIST</div>
+    <div class="stat">
+      <div class="stat-num">100+</div>
+      <div class="stat-label">GitHub Stars</div>
     </div>
   </div>
 </div>
 
-  <div class="edu-container">
-    <h2 class="section-title" style="margin-bottom: 1rem;">Education</h2>
+<!-- ====================== RESEARCH ====================== -->
+<section id="research">
+  <div class="container">
+    <div class="section-eyebrow">Research Domain</div>
+    <h2 class="section-title">Cyber-Physical Artificial Intelligence (CPAI)</h2>
+    <p class="section-lead">
+      A research direction unifying <strong>AI</strong> (the Brain), <strong>ROS&nbsp;2</strong> (the Nerve), and
+      <strong>CPS</strong> (the Body) to&nbsp;realize <em>Embodied&nbsp;Intelligence</em> systems that
+      remain reliable under real-world uncertainty&nbsp;and resource&nbsp;constraints.
+    </p>
 
-    <div class="edu-row">
-      <div class="edu-year">2022.02 — 2026.02</div>
-      <div class="edu-details">
-        <div class="edu-inst">DGIST, Daegu, South Korea</div>
-        <div class="edu-degree">Ph.D. in Electrical Engineering and Computer Science</div>
-        <div class="edu-meta">Combined Program (UG-G.) / Major GPA: 4.3 / 4.3</div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-eyebrow">The Brain</div>
+        <h3>AI</h3>
+        <p class="pillar-motto">Good things happen often.</p>
+        <p class="pillar-topics">Physical AI · Multi-Robot Systems · Autonomous Mobile Robots · Deep Reinforcement Learning</p>
       </div>
-    </div>
-
-    <div class="edu-row">
-      <div class="edu-year">2019.06 — 2019.09</div>
-      <div class="edu-details">
-        <div class="edu-inst">University of California, Los Angeles (UCLA), CA, USA</div>
-        <div class="edu-degree">International Student Program</div>
-        <div class="edu-meta">Major GPA: 4.3 / 4.3</div>
+      <div class="pillar">
+        <div class="pillar-eyebrow">The Nerve</div>
+        <h3>ROS 2</h3>
+        <p class="pillar-motto">All things stay connected.</p>
+        <p class="pillar-topics">DDS &amp; Zenoh · Next-gen Middleware · Cross-layer Optimization · Software-Defined Robotics</p>
       </div>
-    </div>
-
-    <div class="edu-row">
-      <div class="edu-year">2018.03 — 2022.02</div>
-      <div class="edu-details">
-        <div class="edu-inst">DGIST, Daegu, South Korea</div>
-        <div class="edu-degree">B.S. in Computer Science</div>
-        <div class="edu-meta">Major GPA: 3.99 / 4.3</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="edu-container" style="margin-top: 2rem;">
-    <h2 class="section-title" style="margin-bottom: 1rem;">Technical Skills</h2>
-    <div style="margin-top: 0.5rem;">
-      <div style="margin-bottom: 0.8rem; display: flex; align-items: baseline;">
-        <div style="font-weight: 600; margin-right: 0.5rem; font-size: 0.95em; flex-shrink: 0;">Systems:</div>
-        <div style="font-size: 0.9em; line-height: 1.6; opacity: 0.85;">C++, Python, Rust, Linux (Kernel/Driver Analysis), Docker, Git</div>
-      </div>
-      <div style="margin-bottom: 0.8rem; display: flex; align-items: baseline;">
-        <div style="font-weight: 600; margin-right: 0.5rem; font-size: 0.95em; flex-shrink: 0;">Middleware:</div>
-        <div style="font-size: 0.9em; line-height: 1.6; opacity: 0.85;">ROS 2, DDS (FastDDS, CycloneDDS, RTI Connext), Zenoh, TCP/IP, UDP</div>
-      </div>
-      <div style="margin-bottom: 0.8rem; display: flex; align-items: baseline;">
-        <div style="font-weight: 600; margin-right: 0.5rem; font-size: 0.95em; flex-shrink: 0;">Intelligence:</div>
-        <div style="font-size: 0.9em; line-height: 1.6; opacity: 0.85;">PyTorch, TensorFlow, Nav2, MoveIt 2, Cartographer, AMCL</div>
-      </div>
-      <div style="margin-bottom: 0; display: flex; align-items: baseline;">
-        <div style="font-weight: 600; margin-right: 0.5rem; font-size: 0.95em; flex-shrink: 0;">Simulation:</div>
-        <div style="font-size: 0.9em; line-height: 1.6; opacity: 0.85;">NVIDIA Isaac Sim, MuJoCo, Gazebo, MATLAB, NS-3, OMNeT++</div>
+      <div class="pillar">
+        <div class="pillar-eyebrow">The Body</div>
+        <h3>CPS</h3>
+        <p class="pillar-motto">Bad things never happen.</p>
+        <p class="pillar-topics">Wireless Control · Cyber-Physical Security · Resilient Architectures · Vulnerability Analysis</p>
       </div>
     </div>
   </div>
+</section>
 
-  </div>
-`,
+<!-- ====================== FEATURED ====================== -->
+<section id="featured">
+  <div class="container">
+    <div class="section-eyebrow">Featured Work</div>
+    <h2 class="section-title">Selected Publications</h2>
+    <p class="section-lead">
+      Curated from <strong>32+ international peer-reviewed papers</strong> (18 first or co-first authored).
+      Featured items highlight the most representative threads of recent research.
+    </p>
 
-achievementsContent: `
-  <style>
-    .pub-container { margin-top: 1rem; }
-    .pub-row { 
-      display: flex; 
-      gap: 1.5rem; 
-      padding: 0.5rem 0; 
-    }
-    /* 왼쪽 번호와 카테고리 영역 */
-    .pub-left {
-      flex: 0 0 100px; 
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-    .pub-number { 
-      font-size: 0.85em; 
-    }
-    .pub-category {
-      font-size: 0.8em;
-      opacity: 0.5;
-      letter-spacing: 0.5px;
-    }
-    /* 오른쪽 정보 영역 */
-    .pub-info { flex: 1; }
-    .pub-title { 
-      font-size: 1em; 
-      line-height: 1.0; 
-      margin-bottom: 0.4rem;
-      display: block;
-      color: inherit;
-      text-decoration: none;
-    }
-    .pub-title:link,
-    .pub-title:visited,
-    .pub-title:hover,
-    .pub-title:active {
-      color: inherit;
-      text-decoration: none;
-    }
-    .pub-title:hover { opacity: 0.7; }
-    .pub-authors { 
-      font-size: 0.88em; 
-      margin-bottom: 0.3rem; 
-    }
-    .pub-venue { 
-      font-size: 0.88em; 
-      opacity: 0.5;
-      font-style: italic; 
-    }
-    #pubsToggleBtn {
-      margin: 1rem 0 0 30px;
-      cursor: pointer;
-      border: none;
-      background: transparent;
-      color: #999;
-      font-size: 0.8em;
-      padding: 0;
-      transition: color 0.2s;
-    }
-    #pubsToggleBtn:hover {
-      color: #d32f2f;
-    }
-  </style>
+    <div class="featured-grid">
 
-  <div class="pub-container">
-  <h2 class="section-title">Ph.D. Dissertation</h2>
+      <article class="paper-card featured-invited">
+        <div class="paper-tag">Invited · 20th Anniversary Special Issue</div>
+        <h3 class="paper-title"><a href="#">Cyber-Physical AI: Reconstructing Cyber-Physical Systems in the Age of Physical Artificial Intelligence</a></h3>
+        <p class="paper-authors"><strong>Sanghoon Lee</strong>, Guoliang Xing, Xue Liu, Karl H. Johansson, Kyung-Joon Park</p>
+        <p class="paper-highlight">International collaboration with leading CPS scholars</p>
+      </article>
 
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[Thesis]</div>
-      <div class="pub-category">Ph.D. <br> Dissertation</div>
-    </div>
-    <div class="pub-info">
-      <a href="https://dgist.dcollection.net/srch/srchDetail/200000944081" target="_blank" class="pub-title">
-        Cyber-Physical Artificial Intelligence: A Unified Framework for Embodied Intelligence
-      </a>
-      <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span> (Advisor: Prof. Kyung-Joon Park)</div>
-      <div class="pub-venue">DGIST (Daegu Gyeongbuk Institute of Science and Technology), Feb. 2026</div>
+      <article class="paper-card">
+        <div class="paper-tag">ACM TCPS · Published 2025</div>
+        <h3 class="paper-title"><a href="https://dl.acm.org/doi/10.1145/3721437" target="_blank">Cyber-Physical AI: Systematic Research Domain for Integrating AI and Cyber-Physical Systems</a></h3>
+        <p class="paper-authors"><strong>Sanghoon Lee</strong>, Jiyeong Chae, Kyung-Joon Park</p>
+        <p class="paper-highlight">First systematic framework defining Cyber-Physical AI</p>
+      </article>
+
+      <article class="paper-card">
+        <div class="paper-tag">IEEE COMST · Under Review</div>
+        <h3 class="paper-title"><a href="#">The Three Dimensions of ROS 2 Middleware</a></h3>
+        <p class="paper-authors"><strong>Sanghoon Lee</strong>, Taehun Kim, Angelo Corsaro, Kyung-Joon Park</p>
+        <p class="paper-highlight">Co-authored with Founder of Zenoh, ZettaScale</p>
+      </article>
+
+      <article class="paper-card">
+        <div class="paper-tag">IEEE IoT-J · Minor Revision</div>
+        <h3 class="paper-title"><a href="https://arxiv.org/abs/2509.03381" target="_blank">Dependency Chain Analysis of ROS 2 DDS QoS Policies: From Lifecycle Tutorial to Static Verification</a></h3>
+        <p class="paper-authors"><strong>Sanghoon Lee</strong>, Junha Kang, Kyung-Joon Park</p>
+        <p class="paper-highlight">IF 10.6 · JCR Q1 in Computer Science</p>
+      </article>
+
+      <article class="paper-card">
+        <div class="paper-tag">IEEE TII · Published 2024</div>
+        <h3 class="paper-title"><a href="https://ieeexplore.ieee.org/document/10210628" target="_blank">Deep Reinforcement Learning-driven Scheduling in Multijob Serial Lines: A Case Study in Automotive Parts Assembly</a></h3>
+        <p class="paper-authors"><strong>Sanghoon Lee</strong>, Jinyoung Kim, Yongsoon Eun, Kyung-Joon Park</p>
+        <p class="paper-highlight">IF 12.3 · JCR Q1 in Automation &amp; Control Systems</p>
+      </article>
+
+      <article class="paper-card">
+        <div class="paper-tag">IEEE INFOCOM · Published 2025</div>
+        <h3 class="paper-title"><a href="https://ieeexplore.ieee.org/abstract/document/11044454/" target="_blank">An Analytical Latency Model of the Data Distribution Service in ROS 2</a></h3>
+        <p class="paper-authors">Hyung-Seok Park, <strong>Sanghoon Lee</strong>, Kyung-Joon Park</p>
+        <p class="paper-highlight">Top-tier Networking</p>
+      </article>
+
     </div>
   </div>
-</div>
+</section>
 
-  <div class="pub-container">
-<h2 class="section-title" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-  International Papers
-  <button id="pubsToggleBtn" onclick="togglePubs()" style="margin: 0; padding: 0.25rem 0.6rem; border: 1px solid currentColor; border-radius: 6px; background: transparent; color: inherit; font-size: 0.8rem; cursor: pointer; transition: background-color 0.2s, border-color 0.2s, color 0.2s;">Show All</button>
-</h2>
+<!-- ====================== NEWS ====================== -->
+<section id="news">
+  <div class="container">
+    <div class="section-eyebrow">Recent</div>
+    <h2 class="section-title">News</h2>
 
-  <p id="pubStatsText" style="font-size: 0.85em; opacity: 0.6; margin-bottom: 1rem;">Selected Paper in total 32+ international peer-reviewed papers (including 18 first or co-first authored papers)</p>
+    <div class="news-list">
 
-  <div id="pubsSelected">
+      <div class="news-row highlight">
+        <div class="news-date">2026.04.23</div>
+        <div class="news-content">Reached <strong>200 citations</strong> on <a href="https://scholar.google.co.kr/citations?user=W2iqqvAAAAAJ&hl=ko" target="_blank">Google Scholar</a></div>
+      </div>
+      <div class="news-row">
+        <div class="news-date">2026.03.23</div>
+        <div class="news-content">Invited seminar at <a href="https://www.dogu.xyz/" target="_blank">DOGU</a></div>
+      </div>
+      <div class="news-row">
+        <div class="news-date">2026.03.09</div>
+        <div class="news-content">Invited seminar at <a href="https://www.keti.re.kr/main/main.php" target="_blank">KETI</a></div>
+      </div>
+      <div class="news-row">
+        <div class="news-date">2026.03.04</div>
+        <div class="news-content">Attended <a href="https://www.automationworld.co.kr/" target="_blank">AW 2026</a> in Seoul</div>
+      </div>
+      <div class="news-row highlight">
+        <div class="news-date">2026.02.10</div>
+        <div class="news-content">Paper accepted to <a href="https://infocom2026.ieee-infocom.org/" target="_blank">INFOCOM NetRobiCS 2026</a></div>
+      </div>
+      <div class="news-row">
+        <div class="news-date">2026.01.28</div>
+        <div class="news-content">Invited seminar at <a href="https://holiday-robotics.com/" target="_blank">Holiday Robotics</a></div>
+      </div>
+      <div class="news-row highlight">
+        <div class="news-date">2026.01.23</div>
+        <div class="news-content"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7420363100006068224/" target="_blank">CSI Lab Industry Week</a> with <a href="https://42dot.ai/" target="_blank">42dot</a>, <a href="https://www.naverlabs.com/" target="_blank">NAVER LABS</a>, <a href="https://www.robotis.com/" target="_blank">ROBOTIS</a></div>
+      </div>
+      <div class="news-row highlight">
+        <div class="news-date">2026.01.21</div>
+        <div class="news-content">Presented a <a href="https://www.linkedin.com/feed/update/urn:li:activity:7420334599974809601/" target="_blank">session</a> at <a href="https://roscon.ros.org/kr/2026/" target="_blank">ROSCon KR 2026</a> in Seongnam</div>
+      </div>
 
-  <!-- 2025 -->
-  <div class="pub-row">
-    <div class="pub-left"><div class="pub-category">Journal</div></div>
-    <div class="pub-info">
-      <a href="https://dl.acm.org/doi/10.1145/3721437" target="_blank" class="pub-title">
-        Cyber-Physical Artificial Intelligence: Systematic Research Domain for Integrating ...
-      </a>
-      <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Jiyeong Chae, and Kyung-Joon Park</div>
-      <div class="pub-venue">
-        ACM Transactions on Cyber-Physical Systems, Feb. 2025
-        <span class="pub-badge pub-badge-published">Published</span>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.12.23</div>
+        <div class="news-content"><a href="https://42dot.ai/" target="_blank">42Dot</a> visited CSI Lab to discuss ROS 2 research and potential collaboration</div>
+      </div>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.12.03</div>
+        <div class="news-content">Online coffee chat with <a href="https://www.riibotics.io/" target="_blank">Riibotics</a></div>
+      </div>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.11.26</div>
+        <div class="news-content">Attended <a href="http://iotkorea.or.kr/2026/kor/" target="_blank">AIoT 2025</a> in Seoul</div>
+      </div>
+      <div class="news-row news-extra highlight">
+        <div class="news-date">2025.11.17</div>
+        <div class="news-content">Successfully defended <strong>Ph.D. dissertation</strong></div>
+      </div>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.11.04</div>
+        <div class="news-content">Presented a poster at <a href="https://2025.iccas.org/" target="_blank">ICCAS 2025</a> in Incheon</div>
+      </div>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.10.27</div>
+        <div class="news-content">Attended <a href="https://roscon.ros.org/2025/" target="_blank">ROSCon 2025</a> in Singapore</div>
+      </div>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.09.27</div>
+        <div class="news-content">Attended <a href="https://www.corl.org/" target="_blank">CoRL 2025</a> in Seoul</div>
+      </div>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.09.22</div>
+        <div class="news-content">Presented a poster at <a href="https://ieeeicnp2025.pages.dev/" target="_blank">IEEE ICNP 2025</a> in Seoul</div>
+      </div>
+      <div class="news-row news-extra highlight">
+        <div class="news-date">2025.09.08</div>
+        <div class="news-content">Reached <strong>100 citations</strong> on <a href="https://scholar.google.co.kr/citations?user=W2iqqvAAAAAJ&hl=ko" target="_blank">Google Scholar</a></div>
+      </div>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.09.05</div>
+        <div class="news-content">Paper accepted in <a href="https://www.jiii.org/" target="_blank">JIII</a></div>
+      </div>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.08.21</div>
+        <div class="news-content">Discussed collaboration with <a href="https://urobot.kaist.ac.kr/" target="_blank">KAIST URL Lab</a></div>
+      </div>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.07.13</div>
+        <div class="news-content">Attended <a href="https://icml.cc/Conferences/2025" target="_blank">ICML 2025</a> in Vancouver</div>
+      </div>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.07.08</div>
+        <div class="news-content">Presented a workshop paper at <a href="https://icufn.org/" target="_blank">ICUFN 2025</a> in Lisbon</div>
+      </div>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.07.01</div>
+        <div class="news-content">Paper published in <a href="https://ieeexplore.ieee.org/abstract/document/11044454/" target="_blank">IEEE INFOCOM</a></div>
+      </div>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.06.24</div>
+        <div class="news-content">Attended <a href="https://cisc.or.kr/" target="_blank">CISC-S 2025</a> in Kyeungju</div>
+      </div>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.06.18</div>
+        <div class="news-content">Presented a poster at <a href="https://conf.kics.or.kr/2025s" target="_blank">KICS Summer 2025</a> in Jeju</div>
+      </div>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.06.13</div>
+        <div class="news-content">Participated in <a href="https://www.aitimes.kr/news/articleView.html?idxno=35230" target="_blank">Joint Workshop on Physical AI</a></div>
+      </div>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.05.26</div>
+        <div class="news-content">Featured in the <a href="https://www.imaeil.com/page/view/2025052610100869764" target="_blank">media</a></div>
+      </div>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.05.07</div>
+        <div class="news-content">Paper published in <a href="https://ieeexplore.ieee.org/document/10991965" target="_blank">IEEE TIM</a></div>
+      </div>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.03.25</div>
+        <div class="news-content">Featured in the <a href="https://www.hankyung.com/article/202503256164h" target="_blank">media</a></div>
+      </div>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.03.12</div>
+        <div class="news-content">Attended AW 2025 in Seoul</div>
+      </div>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.03.06</div>
+        <div class="news-content">Paper published in <a href="https://dl.acm.org/doi/abs/10.1145/3721437" target="_blank">ACM TCPS</a></div>
+      </div>
+      <div class="news-row news-extra">
+        <div class="news-date">2025.01.26</div>
+        <div class="news-content">Featured in the <a href="https://www.youtube.com/watch?v=X1iJZajHA4s" target="_blank">media</a></div>
+      </div>
+
+    </div>
+
+    <button class="news-toggle" onclick="document.body.classList.toggle('news-expanded'); this.textContent = document.body.classList.contains('news-expanded') ? '— Show less' : '+ Show all news';">+ Show all news</button>
+  </div>
+</section>
+
+<!-- ====================== INVITED TALKS ====================== -->
+<section id="talks">
+  <div class="container">
+    <div class="section-eyebrow">Outreach</div>
+    <h2 class="section-title">Invited Talks</h2>
+
+    <ul class="simple-list">
+      <li>
+        <div class="item-date">2026.03.23</div>
+        <div class="item-content"><a href="https://www.dogu.xyz/" target="_blank">DOGU</a> <span class="item-meta">Invited Seminar</span></div>
+      </li>
+      <li>
+        <div class="item-date">2026.03.09</div>
+        <div class="item-content"><a href="https://www.keti.re.kr/main/main.php" target="_blank">KETI</a> <span class="item-meta">Invited Seminar</span></div>
+      </li>
+      <li>
+        <div class="item-date">2026.01.28</div>
+        <div class="item-content"><a href="https://holiday-robotics.com/" target="_blank">Holiday Robotics</a> <span class="item-meta">Invited Seminar</span></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ====================== PUBLICATIONS (FULL) ====================== -->
+<section id="publications">
+  <div class="container">
+    <div class="section-eyebrow">Complete List</div>
+    <h2 class="section-title">Publications</h2>
+    <p class="section-lead">
+      <span style="white-space: nowrap;"><strong>32+&nbsp;international&nbsp;papers</strong> · Ph.D.&nbsp;dissertation · domestic&nbsp;papers · patents.</span>
+      <br /><span style="color:var(--text-faint); font-size: 0.85em;">* indicates equal contribution as first authors.</span>
+    </p>
+
+    <!-- Dissertation -->
+    <div class="pub-year">Ph.D. Dissertation</div>
+    <div class="pub-row">
+      <div class="pub-num">★</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://dgist.dcollection.net/srch/srchDetail/200000944081" target="_blank">Cyber-Physical Artificial Intelligence: A Unified Framework for Embodied Intelligence</a></div>
+        <div class="pub-authors"><strong>Sanghoon Lee</strong> (Advisor: Prof. Kyung-Joon Park)</div>
+        <div class="pub-venue">DGIST · Feb. 2026</div>
       </div>
     </div>
-  </div>
 
-  <div class="pub-row">
-    <div class="pub-left"><div class="pub-category">Conference</div></div>
-    <div class="pub-info">
-      <a href="https://ieeexplore.ieee.org/abstract/document/11044454/?casa_token=JJWL4rvrHb4AAAAA:q290Tt_uyTrWF3kRdTvsXN6CYiYpQnjDtTApde7juGA2rUV0gm1m18x5QmQFztOwRwayYasSmyY"
-         target="_blank" class="pub-title">
-        An Analytical Latency Model of the Data Distribution Service in ROS 2
-      </a>
-      <div class="pub-authors">Hyung-Seok Park, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park</div>
-      <div class="pub-venue">
-        IEEE INFOCOM 2025, May 2025
-        <span class="pub-badge pub-badge-published">Published</span>
+    <!-- International Papers -->
+    <div class="pub-year">International Papers</div>
+    <div class="pub-row">
+      <div class="pub-num">[32]</div>
+      <div class="pub-body">
+        <div class="pub-title">Cyber-Physical AI: Reconstructing Cyber-Physical Systems in the Age of Physical Artificial Intelligence</div>
+        <div class="pub-authors"><strong>Sanghoon Lee</strong>, Guoliang Xing, Xue Liu, Karl H. Johansson, Kyung-Joon Park</div>
+        <div class="pub-venue">ACM Transactions on Cyber-Physical Systems (TCPS), 20th Anniversary Special Issue<span class="pub-status">Invited</span></div>
       </div>
     </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left"><div class="pub-category">Journal</div></div>
-    <div class="pub-info">
-      <a href="https://www.sciencedirect.com/science/article/abs/pii/S2452414X25001645" target="_blank" class="pub-title">
-        From Issues to Routes: A Cooperative Costmap with Lifelong Learning for Multi-AMR ...
-      </a>
-      <div class="pub-authors">Jiyeong Chae*, <span class="emphasis">Sanghoon Lee*</span>, Hyunkyo Seo, and Kyung-Joon Park</div>
-      <div class="pub-venue">
-        Journal of Industrial Information Integration (JIII), Sep. 2025
-        <span class="pub-badge pub-badge-published">Published</span>
+    <div class="pub-row">
+      <div class="pub-num">[31]</div>
+      <div class="pub-body">
+        <div class="pub-title">Analytical Modeling of Discovery Storms in DDS and Zenoh for Large-Scale Robotic Networks</div>
+        <div class="pub-authors">Yeonwoo Choi*, <strong>Sanghoon Lee*</strong>, Kyung-Joon Park</div>
+        <div class="pub-venue">Target: IEEE International Conference on Computer Communications (INFOCOM) 2027<span class="pub-status">In Preparation</span></div>
       </div>
     </div>
-  </div>
-
-  <!-- 2024 -->
-  <div class="pub-row">
-    <div class="pub-left"><div class="pub-category">Journal</div></div>
-    <div class="pub-info">
-      <a href="https://ieeexplore.ieee.org/document/10210628" target="_blank" class="pub-title">
-        Deep Reinforcement Learning-driven Scheduling in Multijob Serial Lines: A Case Study ...
-      </a>
-      <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Jinyoung Kim, Gwangjin Wi, Yuchang Won, Yongsoon Eun, and Kyung-Joon Park</div>
-      <div class="pub-venue">
-        IEEE Transactions on Industrial Informatics, Feb. 2024
-        <span class="pub-badge pub-badge-published">Published</span>
+    <div class="pub-row">
+      <div class="pub-num">[30]</div>
+      <div class="pub-body">
+        <div class="pub-title">Non-Invasive Real-Time Tracking and Logging Framework for ROS 2 Systems</div>
+        <div class="pub-authors">Jisang Yu*, <strong>Sanghoon Lee*</strong>, Kyung-Joon Park</div>
+        <div class="pub-venue">Target: ACM/IFIP/USENIX International Middleware Conference (Middleware) 2026<span class="pub-status">In Preparation</span></div>
       </div>
     </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left"><div class="pub-category">Journal</div></div>
-    <div class="pub-info">
-      <a href="https://www.sciencedirect.com/science/article/pii/S0278612524002139?dgcid=coauthor" target="_blank" class="pub-title">
-        Learning-enabled Flexible Job-Shop Scheduling for Scalable Smart Manufacturing
-      </a>
-      <div class="pub-authors">Sihoon Moon, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park</div>
-      <div class="pub-venue">
-        Journal of Manufacturing Systems, Sep. 2024
-        <span class="pub-badge pub-badge-published">Published</span>
+    <div class="pub-row">
+      <div class="pub-num">[29]</div>
+      <div class="pub-body">
+        <div class="pub-title">The Three Dimensions of ROS 2 Middleware</div>
+        <div class="pub-authors"><strong>Sanghoon Lee</strong>, Taehun Kim, Angelo Corsaro, Kyung-Joon Park</div>
+        <div class="pub-venue">IEEE Communications Surveys &amp; Tutorials (COMST)<span class="pub-status">Under Review</span></div>
       </div>
     </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left"><div class="pub-category">Journal</div></div>
-    <div class="pub-info">
-      <a href="https://ieeexplore.ieee.org/abstract/document/10285130" target="_blank" class="pub-title">
-        Learning-Enabled Network-Control Co-design for Energy-Efficient Industrial Internet of Things
-      </a>
-      <div class="pub-authors">Sihoon Moon, <span class="emphasis">Sanghoon Lee</span>, Wonhong Jeon, and Kyung-Joon Park</div>
-      <div class="pub-venue">
-        IEEE Transactions on Network and Service Management, Apr. 2024
-        <span class="pub-badge pub-badge-published">Published</span>
+    <div class="pub-row">
+      <div class="pub-num">[28]</div>
+      <div class="pub-body">
+        <div class="pub-title">From Hype to Reality: A Survey of Physical AI in Industrial Robotics</div>
+        <div class="pub-authors"><strong>Sanghoon Lee*</strong>, Jiyeong Chae*, Jinhong Park, Kyung-Joon Park</div>
+        <div class="pub-venue">Engineering Applications of Artificial Intelligence (EAAI)<span class="pub-status">Under Review</span></div>
       </div>
     </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left"><div class="pub-category">Journal</div></div>
-    <div class="pub-info">
-      <a href="https://ieeexplore.ieee.org/abstract/document/10643479/" target="_blank" class="pub-title">
-        False Alarm Prevention through Domain Knowledge-driven Machine Learning: ...
-      </a>
-      <div class="pub-authors"><span class="emphasis">Sanghoon Lee*</span>, Jiyeong Chae*, Sihoon Moon, and Kyung-Joon Park</div>
-      <div class="pub-venue">
-        IEEE Sensors Journal, Aug. 2024
-        <span class="pub-badge pub-badge-published">Published</span>
+    <div class="pub-row">
+      <div class="pub-num">[27]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://arxiv.org/abs/2509.03381" target="_blank">Dependency Chain Analysis of ROS 2 DDS QoS Policies: From Lifecycle Tutorial to Static Verification</a></div>
+        <div class="pub-authors"><strong>Sanghoon Lee</strong>, Junha Kang, Kyung-Joon Park</div>
+        <div class="pub-venue">IEEE Internet of Things Journal (IoT-J)<span class="pub-status">Minor Revision</span> <a class="pub-arxiv" href="https://arxiv.org/abs/2509.03381" target="_blank">[arXiv]</a></div>
       </div>
     </div>
-  </div>
-
-  <!-- 2023 -->
-  <div class="pub-row">
-    <div class="pub-left"><div class="pub-category">Journal</div></div>
-    <div class="pub-info">
-      <a href="https://ieeexplore.ieee.org/abstract/document/10285426" target="_blank" class="pub-title">
-        A Survey and Perspective on Industrial Cyber-Physical Systems (ICPS): From ICPS ...
-      </a>
-      <div class="pub-authors">Jiyeong Chae*, <span class="emphasis">Sanghoon Lee*</span>, Junhyung Jang, Seohyung Hong, and Kyung-Joon Park</div>
-      <div class="pub-venue">
-        IEEE Transactions on Industrial Cyber-Physical Systems, Oct. 2023
-        <span class="pub-badge pub-badge-published">Published</span>
+    <div class="pub-row">
+      <div class="pub-num">[26]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://arxiv.org/abs/2508.10413" target="_blank">Probabilistic Latency Analysis of the Data Distribution Service in ROS 2</a></div>
+        <div class="pub-authors"><strong>Sanghoon Lee</strong>, Hyung-Seok Park, Jiyeong Chae, Kyung-Joon Park</div>
+        <div class="pub-venue">IEEE Transactions on Vehicular Technology (TVT)<span class="pub-status">Under Review</span> <a class="pub-arxiv" href="https://arxiv.org/abs/2508.10413" target="_blank">[arXiv]</a></div>
       </div>
     </div>
-  </div>
-
-  <div class="pub-row" style="margin-top: 1.5rem;">
-    <div class="pub-left"><div class="pub-category">Journal</div></div>
-    <div class="pub-info">
-      <a href="https://arxiv.org/abs/2509.03381" target="_blank" class="pub-title">
-        Dependency Chain Analysis of ROS 2 DDS QoS Policies: From Life-Cycle Tutorial ...
-      </a>
-      <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Junha Kang, and Kyung-Joon Park</div>
-      <div class="pub-venue">
-        IEEE Internet of Things Journal,
-        <span class="pub-badge pub-badge-revision">Major Revision</span>
-        <a class="pub-link" href="https://arxiv.org/abs/2509.03381" target="_blank">[arXiv]</a>
+    <div class="pub-row">
+      <div class="pub-num">[25]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://arxiv.org/abs/2508.11366" target="_blank">Optimizing ROS 2 Communication for Wireless Robotic Systems</a></div>
+        <div class="pub-authors"><strong>Sanghoon Lee</strong>, Taehun Kim, Yeonwoo Choi, Kyung-Joon Park</div>
+        <div class="pub-venue">IEEE Internet of Things Journal (IoT-J)<span class="pub-status">Under Review</span> <a class="pub-arxiv" href="https://arxiv.org/abs/2508.11366" target="_blank">[arXiv]</a></div>
       </div>
     </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left"><div class="pub-category">Journal</div></div>
-    <div class="pub-info">
-      <a href="https://arxiv.org/abs/2508.10413" target="_blank" class="pub-title">
-        Probabilistic Latency Analysis of the Data Distribution Service in ROS 2
-      </a>
-      <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Hyung-Seok Park, Jiyeong Chae, and Kyung-Joon Park</div>
-      <div class="pub-venue">
-        IEEE Transactions on Vehicular Technology,
-        <span class="pub-badge pub-badge-underreview">Under Review</span>
-        <a class="pub-link" href="https://arxiv.org/abs/2508.10413" target="_blank">[arXiv]</a>
+    <div class="pub-row">
+      <div class="pub-num">[24]</div>
+      <div class="pub-body">
+        <div class="pub-title">LIMA: Local Intersection Marshaling Algorithm for Multi-Agent Path Finding in Large-Scale Industrial Environments</div>
+        <div class="pub-authors"><strong>Sanghoon Lee*</strong>, Jisang Yu*, Geon-pyo Kim, Kyung-Joon Park</div>
+        <div class="pub-venue">Robotics and Autonomous Systems (RAS), Elsevier<span class="pub-status">Under Review</span></div>
       </div>
     </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left"><div class="pub-category">Journal</div></div>
-    <div class="pub-info">
-      <a href="https://arxiv.org/abs/2508.11366" target="_blank" class="pub-title">
-        Optimizing ROS 2 Communication for Wireless Robotic Systems
-      </a>
-      <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Taehun Kim, and Kyung-Joon Park</div>
-      <div class="pub-venue">
-        IEEE Transactions on Industrial Informatics,
-        <span class="pub-badge pub-badge-underreview">Under Review</span>
-        <a class="pub-link" href="https://arxiv.org/abs/2508.11366" target="_blank">[arXiv]</a>
+    <div class="pub-row">
+      <div class="pub-num">[23]</div>
+      <div class="pub-body">
+        <div class="pub-title">Exploiting ROS 2's Blind Spot: Cross-Layer Attacks from Discovery to ARP Spoofing</div>
+        <div class="pub-authors">Hyunho Ryu*, <strong>Sanghoon Lee*</strong>, Minchan Kwak, Kyung-Joon Park</div>
+        <div class="pub-venue">IEEE Internet of Things Journal (IoT-J)<span class="pub-status">Under Review</span></div>
       </div>
     </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left"><div class="pub-category">Journal</div></div>
-    <div class="pub-info">
-      <a href="#" class="pub-title" target="_blank">
-        LIMA: Local Intersection Marshaling Algorithm for Multi-Agent Path Finding in Large-Scale ...
-      </a>
-      <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>*, Jisang Yu*, Geon-pyo Kim, and Kyung-Joon Park</div>
-      <div class="pub-venue">
-        IEEE Robotics and Automation Letters,
-        <span class="pub-badge pub-badge-underreview">Under Review</span>
+    <div class="pub-row">
+      <div class="pub-num">[22]</div>
+      <div class="pub-body">
+        <div class="pub-title">Natural-Language to Operational Policies: LLM-Driven Costmaps for Industrial AMRs</div>
+        <div class="pub-authors">Jiyeong Chae, Hyunkyo Seo, Heonjae Lee, <strong>Sanghoon Lee</strong>, Kyung-Joon Park</div>
+        <div class="pub-venue">Robotics and Autonomous Systems (RAS)<span class="pub-status">Under Review</span></div>
       </div>
     </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left"><div class="pub-category">Conference</div></div>
-    <div class="pub-info">
-      <a href="#" class="pub-title" target="_blank">
-        Exploiting ROS 2's Blind Spot: Cross-Layer Attacks from Discovery to ARP Spoofing
-      </a>
-      <div class="pub-authors">Hyunho Ryu*, <span class="emphasis">Sanghoon Lee*</span>, Minchan Kwak, and Kyung-Joon Park</div>
-      <div class="pub-venue">
-        IEEE Internet of Things Journal,
-        <span class="pub-badge pub-badge-underreview">Under Review</span>
+    <div class="pub-row">
+      <div class="pub-num">[21]</div>
+      <div class="pub-body">
+        <div class="pub-title">Robust Localization in Dynamic Indoor Environments Using Structure-Guided Point-wise LiDAR Scoring</div>
+        <div class="pub-authors">Yeong-gi Hong*, Donghyung Lee, <strong>Sanghoon Lee</strong>, Jiyeong Chae, Kyung-Joon Park</div>
+        <div class="pub-venue">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2026<span class="pub-status">Under Review</span></div>
       </div>
     </div>
-  </div>
-
-</div> 
-
-  <div id="pubsMore" style="display: none;">
-
-<div class="pub-row">
-  <div class="pub-left">
-    <div class="pub-number">[32]</div>
-    <div class="pub-category">Journal <br> Full Paper</div>
-  </div>
-  <div class="pub-info">
-    <a href="#" target="_blank" class="pub-title">
-      Cyber-Physical AI: Reconstructing Cyber-Physical Systems in the Age of Physical Artificial Intelligence
-    </a>
-    <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Guoliang Xing, Xue Liu, Karl H. Johansson, and Kyung-Joon Park</div>
-    <div class="pub-venue"> <span class="emphasis">Invited:</span> ACM Transactions on Cyber-Physical Systems (TCPS), 20th Anniversary Special Issue, In Preparation </div>
-  </div>
-</div>
-
-<div class="pub-row">
-  <div class="pub-left">
-    <div class="pub-number">[31]</div>
-    <div class="pub-category">Conference <br> Full Paper</div>
-  </div>
-  <div class="pub-info">
-    <a href="#" target="_blank" class="pub-title">
-      Analytical Modeling of Discovery Storms in DDS and Zenoh for Large-Scale Robotic Networks
-    </a>
-    <div class="pub-authors">Yeonwoo Choi*, <span class="emphasis">Sanghoon Lee*</span>, and Kyung-Joon Park</div>
-    <div class="pub-venue">Target: IEEE INFOCOM 2027, In Preparation</div>
-  </div>
-</div>
-
-<div class="pub-row">
-  <div class="pub-left">
-    <div class="pub-number">[30]</div>
-    <div class="pub-category">Conference <br> Full Paper</div>
-  </div>
-  <div class="pub-info">
-    <a href="#" target="_blank" class="pub-title">
-      Non-Invasive Real-Time Tracking and Logging Framework for ROS 2 Systems
-    </a>
-    <div class="pub-authors">Jisang Yu*, <span class="emphasis">Sanghoon Lee*</span>, and Kyung-Joon Park</div>
-    <div class="pub-venue">Target: ACM/IFIP/USENIX Middleware 2026, In Preparation</div>
-  </div>
-</div>
-
-<div class="pub-row">
-  <div class="pub-left">
-    <div class="pub-number">[29]</div>
-    <div class="pub-category">Journal <br> Full Paper</div>
-  </div>
-  <div class="pub-info">
-    <a href="#" target="_blank" class="pub-title">
-      The Structural Trilemma of ROS 2 Middleware: A Systematic Survey and Research Roadmap
-    </a>
-    <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Taehun Kim, and Kyung-Joon Park</div>
-    <div class="pub-venue">IEEE Communications Surveys & Tutorials, To be Submitted</div>
-  </div>
-</div>
-
-<div class="pub-row">
-  <div class="pub-left">
-    <div class="pub-number">[28]</div>
-    <div class="pub-category">Journal <br> Full Paper</div>
-  </div>
-  <div class="pub-info">
-    <a href="#" target="_blank" class="pub-title">
-      From Hype to Reality: A Survey of Physical AI in Industrial Robotics
-    </a>
-    <div class="pub-authors"><span class="emphasis">Sanghoon Lee*</span>, Jiyeong Chae*, Jinhong Park, and Kyung-Joon Park</div>
-    <div class="pub-venue">Journal of Manufacturing Systems, Under Review</div>
-  </div>
-</div>
-  
- <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[27]</div>
-      <div class="pub-category">Journal <br> Full Paper</div>
+    <div class="pub-row">
+      <div class="pub-num">[20]</div>
+      <div class="pub-body">
+        <div class="pub-title">Mitigating DDS Discovery Bursts in ROS 2 Multi-Robot Systems</div>
+        <div class="pub-authors">Taehyun Kim, <strong>Sanghoon Lee</strong>, Kyung-Joon Park</div>
+        <div class="pub-venue">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2026<span class="pub-status">Under Review</span></div>
+      </div>
     </div>
-    <div class="pub-info">
-      <a href="https://arxiv.org/abs/2509.03381" target="_blank" class="pub-title">
-        Dependency Chain Analysis of ROS 2 DDS QoS Policies: From Life-Cycle Tutorial ...
-      </a>
-      <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Junha Kang, and Kyung-Joon Park</div>
-      <div class="pub-venue">IEEE Internet of Things Journal, Minor Revision</div>
+    <div class="pub-row">
+      <div class="pub-num">[19]</div>
+      <div class="pub-body">
+        <div class="pub-title">Discovery Storm: Scalability Analysis of DDS and Zenoh in Large-Scale Wireless Robotic Networks</div>
+        <div class="pub-authors"><strong>Sanghoon Lee</strong>, Yeonwoo Choi, Jiyeong Chae, Kyung-Joon Park</div>
+        <div class="pub-venue">IEEE International Conference on Computer Communications (INFOCOM) NetRobiCS 2026 Workshop, Feb. 2026<span class="pub-status">Published</span></div>
+      </div>
     </div>
-  </div>
+    <div class="pub-row">
+      <div class="pub-num">[18]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://link.springer.com/article/10.1007/s12555-025-0558-8" target="_blank">Time-aware Costmap for Smoother and Less Disruptive AMR Navigation With ROS 2</a></div>
+        <div class="pub-authors">Jiyeong Chae, Hyunkyo Seo, <strong>Sanghoon Lee</strong>, Kyung-Joon Park</div>
+        <div class="pub-venue">International Journal of Control, Automation, and Systems (IJCAS), Dec. 2025<span class="pub-status">Published</span></div>
+      </div>
+    </div>
+    <div class="pub-row">
+      <div class="pub-num">[17]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://link.springer.com/article/10.1007/s12555-025-0572-x" target="_blank">DIDoS: Disturbance-induced Denial-of-service Attack in Networked Cyber-physical Systems</a></div>
+        <div class="pub-authors">Sangjun Kim, <strong>Sanghoon Lee</strong>, Kyung-Joon Park</div>
+        <div class="pub-venue">International Journal of Control, Automation, and Systems (IJCAS), Nov. 2025<span class="pub-status">Published</span></div>
+      </div>
+    </div>
+    <div class="pub-row">
+      <div class="pub-num">[16]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://csi.dgist.ac.kr/HOME/csi/data/upload/2025101621472768f0e95fa4555.pdf" target="_blank">Vulnerability Analysis of Cross-Layer Attacks on ROS 2</a></div>
+        <div class="pub-authors">Hyunho Ryu, <strong>Sanghoon Lee</strong>, Kyung-Joon Park</div>
+        <div class="pub-venue">International Conference on ICT Convergence (ICTC) 2025, Oct. 2025<span class="pub-status">Published</span></div>
+      </div>
+    </div>
+    <div class="pub-row">
+      <div class="pub-num">[15]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/abstract/document/11192433/" target="_blank">Poster: How to Send Large Data in ROS 2</a></div>
+        <div class="pub-authors"><strong>Sanghoon Lee</strong>, Taehun Kim, Jiyeong Chae, Kyung-Joon Park</div>
+        <div class="pub-venue">IEEE International Conference on Network Protocols (ICNP) 2025, Sep. 2025<span class="pub-status">Published</span></div>
+      </div>
+    </div>
+    <div class="pub-row">
+      <div class="pub-num">[14]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://www.sciencedirect.com/science/article/abs/pii/S2452414X25001645" target="_blank">From Issues to Routes: A Cooperative Costmap with Lifelong Learning for Multi-AMR Navigation</a></div>
+        <div class="pub-authors">Jiyeong Chae*, <strong>Sanghoon Lee*</strong>, Hyunkyo Seo, Kyung-Joon Park</div>
+        <div class="pub-venue">Journal of Industrial Information Integration (JIII), Sep. 2025<span class="pub-status">Published</span></div>
+      </div>
+    </div>
+    <div class="pub-row">
+      <div class="pub-num">[13]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/abstract/document/11170038/" target="_blank">Integrating ROS 2 and Physical AI: Architecture and Challenges</a></div>
+        <div class="pub-authors"><strong>Sanghoon Lee</strong>, Jiyeong Chae, Kyung-Joon Park</div>
+        <div class="pub-venue">International Conference on Ubiquitous and Future Networks (ICUFN) 2025, Jul. 2025<span class="pub-status">Published</span></div>
+      </div>
+    </div>
+    <div class="pub-row">
+      <div class="pub-num">[12]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/abstract/document/11044454/" target="_blank">An Analytical Latency Model of the Data Distribution Service in ROS 2</a></div>
+        <div class="pub-authors">Hyung-Seok Park, <strong>Sanghoon Lee</strong>, Kyung-Joon Park</div>
+        <div class="pub-venue">IEEE International Conference on Computer Communications (INFOCOM) 2025, May 2025<span class="pub-status">Published</span></div>
+      </div>
+    </div>
+    <div class="pub-row">
+      <div class="pub-num">[11]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10991965" target="_blank">PINMAP: A Cost-efficient Algorithm for Glass Detection and Mapping Using Low-cost 2D LiDAR</a></div>
+        <div class="pub-authors">Jiyeong Chae, Hyunkyo Seo, <strong>Sanghoon Lee</strong>, Kyung-Joon Park</div>
+        <div class="pub-venue">IEEE Transactions on Instrumentation and Measurement (TIM), May 2025<span class="pub-status">Published</span></div>
+      </div>
+    </div>
+    <div class="pub-row">
+      <div class="pub-num">[10]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3721437" target="_blank">Cyber-Physical AI: Systematic Research Domain for Integrating AI and Cyber-Physical Systems</a></div>
+        <div class="pub-authors"><strong>Sanghoon Lee</strong>, Jiyeong Chae, Kyung-Joon Park</div>
+        <div class="pub-venue">ACM Transactions on Cyber-Physical Systems (TCPS), Feb. 2025<span class="pub-status">Published</span></div>
+      </div>
+    </div>
+    <div class="pub-row">
+      <div class="pub-num">[9]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://www.mdpi.com/2071-1050/17/4/1747" target="_blank">Priority-Driven Resource Allocation with Reuse for Platooning in 5G Vehicular Network</a></div>
+        <div class="pub-authors">Tae-Woo Kim, <strong>Sanghoon Lee</strong>, Dong-Hyung Lee, Kyung-Joon Park</div>
+        <div class="pub-venue">Sustainability, Feb. 2025<span class="pub-status">Published</span></div>
+      </div>
+    </div>
 
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[26]</div>
-      <div class="pub-category">Journal <br> Full Paper</div>
+    <div class="pub-row">
+      <div class="pub-num">[8]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0278612524002139?dgcid=coauthor" target="_blank">Learning-enabled Flexible Job-Shop Scheduling for Scalable Smart Manufacturing</a></div>
+        <div class="pub-authors">Sihoon Moon, <strong>Sanghoon Lee</strong>, Kyung-Joon Park</div>
+        <div class="pub-venue">Journal of Manufacturing Systems (JMS), Sep. 2024<span class="pub-status">Published</span></div>
+      </div>
     </div>
-    <div class="pub-info">
-      <a href="https://arxiv.org/abs/2508.10413" target="_blank" class="pub-title">
-        Probabilistic Latency Analysis of the Data Distribution Service in ROS 2
-      </a>
-      <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Hyung-Seok Park, Jiyeong Chae, and Kyung-Joon Park</div>
-      <div class="pub-venue">IEEE Transactions on Vehicular Technology, Under Review</div>
+    <div class="pub-row">
+      <div class="pub-num">[7]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/abstract/document/10643479/" target="_blank">False Alarm Prevention through Domain Knowledge-driven Machine Learning: Leakage Detection in Water Distribution Networks</a></div>
+        <div class="pub-authors"><strong>Sanghoon Lee*</strong>, Jiyeong Chae*, Sihoon Moon, Kyung-Joon Park</div>
+        <div class="pub-venue">IEEE Sensors Journal, Aug. 2024<span class="pub-status">Published</span></div>
+      </div>
     </div>
-  </div>
+    <div class="pub-row">
+      <div class="pub-num">[6]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/abstract/document/10285130" target="_blank">Learning-Enabled Network-Control Co-design for Energy-Efficient Industrial Internet of Things</a></div>
+        <div class="pub-authors">Sihoon Moon, <strong>Sanghoon Lee</strong>, Wonhong Jeon, Kyung-Joon Park</div>
+        <div class="pub-venue">IEEE Transactions on Network and Service Management (TNSM), Apr. 2024<span class="pub-status">Published</span></div>
+      </div>
+    </div>
+    <div class="pub-row">
+      <div class="pub-num">[5]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10210628" target="_blank">Deep Reinforcement Learning-driven Scheduling in Multijob Serial Lines: A Case Study in Automotive Parts Assembly</a></div>
+        <div class="pub-authors"><strong>Sanghoon Lee</strong>, Jinyoung Kim, Yongsoon Eun, Kyung-Joon Park</div>
+        <div class="pub-venue">IEEE Transactions on Industrial Informatics (TII), Feb. 2024<span class="pub-status">Published</span></div>
+      </div>
+    </div>
 
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[25]</div>
-      <div class="pub-category">Journal <br> Full Paper</div>
+    <div class="pub-row">
+      <div class="pub-num">[4]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/abstract/document/10285426" target="_blank">A Survey and Perspective on Industrial Cyber-Physical Systems (ICPS): From ICPS to AI-augmented ICPS</a></div>
+        <div class="pub-authors">Jiyeong Chae*, <strong>Sanghoon Lee*</strong>, Junhyung Jang, Seohyung Hong, Kyung-Joon Park</div>
+        <div class="pub-venue">IEEE Transactions on Industrial Cyber-Physical Systems (TICPS), Oct. 2023<span class="pub-status">Published</span></div>
+      </div>
     </div>
-    <div class="pub-info">
-      <a href="https://arxiv.org/abs/2508.11366" target="_blank" class="pub-title">
-        Optimizing ROS 2 Communication for Wireless Robotic Systems
-      </a>
-      <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Taehun Kim, Yeonwoo Choi, and Kyung-Joon Park</div>
-      <div class="pub-venue">IEEE Internet of Things Journal, Under Review</div>
+    <div class="pub-row">
+      <div class="pub-num">[3]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10312647" target="_blank">Graph-based Reinforcement Learning for Flexible Job Shop Scheduling with Transportation Constraints</a></div>
+        <div class="pub-authors">Sihoon Moon, <strong>Sanghoon Lee</strong>, Kyung-Joon Park</div>
+        <div class="pub-venue">Annual Conference of the IEEE Industrial Electronics Society (IECON) 2023, Oct. 2023<span class="pub-status">Published</span></div>
+      </div>
     </div>
-  </div>
 
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[24]</div>
-      <div class="pub-category">Journal <br> Full Paper</div>
+    <div class="pub-row">
+      <div class="pub-num">[2]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/abstract/document/9896851" target="_blank">Real-Time Controller Reconfiguration for Delay-Resilient Cyber-Physical Systems</a></div>
+        <div class="pub-authors">Sangjun Kim, <strong>Sanghoon Lee</strong>, Kyung-Joon Park</div>
+        <div class="pub-venue">IEEE Access, Oct. 2022<span class="pub-status">Published</span></div>
+      </div>
     </div>
-    <div class="pub-info">
-      <a href="#" class="pub-title" target="_blank">
-        LIMA: Local Intersection Marshaling Algorithm for Multi-Agent Path Finding in Large-Scale ...
-      </a>
-      <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>*, Jisang Yu*, Geon-pyo Kim, and Kyung-Joon Park</div>
-      <div class="pub-venue">IEEE Transactions on Automation Science and Engineering, Under Review</div>
+    <div class="pub-row">
+      <div class="pub-num">[1]</div>
+      <div class="pub-body">
+        <div class="pub-title">Resilient Controller Reconfiguration under Network Delay Attack in Cyber-Physical Systems</div>
+        <div class="pub-authors">Sangjun Kim, <strong>Sanghoon Lee</strong>, Kyung-Joon Park</div>
+        <div class="pub-venue">International Conference on Electronics, Information, and Communication (ICEIC) 2022<span class="pub-status">Published</span></div>
+      </div>
     </div>
-  </div>
 
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[23]</div>
-      <div class="pub-category">Journal <br> Full Paper</div>
+    <!-- Domestic -->
+    <div class="pub-year">Domestic Papers</div>
+    <div class="pub-row">
+      <div class="pub-num">[D4]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://csi.dgist.ac.kr/HOME/csi/data/upload/202507021312536864b1c50c6e8.pdf" target="_blank">End-to-End Latency Analysis of Reliable Communication in ROS 2 over Wireless Multi-hop</a></div>
+        <div class="pub-authors">Taehyun Kim, <strong>Sanghoon Lee</strong>, Kyung-Joon Park</div>
+        <div class="pub-venue">Korean Institute of Communication and Information Sciences (KICS) Summer Conference, Jun. 2025</div>
+      </div>
     </div>
-    <div class="pub-info">
-      <a href="#" class="pub-title" target="_blank">
-        Exploiting ROS 2's Blind Spot: Cross-Layer Attacks from Discovery to ARP Spoofing
-      </a>
-      <div class="pub-authors">Hyunho Ryu*, <span class="emphasis">Sanghoon Lee*</span>, Minchan Kwak, and Kyung-Joon Park</div>
-      <div class="pub-venue">IEEE Internet of Things Journal, Under Review</div>
+    <div class="pub-row">
+      <div class="pub-num">[D3]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE11906565" target="_blank">Channel Modeling Analysis in Satellite-Terrestrial Integrated Network Using SDN</a></div>
+        <div class="pub-authors">Hyunho Ryu, <strong>Sanghoon Lee</strong>, Kyung-Joon Park</div>
+        <div class="pub-venue">Korean Institute of Communication and Information Sciences (KICS) Summer Conference, Jun. 2024</div>
+      </div>
     </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[22]</div>
-      <div class="pub-category">Journal <br> Full Paper</div>
+    <div class="pub-row">
+      <div class="pub-num">[D2]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE11813728" target="_blank">SDN Based Multipath Routing Algorithm in Satellite-Terrestrial Integrated Network</a></div>
+        <div class="pub-authors">Haewon Jeon, <strong>Sanghoon Lee</strong>, Dong-Hyung Lee, Changhee Joo, Kyung-Joon Park</div>
+        <div class="pub-venue">Korean Society for Aeronautical and Space Sciences (KSAS) Spring Conference, Apr. 2024</div>
+      </div>
     </div>
-    <div class="pub-info">
-      <a href="#" class="pub-title" target="_blank">
-        Natural-Language to Nav2: LLM-Driven Costmaps for Industrial AMRs
-      </a>
-      <div class="pub-authors">Jiyeong Chae, Hyunkyo Seo, Heonjae Lee, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park</div>
-      <div class="pub-venue">Robotics and Autonomous Systems, Under Review</div>
+    <div class="pub-row">
+      <div class="pub-num">[D1]</div>
+      <div class="pub-body">
+        <div class="pub-title"><a href="https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE11737135" target="_blank">Sound-based Machine Fault Diagnosis via Active Learning in Industrial Environments</a></div>
+        <div class="pub-authors">Jiyeong Chae, <strong>Sanghoon Lee</strong>, Kyung-Joon Park</div>
+        <div class="pub-venue">Korean Institute of Communication and Information Sciences (KICS) Winter Conference, Jan. 2024</div>
+      </div>
     </div>
-  </div>
 
-<div class="pub-row">
-  <div class="pub-left">
-    <div class="pub-number">[21]</div>
-    <div class="pub-category">Conference <br> Full Paper</div>
-  </div>
-  <div class="pub-info">
-    <a href="#" class="pub-title" target="_blank">
-      Robust Localization in Dynamic Indoor Environments Using Structure-Guided Point-wise LiDAR Scoring
-    </a>
-    <div class="pub-authors">Yeong-gi Hong*, Donghyung Lee, <span class="emphasis">Sanghoon Lee</span>, Jiyeong Chae, and Kyung-Joon Park</div>
-    <div class="pub-venue">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2026, Under Review</div>
-  </div>
-</div>
+    <!-- Patents -->
+    <div class="pub-year">Patents</div>
+    <div class="pub-row">
+      <div class="pub-num">[P2]</div>
+      <div class="pub-body">
+        <div class="pub-title">Method and Apparatus for Detecting Leakage in Water Pipeline Networks</div>
+        <div class="pub-authors">Young-gi Hong, Kyung-Joon Park, <strong>Sanghoon Lee</strong>, Jiyeong Chae</div>
+        <div class="pub-venue">Republic of Korea, App. No. 10-2025-0008593, Jan 21, 2025</div>
+      </div>
+    </div>
+    <div class="pub-row">
+      <div class="pub-num">[P1]</div>
+      <div class="pub-body">
+        <div class="pub-title">Leakage Detection Device and Method</div>
+        <div class="pub-authors">Kyung-Joon Park, <strong>Sanghoon Lee</strong>, Jiyeong Chae</div>
+        <div class="pub-venue">Republic of Korea, App. No. 10-2024-0004960, Jan 11, 2024</div>
+      </div>
+    </div>
 
-<div class="pub-row">
-  <div class="pub-left">
-    <div class="pub-number">[20]</div>
-    <div class="pub-category">Conference <br> Full Paper</div>
   </div>
-  <div class="pub-info">
-    <a href="#" class="pub-title" target="_blank">
-      Mitigating DDS Discovery Bursts in ROS 2 Multi Robot Systems
-    </a>
-    <div class="pub-authors">Taehyun Kim, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park</div>
-    <div class="pub-venue">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2026, Under Review</div>
-  </div>
-</div>
+</section>
 
-  <div class="pub-row" style="margin-top: 1.5rem;">
-        <div class="pub-left">
-          <div class="pub-number">[19]</div>
-          <div class="pub-category">Conference <br> Full Paper</div>
+<!-- ====================== ABOUT ====================== -->
+<section id="about">
+  <div class="container">
+    <div class="section-eyebrow">Background</div>
+    <h2 class="section-title">About</h2>
+
+    <div class="about-grid">
+
+      <!-- Experience -->
+      <div class="about-block">
+        <h3>Experience</h3>
+        <div class="timeline-row">
+          <div class="timeline-period">2026.02 — Now</div>
+          <div class="timeline-content">
+            <div class="timeline-role">InnoCore Postdoctoral Research Fellow</div>
+            <div class="timeline-org">Research Group for Bio-Embodied Physical AI, DGIST</div>
+          </div>
         </div>
-        <div class="pub-info">
-          <a href="#" class="pub-title" target="_blank">Discovery Storm: Scalability Analysis of DDS and Zenoh in Large-Scale Wireless Robotic ...</a>
-          <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Yeonwoo Choi, Jiyeong Chae, and Kyung-Joon Park</div>
-          <div class="pub-venue">IEEE INFOCOM NetRobiCS 2026 Workshop, Feb. 2026</div>
+        <div class="timeline-row">
+          <div class="timeline-period">2022.02 — 2026.02</div>
+          <div class="timeline-content">
+            <div class="timeline-role">Graduate Research Assistant</div>
+            <div class="timeline-org">CSI Lab, DGIST</div>
+          </div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-period">2020.08 — 2022.02</div>
+          <div class="timeline-content">
+            <div class="timeline-role">Undergraduate Research Student</div>
+            <div class="timeline-org">CSI Lab, DGIST</div>
+          </div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-period">2020.01 — 2020.02</div>
+          <div class="timeline-content">
+            <div class="timeline-role">Research Intern (Winter)</div>
+            <div class="timeline-org">CAS Lab, DGIST</div>
+          </div>
         </div>
       </div>
 
-  <div class="pub-row">
-        <div class="pub-left">
-          <div class="pub-number">[18]</div>
-          <div class="pub-category"> Journal <br> Full Paper</div>
+      <!-- Education -->
+      <div class="about-block">
+        <h3>Education</h3>
+        <div class="timeline-row">
+          <div class="timeline-period">2022.02 — 2026.02</div>
+          <div class="timeline-content">
+            <div class="timeline-role">Ph.D. in Electrical Engineering&nbsp;and Computer&nbsp;Science</div>
+            <div class="timeline-org">DGIST · Combined Program (UG-G.) · Major GPA 4.3 / 4.3</div>
+          </div>
         </div>
-        <div class="pub-info">
-          <a href="https://link.springer.com/article/10.1007/s12555-025-0558-8" target="_blank" class="pub-title">Time-Aware Costmap for Smoother and Less Disruptive AMR Navigation</a>
-          <div class="pub-authors">Jiyeong Chae, Hyunkyo Seo, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park</div>
-          <div class="pub-venue">International Journal of Control, Automation, and Systems (IJCAS), Dec. 2025</div>
+        <div class="timeline-row">
+          <div class="timeline-period">2019.06 — 2019.09</div>
+          <div class="timeline-content">
+            <div class="timeline-role">International Student Program</div>
+            <div class="timeline-org">UCLA, Los Angeles, USA · Major GPA 4.3 / 4.3</div>
+          </div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-period">2018.03 — 2022.02</div>
+          <div class="timeline-content">
+            <div class="timeline-role">B.S. in Computer Science</div>
+            <div class="timeline-org">DGIST · Major GPA 3.99 / 4.3</div>
+          </div>
         </div>
       </div>
 
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[17]</div>
-      <div class="pub-category">Journal <br> Full Paper</div>
     </div>
-    <div class="pub-info">
-      <a href="https://link.springer.com/article/10.1007/s12555-025-0572-x" target="_blank" class="pub-title">DIDoS: Disturbance-Induced Denial-of-Service Attack in Cyber-Physical Systems</a>
-      <div class="pub-authors">Sangjun Kim, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park</div>
-      <div class="pub-venue">International Journal of Control, Automation, and Systems (IJCAS), Nov. 2025</div>
+
+    <!-- Skills -->
+    <h3 style="font-family:'Crimson Pro',Georgia,serif; font-size:1.35rem; font-weight:600; margin: 3rem 0 1.25rem; color: var(--text);">Technical Stack</h3>
+    <div class="skills-grid">
+      <div class="skill-cat">Systems</div>
+      <div class="skill-list">
+        <span class="tag">C++</span><span class="tag">Python</span><span class="tag">Rust</span>
+        <span class="tag">Linux Kernel</span><span class="tag">Docker</span><span class="tag">Git</span>
+      </div>
+      <div class="skill-cat">Middleware</div>
+      <div class="skill-list">
+        <span class="tag">ROS 2</span><span class="tag">DDS</span><span class="tag">Zenoh</span><span class="tag">TCP/IP</span><span class="tag">UDP</span>
+      </div>
+      <div class="skill-cat">Intelligence</div>
+      <div class="skill-list">
+        <span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Nav2</span>
+        <span class="tag">MoveIt 2</span><span class="tag">Cartographer</span><span class="tag">AMCL</span>
+      </div>
+      <div class="skill-cat">Simulation</div>
+      <div class="skill-list">
+        <span class="tag">NVIDIA Isaac Sim</span><span class="tag">MuJoCo</span><span class="tag">Gazebo</span>
+        <span class="tag">MATLAB</span><span class="tag">NS-3</span><span class="tag">OMNeT++</span>
+      </div>
     </div>
   </div>
+</section>
 
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[16]</div>
-      <div class="pub-category">Conference <br> Full Paper</div>
-    </div>
-    <div class="pub-info">
-      <a href="#" class="pub-title" target="_blank">Vulnerability Analysis of Cross-Layer Attacks on ROS 2</a>
-      <div class="pub-authors">Hyunho Ryu, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park</div>
-      <div class="pub-venue" style="font-size: 0.8em;">International Conference on Information and Communication Technology Convergence (ICTC 2025), Oct. 2025</div>
-    </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[15]</div>
-      <div class="pub-category">Conference <br> Poster</div>
-    </div>
-    <div class="pub-info">
-      <a href="https://ieeexplore.ieee.org/abstract/document/11192433/" target="_blank" class="pub-title">Poster: How to Send Large Data in ROS 2</a>
-      <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Taehun Kim, Jiyeong Chae, and Kyung-Joon Park</div>
-      <div class="pub-venue">International Conference on Network Protocols (ICNP 2025), Sep. 2025</div>
-    </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[14]</div>
-      <div class="pub-category">Journal <br> Full Paper</div>
-    </div>
-    <div class="pub-info">
-      <a href="https://www.sciencedirect.com/science/article/abs/pii/S2452414X25001645" target="_blank" class="pub-title">From Issues to Routes: A Cooperative Costmap with Lifelong Learning for Multi-AMR ...</a>
-      <div class="pub-authors">Jiyeong Chae*, <span class="emphasis">Sanghoon Lee*</span>, Hyunkyo Seo, and Kyung-Joon Park</div>
-      <div class="pub-venue">Journal of Industrial Information Integration (JIII), Sep. 2025</div>
-    </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[13]</div>
-      <div class="pub-category">Conference <br> Poster</div>
-    </div>
-    <div class="pub-info">
-      <a href="https://ieeexplore.ieee.org/abstract/document/11170038/" target="_blank" class="pub-title">Integrating ROS 2 and Physical AI: Architecture and Challenges</a>
-      <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Jiyeong Chae, and Kyung-Joon Park</div>
-      <div class="pub-venue">The 16th International Conference on Ubiquitous and Future Networks (ICUFN25), July 2025</div>
-    </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[12]</div>
-      <div class="pub-category">Conference <br> Full Paper</div>
-    </div>
-    <div class="pub-info">
-      <a href="https://ieeexplore.ieee.org/abstract/document/11044454/?casa_token=JJWL4rvrHb4AAAAA:q290Tt_uyTrWF3kRdTvsXN6CYiYpQnjDtTApde7juGA2rUV0gm1m18x5QmQFztOwRwayYasSmyY" target="_blank" class="pub-title">An Analytical Latency Model of the Data Distribution Service in ROS 2</a>
-      <div class="pub-authors">Hyung-Seok Park, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park</div>
-      <div class="pub-venue">IEEE International Conference on Computer Communications (INFOCOM25), May 2025</div>
-    </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[11]</div>
-      <div class="pub-category">Journal <br> Full Paper</div>
-    </div>
-    <div class="pub-info">
-      <a href="https://ieeexplore.ieee.org/document/10991965" target="_blank" class="pub-title">PINMAP: A Cost-efficient Algorithm for Glass Detection and Mapping Using Low-cost 2D LiDAR</a>
-      <div class="pub-authors">Jiyeong Chae, Hyunkyo Seo, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park</div>
-      <div class="pub-venue">IEEE Transactions on Instrumentation and Measurement, May 2025</div>
-    </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[10]</div>
-      <div class="pub-category">Journal <br> Full Paper</div>
-    </div>
-    <div class="pub-info">
-      <a href="https://dl.acm.org/doi/10.1145/3721437" target="_blank" class="pub-title">Cyber-Physical Artificial Intelligence: Systematic Research Domain for Integrating ...</a>
-      <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Jiyeong Chae, and Kyung-Joon Park</div>
-      <div class="pub-venue">ACM Transactions on Cyber-Physical Systems, Feb. 2025</div>
-    </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[9]</div>
-      <div class="pub-category">Journal <br> Full Paper</div>
-    </div>
-    <div class="pub-info">
-      <a href="https://www.mdpi.com/2071-1050/17/4/1747" target="_blank" class="pub-title">Priority-Driven Resource Allocation with Reuse for Platooning in 5G Vehicular Networks</a>
-      <div class="pub-authors">Tae-Woo Kim, <span class="emphasis">Sanghoon Lee</span>, Dong-Hyung Lee, and Kyung-Joon Park</div>
-      <div class="pub-venue">Sustainability, Feb. 2025</div>
-    </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[8]</div>
-      <div class="pub-category">Journal <br> Full Paper</div>
-    </div>
-    <div class="pub-info">
-      <a href="https://www.sciencedirect.com/science/article/pii/S0278612524002139?dgcid=coauthor" target="_blank" class="pub-title">Learning-enabled Flexible Job-Shop Scheduling for Scalable Smart Manufacturing</a>
-      <div class="pub-authors">Sihoon Moon, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park</div>
-      <div class="pub-venue">Journal of Manufacturing Systems, Sep. 2024</div>
-    </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[7]</div>
-      <div class="pub-category">Journal <br> Full Paper</div>
-    </div>
-    <div class="pub-info">
-      <a href="https://ieeexplore.ieee.org/abstract/document/10643479/" target="_blank" class="pub-title">False Alarm Prevention through Domain Knowledge-driven Machine Learning: ... </a>
-      <div class="pub-authors"><span class="emphasis">Sanghoon Lee*</span>, Jiyeong Chae*, Sihoon Moon, and Kyung-Joon Park</div>
-      <div class="pub-venue">IEEE Sensors Journal, Aug. 2024</div>
-    </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[6]</div>
-      <div class="pub-category">Journal <br> Full Paper</div>
-    </div>
-    <div class="pub-info">
-      <a href="https://ieeexplore.ieee.org/abstract/document/10285130" target="_blank" class="pub-title">Learning-Enabled Network-Control Co-design for Energy-Efficient Industrial Internet of Things</a>
-      <div class="pub-authors">Sihoon Moon, <span class="emphasis">Sanghoon Lee</span>, Wonhong Jeon, and Kyung-Joon Park</div>
-      <div class="pub-venue">IEEE Transactions on Network and Service Management, Apr. 2024</div>
-    </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[5]</div>
-      <div class="pub-category">Journal <br> Full Paper</div>
-    </div>
-    <div class="pub-info">
-      <a href="https://ieeexplore.ieee.org/document/10210628" target="_blank" class="pub-title">Deep Reinforcement Learning-driven Scheduling in Multijob Serial Lines: A Case Study ...</a>
-      <div class="pub-authors"><span class="emphasis">Sanghoon Lee</span>, Jinyoung Kim, Gwangjin Wi, Yuchang Won, Yongsoon Eun, and Kyung-Joon Park</div>
-      <div class="pub-venue">IEEE Transactions on Industrial Informatics, Feb. 2024</div>
-    </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[4]</div>
-      <div class="pub-category">Journal <br> Full Paper</div>
-    </div>
-    <div class="pub-info">
-      <a href="https://ieeexplore.ieee.org/abstract/document/10285426" target="_blank" class="pub-title">A Survey and Perspective on Industrial Cyber-Physical Systems (ICPS): From ICPS ...</a>
-      <div class="pub-authors">Jiyeong Chae*, <span class="emphasis">Sanghoon Lee*</span>, Junhyung Jang, Seohyung Hong, and Kyung-Joon Park</div>
-      <div class="pub-venue">IEEE Transactions on Industrial Cyber-Physical Systems, Oct. 2023</div>
-    </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[3]</div>
-      <div class="pub-category">Conference <br> Full Paper</div>
-    </div>
-    <div class="pub-info">
-      <a href="https://ieeexplore.ieee.org/document/10312647" target="_blank" class="pub-title">Graph-based Reinforcement Learning for Flexible Job Shop Scheduling with Transportation ...</a>
-      <div class="pub-authors">Sihoon Moon, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park</div>
-      <div class="pub-venue">49th Annual Conference of the IEEE Industrial Electronics Society (IECON23), Oct. 2023</div>
-    </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[2]</div>
-      <div class="pub-category">Journal <br> Full Paper</div>
-    </div>
-    <div class="pub-info">
-      <a href="https://ieeexplore.ieee.org/abstract/document/9896851" target="_blank" class="pub-title">Real-Time Controller Reconfiguration for Delay-Resilient Cyber-Physical Systems</a>
-      <div class="pub-authors">Sangjun Kim, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park</div>
-      <div class="pub-venue">IEEE Access, Oct. 2022</div>
-    </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[1]</div>
-      <div class="pub-category">Conference <br> Full Paper</div>
-    </div>
-    <div class="pub-info">
-      <a href="#" class="pub-title" target="_blank">Resilient Controller Reconfiguration under Network Delay Attack in Cyber-Physical Systems</a>
-      <div class="pub-authors">Sangjun Kim, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park</div>
-      <div class="pub-venue">2022 International Conference on Electronics, Information, and Communication (ICEIC), 2022</div>
-    </div>
-  </div>
-  </div>
-
-<p style="font-size: 0.8em; opacity: 0.5;">* Indicates equal contribution as first authors.</p>
-  </div>
-
-<h2 class="section-title">Domestic Papers</h2>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[4]</div>
-      <div class="pub-category">Conference <br> Poster</div>
-    </div>
-    <div class="pub-info">
-      <a href="https://csi.dgist.ac.kr/HOME/csi/data/upload/202507021312536864b1c50c6e8.pdf" target="_blank" class="pub-title">End-to-End Latency Analysis of Reliable Communication in ROS 2 over Wireless Multi-hop ...</a>
-      <div class="pub-authors">Taehyun Kim, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park</div>
-      <div class="pub-venue">KICS Summer Conference, June 2025</div>
-    </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[3]</div>
-      <div class="pub-category">Conference <br> Poster</div>
-    </div>
-    <div class="pub-info">
-      <a href="https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE11906565&googleIPSandBox=false&mark=0&minRead=5&ipRange=false&b2cLoginYN=false&icstClss=010000&isPDFSizeAllowed=true&accessgl=Y&language=ko_KR&hasTopBanner=true" target="_blank" class="pub-title">Channel Modeling Analysis in Satellite-Terrestrial Integrated Network Using SDN ...</a>
-      <div class="pub-authors">Hyunho Ryu, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park</div>
-      <div class="pub-venue">KICS Summer Conference, June 2024</div>
-    </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[2]</div>
-      <div class="pub-category">Conference <br> Poster</div>
-    </div>
-    <div class="pub-info">
-      <a href="https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE11813728&googleIPSandBox=false&mark=0&minRead=5&ipRange=false&b2cLoginYN=false&icstClss=010000&isPDFSizeAllowed=true&accessgl=Y&language=ko_KR&hasTopBanner=true" target="_blank" class="pub-title">SDN Based Multipath Routing Algorithm in Satellite-Terrestrial Integrated Network</a>
-      <div class="pub-authors">Haewon Jeon, <span class="emphasis">Sanghoon Lee</span>, Dong-Hyung Lee, Changhee Joo, and Kyung-Joon Park</div>
-      <div class="pub-venue">KAAA Spring Conference, April 2024</div>
-    </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[1]</div>
-      <div class="pub-category">Conference <br> Poster</div>
-    </div>
-    <div class="pub-info">
-      <a href="https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE11737135&googleIPSandBox=false&mark=0&minRead=5&ipRange=false&b2cLoginYN=false&icstClss=010000&isPDFSizeAllowed=true&accessgl=Y&language=ko_KR&hasTopBanner=true" target="_blank" class="pub-title">Sound-based Machine Fault Diagnosis via Active Learning in Industrial Environments ...</a>
-      <div class="pub-authors">Jiyeong Chae, <span class="emphasis">Sanghoon Lee</span>, and Kyung-Joon Park</div>
-      <div class="pub-venue">KICS Winter Conference, Jan 2024</div>
-    </div>
-  </div>
-<h2 class="section-title">Patents</h2>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[2]</div>
-      <div class="pub-category">Patent</div>
-    </div>
-    <div class="pub-info">
-      <a href="#" class="pub-title" target="_blank">Method and Apparatus for Detecting Leakage in Water Pipeline Networks</a>
-      <div class="pub-authors">Young-gi Hong, Kyung-Joon Park, <span class="emphasis">Sanghoon Lee</span>, Jiyeong Chae</div>
-      <div class="pub-venue">Republic of Korea, Application No. 10-2025-0008593, Jan 21, 2025</div>
-    </div>
-  </div>
-
-  <div class="pub-row">
-    <div class="pub-left">
-      <div class="pub-number">[1]</div>
-      <div class="pub-category">Patent</div>
-    </div>
-    <div class="pub-info">
-      <a href="#" class="pub-title" target="_blank">Leakage Detection Device and Method</a>
-      <div class="pub-authors">Kyung-Joon Park, <span class="emphasis">Sanghoon Lee</span>, Jiyeong Chae</div>
-      <div class="pub-venue">Republic of Korea, Application No. 10-2024-0004960, Jan 11, 2024</div>
-    </div>
-  </div>
-
-  
-  <style>
-    /* 기존 pub-container 스타일 활용 */
-    .award-row { 
-      display: flex; 
-      gap: 1.5rem; 
-      padding: 1rem 0; 
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
-    body.dark-mode .award-row {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .award-left {
-      flex: 0 0 100px; 
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-    }
-    .award-number { 
-      font-size: 0.85em; 
-      opacity: 0.4; 
-    }
-    .award-category {
-      font-size: 0.65em;
-      opacity: 0.5;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-    .award-info { flex: 1; }
-    .award-title { 
-      font-size: 1em; 
-      line-height: 1.4; 
-      margin-bottom: 0.3rem;
-      display: block;
-      color: inherit;
-      text-decoration: none;
-    }
-    .award-title:link,
-    .award-title:visited,
-    .award-title:hover,
-    .award-title:active {
-      color: inherit;
-      text-decoration: none;
-    }
-    .award-title:hover { opacity: 0.7; }
-    .award-org { 
-      font-size: 0.88em; 
-      opacity: 0.7; 
-    }
-    .award-meta {
-      font-size: 0.85em;
-      opacity: 0.4;
-      margin-top: 0.3rem;
-    }
-  </style>
-
-  <div class="pub-container" style="margin-top: 2rem;">
-    <h2 class="news-title">Honors & Awards</h2>
+<!-- ====================== AWARDS ====================== -->
+<section id="awards">
+  <div class="container">
+    <div class="section-eyebrow">Recognition</div>
+    <h2 class="section-title">Honors &amp; Awards</h2>
 
     <div class="award-row">
-      <div class="award-left">
-        <div class="award-number">[8]</div>
-        <div class="award-category"></div>
-      </div>
-      <div class="award-info">
-        <a href="https://conf.kics.or.kr/2025f/supportInform" target="_blank" class="award-title">Best Paper Award</a>
+      <div class="award-num">[8]</div>
+      <div>
+        <div class="award-title"><a href="https://conf.kics.or.kr/2025f/supportInform" target="_blank">Best Paper Award</a></div>
         <div class="award-org">2025 KICS Summer Conference</div>
       </div>
     </div>
-
     <div class="award-row">
-      <div class="award-left">
-        <div class="award-number">[7]</div>
-        <div class="award-category"></div>
-      </div>
-      <div class="award-info">
-        <span class="award-title">Next-Generation Engineering Researcher</span>
+      <div class="award-num">[7]</div>
+      <div>
+        <div class="award-title">Next-Generation Engineering Researcher</div>
         <div class="award-org">Institute for Promotion of Engineering and Science of Korea (IPESK)</div>
       </div>
     </div>
-
     <div class="award-row">
-      <div class="award-left">
-        <div class="award-number">[6]</div>
-        <div class="award-category"></div>
-      </div>
-      <div class="award-info">
-        <a href="https://n.news.naver.com/article/448/0000467656?sid=101" target="_blank" class="award-title">
-          Excellence Award in Future Tech Division, Aero Future Tech & Business Idea Contest
-        </a>
+      <div class="award-num">[6]</div>
+      <div>
+        <div class="award-title"><a href="https://n.news.naver.com/article/448/0000467656?sid=101" target="_blank">Excellence Award · Future Tech Division, Aero Future Tech &amp; Business Idea Contest</a></div>
         <div class="award-org">Hanwha Aerospace</div>
-        <div class="award-meta">Team Leader </div>
+        <div class="award-meta">Team Leader</div>
       </div>
     </div>
-
     <div class="award-row">
-      <div class="award-left">
-        <div class="award-number">[5]</div>
-        <div class="award-category"></div>
-      </div>
-      <div class="award-info">
-        <a href="https://www.etnews.com/20231114000010" target="_blank" class="award-title">
-          Selected as 2023 Top 100 Excellent National R&D Achievements
-        </a>
+      <div class="award-num">[5]</div>
+      <div>
+        <div class="award-title"><a href="https://www.etnews.com/20231114000010" target="_blank">2023 Top 100 Excellent National R&amp;D Achievements</a></div>
         <div class="award-org">Ministry of Science and ICT (MSIT)</div>
         <div class="award-meta">Participant Researcher</div>
       </div>
     </div>
-
     <div class="award-row">
-      <div class="award-left">
-        <div class="award-number">[4]</div>
-        <div class="award-category"></div>
-      </div>
-      <div class="award-info">
-        <span class="award-title">ACM MobiHoc Student Grant</span>
+      <div class="award-num">[4]</div>
+      <div>
+        <div class="award-title">ACM MobiHoc Student Grant</div>
         <div class="award-org">ACM SIGMOBILE</div>
       </div>
     </div>
-
     <div class="award-row">
-      <div class="award-left">
-        <div class="award-number">[1-3]</div>
-        <div class="award-category"></div>
-      </div>
-      <div class="award-info">
-        <span class="award-title">Dean's List (Academic Excellence Award)</span>
+      <div class="award-num">[1-3]</div>
+      <div>
+        <div class="award-title">Dean's List (Academic Excellence Award)</div>
         <div class="award-org">DGIST</div>
         <div class="award-meta">Fall 2021, Spring 2021, Spring 2020</div>
       </div>
     </div>
   </div>
-        `,
-ProjectContent: `
-  <style>
-    .review-row { 
-      display: flex; 
-      gap: 1.5rem; 
-      padding: 1.2rem 0; 
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
-    body.dark-mode .review-row {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .review-left {
-      flex: 0 0 100px; 
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-    }
-    .review-year { 
-      font-size: 0.85em; 
-      opacity: 0.4; 
-    }
-    .review-info { 
-      flex: 1; 
-      font-size: 0.9em;
-      line-height: 1.8; /* 가독성을 위해 줄간격 소폭 확대 */
-      color: inherit;
-    }
-    .pub-group {
-      margin-bottom: 0.5rem;
-    }
-    .pub-group:last-child {
-      margin-bottom: 0;
-    }
-    .publisher {
-      font-size: 0.75em;
-      opacity: 0.4;
-      text-transform: uppercase;
-      margin-right: 0.8rem;
-      letter-spacing: 0.5px;
-    }
-    .journal-name {
-      display: inline;
-      font-style: italic;
-      opacity: 0.8;
-      margin-right: 1rem;
-    }
-  </style>
+</section>
 
-  <div class="pub-container">
-    <h2 class="news-title">Peer Review Activities</h2>
+<!-- ====================== OPEN SOURCE ====================== -->
+<section id="opensource">
+  <div class="container">
+    <div class="section-eyebrow">Code</div>
+    <h2 class="section-title">Open Source</h2>
+    <p class="section-lead">
+      Code releases accompanying recent publications. Stars and forks fetched live from GitHub.
+    </p>
 
-    <div class="review-row">
-      <div class="review-left">
-        <div class="review-year">2026 — Present</div>
+    <div class="repo-row" data-repo="csi-dgist/QoS-Guard">
+      <div class="repo-info">
+        <a href="https://github.com/csi-dgist/QoS-Guard" target="_blank" class="repo-name">QoS Guard</a>
+        <div class="repo-tags">ROS 2 · DDS QoS · Static Validator</div>
+        <div class="repo-links">
+          <a href="https://github.com/csi-dgist/QoS-Guard" target="_blank">GitHub</a>
+          <a href="https://csi-dgist.github.io/QoS-Guard/" target="_blank">Project Page</a>
+          <a href="https://arxiv.org/abs/2509.03381" target="_blank">Paper [27]</a>
+        </div>
       </div>
-      <div class="review-info">
-        <div class="pub-group">
-          <span class="publisher">Springer Nature</span>
-          <span class="journal-name">Artificial Intelligence Review</span>
-        </div>
-		<div class="pub-group">
-          <span class="publisher">IEEE</span>
-          <span class="journal-name">Transactions on Systems, Man, and Cybernetics</span>
-        </div>
+      <div class="repo-stats">
+        <span class="repo-stat" title="Stars"><svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg><span class="repo-stars">—</span></span>
+        <span class="repo-stat" title="Forks"><svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"/></svg><span class="repo-forks">—</span></span>
       </div>
     </div>
 
-    <div class="review-row">
-      <div class="review-left">
-        <div class="review-year">2025 — Present</div>
+    <div class="repo-row" data-repo="csi-dgist/DDS-Optimizer-for-Wirelss-Large-Payload-Transfer">
+      <div class="repo-info">
+        <a href="https://github.com/csi-dgist/DDS-Optimizer-for-Wirelss-Large-Payload-Transfer" target="_blank" class="repo-name">DDS Optimizer for Wireless Large Payloads</a>
+        <div class="repo-tags">ROS 2 · Wireless · DDS Optimizer</div>
+        <div class="repo-links">
+          <a href="https://github.com/csi-dgist/DDS-Optimizer-for-Wirelss-Large-Payload-Transfer" target="_blank">GitHub</a>
+          <a href="https://arxiv.org/abs/2508.11366" target="_blank">Paper [25]</a>
+        </div>
       </div>
-      <div class="review-info">
-        <div class="pub-group">
-          <span class="publisher">Springer Nature</span>
-          <span class="journal-name">Scientific Reports</span>
-          <span class="journal-name">International Journal of Computational Intelligence Systems</span>
-        </div>
-        <div class="pub-group">
-          <span class="publisher">IEEE</span>
-          <span class="journal-name">Journal of Communications and Networks (JCN)</span>
-          <span class="journal-name">Systems Journal</span>
-          <span class="journal-name">Transactions on Network and Service Management (TNSM)</span>
-        </div>
-        <div class="pub-group">
-          <span class="publisher">Elsevier</span>
-          <span class="journal-name">Expert Systems With Applications</span>
-          <span class="journal-name">Computers and Operations Research</span>
-        </div>
+      <div class="repo-stats">
+        <span class="repo-stat" title="Stars"><svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg><span class="repo-stars">—</span></span>
+        <span class="repo-stat" title="Forks"><svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"/></svg><span class="repo-forks">—</span></span>
       </div>
     </div>
 
-    <div class="review-row">
-      <div class="review-left">
-        <div class="review-year">2024 — Present</div>
+    <div class="repo-row" data-repo="csi-dgist/ros2probe">
+      <div class="repo-info">
+        <a href="https://github.com/csi-dgist/ros2probe" target="_blank" class="repo-name">ros2probe</a>
+        <div class="repo-tags">ROS 2 · eBPF · Observability</div>
+        <div class="repo-links">
+          <a href="https://github.com/csi-dgist/ros2probe" target="_blank">GitHub</a>
+          <a href="https://csi-dgist.github.io/ros2probe-page/" target="_blank">Project Page</a>
+        </div>
       </div>
-      <div class="review-info">
-        <div class="pub-group">
-          <span class="publisher">Springer</span>
-          <span class="journal-name">Machine Learning</span>
-        </div>
-        <div class="pub-group">
-          <span class="publisher">Elsevier</span>
-          <span class="journal-name">ICT Express</span>
-        </div>
-        <div class="pub-group">
-          <span class="publisher">IEEE</span>
-          <span class="journal-name">Transactions on Industrial Cyber-Physical Systems (TICPS)</span>
-        </div>
+      <div class="repo-stats">
+        <span class="repo-stat" title="Stars"><svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg><span class="repo-stars">—</span></span>
+        <span class="repo-stat" title="Forks"><svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"/></svg><span class="repo-forks">—</span></span>
       </div>
     </div>
 
-    <div class="review-row">
-      <div class="review-left">
-        <div class="review-year">2023 — Present</div>
-      </div>
-      <div class="review-info">
-        <div class="pub-group">
-          <span class="publisher">IEEE</span>
-          <span class="journal-name">Access</span>
-        </div>
-      </div>
-    </div>
   </div>
-`
+</section>
+
+<!-- ====================== ACTIVITIES ====================== -->
+<section id="activities">
+  <div class="container">
+    <div class="section-eyebrow">Service</div>
+    <h2 class="section-title">Activities</h2>
+
+    <h3 style="font-family:'Crimson Pro',Georgia,serif; font-size:1.35rem; font-weight:600; margin: 0 0 1.25rem; color: var(--text);">Conferences</h3>
+
+    <div class="conf-year">
+      <div class="conf-yr">2026</div>
+      <div class="conf-list">
+        AW 2026 <span class="conf-meta">(Attended, Seoul, South Korea)</span><span class="conf-sep">·</span>ROSCon KR 2026 <span class="conf-meta">(Session, Seongnam, South Korea)</span>
+      </div>
+    </div>
+    <div class="conf-year">
+      <div class="conf-yr">2025</div>
+      <div class="conf-list">
+        AIoT 2025 <span class="conf-meta">(Attended, Seoul, South Korea)</span><span class="conf-sep">·</span>ICCAS 2025 <span class="conf-meta">(Poster, Incheon, South Korea)</span><span class="conf-sep">·</span>ROSCon 2025 <span class="conf-meta">(Attended, Singapore)</span><span class="conf-sep">·</span>CoRL 2025 <span class="conf-meta">(Attended, Seoul, South Korea)</span><span class="conf-sep">·</span>IEEE ICNP 2025 <span class="conf-meta">(Poster, Seoul, South Korea)</span><span class="conf-sep">·</span>ICML 2025 <span class="conf-meta">(Attended, Vancouver, Canada)</span><span class="conf-sep">·</span>ICUFN 2025 <span class="conf-meta">(Workshop Paper, Lisbon, Portugal)</span><span class="conf-sep">·</span>CISC-S 2025 <span class="conf-meta">(Attended, Kyeungju, South Korea)</span><span class="conf-sep">·</span>KICS Summer 2025 <span class="conf-meta">(Poster, Jeju, South Korea)</span><span class="conf-sep">·</span>Joint Workshop on Physical AI <span class="conf-meta">(Attended, South Korea)</span><span class="conf-sep">·</span>AW 2025 <span class="conf-meta">(Attended, Seoul, South Korea)</span>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Crimson Pro',Georgia,serif; font-size:1.35rem; font-weight:600; margin: 3rem 0 1.25rem; color: var(--text);">Peer Review</h3>
+
+    <div class="review-block">
+      <div class="review-year-head">2026 — Present</div>
+      <div>
+        <span class="review-pub">Springer Nature</span><span class="review-journal">Artificial Intelligence Review</span><br />
+        <span class="review-pub">IEEE</span><span class="review-journal">Transactions on Systems, Man, and Cybernetics</span>
+      </div>
+    </div>
+
+    <div class="review-block">
+      <div class="review-year-head">2025 — Present</div>
+      <div>
+        <span class="review-pub">Springer Nature</span><span class="review-journal">Scientific Reports</span><span class="review-journal">International Journal of Computational Intelligence Systems</span><br />
+        <span class="review-pub">IEEE</span><span class="review-journal">Journal of Communications and Networks (JCN)</span><span class="review-journal">Systems Journal</span><span class="review-journal">Transactions on Network and Service Management (TNSM)</span><br />
+        <span class="review-pub">Elsevier</span><span class="review-journal">Expert Systems With Applications</span><span class="review-journal">Computers and Operations Research</span>
+      </div>
+    </div>
+
+    <div class="review-block">
+      <div class="review-year-head">2024 — Present</div>
+      <div>
+        <span class="review-pub">Springer</span><span class="review-journal">Machine Learning</span><br />
+        <span class="review-pub">Elsevier</span><span class="review-journal">ICT Express</span><br />
+        <span class="review-pub">IEEE</span><span class="review-journal">Transactions on Industrial Cyber-Physical Systems (TICPS)</span>
+      </div>
+    </div>
+
+    <div class="review-block">
+      <div class="review-year-head">2023 — Present</div>
+      <div>
+        <span class="review-pub">IEEE</span><span class="review-journal">Access</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ====================== FOOTER ====================== -->
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-name">Sanghoon Lee</div>
+        <div class="footer-affil">InnoCore Postdoctoral Research Fellow · DGIST</div>
+        <div class="footer-affil" style="margin-top: 0.3rem;">leesh2913@dgist.ac.kr</div>
+      </div>
+      <div class="footer-links">
+        <a href="https://scholar.google.co.kr/citations?user=W2iqqvAAAAAJ&hl=ko" target="_blank">Google Scholar</a>
+        <a href="https://github.com/hun0130" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/sanghoon-lee-1b5929301" target="_blank">LinkedIn</a>
+        <a href="CV_Sanghoon_Lee.pdf" target="_blank">CV</a>
+      </div>
+    </div>
+    <div class="footer-copy">© Sanghoon Lee (DGIST) · all rights reserved · 2026</div>
+  </div>
+</footer>
+
+<script>
+  function toggleMode() {
+    document.body.classList.toggle('dark-mode');
+  }
+
+  // 비공개 링크(href="#") 클릭 시 안내 메시지
+  document.addEventListener('click', function (e) {
+    const a = e.target.closest('a[href="#"]');
+    if (!a) return;
+    e.preventDefault();
+    alert('나중에 공개 예정입니다.');
+  });
+
+  // GitHub repo stars/forks 실시간 fetch
+  async function loadRepoStats() {
+    const rows = document.querySelectorAll('[data-repo]');
+    for (const row of rows) {
+      const repo = row.dataset.repo;
+      try {
+        const resp = await fetch(`https://api.github.com/repos/${repo}`);
+        if (!resp.ok) continue;
+        const data = await resp.json();
+        const stars = row.querySelector('.repo-stars');
+        const forks = row.querySelector('.repo-forks');
+        if (stars) stars.textContent = data.stargazers_count;
+        if (forks) forks.textContent = data.forks_count;
+      } catch (e) {
+        // silent fail — keep "—"
       }
-    };
-
-    /**********************************************************
-     * 텍스트 교체
-     **********************************************************/
-    function setLanguageTexts() {
-      document.getElementById('navHome').textContent           = texts.en.navHome;
-      document.getElementById('navAbout').textContent          = texts.en.navAbout;
-      document.getElementById('navAchievements').textContent   = texts.en.navAchievements;
-      document.getElementById('navProject').textContent        = texts.en.navProject;
-
-      document.getElementById('homeTitle').textContent         = texts.en.homeTitle;
-      document.getElementById('homeSubtitle').textContent      = texts.en.homeSubtitle;
-      document.getElementById('homeSubInfo').innerHTML         = texts.en.homeSubInfo;
-      document.getElementById('homeResearch').innerHTML        = texts.en.homeResearch;
-
-      document.getElementById("newsSection").innerHTML        = texts.en.newsSection;
-
-      document.getElementById('aboutContent').innerHTML        = texts.en.aboutContent;
-      document.getElementById('achievementsContent').innerHTML = texts.en.achievementsContent;
-      document.getElementById('ProjectContent').innerHTML      = texts.en.ProjectContent;
     }
+  }
+  window.addEventListener('DOMContentLoaded', loadRepoStats);
+</script>
 
-    /**********************************************************
-     * 탭(섹션) 전환
-     **********************************************************/
-    // showSection 함수 및 관련 호출 삭제
-  </script>
 </body>
 </html>
