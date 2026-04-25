@@ -4,17 +4,14 @@
   <meta charset="UTF-8" />
   <title>Sanghoon Lee — Cyber-Physical AI Researcher · DGIST</title>
   <meta name="description" content="Full-Stack Researcher for Embodied Intelligence. ROS 2 · DDS · Physical AI · CPS. InnoCore Postdoctoral Fellow at DGIST." />
-  <link rel="icon" type="image/png" href="Mark.png" />
-  <link rel="shortcut icon" type="image/png" href="Mark.png" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <meta property="og:title" content="Sanghoon Lee — Cyber-Physical AI Researcher" />
   <meta property="og:description" content="Cyber-Physical AI · ROS 2 · Physical AI · CPS" />
-  <meta property="og:image" content="Mark.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:image" content="Profile.png" />
+  <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Sanghoon Lee" />
   <meta name="twitter:description" content="Cyber-Physical AI Researcher · DGIST" />
-  <meta name="twitter:image" content="Mark.png" />
+  <meta name="twitter:image" content="Profile.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Crimson+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
@@ -185,6 +182,8 @@
   }
   .section-lead strong { color: var(--text); font-weight: 600; }
   .section-lead em { color: var(--accent); font-style: normal; font-weight: 600; }
+  .pubs-stat-line { display: inline-block; }
+  @media (min-width: 720px) { .pubs-stat-line { white-space: nowrap; } }
 
   /* ---------- Research Pillars ---------- */
   .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
@@ -825,7 +824,7 @@
     <div class="section-eyebrow">Complete List</div>
     <h2 class="section-title">Publications</h2>
     <p class="section-lead">
-      <span style="white-space: nowrap;"><strong>32+&nbsp;international&nbsp;papers</strong> · Ph.D.&nbsp;dissertation · domestic&nbsp;papers · patents.</span>
+      <span class="pubs-stat-line"><strong>32+&nbsp;international&nbsp;papers</strong> · Ph.D.&nbsp;dissertation · domestic&nbsp;papers · patents.</span>
       <br /><span style="color:var(--text-faint); font-size: 0.85em;">* indicates equal contribution as first authors.</span>
     </p>
 
@@ -1321,8 +1320,8 @@
   <div class="container">
     <div class="section-eyebrow">Code</div>
     <h2 class="section-title">Open Source</h2>
-    <p class="section-lead" style="white-space: nowrap; max-width: none;">
-      Code releases accompanying recent publications. Stars and forks fetched live from GitHub.
+    <p class="section-lead">
+      <span class="pubs-stat-line">Code releases accompanying recent publications. Stars and forks fetched live from GitHub.</span>
     </p>
 
     <div class="repo-row" data-repo="csi-dgist/QoS-Guard">
