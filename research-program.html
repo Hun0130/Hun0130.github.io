@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title><b>Sanghoon Lee</b> — Research Program</title>
+<title>Sanghoon Lee, Research Program</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
@@ -32,6 +32,8 @@ a{color:inherit}
 .logo .accent{color:var(--accent)}
 .langtoggle{font-family:var(--mono);background:none;border:1px solid var(--panel-bd);color:var(--ink);padding:.4rem .8rem;border-radius:7px;cursor:pointer;font-size:.78rem;font-weight:500;letter-spacing:.03em;transition:.2s}
 .langtoggle:hover{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.homelink{font-family:var(--mono);text-decoration:none;background:none;border:1px solid var(--panel-bd);color:var(--ink);padding:.4rem .8rem;border-radius:7px;font-size:.78rem;font-weight:500;letter-spacing:.03em;transition:.2s}
+.homelink:hover{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
 
 /* ---------- HERO ---------- */
 .hero{min-height:calc(100vh - 58px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;padding:60px 26px 60px}
@@ -143,8 +145,39 @@ table.pubs .n{color:var(--mut);font-size:12px}
 .lcard .lv{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
 .foot{margin-top:56px;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
 
+/* ---------- IDEAS / PIPELINE ---------- */
+.ideas-section{padding:64px 0 84px;background:var(--bg)}
+.ifilter{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:30px 0 0}
+.ifilter button{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.04em;padding:8px 14px;border-radius:999px;border:1px solid var(--panel-bd);background:#fff;color:var(--mut);cursor:pointer;transition:.18s}
+.ifilter button:hover{transform:translateY(-2px);color:var(--ink)}
+.ifilter button.cur{color:#fff;background:var(--fc,var(--ink));border-color:var(--fc,var(--ink))}
+.igrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:26px}
+.icard{background:#fff;border:1px solid var(--panel-bd);border-left:4px solid var(--ic,var(--panel-bd));border-radius:13px;padding:15px 17px;cursor:pointer;transition:box-shadow .2s,transform .2s}
+.icard:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(11,18,32,.09)}
+.icard .ihead{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.icard .iname{font-weight:700;font-size:15px;letter-spacing:-.01em;color:var(--ink)}
+.icard .isub{font-size:12px;color:var(--faint);font-weight:400}
+.icard .ichips{display:flex;gap:6px;margin-left:auto;flex:0 0 auto}
+.icard .igc{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ic);border:1px solid var(--ic);border-radius:5px;padding:2px 7px;opacity:.85}
+.icard .isc{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;border-radius:5px;padding:2px 7px;color:var(--faint);border:1px dashed var(--faint)}
+.icard.prep .isc{color:#B5740A;border-color:#B5740A;border-style:solid;background:rgba(181,116,10,.07)}
+.icard .itag{margin-top:8px;font-size:13px;color:var(--mut);line-height:1.55}
+.icard .idet{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--panel-bd);font-size:13px;color:var(--mut);line-height:1.62}
+.icard .idet b{color:var(--ink);font-weight:600}
+.icard .idet .ivn{margin-top:8px;font-family:var(--mono);font-size:11.5px;color:var(--faint)}
+.icard .idet ul{margin:8px 0 0;padding-left:18px}
+.icard .idet li{margin:3px 0}
+.icard.open{box-shadow:0 12px 32px rgba(11,18,32,.10)}
+.icard.open .idet{display:block;animation:fade .3s ease}
+.icard .iarr{font-family:var(--mono);font-size:10px;color:var(--faint);margin-left:6px;transition:transform .2s;display:inline-block}
+.icard.open .iarr{transform:rotate(90deg)}
+.igrp-head{grid-column:1/-1;margin:16px 0 -4px;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gc,var(--faint));display:flex;align-items:center;gap:12px}
+.igrp-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--panel-bd),transparent)}
+.icount{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.06em}
+
 @media(max-width:760px){
   .pillars{grid-template-columns:1fr}
+  .igrid{grid-template-columns:1fr}
   .stage{aspect-ratio:auto;height:360px}
   .node .chip{padding:8px 11px}
   .node .ntxt b{font-size:12px}
@@ -156,25 +189,142 @@ table.pubs .n{color:var(--mut);font-size:12px}
 <body>
 
 <nav class="topnav"><div class="wrap">
-  <span class="logo"><b>Sanghoon Lee</b> <span class="accent">· Research Program</span></span>
-  <button class="langtoggle" onclick="toggleLang()"></button>
+  <span class="logo"><b>Sanghoon Lee</b><span class="accent">, Research Program</span></span>
+  <div style="display:flex;align-items:center;gap:.6rem">
+    <a href="index.html" class="homelink">← Home</a>
+    <button class="langtoggle" onclick="toggleLang()"></button>
+  </div>
 </div></nav>
 
 <!-- ===================== MAP VIEW ===================== -->
+<noscript>
+<div style="max-width:880px;margin:0 auto;padding:40px 24px;font-family:system-ui,-apple-system,sans-serif;line-height:1.65;color:#0B1220">
+  <p style="font-family:monospace;color:#0072CE;text-transform:uppercase;letter-spacing:.1em;margin:0 0 6px">Cyber-Physical AI</p>
+  <h1 style="margin:0 0 6px">Research Program, Sanghoon Lee (DGIST)</h1>
+  <p style="margin:0 0 18px"><a href="index.html">← Back to homepage</a></p>
+  <p><strong>What makes intelligence and the physical world one system?</strong> Research on how AI, middleware, and control are designed together so that intelligence reaches the physical world reliably, despite real-world uncertainty and resource limits.</p>
+
+  <h2>Three Pillars</h2>
+  <ul>
+    <li><strong>The Brain, AI.</strong> Good things happen often. (Right most of the time.)</li>
+    <li><strong>The Nerve, ROS 2.</strong> All things stay connected. (Decisions arrive, uninterrupted.)</li>
+    <li><strong>The Body, CPS.</strong> Bad things never happen. (Nothing bad must ever happen.)</li>
+  </ul>
+  <p>AI is only <strong>often right</strong>. But the physical system it enters demands to be <strong>always connected</strong> and to <strong>never fail</strong>. This research builds what bridges the two.</p>
+
+  <h2>Research Architecture</h2>
+  <p>CPAI is the research program's paradigm, and the Middleware Harness implements it as the execution layer. Within this structure, the three axes (Embodied Intelligence, ROS 2 Middleware, Networked Control) are interconnected. CPAI implements the paradigm as an execution layer (Harness). The Harness mediates and delivers the outputs of intelligence (Embodied Intelligence), observes middleware state and tracks the conditions of execution (ROS 2 Middleware), and guarantees control safety and isolation (Networked Control). The three axes share wireless field measurements, system context and assumptions, and task goals and resource constraints.</p>
+
+  <h2>Axis 1, CPAI (The Paradigm)</h2>
+  <p><em>Cyber-Physical Artificial Intelligence. Defining how far AI can be trusted inside a physical system.</em></p>
+  <p><strong>Core question.</strong> As AI grows more capable, whether it can be safely trusted inside a real physical system raises an entirely different question. In an era where AI directly produces a robot's actions, what do we entrust to AI, how far, and under what conditions does that judgment stay safely governed?</p>
+  <p><strong>Frame.</strong> CPAI is proposed as the paradigm that unifies CPS and Physical AI. Rather than trusting an uncertain AI's judgment as-is, it checks each output at the system boundary, bounds its resources and time, and reverts to a verified action when at risk. Determinism is reconstructed not by internal proof but by boundary enforcement and runtime assurance.</p>
+  <p><strong>Role in the program.</strong> The governing paradigm. Defines the problem space and the conditions under which AI can be trusted in a physical system. Every other axis operates within this framework.</p>
+  <p><strong>Publications.</strong></p>
+  <ul>
+    <li>Cyber-Physical Artificial Intelligence: A Unified Framework for Embodied Intelligence. Sanghoon Lee (Advisor: Kyung-Joon Park). DGIST, Ph.D. Dissertation, 2026.</li>
+    <li>Cyber-Physical AI: Unifying Cyber-Physical Systems and Physical Artificial Intelligence. Sanghoon Lee, Guoliang Xing, Xue Liu, Karl H. Johansson, Kyung-Joon Park. ACM TCPS (20th Anniversary), Invited, Under Review.</li>
+    <li>From Hype to Reality: A Survey of Physical AI in Industrial Robotics. Sanghoon Lee*, Jiyeong Chae*, Jinhong Park, Kyung-Joon Park. Elsevier EAAI, Under Review.</li>
+    <li>Cyber-Physical AI: Systematic Research Domain for Integrating AI and Cyber-Physical Systems. Sanghoon Lee, Jiyeong Chae, Kyung-Joon Park. ACM TCPS, Published 2025.</li>
+    <li>Integrating ROS 2 and Physical AI: Architecture and Challenges. Sanghoon Lee, Jiyeong Chae, Kyung-Joon Park. ICUFN 2025, Published 2025.</li>
+    <li>A Survey and Perspective on Industrial Cyber-Physical Systems (ICPS): From ICPS to AI-augmented ICPS. Jiyeong Chae*, Sanghoon Lee*, Junhyung Jang, Seohyung Hong, Kyung-Joon Park. IEEE TICPS, Published 2023.</li>
+  </ul>
+
+  <h2>Axis 2, Middleware Harness (The Execution Layer)</h2>
+  <p><em>Implementing CPAI in real robot middleware, connecting the three axes.</em></p>
+  <p><strong>Core question.</strong> The realization of CPAI must take place in middleware that can observe and govern both the AI model and the physical system. The goal is not to rebuild safety mechanisms from scratch each time, but to engineer them once into the middleware so that every robot system can reuse them.</p>
+  <p><strong>Frame.</strong> Middleware Harness is the layer that implements the boundary enforcement proposed by CPAI in real robot middleware. Just as a harness turns a raw model into a governed agent, the Middleware Harness turns robot middleware into the enforcement layer of CPAI. It is where CPAI and the three axes (Embodied Intelligence, ROS 2 Middleware, Networked Control) converge.</p>
+  <p><strong>3-Layer Structure (Connect, Observe, Force).</strong></p>
+  <ul>
+    <li><strong>Connect.</strong> Links the rules declared at the intelligence level to the middleware. Realizes PIT (Projection, Isolation, Transfer) as a ROS 2 profile. (Tied to Embodied Intelligence.)</li>
+    <li><strong>Observe.</strong> Observes the middleware state to bridge Connect and Force. Minimizes observation cost while maximizing information. (Tied to ROS 2 Middleware.)</li>
+    <li><strong>Force.</strong> Based on what Observe sees, enforces control, communication, and computation on the data plane. (Tied to Networked Control.)</li>
+  </ul>
+  <p><strong>Role in the program.</strong> The execution layer. Implements what CPAI proposes in real robot middleware, connecting the three axes without modifying existing systems.</p>
+  <p><strong>Publications.</strong></p>
+  <ul>
+    <li>Harness Engineering for Physical AI: Robot Middleware Is the Harness Layer. Sanghoon Lee, Jiyeong Chae, Kyung-Joon Park. Middleware 2026, Under Review.</li>
+    <li>ros2probe: Non-intrusive, Kernel-selective Observability for Robot Operating System 2 Middleware. Jisang Yu*, Sanghoon Lee*, Kyung-Joon Park. Middleware 2026, Under Review.</li>
+  </ul>
+
+  <h2>Axis 3, Embodied Intelligence (Brain, AI)</h2>
+  <p><em>How does an embodied intelligence perceive, plan, and act in the real world?</em></p>
+  <p><strong>Core question.</strong> What does it take for a robot to perceive, plan, and act in the real world? When many robots localize, navigate, and divide work together, how is that intelligence built and coordinated?</p>
+  <p><strong>Frame.</strong> Each problem is approached at the layer where intelligence meets the system. Scheduling connects learning to the factory floor. MAPF connects planning to real robot motion. Localization and navigation connect perception to the physical environment.</p>
+  <p><strong>Role in the program.</strong> The testbed. Grounds the full CPAI framework in real multi-robot systems, from scheduling and MAPF to localization and LLM-driven navigation.</p>
+  <p><strong>Publications.</strong></p>
+  <ul>
+    <li>LIMA: Local Intersection Marshaling Algorithm for Multi-Agent Path Finding in Large-Scale Industrial Environments. Sanghoon Lee*, Jisang Yu*, Geon-pyo Kim, Kyung-Joon Park. Elsevier RAS, Under Review.</li>
+    <li>Natural-Language to Operational Policies: LLM-Driven Costmaps for Industrial AMRs. Jiyeong Chae, Hyunkyo Seo, Heonjae Lee, Sanghoon Lee, Kyung-Joon Park. Elsevier RAS, Under Review.</li>
+    <li>Robust Localization in Dynamic Indoor Environments Using Structure-Guided Point-wise LiDAR Scoring. Yeong-gi Hong*, Donghyung Lee, Sanghoon Lee, Jiyeong Chae, Kyung-Joon Park. IROS 2026, Under Review.</li>
+    <li>AMCL Lifelong: Long-term Indoor Localization. Hyunkyo Kim, Sanghoon Lee, Kyung-Joon Park. IEEE TIM, In Preparation.</li>
+    <li>Multi-Robot Intelligence Survey. Hyunho Ryu, Sanghoon Lee, Kyung-Joon Park. Survey, In Preparation.</li>
+    <li>Time-aware Costmap for Smoother and Less Disruptive AMR Navigation With ROS 2. Jiyeong Chae, Hyunkyo Seo, Sanghoon Lee, Kyung-Joon Park. IJCAS, Published 2025.</li>
+    <li>From Issues to Routes: A Cooperative Costmap with Lifelong Learning for Multi-AMR Navigation. Jiyeong Chae*, Sanghoon Lee*, Hyunkyo Seo, Kyung-Joon Park. JIII, Published 2025.</li>
+    <li>PINMAP: A Cost-efficient Algorithm for Glass Detection and Mapping Using Low-cost 2D LiDAR. Jiyeong Chae, Hyunkyo Seo, Sanghoon Lee, Kyung-Joon Park. IEEE TIM, Published 2025.</li>
+    <li>Deep Reinforcement Learning-driven Scheduling in Multijob Serial Lines: A Case Study in Automotive Parts Assembly. Sanghoon Lee, Jinyoung Kim, Yongsoon Eun, Kyung-Joon Park. IEEE T-II, Published 2024.</li>
+    <li>Learning-enabled Flexible Job-Shop Scheduling for Scalable Smart Manufacturing. Sihoon Moon, Sanghoon Lee, Kyung-Joon Park. JMS, Published 2024.</li>
+    <li>False Alarm Prevention through Domain Knowledge-driven Machine Learning: Leakage Detection in Water Distribution Networks. Sanghoon Lee*, Jiyeong Chae*, Sihoon Moon, Kyung-Joon Park. IEEE Sensors Journal, Published 2024.</li>
+    <li>Graph-based Reinforcement Learning for Flexible Job Shop Scheduling with Transportation Constraints. Sihoon Moon, Sanghoon Lee, Kyung-Joon Park. IECON 2023, Published 2023.</li>
+  </ul>
+
+  <h2>Axis 4, ROS 2 Middleware (Nerve, ROS 2): Space, Time, and State</h2>
+  <p><em>Where does the communication layer slow down, drop, and drift?</em></p>
+  <p><strong>Core question.</strong> When many robots move together wirelessly and in real time, where does the middleware linking them slow down, drop, and drift? Three demands collide: spatial connectivity, temporal predictability, and state continuity.</p>
+  <p><strong>Frame.</strong> The three dimensions of Space (spatial abstraction), Time (temporal predictability), and State (state continuity) define the trade-off space of ROS 2 middleware, and each research thread targets a specific region within it.</p>
+  <p><strong>Role in the program.</strong> The core middleware axis. The Space, Time, and State framework defines the vocabulary for the entire research program, and open-source tools extend it into the ROS 2 community.</p>
+  <p><strong>Publications.</strong></p>
+  <ul>
+    <li>The Three Dimensions of ROS 2 Middleware. Sanghoon Lee, Taehun Kim, Angelo Corsaro, Kyung-Joon Park. IEEE COMST, Under Review.</li>
+    <li>Dependency Chain Analysis of ROS 2 DDS QoS Policies: From Lifecycle Tutorial to Static Verification (QoS Guard). Sanghoon Lee, Junha Kang, Kyung-Joon Park. IEEE IoT-J, Under Review.</li>
+    <li>Optimizing ROS 2 Communication for Wireless Robotic Systems (DDS Optimizer). Sanghoon Lee, Taehun Kim, Yeonwoo Choi, Kyung-Joon Park. IEEE IoT-J, Under Review.</li>
+    <li>Probabilistic Latency Analysis of the Data Distribution Service in ROS 2. Sanghoon Lee, Hyung-Seok Park, Jiyeong Chae, Kyung-Joon Park. IEEE TVT, Under Review.</li>
+    <li>Mitigating DDS Discovery Bursts in ROS 2 Multi-Robot Systems. Taehyun Kim, Sanghoon Lee, Kyung-Joon Park. IROS 2026, Under Review.</li>
+    <li>ROS 2 System Handbook. Sanghoon Lee. Book, In Preparation.</li>
+    <li>Analytical Modeling of Discovery Storms in DDS and Zenoh for Large-Scale Robotic Networks. Yeonwoo Choi*, Sanghoon Lee*, Kyung-Joon Park. INFOCOM 2027, In Preparation.</li>
+    <li>Adaptive Queue Drop for Real-Time ROS 2 Communication. Junha Kang, Sanghoon Lee, Kyung-Joon Park. IEEE IoT-J, In Preparation.</li>
+    <li>Partial Reliability for ROS 2 over Wireless. Taehun Kim, Sanghoon Lee, Kyung-Joon Park. IEEE IoT-J, In Preparation.</li>
+    <li>Discovery Storm: Scalability Analysis of DDS and Zenoh in Large-Scale Wireless Robotic Networks. Sanghoon Lee, Yeonwoo Choi, Jiyeong Chae, Kyung-Joon Park. INFOCOM NetRobiCS 2026, Published 2026.</li>
+    <li>ROS 2 Middleware Survival Guide: Navigating Space, Time, and State. Sanghoon Lee, Kyung-Joon Park. ROSCon Global 2026 (Toronto), Accepted 2026.</li>
+    <li>How to Send Large Data in ROS 2. Sanghoon Lee, Taehun Kim, Jiyeong Chae, Kyung-Joon Park. ICNP 2025, Published 2025.</li>
+    <li>An Analytical Latency Model of the Data Distribution Service in ROS 2. Hyung-Seok Park, Sanghoon Lee, Kyung-Joon Park. INFOCOM 2025, Published 2025.</li>
+  </ul>
+
+  <h2>Axis 5, Networked Control (Body, CPS)</h2>
+  <p><em>Reliability, Resilience, and Security of control over networks.</em></p>
+  <p><strong>Core question.</strong> When a control loop closes over a communication network, how does it withstand delay, loss, and attack while staying safe? Where along the path from intelligence to the physical system does failure strike, and how does the system recover?</p>
+  <p><strong>Frame.</strong> This axis covers reliability, resilience, and security when a control loop runs over a wired or wireless network, spanning controller reconfiguration, resource allocation and co-design, and attack-surface analysis and defense.</p>
+  <p><strong>Role in the program.</strong> The axis that enforces the CPS guarantee. From controller reconfiguration and DoS to cross-layer attacks and 5G resource allocation, it ensures that nothing bad ever happens when control runs over a network.</p>
+  <p><strong>Publications.</strong></p>
+  <ul>
+    <li>Exploiting ROS 2's Blind Spot: Cross-Layer Attacks from Discovery to ARP Spoofing. Hyunho Ryu*, Sanghoon Lee*, Young-Sik Kim, Dan Dongseong Kim, Kyung-Joon Park. IEEE IoT-J, Under Review.</li>
+    <li>AI over the Air. Sanghoon Lee, Kyung-Joon Park. Survey, In Preparation.</li>
+    <li>DIDoS: Disturbance-induced Denial-of-service Attack in Networked Cyber-physical Systems. Sangjun Kim, Sanghoon Lee, Kyung-Joon Park. IJCAS, Published 2025.</li>
+    <li>Vulnerability Analysis of Cross-Layer Attacks on ROS 2. Hyunho Ryu, Sanghoon Lee, Kyung-Joon Park. ICTC 2025, Published 2025.</li>
+    <li>Priority-Driven Resource Allocation with Reuse for Platooning in 5G Vehicular Network. Tae-Woo Kim, Sanghoon Lee, Dong-Hyung Lee, Kyung-Joon Park. Sustainability, Published 2025.</li>
+    <li>Learning-Enabled Network-Control Co-design for Energy-Efficient Industrial Internet of Things. Sihoon Moon, Sanghoon Lee, Wonhong Jeon, Kyung-Joon Park. IEEE TNSM, Published 2024.</li>
+    <li>Real-Time Controller Reconfiguration for Delay-Resilient Cyber-Physical Systems. Sangjun Kim, Sanghoon Lee, Kyung-Joon Park. IEEE Access, Published 2022.</li>
+    <li>Resilient Controller Reconfiguration under Network Delay Attack in Cyber-Physical Systems. Sangjun Kim, Sanghoon Lee, Kyung-Joon Park. ICEIC 2022, Published 2022.</li>
+  </ul>
+
+  <p style="margin-top:24px;color:#4F5B6F">This is a static text version of an interactive page. Enable JavaScript for the full interactive research map. For the complete profile, see the <a href="index.html">homepage</a>.</p>
+</div>
+</noscript>
+
 <div id="map-view">
 
   <header class="hero">
     <div class="keyword">Cyber-Physical AI</div>
-    <h1 data-en='How to unify intelligence and the<br>physical system <span class="hl">without breaking</span>?' data-ko='지능은 어떻게 물리 시스템까지<br><span class="hl">깨지지 않고</span> 도달하는가'></h1>
-    <p class="sub" data-en='Integrated research that connects AI, middleware, and control.<br>The conditions under which AI is preserved all the way to the physical system,<br>despite real-world uncertainty and resource limits.' data-ko='AI · 미들웨어 · 제어를 잇는 통합 연구. AI가 현실의 불확실성과 자원 제약 속에서도<br>물리 시스템까지 보존되는 조건을 다룬다.'></p>
+    <h1 data-en='What makes intelligence and<br>the physical world <span class="hl">one system</span>?' data-ko='무엇이 지능과 물리 세계를<br><span class="hl">하나의 시스템</span>으로 만드는가?'></h1>
+    <p class="sub" data-en='Research on how AI, middleware, and control are designed together<br>so that intelligence reaches the physical world reliably,<br>despite real-world uncertainty and resource limits.' data-ko='실세계의 불확실성과 자원 제약 속에서도,<br>지능이 물리 세계에 신뢰 가능하게 도달하도록,<br>AI, 미들웨어, 제어를 함께 설계하는 연구.'></p>
 
     <div class="pillars">
-      <div class="pillar p-brain"><span class="bar"></span><div class="pk">The Brain</div><h3>AI</h3><div class="motto">Good things happen often.</div><div class="pt" data-en='Often right. But not always.' data-ko='자주 옳다. 그러나 항상은 아니다.'></div></div>
-      <div class="pillar p-nerve"><span class="bar"></span><div class="pk">The Nerve</div><h3>ROS 2</h3><div class="motto">All things stay connected.</div><div class="pt" data-en='Its decisions arrive unbroken.' data-ko='그 판단이 끊김 없이 전달되어야 한다.'></div></div>
-      <div class="pillar p-body"><span class="bar"></span><div class="pk">The Body</div><h3>CPS</h3><div class="motto">Bad things never happen.</div><div class="pt" data-en='Nothing bad may ever happen.' data-ko='그 결과로 나쁜 일은 절대 없어야 한다.'></div></div>
+      <div class="pillar p-brain"><span class="bar"></span><div class="pk">The Brain</div><h3>AI</h3><div class="motto">Good things happen often.</div><div class="pt" data-en='Right most of the time.' data-ko='대부분 옳다.'></div></div>
+      <div class="pillar p-nerve"><span class="bar"></span><div class="pk">The Nerve</div><h3>ROS 2</h3><div class="motto">All things stay connected.</div><div class="pt" data-en='Decisions arrive, uninterrupted.' data-ko='판단이 끊김 없이 전달된다.'></div></div>
+      <div class="pillar p-body"><span class="bar"></span><div class="pk">The Body</div><h3>CPS</h3><div class="motto">Bad things never happen.</div><div class="pt" data-en='Nothing bad must ever happen.' data-ko='나쁜 일은 절대 없어야 한다.'></div></div>
     </div>
 
-    <p class="asym" data-en='AI is only <b>often</b> right, yet the physical system it enters demands to be <b>always connected</b> and to <b>never fail</b>. Research lives in the gap that bridges the two.' data-ko='AI 는 <b>자주(often)</b> 옳을 뿐인데, 그 AI 가 들어가는 물리 시스템은 <b>항상(always) 연결</b>되고 <b>절대(never) 실패하지 않기</b>를 요구한다. 그 간극을 메우는 자리에 연구가 있다.'></p>
+    <p class="asym" data-en='AI is only <b>often right</b>. But the physical system it enters demands to be <b>always connected</b> and to <b>never fail</b>. This research builds what bridges the two.' data-ko='AI는 <b>자주 옳을</b> 뿐이다. 그런데 그 AI가 들어가는 물리 시스템은 <b>항상 연결</b>되고 <b>절대 실패</b>하지 않기를 요구한다. 이 연구는 그 간극을 메우는 것을 설계한다.'></p>
 
     <div class="scrolldown"><span data-en="View the architecture" data-ko="연구 아키텍처 보기"></span><span class="arr"></span></div>
   </header>
@@ -184,7 +334,7 @@ table.pubs .n{color:var(--mut);font-size:12px}
       <div class="sec-head">
         <span class="kicker" data-en="Architecture" data-ko="아키텍처"></span>
         <h2 data-en="Research Architecture" data-ko="연구 아키텍처"></h2>
-        <p data-en="CPAI is the research program's paradigm, and the Middleware Harness implements it as the execution layer on real robots.<br>Within this structure, the three axes (Embodied Intelligence, ROS 2 Middleware, Networked Control) interconnect." data-ko="CPAI 는 전체 연구 프로그램의 패러다임이며, Middleware Harness 는 이를 실제 로봇 시스템에서 구현하는 실행 계층이다.<br>이 구조 안에서 Embodied Intelligence, ROS 2 Middleware, Networked Control 의 세 축이 서로 연결된다."></p>
+        <p data-en="CPAI is the research program's paradigm, and the Middleware Harness implements it as the execution layer.<br>Within this structure, the three axes (Embodied Intelligence, ROS 2 Middleware, Networked Control) are interconnected." data-ko="CPAI는 전체 연구 프로그램의 패러다임이며, Middleware Harness는 이를 구현하는 실행 계층이다.<br>이 구조 안에서 Embodied Intelligence, ROS 2 Middleware, Networked Control의 세 축이 서로 연결된다."></p>
       </div>
 
       <div class="stage-wrap">
@@ -204,8 +354,8 @@ table.pubs .n{color:var(--mut);font-size:12px}
         </div>
 
         <div class="legend">
-          <span><i style="border-color:#5b6b8c"></i> <span data-en="CPAI → Harness → 3 axes (implement · connect)" data-ko="CPAI → Harness → 3축 (구현·연결)"></span></span>
-          <span><i style="border-color:#9aa6c4;border-top-style:dashed"></i> <span data-en="Cross-axis sharing (data · testbed · patents)" data-ko="축 간 공유 (데이터·실험·특허)"></span></span>
+          <span><i style="border-color:#5b6b8c"></i> <span data-en="CPAI → Harness → 3 axes (implement, connect)" data-ko="CPAI → Harness → 3축 (구현, 연결)"></span></span>
+          <span><i style="border-color:#9aa6c4;border-top-style:dashed"></i> <span data-en="Cross-axis sharing" data-ko="축 간 공유"></span></span>
         </div>
         <div class="hint"><span data-en="▶ Click a node" data-ko="▶ 줄기를 클릭하세요"></span></div>
       </div>
@@ -225,129 +375,129 @@ const L = {
   coreQ:{en:'Core Question',ko:'핵심 질문'},
   frame:{en:'Frame',ko:'프레임'},
   pubs:{en:'Publications',ko:'산출물'},
-  highlight:{en:'Highlight',ko:'하이라이트'},
+  role:{en:'Role in the Program',ko:'프로그램 내 역할'},
   back:{en:'← Architecture',ko:'← 연구 아키텍처'},
   thOut:{en:'Output',ko:'산출물'}, thVenue:{en:'Venue',ko:'venue'}, thNote:{en:'Note',ko:'비고'},
   indep:{en:'independent thread',ko:'독립 줄기'},
-  layersHead:{en:'3-Layer Structure · Connect → Observe → Force',ko:'3계층 구조 · 연결 → 관찰 → 강제'},
-  layersNote:{en:`Connect receives the rules, Observe watches the middleware state and bridges up and down, and the bottom enforces the data plane.`,
-              ko:`연결이 규약을 받고, 관찰이 미들웨어 상태를 보며 위아래를 잇고, 아래에서 데이터 플레인을 강제한다.`}
+  layersHead:{en:'3-Layer Structure (Connect → Observe → Force)',ko:'3계층 구조 (연결 → 관찰 → 강제)'},
+  layersNote:{en:`Connect receives the rules declared at the intelligence level, Observe watches middleware state and bridges the layers, and Force enforces the data plane.`,
+              ko:`연결이 지능 레벨의 규약을 받고, 관찰이 미들웨어 상태를 보며 계층을 잇고, 강제가 데이터 플레인을 집행한다.`}
 };
 
 /* ---------- DATA ---------- */
 const NODES = {
   a:{name:'CPAI',axis:{en:'Paradigm',ko:'패러다임'},raw:'#6C4BD8',banner:true,x:550,y:72,
-     q:{en:'What to entrust to AI, how far, and under what conditions it is safe. This work founds the field that asks it.',ko:'AI 에게 무엇을 어디까지 맡기고, 어떤 조건에서 안전한가. 이 질문을 다루는 학문 자체를 세운다.'}},
-  c:{name:'Middleware Harness',axis:{en:"CPAI's implementation · connects 3 axes",ko:'CPAI 의 구현 · 3축 연결'},raw:'#0E7FB8',bridge:true,x:550,y:272,
-     q:{en:'CPAI must be realized in a middleware that fully observes and controls the model and the system. This safety layer follows the ROS philosophy of not reinventing the wheel.',ko:'CPAI 의 구현은 모델과 시스템을 전부 관측·통제하는 미들웨어에서 이뤄져야 한다. 바퀴를 다시 발명하지 않는 ROS 철학을 따른다.'}},
-  e:{name:'Embodied Intelligence',axis:{en:'Brain · AI',ko:'Brain · AI'},raw:'#B5740A',x:235,y:500,
-     q:{en:'How does an embodied intelligence perceive, plan, and act in the real world? How do many robots coordinate?',ko:'몸을 가진 지능이 현실에서 어떻게 인식·계획·행동하나. 여러 로봇을 어떻게 조율하나.'}},
-  b:{name:'ROS 2 Middleware',axis:{en:'Nerve · ROS 2',ko:'Nerve · ROS 2'},raw:'#0072CE',x:550,y:500,
+     q:{en:'What to entrust to AI, how far, and under what conditions it stays safely governed. This work founds the field that asks it.',ko:'AI에게 무엇을 어디까지 맡기고, 어떤 조건에서 안전하게 통제되는가. 이 질문을 다루는 학문 자체를 세운다.'}},
+  c:{name:'Middleware Harness',axis:{en:"CPAI's implementation",ko:'CPAI의 구현'},raw:'#0E7FB8',bridge:true,x:550,y:272,
+     q:{en:'CPAI must be realized in middleware that observes and governs the AI model and the physical system, engineered once so every robot can reuse it.',ko:'CPAI의 구현은 AI 모델과 물리 시스템을 관측하고 통제하는 미들웨어에서, 한 번 설계해 모두가 재사용하도록 이뤄진다.'}},
+  e:{name:'Embodied Intelligence',axis:{en:'Brain (AI)',ko:'Brain (AI)'},raw:'#B5740A',x:235,y:500,
+     q:{en:'How does an embodied intelligence perceive, plan, and act in the real world? How do many robots coordinate?',ko:'몸을 가진 지능이 현실에서 어떻게 인식하고 계획하고 행동하나. 여러 로봇을 어떻게 조율하나.'}},
+  b:{name:'ROS 2 Middleware',axis:{en:'Nerve (ROS 2)',ko:'Nerve (ROS 2)'},raw:'#0072CE',x:550,y:500,
      q:{en:'Where does the communication layer linking robots slow down, drop, and drift?',ko:'로봇들을 잇는 통신 계층은 어디서 느려지고 끊기고 어긋나는가.'}},
-  d:{name:'Networked Control',axis:{en:'Body · CPS',ko:'Body · CPS'},raw:'#CF3B39',x:865,y:500,
-     q:{en:'How does a control loop closed over a network withstand delay, loss, and attack while staying safe?',ko:'네트워크 위에서 닫히는 제어 루프가 지연·손실·공격을 어떻게 견디고 안전을 유지하나.'}}
+  d:{name:'Networked Control',axis:{en:'Body (CPS)',ko:'Body (CPS)'},raw:'#CF3B39',x:865,y:500,
+     q:{en:'How does a control loop closed over a network withstand delay, loss, and attack while staying safe?',ko:'네트워크 위에서 닫히는 제어 루프가 지연, 손실, 공격을 어떻게 견디고 안전을 유지하나.'}}
 };
 const EDGES = [
   {f:'a',t:'c',type:'strong',lab:{en:'Implements the paradigm as an execution layer.',ko:'패러다임을 실행 계층으로 구현한다.'}},
   {f:'c',t:'b',type:'mid',lab:{en:'Observes middleware state and tracks the conditions of execution.',ko:'미들웨어 상태를 관찰하고 실행 조건을 추적한다.'}},
-  {f:'c',t:'e',type:'mid',lab:{en:'Connects and enforces the outputs of intelligence at the middleware boundary.',ko:'지능의 출력을 미들웨어 경계에서 연결하고 강제한다.'}},
+  {f:'c',t:'e',type:'mid',lab:{en:'Mediates and delivers the outputs of intelligence at the middleware boundary.',ko:'지능의 출력을 미들웨어 경계에서 중재하고 전달한다.'}},
   {f:'c',t:'d',type:'mid',lab:{en:'Guarantees control safety and isolation under hazardous conditions.',ko:'위험 상황에서 제어 안전성과 격리를 보장한다.'}},
-  {f:'b',t:'d',type:'share',lab:{en:'Shares wireless field measurements and delay and loss models.',ko:'무선 실측 데이터와 지연·손실 모델을 공유한다.'}},
+  {f:'b',t:'d',type:'share',lab:{en:'Shares wireless field measurements and delay and loss models.',ko:'무선 실측 데이터와 지연 및 손실 모델을 공유한다.'}},
   {f:'e',t:'b',type:'share',lab:{en:'Defines the context and assumptions of the robot system.',ko:'로봇 시스템의 컨텍스트와 가정을 정의한다.'}},
-  {f:'e',t:'d',type:'share',lab:{en:'Defines the resource constraints of the robot system.',ko:'로봇 시스템의 자원 제약을 정의한다.'}}
+  {f:'e',t:'d',type:'share',lab:{en:'Defines the task goals and resource constraints of the robot system.',ko:'로봇 시스템의 태스크 목표와 자원 제약을 정의한다.'}}
 ];
 const CONN = {a:[],b:[],c:[],d:[],e:[]};
 EDGES.forEach((e,i)=>{e.id='e'+i;CONN[e.f].push(e);CONN[e.t].push(e);});
 
 const AX={
- a:{raw:'#6C4BD8',pill:{en:'The Paradigm',ko:'패러다임 · The Paradigm'},title:'CPAI',sub:'Cyber-Physical Artificial Intelligence',
-    motto:{en:'Defining how far AI can be entrusted, and founding the field.',ko:'AI 에게 무엇을 어디까지 맡길 것인가. 그 학문을 세운다.'},
-    q:{en:`As AI grows more capable, whether it can be <span class="tag">safely trusted inside a real physical system</span> becomes an entirely separate problem. In an era where AI directly produces a robot's actions, what do we entrust to AI, how far, and under what conditions does that judgment stay safely governed? This work founds the very field that addresses the question.`,
-       ko:`AI 가 똑똑해질수록 'AI 를 실제 물리 시스템에 믿고 맡겨도 되는가' 는 전혀 다른 문제가 된다. AI 가 로봇의 행동을 직접 만들어내는 시대에, 무엇을 어디까지 AI 에게 맡기고, 어떤 조건에서 그 판단이 <span class="tag">안전하게 통제</span>되는가. 이 질문을 다루는 새로운 학문 영역 자체를 정의한다.`},
-    frame:{en:`CPAI is proposed as the governing paradigm that unifies CPS and Physical AI. Instead of trusting an uncertain AI's judgment as-is, it proposes a PIT structure that checks each output at the boundary <b>(Projection)</b>, bounds its resources and time <b>(Isolation)</b>, and reverts to a verified action when at risk <b>(Transfer)</b>. This formalizes CPS as a 3C Substrate(Control·Computing·Communication) × 3S Primitives(State·Step·Stream), and against AI's uncertainty(opacity·stochasticity·distributional shift) determinism is reconstructed not by internal proof but by boundary enforcement and runtime assurance.`,
-           ko:`CPS 와 Physical AI 를 하나로 묶는 지배 패러다임으로 <b>CPAI</b> 를 제안. 불확실한 AI 의 판단을 그대로 믿는 대신, 그 판단을 경계에서 검사하고 <b>(Projection)</b>, 자원·시간을 묶고 <b>(Isolation)</b>, 위험하면 검증된 동작으로 되돌리는 <b>(Transfer)</b> PIT 구조를 제안. 이는 CPS 를 3C Substrate(Control·Computing·Communication) × 3S Primitives(State·Step·Stream)로 정형화하고, AI 의 불확실성(opacity·stochasticity·distributional shift) 앞에서 결정성을 내부 증명이 아니라 경계 강제·런타임 보증으로 재구성한다.`},
-    pubs:[['<span class="star">★</span> Ph.D. Dissertation · Cyber-Physical Artificial Intelligence: A Unified Framework for Embodied Intelligence','<b>Sanghoon Lee</b> (Advisor: Kyung-Joon Park)','DGIST','Ph.D. Dissertation · 2026'],
-          ['Cyber-Physical AI: Unifying Cyber-Physical Systems and Physical Artificial Intelligence','<b>Sanghoon Lee</b>, Guoliang Xing, Xue Liu, Karl H. Johansson, Kyung-Joon Park','ACM TCPS (20th Anniversary)','Invited · Under Review'],
+ a:{raw:'#6C4BD8',pill:{en:'The Paradigm',ko:'패러다임'},title:'CPAI',sub:'Cyber-Physical Artificial Intelligence',
+    motto:{en:'Defining how far AI can be trusted inside a physical system.',ko:'AI에게 무엇을 어디까지 맡길 것인가.'},
+    q:{en:`As AI grows more capable, whether it can be <span class="tag">safely trusted inside a real physical system</span> raises an entirely different question. In an era where AI directly produces a robot's actions, what do we entrust to AI, how far, and under what conditions does that judgment stay safely governed?`,
+       ko:`AI가 똑똑해질수록 '<span class="tag">AI를 실제 물리 시스템에 믿고 맡겨도 되는가</span>'는 전혀 다른 문제가 된다. AI가 로봇의 행동을 직접 만들어내는 시대에, 무엇을 어디까지 AI에게 맡기고, 어떤 조건에서 그 판단이 안전하게 통제되는가.`},
+    frame:{en:`<b>CPAI</b> is proposed as the paradigm that unifies CPS and Physical AI. Rather than trusting an uncertain AI's judgment as-is, it checks each output at the system boundary, bounds its resources and time, and reverts to a verified action when at risk. Determinism is reconstructed not by internal proof but by <b>boundary enforcement</b> and <b>runtime assurance</b>.`,
+           ko:`CPS와 Physical AI를 하나로 묶는 패러다임으로 <b>CPAI</b>를 제안한다. 불확실한 AI의 판단을 그대로 믿는 대신, 그 판단을 경계에서 검사하고, 자원과 시간을 제한하고, 위험하면 검증된 동작으로 되돌리는 구조를 제안한다. 결정성은 내부 증명이 아니라 <b>경계 강제</b>와 <b>런타임 보증</b>으로 재구성한다.`},
+    pubs:[['<span class="star">★</span> Cyber-Physical Artificial Intelligence: A Unified Framework for Embodied Intelligence','<b>Sanghoon Lee</b> (Advisor: Kyung-Joon Park)','DGIST','Ph.D. Dissertation, 2026'],
+          ['Cyber-Physical AI: Unifying Cyber-Physical Systems and Physical Artificial Intelligence','<b>Sanghoon Lee</b>, Guoliang Xing, Xue Liu, Karl H. Johansson, Kyung-Joon Park','ACM TCPS (20th Anniversary)','Invited, Under Review'],
           ['From Hype to Reality: A Survey of Physical AI in Industrial Robotics','<b>Sanghoon Lee*</b>, Jiyeong Chae*, Jinhong Park, Kyung-Joon Park','Elsevier EAAI','Under Review'],
-          ['Cyber-Physical AI: Systematic Research Domain for Integrating AI and Cyber-Physical Systems','<b>Sanghoon Lee</b>, Jiyeong Chae, Kyung-Joon Park','ACM TCPS','Published · 2025'],
-          ['Integrating ROS 2 and Physical AI: Architecture and Challenges','<b>Sanghoon Lee</b>, Jiyeong Chae, Kyung-Joon Park','ICUFN 2025','Published · 2025'],
-          ['A Survey and Perspective on Industrial Cyber-Physical Systems (ICPS): From ICPS to AI-augmented ICPS','Jiyeong Chae*, <b>Sanghoon Lee*</b>, Junhyung Jang, Seohyung Hong, Kyung-Joon Park','IEEE TICPS','Published · 2023']],
-    asset:{en:`Defined the research domain Cyber-Physical AI for the first time at ACM TCPS (2025), carried forward as a single lineage through the 20th-anniversary Invited paper (co-authored with Xing · Liu · Johansson).`,
-           ko:`Cyber-Physical AI 라는 연구 도메인을 ACM TCPS 에 처음 정의(2025)하고, 20주년 Invited paper(Xing·Liu·Johansson 공저)로 이어가는 단일 lineage.`}},
+          ['Cyber-Physical AI: Systematic Research Domain for Integrating AI and Cyber-Physical Systems','<b>Sanghoon Lee</b>, Jiyeong Chae, Kyung-Joon Park','ACM TCPS','Published, 2025'],
+          ['Integrating ROS 2 and Physical AI: Architecture and Challenges','<b>Sanghoon Lee</b>, Jiyeong Chae, Kyung-Joon Park','ICUFN 2025','Published, 2025'],
+          ['A Survey and Perspective on Industrial Cyber-Physical Systems (ICPS): From ICPS to AI-augmented ICPS','Jiyeong Chae*, <b>Sanghoon Lee*</b>, Junhyung Jang, Seohyung Hong, Kyung-Joon Park','IEEE TICPS','Published, 2023']],
+    role:{en:`The governing paradigm. Defines the problem space and the conditions under which AI can be trusted in a physical system. Every other axis operates within this framework.`,
+           ko:`지배 패러다임. AI를 물리 시스템에 믿고 맡길 수 있는 조건을 정의한다. 다른 모든 축은 이 프레임워크 안에서 작동한다.`}},
 
- c:{raw:'#0E7FB8',pill:{en:"CPAI's implementation · connects 3 axes",ko:'CPAI 의 구현 · 3축 연결'},title:'Middleware Harness',sub:{en:"CPAI's actual implementation",ko:'CPAI 의 실제 구현'},
-    motto:{en:'Implementing CPAI in real robot middleware, connecting the three axes.',ko:'CPAI 를 실제 로봇 미들웨어에서 구현해, 세 축을 잇는다'},
-    q:{en:`The realization of CPAI must take place in a middleware that can fully observe and control both the model and the system. This is not about rebuilding the safety layer from scratch each time, but about following ROS's philosophy of <span class="tag">"not reinventing the wheel"</span>.`,
-       ko:`CPAI 의 구현은 모델과 시스템을 전부 관측하고 통제할 수 있는 미들웨어에서 이뤄져야 한다. 이는 안전장치를 항상 새로 구축하는 것이 아니라, <span class="tag">'바퀴를 다시 발명하지 않는다'</span> 는 ROS 의 철학을 따르기 위함이다.`},
-    frame:{en:`Middleware Harness is <b>the layer that implements the boundary enforcement (PIT) proposed by CPAI in real robot middleware</b>. Just as an LLM agent harness turns a model into a trustworthy agent, the harness of Physical AI is the robot middleware. It is the junction that connects <b>CPAI (the paradigm) and the three axes (Embodied Intelligence · ROS 2 Middleware · Networked Control)</b>, where all three layers meet in the middleware.`,
-           ko:`Middleware Harness 는 <b>CPAI 가 제안한 경계 강제(PIT)를 실제 로봇 미들웨어에서 구현하는 계층</b>이다. LLM agent harness 가 모델을 신뢰 가능한 에이전트로 만들 듯, Physical AI 의 harness 는 로봇 미들웨어다. <b>CPAI(패러다임)와 세 축(Embodied Intelligence · ROS 2 Middleware · Networked Control)을 잇는 접점</b>으로, 미들웨어에서는 세 계층이 전부 맞닿는다.`},
-    layers:[[{en:'TOP',ko:'상'},{en:'Connect',ko:'연결 (Connect)'},{en:'Links the rules declared at the app / intelligence level to the middleware. Realizes PIT (Projection·Isolation·Transfer) as a ROS 2 profile.',ko:'앱·지능 레벨에서 정한 규약을 미들웨어와 연결. PIT(Projection·Isolation·Transfer)를 ROS 2 profile 로 구체화'},'Embodied Intelligence'],
-            [{en:'MID',ko:'중'},{en:'Observe',ko:'관찰 (Observe)'},{en:'Observes the middleware state to bridge the top (Connect) and bottom (Control). Minimizes observation cost while maximizing information.',ko:'미들웨어 상태를 관찰하여, 위(연결)와 아래(제어)를 이어준다. 관찰 비용을 최소화하며, 정보를 최대화'},'ROS 2 Middleware'],
-            [{en:'BOTTOM',ko:'하'},{en:'Force',ko:'강제 (Force)'},{en:'Based on what Observe sees, enforces control, communication, and computation on the data plane.',ko:'관찰이 파악한 상태에 따라 데이터 플레인에서 제어, 통신, 연산을 강제한다.'},'Networked Control']],
+ c:{raw:'#0E7FB8',pill:{en:'The Execution Layer',ko:'실행 계층'},title:'Middleware Harness',sub:{en:"CPAI's Implementation",ko:'CPAI의 실제 구현'},
+    motto:{en:'Implementing CPAI in real robot middleware, connecting the three axes.',ko:'CPAI를 실제 로봇 미들웨어에서 구현해, 세 축을 잇는다.'},
+    q:{en:`The realization of CPAI must take place in middleware that can observe and govern both the AI model and the physical system. The goal is not to rebuild safety mechanisms from scratch each time, but to <span class="tag">engineer them once into the middleware so that every robot system can reuse them</span>.`,
+       ko:`CPAI의 구현은 AI 모델과 물리 시스템을 모두 관측하고 통제할 수 있는 미들웨어에서 이뤄져야 한다. 목표는 안전 메커니즘을 매번 새로 구축하는 것이 아니라, <span class="tag">미들웨어에 한 번 설계해 넣어 모든 로봇 시스템이 재사용할 수 있게 하는 것</span>이다.`},
+    frame:{en:`Middleware Harness is <b>the layer that implements the boundary enforcement proposed by CPAI in real robot middleware</b>. Just as a harness turns a raw model into a governed agent, the Middleware Harness <b>turns robot middleware into the enforcement layer of CPAI</b>. It is where CPAI and the three axes (Embodied Intelligence, ROS 2 Middleware, Networked Control) converge.`,
+           ko:`Middleware Harness는 <b>CPAI가 제안한 경계 강제를 실제 로봇 미들웨어에서 구현</b>하는 계층이다. harness가 모델을 통제 가능한 에이전트로 만들듯, Middleware Harness는 <b>로봇 미들웨어를 CPAI의 실행 계층</b>으로 만든다. CPAI와 세 축(Embodied Intelligence, ROS 2 Middleware, Networked Control)이 수렴하는 지점이다.`},
+    layers:[[{en:'TOP',ko:'상'},{en:'Connect',ko:'연결 (Connect)'},{en:'Links the rules declared at the intelligence level to the middleware. Realizes PIT (Projection, Isolation, Transfer) as a ROS 2 profile.',ko:'지능 레벨에서 정한 규약을 미들웨어와 연결한다. PIT(Projection, Isolation, Transfer)를 ROS 2 profile로 구체화한다.'},'Embodied Intelligence'],
+            [{en:'MID',ko:'중'},{en:'Observe',ko:'관찰 (Observe)'},{en:'Observes the middleware state to bridge Connect and Force. Minimizes observation cost while maximizing information.',ko:'미들웨어 상태를 관찰하여 연결과 강제를 이어준다. 관찰 비용을 최소화하며 정보를 최대화한다.'},'ROS 2 Middleware'],
+            [{en:'BOTTOM',ko:'하'},{en:'Force',ko:'강제 (Force)'},{en:'Based on what Observe sees, enforces control, communication, and computation on the data plane.',ko:'관찰이 파악한 상태에 따라 데이터 플레인에서 제어, 통신, 연산을 집행한다.'},'Networked Control']],
     pubs:[['<b>Harness Engineering for Physical AI</b>: Robot Middleware Is the Harness Layer','<b>Sanghoon Lee</b>, Jiyeong Chae, Kyung-Joon Park','Middleware 2026','Under Review'],
           ['<b>ros2probe</b>: Non-intrusive, Kernel-selective Observability for Robot Operating System 2 Middleware','Jisang Yu*, <b>Sanghoon Lee*</b>, Kyung-Joon Park','Middleware 2026','Under Review']],
-    asset:{en:`A 3-layer middleware harness that implements CPAI's PIT in real middleware to connect the three axes. Trust accumulates Observe (ros2probe) → Connect (Harness Profile) → Control (Harness Engine), running as an eBPF sidecar with zero code changes.`,
-           ko:`CPAI 의 PIT 를 실제 미들웨어에서 구현해 세 축을 잇는 3계층 harness. 관찰(ros2probe) → 연결(Harness Profile) → 제어(Harness Engine)로 신뢰를 누적하며, 기존 코드 수정 없이 eBPF 사이드카로 동작한다.`}},
+    role:{en:`The execution layer. Implements what CPAI proposes in real robot middleware, connecting the three axes without modifying existing systems.`,
+           ko:`실행 계층. CPAI가 제안하는 것을 실제 로봇 미들웨어에서 구현하며, 기존 시스템 수정 없이 세 축을 연결한다.`}},
 
- e:{raw:'#B5740A',pill:{en:'Brain · AI',ko:'Brain · AI'},title:'Embodied Intelligence',sub:{en:'Intelligence with a body',ko:'몸을 가진 지능'},
-    motto:{en:'How does an embodied intelligence perceive, plan, and act in the real world?',ko:'몸을 가진 지능이 현실에서 어떻게 인식·계획·행동하나'},
-    q:{en:`How does an embodied intelligence (a robot) <span class="tag">perceive, plan, and act</span> in the real world? When many robots find their way, localize, and divide work together, how is that intelligence built and coordinated? How does learning-based decision-making work in a multi-robot system?`,
-       ko:`몸을 가진 지능(로봇)이 현실에서 어떻게 <span class="tag">인식·계획·행동</span>하나. 여러 로봇이 함께 길 찾고, 위치를 알고, 일을 나눌 때 그 지능을 어떻게 만들고 조율하는가. 학습 기반 의사결정이 다중 로봇 시스템에서 어떻게 작동하는지 다룬다.`},
-    frame:{en:`Conducts a broad range of multi-robot intelligence research, from reinforcement-learning scheduling to localization, navigation, MAPF, and LLM-based autonomous driving.`,
-           ko:`강화학습 스케줄링부터 Localization, Navigation, MAPF, LLM 기반 자율주행 등 멀티로봇 인텔리전스 연구를 폭넓게 수행한다.`},
+ e:{raw:'#B5740A',pill:{en:'Brain (AI)',ko:'Brain (AI)'},title:'Embodied Intelligence',sub:{en:'Intelligence with a body',ko:'몸을 가진 지능'},
+    motto:{en:'How does an embodied intelligence perceive, plan, and act in the real world?',ko:'몸을 가진 지능이 현실에서 어떻게 인식하고 계획하고 행동하는가.'},
+    q:{en:`What does it take for a robot to <span class="tag">perceive, plan, and act</span> in the real world? When many robots localize, navigate, and divide work together, how is that intelligence built and coordinated?`,
+       ko:`로봇이 현실에서 <span class="tag">인식하고 계획하고 행동</span>하려면 무엇이 필요한가. 여러 로봇이 함께 위치를 파악하고 이동하고 일을 나눌 때, 그 지능을 어떻게 만들고 조율하는가.`},
+    frame:{en:`Each problem is approached at <b>the layer where intelligence meets the system</b>. Scheduling connects learning to the factory floor. MAPF connects planning to real robot motion. Localization and navigation connect perception to the physical environment.`,
+           ko:`각 문제는 <b>지능이 시스템과 만나는 계층</b>에서 다룬다. 스케줄링은 학습을 현장과 연결하고, MAPF는 계획을 실제 로봇 동작과 연결하고, 측위와 내비게이션은 인식을 물리 환경과 연결한다.`},
     pubs:[['LIMA: Local Intersection Marshaling Algorithm for Multi-Agent Path Finding in Large-Scale Industrial Environments','<b>Sanghoon Lee*</b>, Jisang Yu*, Geon-pyo Kim, Kyung-Joon Park','Elsevier RAS','Under Review'],
           ['Natural-Language to Operational Policies: LLM-Driven Costmaps for Industrial AMRs','Jiyeong Chae, Hyunkyo Seo, Heonjae Lee, <b>Sanghoon Lee</b>, Kyung-Joon Park','Elsevier RAS','Under Review'],
           ['Robust Localization in Dynamic Indoor Environments Using Structure-Guided Point-wise LiDAR Scoring','Yeong-gi Hong*, Donghyung Lee, <b>Sanghoon Lee</b>, Jiyeong Chae, Kyung-Joon Park','IROS 2026','Under Review'],
           ['AMCL Lifelong: Long-term Indoor Localization','Hyunkyo Kim, <b>Sanghoon Lee</b>, Kyung-Joon Park','IEEE TIM','In Preparation'],
           ['Multi-Robot Intelligence Survey','Hyunho Ryu, <b>Sanghoon Lee</b>, Kyung-Joon Park','Survey','In Preparation'],
-          ['Time-aware Costmap for Smoother and Less Disruptive AMR Navigation With ROS 2','Jiyeong Chae, Hyunkyo Seo, <b>Sanghoon Lee</b>, Kyung-Joon Park','IJCAS','Published · 2025'],
-          ['From Issues to Routes: A Cooperative Costmap with Lifelong Learning for Multi-AMR Navigation','Jiyeong Chae*, <b>Sanghoon Lee*</b>, Hyunkyo Seo, Kyung-Joon Park','JIII','Published · 2025'],
-          ['PINMAP: A Cost-efficient Algorithm for Glass Detection and Mapping Using Low-cost 2D LiDAR','Jiyeong Chae, Hyunkyo Seo, <b>Sanghoon Lee</b>, Kyung-Joon Park','IEEE TIM','Published · 2025'],
-          ['Deep Reinforcement Learning-driven Scheduling in Multijob Serial Lines: A Case Study in Automotive Parts Assembly','<b>Sanghoon Lee</b>, Jinyoung Kim, Yongsoon Eun, Kyung-Joon Park','IEEE T-II','Published · 2024'],
-          ['Learning-enabled Flexible Job-Shop Scheduling for Scalable Smart Manufacturing','Sihoon Moon, <b>Sanghoon Lee</b>, Kyung-Joon Park','JMS','Published · 2024'],
-          ['False Alarm Prevention through Domain Knowledge-driven Machine Learning: Leakage Detection in Water Distribution Networks','<b>Sanghoon Lee*</b>, Jiyeong Chae*, Sihoon Moon, Kyung-Joon Park','IEEE Sensors Journal','Published · 2024'],
-          ['Graph-based Reinforcement Learning for Flexible Job Shop Scheduling with Transportation Constraints','Sihoon Moon, <b>Sanghoon Lee</b>, Kyung-Joon Park','IECON 2023','Published · 2023']],
-    asset:{en:`Covers the full breadth of multi-robot systems: path planning (MAPF), localization (LiDAR/AMCL), and scheduling (DRL). Becomes the testbed for every other axis.`,
-           ko:`경로계획(MAPF) · 측위(LiDAR/AMCL) · 스케줄링(DRL)까지 다중 로봇 시스템 전반. 다른 모든 축의 실험장이 된다.`}},
+          ['Time-aware Costmap for Smoother and Less Disruptive AMR Navigation With ROS 2','Jiyeong Chae, Hyunkyo Seo, <b>Sanghoon Lee</b>, Kyung-Joon Park','IJCAS','Published, 2025'],
+          ['From Issues to Routes: A Cooperative Costmap with Lifelong Learning for Multi-AMR Navigation','Jiyeong Chae*, <b>Sanghoon Lee*</b>, Hyunkyo Seo, Kyung-Joon Park','JIII','Published, 2025'],
+          ['PINMAP: A Cost-efficient Algorithm for Glass Detection and Mapping Using Low-cost 2D LiDAR','Jiyeong Chae, Hyunkyo Seo, <b>Sanghoon Lee</b>, Kyung-Joon Park','IEEE TIM','Published, 2025'],
+          ['Deep Reinforcement Learning-driven Scheduling in Multijob Serial Lines: A Case Study in Automotive Parts Assembly','<b>Sanghoon Lee</b>, Jinyoung Kim, Yongsoon Eun, Kyung-Joon Park','IEEE T-II','Published, 2024'],
+          ['Learning-enabled Flexible Job-Shop Scheduling for Scalable Smart Manufacturing','Sihoon Moon, <b>Sanghoon Lee</b>, Kyung-Joon Park','JMS','Published, 2024'],
+          ['False Alarm Prevention through Domain Knowledge-driven Machine Learning: Leakage Detection in Water Distribution Networks','<b>Sanghoon Lee*</b>, Jiyeong Chae*, Sihoon Moon, Kyung-Joon Park','IEEE Sensors Journal','Published, 2024'],
+          ['Graph-based Reinforcement Learning for Flexible Job Shop Scheduling with Transportation Constraints','Sihoon Moon, <b>Sanghoon Lee</b>, Kyung-Joon Park','IECON 2023','Published, 2023']],
+    role:{en:`The testbed. Grounds the full CPAI framework in real multi-robot systems, from scheduling and MAPF to localization and LLM-driven navigation.`,
+           ko:`실험장. 스케줄링, MAPF, 측위, LLM 기반 내비게이션을 통해 CPAI 프레임워크 전체를 실제 다중 로봇 시스템 위에서 뒷받침한다.`}},
 
- b:{raw:'#0072CE',pill:{en:'Nerve · ROS 2',ko:'Nerve · ROS 2'},title:'ROS 2 Middleware',sub:'Space · Time · State',
-    motto:{en:'Where does the communication layer slow down, drop, and drift?',ko:'통신 계층은 어디서 느려지고 끊기고 어긋나는가'},
-    q:{en:`When many robots move together wirelessly and in real time, where does the communication layer (middleware) linking them <span class="tag">slow down, drop, and drift</span>? It maps where three demands collide: "how do they connect (space)", "do they arrive on time (time)", and "do they remember when disconnected (state)".`,
-       ko:`로봇 여러 대가 무선으로, 실시간으로 함께 움직일 때 그 사이를 잇는 통신 계층(미들웨어)은 어디서 <span class="tag">느려지고, 끊기고, 어긋나는가</span>. '어떻게 연결되는가(공간)', '제때 도착하는가(시간)', '끊겨도 기억하는가(상태)' 라는 세 요구가 서로 부딪히는 지점을 지도로 그린다.`},
-    frame:{en:`Establishes the three dimensions of <b>Space</b> (spatial abstraction) · <b>Time</b> (temporal predictability) · <b>State</b> (state continuity) and the trade-offs among them, and optimizes the middleware system.`,
-           ko:`<b>Space</b>(공간 추상화) · <b>Time</b>(시간 예측가능성) · <b>State</b>(상태 연속성) 의 3차원과 그 사이의 trade-off를 정립하고, 미들웨어 시스템을 최적화한다.`},
+ b:{raw:'#0072CE',pill:{en:'Nerve (ROS 2)',ko:'Nerve (ROS 2)'},title:'ROS 2 Middleware',sub:{en:'Space, Time, and State',ko:'공간, 시간, 상태'},
+    motto:{en:'Where does the communication layer slow down, drop, and drift?',ko:'통신 계층은 어디서 느려지고 끊기고 어긋나는가.'},
+    q:{en:`When many robots move together wirelessly and in real time, where does the middleware linking them <span class="tag">slow down, drop, and drift</span>? Three demands collide: spatial connectivity, temporal predictability, and state continuity.`,
+       ko:`로봇 여러 대가 무선으로 실시간으로 함께 움직일 때, 그 사이를 잇는 미들웨어는 어디서 <span class="tag">느려지고 끊기고 어긋나는가</span>. 공간 연결성, 시간 예측가능성, 상태 연속성이라는 세 요구가 서로 부딪힌다.`},
+    frame:{en:`The three dimensions of Space (spatial abstraction), Time (temporal predictability), and State (state continuity) define the <b>trade-off space of ROS 2 middleware</b>, and each research thread targets a specific region within it.`,
+           ko:`Space(공간 추상화), Time(시간 예측가능성), State(상태 연속성)의 세 차원이 <b>ROS 2 미들웨어의 trade-off 공간</b>을 정의하며, 각 연구는 그 안의 특정 영역을 다룬다.`},
     pubs:[['The Three Dimensions of ROS 2 Middleware','<b>Sanghoon Lee</b>, Taehun Kim, Angelo Corsaro, Kyung-Joon Park','IEEE COMST','Under Review'],
-          ['Dependency Chain Analysis of ROS 2 DDS QoS Policies: From Lifecycle Tutorial to Static Verification · <b>QoS Guard</b>','<b>Sanghoon Lee</b>, Junha Kang, Kyung-Joon Park','IEEE IoT-J','Under Review'],
-          ['Optimizing ROS 2 Communication for Wireless Robotic Systems · <b>DDS Optimizer</b>','<b>Sanghoon Lee</b>, Taehun Kim, Yeonwoo Choi, Kyung-Joon Park','IEEE IoT-J','Under Review'],
+          ['Dependency Chain Analysis of ROS 2 DDS QoS Policies: From Lifecycle Tutorial to Static Verification (<b>QoS Guard</b>)','<b>Sanghoon Lee</b>, Junha Kang, Kyung-Joon Park','IEEE IoT-J','Under Review'],
+          ['Optimizing ROS 2 Communication for Wireless Robotic Systems (<b>DDS Optimizer</b>)','<b>Sanghoon Lee</b>, Taehun Kim, Yeonwoo Choi, Kyung-Joon Park','IEEE IoT-J','Under Review'],
           ['Probabilistic Latency Analysis of the Data Distribution Service in ROS 2','<b>Sanghoon Lee</b>, Hyung-Seok Park, Jiyeong Chae, Kyung-Joon Park','IEEE TVT','Under Review'],
           ['Mitigating DDS Discovery Bursts in ROS 2 Multi-Robot Systems','Taehyun Kim, <b>Sanghoon Lee</b>, Kyung-Joon Park','IROS 2026','Under Review'],
           ['ROS 2 System Handbook','<b>Sanghoon Lee</b>','Book','In Preparation'],
           ['Analytical Modeling of Discovery Storms in DDS and Zenoh for Large-Scale Robotic Networks','Yeonwoo Choi*, <b>Sanghoon Lee*</b>, Kyung-Joon Park','INFOCOM 2027','In Preparation'],
           ['Adaptive Queue Drop for Real-Time ROS 2 Communication','Junha Kang, <b>Sanghoon Lee</b>, Kyung-Joon Park','IEEE IoT-J','In Preparation'],
           ['Partial Reliability for ROS 2 over Wireless','Taehun Kim, <b>Sanghoon Lee</b>, Kyung-Joon Park','IEEE IoT-J','In Preparation'],
-          ['Discovery Storm: Scalability Analysis of DDS and Zenoh in Large-Scale Wireless Robotic Networks','<b>Sanghoon Lee</b>, Yeonwoo Choi, Jiyeong Chae, Kyung-Joon Park','INFOCOM NetRobiCS 2026','Published · 2026'],
-          ['ROS 2 Middleware Survival Guide: Navigating Space, Time, and State','<b>Sanghoon Lee</b>, Kyung-Joon Park','ROSCon Global 2026 (Toronto)','Accepted · 2026'],
-          ['How to Send Large Data in ROS 2','<b>Sanghoon Lee</b>, Taehun Kim, Jiyeong Chae, Kyung-Joon Park','ICNP 2025','Published · 2025'],
-          ['An Analytical Latency Model of the Data Distribution Service in ROS 2','Hyung-Seok Park, <b>Sanghoon Lee</b>, Kyung-Joon Park','INFOCOM 2025','Published · 2025']],
-    asset:{en:`Established the Space · Time · State framework for analyzing ROS 2 middleware. With open-source QoS Guard · DDS Optimizer, a ROSCon Global talk, and a handbook, it aims to become standard community vocabulary. The thickest publication area.`,
-           ko:`Space · Time · State 라는 ROS 2 미들웨어 분석 프레임을 정립. 오픈소스 QoS Guard · DDS Optimizer, ROSCon Global 발표, 핸드북 집필로 커뮤니티 표준 어휘를 지향. 가장 두꺼운 출판 영역.`}},
+          ['Discovery Storm: Scalability Analysis of DDS and Zenoh in Large-Scale Wireless Robotic Networks','<b>Sanghoon Lee</b>, Yeonwoo Choi, Jiyeong Chae, Kyung-Joon Park','INFOCOM NetRobiCS 2026','Published, 2026'],
+          ['ROS 2 Middleware Survival Guide: Navigating Space, Time, and State','<b>Sanghoon Lee</b>, Kyung-Joon Park','ROSCon Global 2026 (Toronto)','Accepted, 2026'],
+          ['How to Send Large Data in ROS 2','<b>Sanghoon Lee</b>, Taehun Kim, Jiyeong Chae, Kyung-Joon Park','ICNP 2025','Published, 2025'],
+          ['An Analytical Latency Model of the Data Distribution Service in ROS 2','Hyung-Seok Park, <b>Sanghoon Lee</b>, Kyung-Joon Park','INFOCOM 2025','Published, 2025']],
+    role:{en:`The core middleware axis. The Space, Time, and State framework defines the vocabulary for the entire research program, and open-source tools extend it into the ROS 2 community.`,
+           ko:`핵심 미들웨어 축. Space, Time, State 프레임워크는 전체 연구 프로그램의 어휘를 정의하고, 오픈소스 툴로 ROS 2 커뮤니티까지 확장된다.`}},
 
- d:{raw:'#CF3B39',pill:{en:'Body · CPS',ko:'Body · CPS'},title:'Networked Control',sub:{en:'Reliability · resilience · security of control over networks',ko:'네트워크 위 제어의 신뢰성·복원·보안'},
-    motto:{en:'How does control over a network withstand delay, loss, and attack?',ko:'네트워크 위 제어가 지연·손실·공격을 어떻게 견디나'},
-    q:{en:`When a control loop closes over a communication network (networked control), how does it <span class="tag">withstand delay, loss, and attack while staying safe</span>? Where is the execution path from intelligence to the physical system attacked, and how does it recover and reconfigure?`,
-       ko:`제어 루프가 통신 네트워크 위에서 닫힐 때(networked control), 지연·손실·공격을 어떻게 <span class="tag">견디고 안전을 유지</span>하나. 지능이 물리 시스템으로 가는 실행 경로는 어디서 공격받고, 어떻게 회복·재구성하는지 다룬다.`},
-    frame:{en:`Reliability, resilience, and security when a control loop runs over a wired or wireless network. Conducts research on controller reconfiguration, resource allocation and co-design, and attack-surface analysis and defense.`,
-           ko:`제어 루프가 무선·유선 네트워크 위에 놓일 때의 신뢰성·복원·보안. 제어 재구성, 자원 할당·공동 설계, 그리고 공격면 분석·방어 연구를 수행한다.`},
-    pubs:[['Exploiting ROS 2’s Blind Spot: Cross-Layer Attacks from Discovery to ARP Spoofing','Hyunho Ryu*, <b>Sanghoon Lee*</b>, Minchan Kwak, Kyung-Joon Park','IEEE IoT-J','Under Review'],
+ d:{raw:'#CF3B39',pill:{en:'Body (CPS)',ko:'Body (CPS)'},title:'Networked Control',sub:{en:'Reliability, Resilience, and Security',ko:'신뢰성, 복원, 보안'},
+    motto:{en:'How does control over a network withstand delay, loss, and attack?',ko:'네트워크 위 제어가 지연, 손실, 공격을 어떻게 견디는가.'},
+    q:{en:`When a control loop closes over a communication network, how does it <span class="tag">withstand delay, loss, and attack while staying safe</span>? Where along the path from intelligence to the physical system does failure strike, and how does the system recover?`,
+       ko:`제어 루프가 통신 네트워크 위에서 닫힐 때, 지연, 손실, 공격을 어떻게 <span class="tag">견디고 안전을 유지</span>하는가. 지능이 물리 시스템으로 가는 경로 어디에서 실패가 발생하고, 시스템은 어떻게 회복하는가.`},
+    frame:{en:`This axis covers <b>reliability, resilience, and security</b> when a control loop runs over a wired or wireless network, spanning controller reconfiguration, resource allocation and co-design, and attack-surface analysis and defense.`,
+           ko:`제어 루프가 유선 또는 무선 네트워크 위에 놓일 때의 <b>신뢰성, 복원, 보안</b>을 다룬다. 제어 재구성, 자원 할당 및 공동 설계, 공격면 분석과 방어를 포괄한다.`},
+    pubs:[['Exploiting ROS 2’s Blind Spot: Cross-Layer Attacks from Discovery to ARP Spoofing','Hyunho Ryu*, <b>Sanghoon Lee*</b>, Young-Sik Kim, Dan Dongseong Kim, Kyung-Joon Park','IEEE IoT-J','Under Review'],
           ['AI over the Air','<b>Sanghoon Lee</b>, Kyung-Joon Park','Survey','In Preparation'],
-          ['DIDoS: Disturbance-induced Denial-of-service Attack in Networked Cyber-physical Systems','Sangjun Kim, <b>Sanghoon Lee</b>, Kyung-Joon Park','IJCAS','Published · 2025'],
-          ['Vulnerability Analysis of Cross-Layer Attacks on ROS 2','Hyunho Ryu, <b>Sanghoon Lee</b>, Kyung-Joon Park','ICTC 2025','Published · 2025'],
-          ['Priority-Driven Resource Allocation with Reuse for Platooning in 5G Vehicular Network','Tae-Woo Kim, <b>Sanghoon Lee</b>, Dong-Hyung Lee, Kyung-Joon Park','Sustainability','Published · 2025'],
-          ['Learning-Enabled Network-Control Co-design for Energy-Efficient Industrial Internet of Things','Sihoon Moon, <b>Sanghoon Lee</b>, Wonhong Jeon, Kyung-Joon Park','IEEE TNSM','Published · 2024'],
-          ['Real-Time Controller Reconfiguration for Delay-Resilient Cyber-Physical Systems','Sangjun Kim, <b>Sanghoon Lee</b>, Kyung-Joon Park','IEEE Access','Published · 2022'],
-          ['Resilient Controller Reconfiguration under Network Delay Attack in Cyber-Physical Systems','Sangjun Kim, <b>Sanghoon Lee</b>, Kyung-Joon Park','ICEIC 2022','Published · 2022']],
-    asset:{en:`From controller reconfiguration · DoS · cross-layer attacks · 5G resource allocation, it binds the reliability, resilience, and security of control over networks into one axis. Owns the CPS guarantee that "nothing bad ever happens".`,
-           ko:`제어 재구성 · DoS · 크로스레이어 공격 · 5G 자원할당까지, 네트워크 위 제어의 신뢰성·복원·보안을 한 축으로 묶는다. CPS 의 '절대 실패 없음'을 책임진다.`}}
+          ['DIDoS: Disturbance-induced Denial-of-service Attack in Networked Cyber-physical Systems','Sangjun Kim, <b>Sanghoon Lee</b>, Kyung-Joon Park','IJCAS','Published, 2025'],
+          ['Vulnerability Analysis of Cross-Layer Attacks on ROS 2','Hyunho Ryu, <b>Sanghoon Lee</b>, Kyung-Joon Park','ICTC 2025','Published, 2025'],
+          ['Priority-Driven Resource Allocation with Reuse for Platooning in 5G Vehicular Network','Tae-Woo Kim, <b>Sanghoon Lee</b>, Dong-Hyung Lee, Kyung-Joon Park','Sustainability','Published, 2025'],
+          ['Learning-Enabled Network-Control Co-design for Energy-Efficient Industrial Internet of Things','Sihoon Moon, <b>Sanghoon Lee</b>, Wonhong Jeon, Kyung-Joon Park','IEEE TNSM','Published, 2024'],
+          ['Real-Time Controller Reconfiguration for Delay-Resilient Cyber-Physical Systems','Sangjun Kim, <b>Sanghoon Lee</b>, Kyung-Joon Park','IEEE Access','Published, 2022'],
+          ['Resilient Controller Reconfiguration under Network Delay Attack in Cyber-Physical Systems','Sangjun Kim, <b>Sanghoon Lee</b>, Kyung-Joon Park','ICEIC 2022','Published, 2022']],
+    role:{en:`The axis that enforces the CPS guarantee. From controller reconfiguration and DoS to cross-layer attacks and 5G resource allocation, it ensures that nothing bad ever happens when control runs over a network.`,
+           ko:`CPS 보장을 책임지는 축이다. 제어 재구성, DoS, 크로스레이어 공격, 5G 자원 할당까지, 네트워크 위 제어에서 나쁜 일이 절대 일어나지 않도록 보장한다.`}}
 };
 const ORDER=['a','c','e','b','d'];
 
@@ -392,7 +542,7 @@ function hover(id){
   const conn=new Set();CONN[id].forEach(e=>{conn.add(e.f);conn.add(e.t);});
   document.querySelectorAll('.edge').forEach(el=>{const on=el.dataset.from===id||el.dataset.to===id;el.classList.toggle('on',on);});
   document.querySelectorAll('.node').forEach(el=>{el.classList.toggle('dim',!(el.dataset.id===id||conn.has(el.dataset.id)));});
-  const links=CONN[id].map(e=>{const other=NODES[e.f===id?e.t:e.f];return `<b>${other.name}</b> · ${T(e.lab)}`;}).join('<br>');
+  const links=CONN[id].map(e=>{const other=NODES[e.f===id?e.t:e.f];return `<b>${other.name}</b>: ${T(e.lab)}`;}).join('<br>');
   infobar.style.borderColor=n.raw;
   infobar.innerHTML=`<span class="ib-dot" style="background:${n.raw}"></span><div style="min-width:0"><div class="ib-q"><b style="color:${n.raw}">${n.name}</b> &nbsp;<span style="color:var(--faint);font-family:var(--mono);font-size:12px">${T(n.axis)}</span></div><div class="ib-c" style="font-family:var(--serif);font-size:16px;color:var(--ink);margin-top:6px">${T(n.q)}</div><div class="ib-c" style="white-space:nowrap;overflow-x:auto">${links||T(L.indep)}</div></div>`;
 }
@@ -404,7 +554,7 @@ function clearHover(){
 
 /* ---------- AXIS PAGES ---------- */
 function tbl(rows){return `<table class="pubs"><thead><tr><th>${T(L.thOut)}</th><th>${T(L.thVenue)}</th><th>${T(L.thNote)}</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="t">${r[0]}${r[1]?'<span class="au">'+r[1]+'</span>':''}</td><td class="v">${r[2]}</td><td class="n">${r[3]}</td></tr>`).join('')}</tbody></table>`;}
-function layerCard(l,raw){return `<div class="lcard"><div class="lv" style="color:${raw}">${T(l[0])} · ${T(l[1]).split(' ')[0]}${l[3]?' → '+l[3]:''}</div><h4>${T(l[1])}</h4><p>${T(l[2])}</p></div>`;}
+function layerCard(l,raw){return `<div class="lcard"><div class="lv" style="color:${raw}">${T(l[1]).split(' ')[0]}${l[3]?' → '+l[3]:''}</div><h4>${T(l[1])}</h4><p>${T(l[2])}</p></div>`;}
 function renderAxis(id){
   const x=AX[id],n=NODES[id];
   const nav=ORDER.map(k=>`<a href="#${k}" class="${k===id?'cur':''}" style="${k===id?`background:${NODES[k].raw};border-color:${NODES[k].raw}`:''}">${NODES[k].name}</a>`).join('');
@@ -415,6 +565,7 @@ function renderAxis(id){
     <div class="topbar"><div class="wrap">
       <div class="tb-left">
         <button class="back" onclick="location.hash=''">${T(L.back)}</button>
+        <a class="back" href="index.html" style="text-decoration:none">← Home</a>
         <button class="langtoggle" onclick="toggleLang()"></button>
       </div>
       <div class="axnav">${nav}</div>
@@ -429,7 +580,9 @@ function renderAxis(id){
       <div class="block"><div class="lab">${T(L.coreQ)}</div><div class="q">${T(x.q)}</div></div>
       <div class="block"><div class="lab">${T(L.frame)}</div><p class="prose">${T(x.frame)}</p></div>
       ${layers}
-      <div class="block"><div class="lab">${T(L.pubs)} · ${cnt}</div>${tbl(x.pubs)}</div>      <div class="foot"><b>Sanghoon Lee</b> · Research Program — ${x.title}</div>
+      <div class="block"><div class="lab">${T(L.pubs)} (${cnt})</div>${tbl(x.pubs)}</div>
+      <div class="block"><div class="lab">${T(L.role)}</div><p class="prose">${T(x.role)}</p></div>
+      <div class="foot"><b>Sanghoon Lee</b>, Research Program (${x.title})</div>
     </div>
   </section>`;
 }

@@ -5,14 +5,18 @@
   <title>Sanghoon Lee — Cyber-Physical AI Researcher · DGIST</title>
   <meta name="description" content="Full-Stack Researcher for Embodied Intelligence. ROS 2 · DDS · Physical AI · CPS. InnoCore Postdoctoral Fellow at DGIST." />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hun0130.github.io/" />
   <meta property="og:title" content="Sanghoon Lee — Cyber-Physical AI Researcher" />
   <meta property="og:description" content="Cyber-Physical AI · ROS 2 · Physical AI · CPS" />
-  <meta property="og:image" content="Profile.png" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://hun0130.github.io/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Sanghoon Lee" />
   <meta name="twitter:description" content="Cyber-Physical AI Researcher · DGIST" />
-  <meta name="twitter:image" content="Profile.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
+  <meta name="twitter:image" content="https://hun0130.github.io/og.png" />
+  <meta name="viewport" content="width=1100" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Crimson+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <style>
@@ -215,16 +219,15 @@
   .rp-cta {
     display: flex; align-items: center; justify-content: space-between; gap: 1.75rem;
     margin-top: 1.75rem; padding: 1.7rem 2rem; border-radius: 14px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
-    color: #fff; text-decoration: none;
-    box-shadow: 0 12px 32px rgba(0, 114, 206, 0.28);
-    transition: transform 0.2s, box-shadow 0.2s;
+    background: var(--accent-soft); border: 1px solid var(--border);
+    color: var(--text); text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
   }
-  .rp-cta:hover { transform: translateY(-3px); box-shadow: 0 18px 44px rgba(0, 114, 206, 0.38); opacity: 1; }
-  .rp-cta-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.9; margin-bottom: 0.5rem; }
-  .rp-cta-title { font-family: 'Crimson Pro', Georgia, serif; font-size: 1.55rem; font-weight: 600; margin: 0 0 0.4rem; color: #fff; letter-spacing: -0.01em; }
-  .rp-cta-desc { font-size: 0.93rem; line-height: 1.55; opacity: 0.94; margin: 0; max-width: 660px; }
-  .rp-cta-arrow { font-size: 2.2rem; line-height: 1; flex: 0 0 auto; transition: transform 0.2s; }
+  .rp-cta:hover { transform: translateY(-2px); border-color: var(--accent); opacity: 1; }
+  .rp-cta-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+  .rp-cta-title { font-family: 'Crimson Pro', Georgia, serif; font-size: 1.55rem; font-weight: 600; margin: 0 0 0.4rem; color: var(--text); letter-spacing: -0.01em; }
+  .rp-cta-desc { font-size: 0.93rem; line-height: 1.55; color: var(--text-faint); margin: 0; max-width: 660px; }
+  .rp-cta-arrow { font-size: 2.2rem; line-height: 1; flex: 0 0 auto; color: var(--accent); transition: transform 0.2s; }
   .rp-cta:hover .rp-cta-arrow { transform: translateX(5px); }
   @media (max-width: 600px) { .rp-cta { flex-direction: column; align-items: flex-start; gap: 1.1rem; } }
 
@@ -331,8 +334,8 @@
   .news-content a { color: var(--accent); border-bottom: 1px solid transparent; }
   .news-content a:hover { border-color: var(--accent); }
   .news-row.highlight .news-content { color: var(--text); font-weight: 500; }
-  .news-extra { display: none; }
-  body.news-expanded .news-extra { display: grid; }
+  .news-row:nth-child(n+11) { display: none; }
+  body.news-expanded .news-row:nth-child(n+11) { display: grid; }
   .news-toggle {
     margin-top: 1.5rem; margin-left: 2rem; padding: 0.4rem 0.8rem;
     background: transparent; border: 1px solid var(--border); border-radius: 6px;
@@ -568,11 +571,11 @@
       <div class="stat-label">Citations</div>
     </div>
     <div class="stat">
-      <div class="stat-num">32+</div>
+      <div class="stat-num">33+</div>
       <div class="stat-label">International Papers</div>
     </div>
     <div class="stat">
-      <div class="stat-num">18</div>
+      <div class="stat-num">19</div>
       <div class="stat-label">First / Co-First</div>
     </div>
     <div class="stat">
@@ -585,7 +588,7 @@
 <!-- ====================== RESEARCH ====================== -->
 <section id="research">
   <div class="container">
-    <div class="section-eyebrow">Research Domain</div>
+    <div class="section-eyebrow">Research Vision</div>
     <h2 class="section-title">Cyber-Physical Artificial Intelligence (CPAI)</h2>
     <p class="section-lead">
       A research direction unifying <strong>AI</strong> (the Brain), <strong>ROS&nbsp;2</strong> (the Nerve), and
@@ -631,7 +634,7 @@
     <div class="section-eyebrow">Featured Work</div>
     <h2 class="section-title">Selected Publications</h2>
     <p class="section-lead">
-      Curated from <strong>32+ international peer-reviewed papers</strong> (18 first or co-first authored).
+      Curated from <strong>33+ international peer-reviewed papers</strong> (19 first or co-first authored).
       Featured items highlight the most representative threads of recent research.
     </p>
 
@@ -642,13 +645,6 @@
         <h3 class="paper-title"><a href="#">Cyber-Physical AI: Unifying Cyber-Physical Systems and Physical Artificial Intelligence</a></h3>
         <p class="paper-authors"><strong>Sanghoon Lee</strong>, Guoliang Xing, Xue Liu, Karl H. Johansson, Kyung-Joon Park</p>
         <p class="paper-highlight">International collaboration with leading CPS scholars</p>
-      </article>
-
-      <article class="paper-card">
-        <div class="paper-tag">Big Ideas · Middleware 2026 · Under Review</div>
-        <h3 class="paper-title"><a href="https://arxiv.org/abs/2606.09416" target="_blank">Harness Engineering for Physical AI: Robot Middleware Is the Harness Layer</a></h3>
-        <p class="paper-authors"><strong>Sanghoon Lee</strong>, Jiyeong Chae, Kyung-Joon Park</p>
-        <p class="paper-highlight">A harness for Physical AI. Projection · Isolation · Transfer</p>
       </article>
 
       <article class="paper-card">
@@ -704,7 +700,7 @@
       </div>
       <div class="news-row">
         <div class="news-date">2026.06.08</div>
-        <div class="news-content">Released <a href="https://arxiv.org/abs/2606.09416" target="_blank">Robot Middleware Harness</a> preprint on arXiv</div>
+        <div class="news-content">Released <a href="https://arxiv.org/abs/2606.10746" target="_blank">ros2probe</a> and <a href="https://arxiv.org/abs/2606.09416" target="_blank">Robot Middleware Harness</a> preprints on arXiv</div>
       </div>
       <div class="news-row highlight">
         <div class="news-date">2026.06.06</div>
@@ -859,7 +855,7 @@
     <ul class="simple-list">
       <li>
         <div class="item-date">2026.10</div>
-        <div class="item-content"><a href="https://ictc.org/" target="_blank">ICTC 2026</a>, Jeju <span class="item-meta">Invited Talk · Upcoming</span></div>
+        <div class="item-content"><a href="https://ictc.org/" target="_blank">ICTC 2026</a> <span class="item-meta">Invited Talk · Upcoming</span></div>
       </li>
       <li>
         <div class="item-date">2026.03.23</div>
@@ -883,7 +879,7 @@
     <div class="section-eyebrow">Complete List</div>
     <h2 class="section-title">Publications</h2>
     <p class="section-lead">
-      <span class="pubs-stat-line"><strong>32+&nbsp;international&nbsp;papers</strong> · Ph.D.&nbsp;dissertation · domestic&nbsp;papers · patents.</span>
+      <span class="pubs-stat-line"><strong>33+&nbsp;international&nbsp;papers</strong> · Ph.D.&nbsp;dissertation · domestic&nbsp;papers · patents.</span>
       <br /><span style="color:var(--text-faint); font-size: 0.85em;">* indicates equal contribution as first authors.</span>
     </p>
 
@@ -927,9 +923,9 @@
     <div class="pub-row">
       <div class="pub-num">[30]</div>
       <div class="pub-body">
-        <div class="pub-title">ros2probe: Non-intrusive, Kernel-selective Observability for Robot Operating System 2 Middleware</div>
+        <div class="pub-title"><a href="https://arxiv.org/abs/2606.10746" target="_blank">ros2probe: Non-intrusive, Kernel-selective Observability for Robot Operating System 2 Middleware</a></div>
         <div class="pub-authors">Jisang Yu*, <strong>Sanghoon Lee*</strong>, Yeonwoo Choi, Kyung-Joon Park</div>
-        <div class="pub-venue">ACM/IFIP/USENIX International Middleware Conference (Middleware) 2026<span class="pub-status">Under Review</span></div>
+        <div class="pub-venue">ACM/IFIP/USENIX International Middleware Conference (Middleware) 2026<span class="pub-status">Under Review</span> <a class="pub-arxiv" href="https://arxiv.org/abs/2606.10746" target="_blank">[arXiv]</a></div>
       </div>
     </div>
     <div class="pub-row">
@@ -984,7 +980,7 @@
       <div class="pub-num">[23]</div>
       <div class="pub-body">
         <div class="pub-title">Exploiting ROS 2's Blind Spot: Cross-Layer Attacks from Discovery to ARP Spoofing</div>
-        <div class="pub-authors">Hyunho Ryu*, <strong>Sanghoon Lee*</strong>, Minchan Kwak, Kyung-Joon Park</div>
+        <div class="pub-authors">Hyunho Ryu*, <strong>Sanghoon Lee*</strong>, Young-Sik Kim, Dan Dongseong Kim, Kyung-Joon Park</div>
         <div class="pub-venue">IEEE Internet of Things Journal (IoT-J)<span class="pub-status">Under Review</span></div>
       </div>
     </div>
@@ -1335,6 +1331,13 @@
     <h2 class="section-title">Honors &amp; Awards</h2>
 
     <div class="award-row">
+      <div class="award-num">[9]</div>
+      <div>
+        <div class="award-title"><a href="https://www.kics.or.kr/html/?pmode=BBBnotice&page=1&smode=view&seq=4823&searchValue=&schCategory=&searchTitle=strTitle" target="_blank">Early-Career Researcher Academic Research Grant</a></div>
+        <div class="award-org">2026 · Korean Institute of Communication and Information Sciences (KICS)</div>
+      </div>
+    </div>
+    <div class="award-row">
       <div class="award-num">[8]</div>
       <div>
         <div class="award-title"><a href="https://conf.kics.or.kr/2025f/supportInform" target="_blank">Best Paper Award</a></div>
@@ -1429,6 +1432,7 @@
         <div class="repo-links">
           <a href="https://github.com/csi-dgist/ros2probe" target="_blank">GitHub</a>
           <a href="https://csi-dgist.github.io/ros2probe-page/" target="_blank">Project Page</a>
+          <a href="https://arxiv.org/abs/2606.10746" target="_blank">Paper [30]</a>
         </div>
       </div>
       <div class="repo-stats">
@@ -1507,7 +1511,7 @@
     <div class="review-block">
       <div class="review-year-head">2026 — Present</div>
       <div>
-        <span class="review-pub">Springer Nature</span><span class="review-journal">Artificial Intelligence Review</span><br />
+        <span class="review-pub">Springer Nature</span><span class="review-journal">Artificial Intelligence Review</span><span class="review-journal">Computing</span><br />
         <span class="review-pub">IEEE</span><span class="review-journal">Transactions on Systems, Man, and Cybernetics</span>
       </div>
     </div>
