@@ -178,9 +178,14 @@ table.pubs .n{color:var(--mut);font-size:12px}
 @media(max-width:760px){
   .pillars{grid-template-columns:1fr}
   .igrid{grid-template-columns:1fr}
-  .stage{aspect-ratio:auto;height:360px}
-  .node .chip{padding:8px 11px}
-  .node .ntxt b{font-size:12px}
+  .stage{aspect-ratio:auto;height:400px}
+  .node .chip{padding:5px 6px;gap:4px;border-radius:8px;max-width:21.5vw}
+  .node .ntxt b{font-size:8.5px;white-space:normal;line-height:1.1;letter-spacing:-.02em}
+  .node .ntxt span{font-size:7px;letter-spacing:.04em;margin-top:2px}
+  .node .dot{width:8px;height:8px}
+  .node.banner .chip,.node.bridge .chip{max-width:64vw}
+  .node.banner .ntxt b,.node.bridge .ntxt b{font-size:12px}
+  .node.banner .dot,.node.bridge .dot{width:12px;height:12px}
   .tags3{grid-template-columns:1fr}
   .bandlabel{font-size:9px}
 }
