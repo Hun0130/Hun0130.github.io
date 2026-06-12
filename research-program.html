@@ -32,6 +32,8 @@ a{color:inherit}
 .logo .accent{color:var(--accent)}
 .langtoggle{font-family:var(--mono);background:none;border:1px solid var(--panel-bd);color:var(--ink);padding:.4rem .8rem;border-radius:7px;cursor:pointer;font-size:.78rem;font-weight:500;letter-spacing:.03em;transition:.2s}
 .langtoggle:hover{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.pubs a.publink{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+.pubs a.publink:hover{border-bottom-color:var(--accent)}
 .homelink{font-family:var(--mono);text-decoration:none;background:none;border:1px solid var(--panel-bd);color:var(--ink);padding:.4rem .8rem;border-radius:7px;font-size:.78rem;font-weight:500;letter-spacing:.03em;transition:.2s}
 .homelink:hover{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
 
@@ -373,7 +375,7 @@ table.pubs .n{color:var(--mut);font-size:12px}
 
 <script>
 /* ---------- I18N ---------- */
-let LANG = (function(){try{return localStorage.getItem('rp-lang')||'en'}catch(e){return 'en'}})();
+let LANG = 'en';
 document.documentElement.lang = LANG;
 function T(o){ return (o && typeof o==='object' && !Array.isArray(o) && ('en' in o)) ? (o[LANG]!=null?o[LANG]:o.en) : o; }
 const L = {
@@ -558,7 +560,34 @@ function clearHover(){
 }
 
 /* ---------- AXIS PAGES ---------- */
-function tbl(rows){return `<table class="pubs"><thead><tr><th>${T(L.thOut)}</th><th>${T(L.thVenue)}</th><th>${T(L.thNote)}</th></tr></thead><tbody>${rows.map(r=>`<tr><td class="t">${r[0]}${r[1]?'<span class="au">'+r[1]+'</span>':''}</td><td class="v">${r[2]}</td><td class="n">${r[3]}</td></tr>`).join('')}</tbody></table>`;}
+const PUBLINKS = {
+'Ph.D. Dissertation':'https://dgist.dcollection.net/srch/srchDetail/200000944081',
+'Systematic Research Domain':'https://dl.acm.org/doi/10.1145/3721437',
+'Integrating ROS 2 and Physical AI':'https://ieeexplore.ieee.org/abstract/document/11170038/',
+'Survey and Perspective on Industrial Cyber-Physical':'https://ieeexplore.ieee.org/abstract/document/10285426',
+'Harness Engineering for Physical AI':'https://arxiv.org/abs/2606.09416',
+'ros2probe':'https://arxiv.org/abs/2606.10746',
+'Local Intersection Marshaling':'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6710263',
+'Time-aware Costmap':'https://link.springer.com/article/10.1007/s12555-025-0558-8',
+'From Issues to Routes':'https://www.sciencedirect.com/science/article/abs/pii/S2452414X25001645',
+'PINMAP':'https://ieeexplore.ieee.org/document/10991965',
+'Deep Reinforcement Learning-driven Scheduling':'https://ieeexplore.ieee.org/document/10210628',
+'Learning-enabled Flexible Job-Shop':'https://www.sciencedirect.com/science/article/pii/S0278612524002139',
+'False Alarm Prevention':'https://ieeexplore.ieee.org/abstract/document/10643479/',
+'Graph-based Reinforcement Learning':'https://ieeexplore.ieee.org/document/10312647',
+'Dependency Chain Analysis':'https://arxiv.org/abs/2509.03381',
+'Optimizing ROS 2 Communication':'https://arxiv.org/abs/2508.11366',
+'Probabilistic Latency Analysis':'https://arxiv.org/abs/2508.10413',
+'How to Send Large Data':'https://ieeexplore.ieee.org/abstract/document/11192433/',
+'An Analytical Latency Model':'https://ieeexplore.ieee.org/abstract/document/11044454/',
+'DIDoS':'https://link.springer.com/article/10.1007/s12555-025-0572-x',
+'Vulnerability Analysis of Cross-Layer':'https://csi.dgist.ac.kr/HOME/csi/data/upload/2025101621472768f0e95fa4555.pdf',
+'Priority-Driven Resource Allocation':'https://www.mdpi.com/2071-1050/17/4/1747',
+'Network-Control Co-design':'https://ieeexplore.ieee.org/abstract/document/10285130',
+'Real-Time Controller Reconfiguration':'https://ieeexplore.ieee.org/abstract/document/9896851'
+};
+function linkFor(t){var p=String(t).replace(/<[^>]+>/g,'');for(var k in PUBLINKS){if(p.indexOf(k)!==-1)return PUBLINKS[k];}return null;}
+function tbl(rows){return `<table class="pubs"><thead><tr><th>${T(L.thOut)}</th><th>${T(L.thVenue)}</th><th>${T(L.thNote)}</th></tr></thead><tbody>${rows.map(function(r){var u=linkFor(r[0]);var ttl=u?('<a href="'+u+'" target="_blank" rel="noopener" class="publink">'+r[0]+'</a>'):r[0];return '<tr><td class="t">'+ttl+(r[1]?('<span class="au">'+r[1]+'</span>'):'')+'</td><td class="v">'+r[2]+'</td><td class="n">'+r[3]+'</td></tr>';}).join('')}</tbody></table>`;}
 function layerCard(l,raw){return `<div class="lcard"><div class="lv" style="color:${raw}">${T(l[1]).split(' ')[0]}${l[3]?' → '+l[3]:''}</div><h4>${T(l[1])}</h4><p>${T(l[2])}</p></div>`;}
 function renderAxis(id){
   const x=AX[id],n=NODES[id];
