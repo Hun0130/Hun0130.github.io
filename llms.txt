@@ -1,0 +1,23 @@
+# Sanghoon Lee · Systems Researcher for Cyber-Physical AI (DGIST)
+
+> Systems that make AI work on time, and work right. I build middleware and systems for AI under limited resources and uncertainty, across computing, communication, and control. InnoCore Postdoctoral Research Fellow at DGIST.
+
+Contact: leesh2913@dgist.ac.kr · Google Scholar: https://scholar.google.co.kr/citations?user=W2iqqvAAAAAJ · GitHub: https://github.com/hun0130 · LinkedIn: https://www.linkedin.com/in/sanghoon-lee-1b5929301
+
+## Pages
+
+- [Homepage](https://hun0130.github.io/). Profile, publications, news, honors, open source, and service.
+- [Research Program](https://hun0130.github.io/research-program.html). Program architecture and a network of publications, with explanations of their relationships.
+- [CV](https://hun0130.github.io/CV_Sanghoon_Lee.pdf).
+
+## Research Program
+
+The architecture connects the Cyber-Physical AI paradigm, Middleware & Runtime Systems as an implementation foundation, Analysis/Observation/Verification, Execution/Communication/Assurance, and AI in Physical Systems. It is organized by research roles, with computing, communication, and control as a shared perspective.
+
+The paper network contains 30 selected international papers, including all 21 first/co-first-authored entries from the homepage. Its 14 curated relationships describe shared questions, complementary approaches, and conceptual connections. These are editorial relationships, not citation links or assertions of direct technical inheritance. Selecting a paper shows authorship role, source link when available, and the reason for each connection. A geometric program map opens research-area descriptions and journal/conference paper counts in an adjacent panel. Selecting a paper opens its research question and connections in place. The full network supports an authorship filter. A static publication index is shown only when JavaScript is unavailable. Public research directions describe future work without disclosing private project names or target venues.
+
+## Notes for agents
+
+- Both pages contain static HTML readable without JavaScript. The Research Program supports English and Korean.
+- The homepage contains the full publication list. The Research Program highlights selected works.
+- An asterisk in author lists denotes equal contribution as co-first authors.
