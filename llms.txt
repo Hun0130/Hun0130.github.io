@@ -1,0 +1,43 @@
+# Sanghoon Lee — Cyber-Physical AI Researcher (DGIST)
+
+> InnoCore Postdoctoral Research Fellow at DGIST (Research Group for Bio-Embodied Physical AI). Research unifies AI, robot middleware (ROS 2 / DDS / Zenoh), and networked control to realize Embodied Intelligence that stays reliable under real-world uncertainty and resource constraints. 33 international publications and manuscripts (18 first or co-first authored). Ph.D. in Electrical Engineering and Computer Science, DGIST (2026).
+
+Contact: leesh2913@dgist.ac.kr · Google Scholar: https://scholar.google.co.kr/citations?user=W2iqqvAAAAAJ · GitHub: https://github.com/hun0130 · LinkedIn: https://www.linkedin.com/in/sanghoon-lee-1b5929301
+
+## Pages
+
+- [Homepage](https://hun0130.github.io/): Full profile — biography, 33 international publications and manuscripts, news, honors and awards, open source, peer-review service, technical stack.
+- [Research Program](https://hun0130.github.io/research-program.html): The research program as an interactive map. CPAI paradigm, the Middleware Harness, and three connected axes. A complete static text version is in the page's <noscript> block.
+- [CV (PDF)](https://hun0130.github.io/CV_Sanghoon_Lee.pdf): Curriculum vitae.
+
+## Research Program
+
+The program asks: how to unify intelligence and the physical system without breaking? Three pillars frame it. The Brain (AI): good things happen often, but AI is only often right. The Nerve (ROS 2): all things stay connected, its decisions must arrive unbroken. The Body (CPS): bad things never happen. Research lives in the gap between an AI that is only *often* right and a physical system that must be *always* connected and *never* fail.
+
+Architecture: CPAI is the governing paradigm; the Middleware Harness implements it as the execution layer on real robots; three axes (Embodied Intelligence, ROS 2 Middleware, Networked Control) interconnect through it.
+
+### CPAI (The Paradigm)
+
+Cyber-Physical Artificial Intelligence. Founds the field that asks what to entrust to AI, how far, and under what conditions it stays safe. Unifies CPS and Physical AI. Proposes the PIT structure: check each output at the boundary (Projection), bound resources and time (Isolation), revert to a verified action when at risk (Transfer). Formalizes CPS as a 3C Substrate (Control · Computing · Communication) × 3S Primitives (State · Step · Stream); reconstructs determinism by boundary enforcement and runtime assurance rather than internal proof. First defined at ACM TCPS (2025), continued in the ACM TCPS 20th-anniversary Invited paper (with Guoliang Xing, Xue Liu, Karl H. Johansson).
+
+### Middleware Harness (CPAI's implementation, connects the three axes)
+
+Implements CPAI's boundary enforcement (PIT) in real robot middleware. As an LLM agent harness turns a model into a trustworthy agent, the harness of Physical AI is the robot middleware. 3-layer structure: Connect (top, PIT as a ROS 2 profile), Observe (middle, observe middleware state at minimal cost), Force (bottom, enforce control/communication/computation on the data plane). Runs as an eBPF sidecar with zero code changes. Key works: "Harness Engineering for Physical AI: Robot Middleware Is the Harness Layer" (Middleware 2026) and "ros2probe: Non-intrusive, Kernel-selective Observability for ROS 2 Middleware" (Middleware 2026).
+
+### Embodied Intelligence (Brain · AI)
+
+How an embodied intelligence perceives, plans, and acts in the real world, and how many robots coordinate. Multi-robot intelligence: MAPF (LIMA), localization (LiDAR scoring, AMCL Lifelong), navigation (cooperative/lifelong costmaps, PINMAP glass detection), LLM-driven costmaps, and reinforcement-learning scheduling. Serves as the testbed for the other axes.
+
+### ROS 2 Middleware (Nerve · ROS 2): Space · Time · State
+
+Where the communication layer linking robots slows down, drops, and drifts. Establishes three dimensions — Space (spatial abstraction), Time (temporal predictability), State (state continuity) — and their trade-offs, then optimizes the middleware. Key works: "The Three Dimensions of ROS 2 Middleware" (ACM CSUR), QoS Guard, DDS Optimizer, probabilistic/analytical DDS latency models, Discovery Storm scalability analysis (DDS and Zenoh), "ROS 2 Middleware Survival Guide" (ROSCon Global 2026, Toronto), and the ROS 2 System Handbook. Open source: QoS Guard, DDS Optimizer, ros2probe.
+
+### Networked Control (Body · CPS)
+
+Reliability, resilience, and security when a control loop closes over a network. Controller reconfiguration under delay/attack, DoS and cross-layer attacks (ROS 2 discovery to ARP spoofing), 5G resource allocation, and network-control co-design. Owns the CPS guarantee that nothing bad ever happens.
+
+## Notes for agents
+
+- The homepage and this file are static and fully readable without JavaScript.
+- The Research Program page is an interactive SPA; its full content is mirrored as static HTML inside the page's <noscript> element and summarized above.
+- "*" in author lists denotes equal contribution as co-first authors.
